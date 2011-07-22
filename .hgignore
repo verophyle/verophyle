@@ -1,4 +1,6 @@
 syntax: regexp
+^test-classes$
+syntax: regexp
 ^war/verophyle$
 syntax: regexp
 ^war/WEB-INF/deploy$
