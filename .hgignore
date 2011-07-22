@@ -1,12 +1,7 @@
 syntax: regexp
-^test-classes$
-syntax: regexp
-^war/verophyle$
-syntax: regexp
-^war/WEB-INF/lib$
-syntax: regexp
-^war/WEB-INF/deploy$
-syntax: regexp
-^war/WEB-INF/classes$
-syntax: regexp
-^\.gwt$
+test-classes$
+war/verophyle$
+war/WEB-INF/lib$
+war/WEB-INF/deploy$
+war/WEB-INF/classes$
+\.gwt$
