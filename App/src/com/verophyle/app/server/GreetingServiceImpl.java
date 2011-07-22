@@ -28,7 +28,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		userAgent = escapeHtml(userAgent);
 
 		return "Hello, " + input + "!<br><br>I am running " + serverInfo
-				+ ".<br><br>It looks like you are using:<br>" + userAgent;
+				+ ".<br><br>It looks like you are using:<br>" + userAgent
+				+ "<br><br>The magic number is " + com.verophyle.kernel.DummyClass.FOO;
 	}
 
 	/**

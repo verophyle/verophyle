@@ -1,7 +1,9 @@
 syntax: regexp
 test-classes$
+App/war/WEB-INF/lib$
 war/verophyle$
-war/WEB-INF/lib$
 war/WEB-INF/deploy$
 war/WEB-INF/classes$
+war/WEB-INF/lib/gwt-servlet.jar$
 \.gwt$
+bin$
