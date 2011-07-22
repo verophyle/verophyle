@@ -1,0 +1,9 @@
+
+syntax: regexp
+^war/verophyle$
+syntax: regexp
+^war/WEB-INF/deploy$
+syntax: regexp
+^war/WEB-INF/lib$
+syntax: regexp
+^war/WEB-INF/classes$
