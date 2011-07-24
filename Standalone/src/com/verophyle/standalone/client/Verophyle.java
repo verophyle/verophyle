@@ -1,13 +1,7 @@
 package com.verophyle.standalone.client;
 
-import com.google.gwt.core.client.EntryPoint;
+import com.verophyle.kernel.client.MainEntryPoint;
 
-public class Verophyle implements EntryPoint {
-
-	@Override
-	public void onModuleLoad() {
-		// TODO Auto-generated method stub
-
-	}
+public class Verophyle extends MainEntryPoint {
 
 }

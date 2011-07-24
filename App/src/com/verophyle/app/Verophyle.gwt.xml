@@ -12,6 +12,7 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
+  <inherits name='com.verophyle.kernel.Verophyle'/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.verophyle.app.client.Verophyle'/>

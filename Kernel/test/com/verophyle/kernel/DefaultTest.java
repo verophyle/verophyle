@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestDummyClass {
+public class DefaultTest {
 
 	@Test
 	public void test() {

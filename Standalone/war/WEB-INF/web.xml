@@ -5,6 +5,17 @@
 
 <web-app>
     
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>testServlet</servlet-name>
+    <servlet-class>com.verophyle.kernel.server.TestServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>testServlet</servlet-name>
+    <url-pattern>/verophyle/test</url-pattern>
+  </servlet-mapping>
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

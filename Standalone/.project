@@ -26,11 +26,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.google.gwt.eclipse.core.gwtNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>war/Verophyle.css</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/App/war/Verophyle.css</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

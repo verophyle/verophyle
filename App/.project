@@ -3,6 +3,7 @@
 	<name>Verophyle App</name>
 	<comment></comment>
 	<projects>
+		<project>Verophyle Kernel</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
