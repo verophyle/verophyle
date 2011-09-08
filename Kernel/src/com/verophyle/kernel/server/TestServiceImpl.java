@@ -19,7 +19,8 @@ public class TestServiceImpl extends RemoteServiceServlet implements TestService
 		
 		String result = "Hello, " + name  + ":<br/><br/>"
 				+ "Server Info: " + server_info + "<br/><br/>"
-				+ "User Agent: " + user_agent;
+				+ "User Agent: " + user_agent + "<br/><br/>"
+				+ "TEST 1";
 		
 		return result;
 	}

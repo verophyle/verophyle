@@ -1,5 +1,6 @@
 package com.verophyle.standalone.server;
 
+import java.awt.Desktop;
 import java.io.File;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
@@ -13,6 +14,7 @@ public class Verophyle {
 		
 		Server server = new Server(8080);
 		WebAppContext handler = new WebAppContext();
+		
 		handler.setResourceBase("./war");
 		handler.setDescriptor("./war/WEB-INF/web.xml");
 		handler.setContextPath("/");
@@ -21,6 +23,9 @@ public class Verophyle {
 		server.setThreadPool(new QueuedThreadPool(20));
 		
 		server.start();
+		
+		//Desktop.getDesktop().browse(uri);
+		
 		server.join();
 	}
 	
