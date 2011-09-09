@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<!-- POM file generated with GWT webAppCreator -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>verophyle-all</artifactId>
@@ -57,7 +56,6 @@
 		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
 		<plugins>
-
 			<!-- GWT Maven Plugin -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -66,11 +64,11 @@
 				<executions>
 					<execution>
 						<goals>
+							<goal>i18n</goal>
+							<goal>generateAsync</goal>
 							<goal>resources</goal>
 							<goal>compile</goal>
 							<goal>test</goal>
-							<goal>i18n</goal>
-							<goal>generateAsync</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -83,24 +81,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- Copy static web files before executing gwt:run -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1.1</version>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>exploded</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<webappDirectory>${webappDirectory}</webappDirectory>
-				</configuration>
-			</plugin>
-			
+			<!-- Maven compiler -->			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -131,19 +112,6 @@
 											<goal>resources</goal>
 											<goal>i18n</goal>
 											<goal>generateAsync</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute/>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-war-plugin</artifactId>
-										<versionRange>[2.1.1,)</versionRange>
-										<goals>
-											<goal>exploded</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>

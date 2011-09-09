@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<!-- POM file generated with GWT webAppCreator -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>verophyle-all</artifactId>
@@ -118,13 +117,60 @@
 					<webappDirectory>${webappDirectory}</webappDirectory>
 					<archive>
 						<manifest>
-							<mainClass>com.verophyle.standalone.server.VerophyleDesktopApplication</mainClass>
+							<mainClass>com.verophyle.standalone.DesktopApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
 			</plugin>
-			
-			<!--  Compiler setttings -->
+
+			<!-- Copy main class to root of war file -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${webappDirectory}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${webappDirectory}/WEB-INF/classes</directory>
+									<include>**/DesktopApplication.class</include>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Unzip jetty classes needed for main class -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<artifactSet>
+								<includes>
+									<include>org.eclipse.jetty:*</include>
+									<include>*:servlet-api</include>
+								</includes>
+							</artifactSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Compiler setttings -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
