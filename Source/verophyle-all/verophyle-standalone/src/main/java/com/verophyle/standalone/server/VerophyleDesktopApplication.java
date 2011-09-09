@@ -1,9 +1,10 @@
 package com.verophyle.standalone.server;
 
-import java.io.File;
+import java.net.URL;
+import java.security.ProtectionDomain;
 
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.util.thread.QueuedThreadPool;
+import org.eclipse.jetty.server.bio.SocketConnector;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class VerophyleDesktopApplication {
@@ -13,19 +14,24 @@ public class VerophyleDesktopApplication {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		File cur = new File(".");
-		System.out.println("Current dir: " + cur.getCanonicalPath());
+		Server server = new Server();
 		
-		Server server = new Server(8080);
-		WebAppContext handler = new WebAppContext();
-		handler.setResourceBase(".");
-		handler.setDescriptor("./WEB-INF/web.xml");
-		handler.setContextPath("/");
+		WebAppContext context = new WebAppContext();
+		context.setServer(server);
+		context.setContextPath("/");
+
+		ProtectionDomain domain = VerophyleDesktopApplication.class.getProtectionDomain();
+		URL location = domain.getCodeSource().getLocation();		
+		context.setWar(location.toExternalForm());		
 		
-		server.setHandler(handler);
-		server.setThreadPool(new QueuedThreadPool(20));
+		SocketConnector connector = new SocketConnector();
+		connector.setPort(0);
+		
+		server.addConnector(connector);
+		server.setHandler(context);
 		
 		server.start();
+		int port = connector.getLocalPort();		
 		server.join();
 	}
 

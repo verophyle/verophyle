@@ -10,7 +10,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>verophyle-standalone</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<properties>
 		<gwtVersion>2.3.0</gwtVersion>
@@ -81,7 +81,7 @@
 				<executions>
 					<execution>
 						<configuration>
-							
+
 						</configuration>
 						<goals>
 							<goal>resources</goal>
@@ -116,8 +116,15 @@
 				</executions>
 				<configuration>
 					<webappDirectory>${webappDirectory}</webappDirectory>
+					<archive>
+						<manifest>
+							<mainClass>com.verophyle.standalone.server.VerophyleDesktopApplication</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
+			
+			<!--  Compiler setttings -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

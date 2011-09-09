@@ -1,5 +1,5 @@
-#Thu Sep 02 10:55:28 CEST 2010
+#Thu Sep 08 20:49:31 PDT 2011
 eclipse.preferences.version=1
 jarsExcludedFromWebInfLib=
-warSrcDir=src/main/webapp
+warSrcDir=target/verophyle-standalone-0.0.1-SNAPSHOT
 warSrcDirIsOutput=true

@@ -8,5 +8,6 @@
 	<modules>
 		<module>verophyle-kernel</module>
     <module>verophyle-standalone</module>
-  </modules>
+    <module>verophyle-desktop</module>
+	</modules>
 </project>
