@@ -3,9 +3,8 @@
 <module rename-to='VerophyleKernel'>
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.google.gwt.i18n.I18N' />
-	<inherits name='com.google.gwt.junit.JUnit' />
 	<inherits name='com.google.gwt.user.theme.clean.Clean' />
-	
+
 	<entry-point class='com.verophyle.kernel.client.VerophyleKernel' />
 
 	<source path='client' />

@@ -8,3 +8,6 @@ war/WEB-INF/lib/gwt-servlet.jar$
 \.gwt$
 bin$
 target$
+src/main/webapp/VerophyleStandalone
+src/main/webapp/WEB-INF/deploy
+src/main/webapp/com\.verophyle

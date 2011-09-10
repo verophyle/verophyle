@@ -79,9 +79,6 @@
 				<version>2.3.0-1</version>
 				<executions>
 					<execution>
-						<configuration>
-
-						</configuration>
 						<goals>
 							<goal>resources</goal>
 							<goal>compile</goal>
@@ -94,7 +91,7 @@
 				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
 					documentation at codehaus.org -->
 				<configuration>
-					<runTarget>VerophyleStandalone.html</runTarget>
+					<runTarget>com.verophyle.standalone.VerophyleStandalone/VerophyleStandalone.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<i18nMessagesBundle>com.verophyle.standalone.client.Messages</i18nMessagesBundle>
 				</configuration>
