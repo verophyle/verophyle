@@ -18,12 +18,12 @@
 
 	<servlet-mapping>
 		<servlet-name>greetServlet</servlet-name>
-		<url-pattern>/greet</url-pattern>
+		<url-pattern>VerophyleStandalone/greet</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
 		<servlet-name>jUnitHostImpl</servlet-name>
-		<url-pattern>/junithost/*</url-pattern>
+		<url-pattern>/VerophyleStandalone/junithost/*</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->
