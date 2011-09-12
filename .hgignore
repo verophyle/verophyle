@@ -10,4 +10,5 @@ bin$
 target$
 src/main/webapp/VerophyleStandalone
 src/main/webapp/WEB-INF/deploy
-src/main/webapp/com\.verophyle
+src/main/webapp/WEB-INF/classes
+src/main/webapp/WEB-INF/lib
