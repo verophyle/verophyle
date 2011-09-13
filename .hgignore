@@ -1,12 +1,4 @@
 syntax: regexp
-test-classes$
-App/war/WEB-INF/lib$
-war/verophyle$
-war/WEB-INF/deploy$
-war/WEB-INF/classes$
-war/WEB-INF/lib/gwt-servlet.jar$
-\.gwt$
-bin$
 target$
 src/main/webapp/VerophyleStandalone
 src/main/webapp/WEB-INF/deploy
