@@ -1,8 +1,8 @@
 syntax: regexp
 target$
 src/main/gwt-unitCache
-src/main/webapp/VerophyleStandalone
-src/main/webapp/VerophyleAppengine
+src/main/webapp/VerophyleStandalone$
+src/main/webapp/VerophyleAppengine$
 src/main/webapp/META-INF
 src/main/webapp/WEB-INF/deploy
 src/main/webapp/WEB-INF/classes

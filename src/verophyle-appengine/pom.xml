@@ -9,9 +9,9 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<gae.version>1.5.3</gae.version>
-		<gwtVersion>2.3.0</gwtVersion>
-		<junitVersion>4.9</junitVersion>
+		<gae.version>1.5.4</gae.version>
+		<gwt.version>2.4.0</gwt.version>
+		<junit.version>4.9</junit.version>
 
 		<gae.application.version>test</gae.application.version>
 
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junitVersion}</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -74,12 +74,12 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
-			<version>${gwtVersion}</version>
+			<version>${gwt.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>${gwtVersion}</version>
+			<version>${gwt.version}</version>
 		</dependency>
 
 		<!-- Verophyle Kernel -->
@@ -101,6 +101,18 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>2.3.0-1</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-dev</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+				</dependencies>				
 				<executions>
 					<execution>
 						<goals>

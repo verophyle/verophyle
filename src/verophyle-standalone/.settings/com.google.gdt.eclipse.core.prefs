@@ -1,5 +1,6 @@
-#Mon Sep 12 14:50:09 PDT 2011
+#Sat Sep 17 16:56:42 PDT 2011
 eclipse.preferences.version=1
 jarsExcludedFromWebInfLib=
+lastWarOutDir=C\:/Users/Gordon/Development/Cloud/verophyle/src/verophyle-standalone/src/main/webapp
 warSrcDir=src/main/webapp
-warSrcDirIsOutput=false
+warSrcDirIsOutput=true
