@@ -9,9 +9,13 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<gae.version>1.5.4</gae.version>
+		<verophyle.version>0.0.1-SNAPSHOT</verophyle.version>
+	
+		<gae.version>1.5.5</gae.version>
 		<gwt.version>2.4.0</gwt.version>
-		<junit.version>4.9</junit.version>
+		<junit.version>4.10</junit.version>
+		<transaction.version>1.1</transaction.version>
+		<validation.version>1.0.0.GA</validation.version>
 
 		<gae.application.version>test</gae.application.version>
 
@@ -38,13 +42,13 @@
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
-			<version>1.1</version>
+			<version>${transaction.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
+			<version>${validation.version}</version>
 		</dependency>
 
 		<!-- GAE libraries for local testing as described here: http://code.google.com/appengine/docs/java/howto/unittesting.html -->
@@ -87,7 +91,7 @@
 		<dependency>
 			<groupId>com.verophyle</groupId>
 			<artifactId>verophyle-kernel</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${verophyle.version}</version>
 		</dependency>
 	</dependencies>
 

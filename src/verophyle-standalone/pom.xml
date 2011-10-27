@@ -9,9 +9,12 @@
 	<packaging>war</packaging>
 
 	<properties>
+		<verophyle.version>0.0.1-SNAPSHOT</verophyle.version>
+		
 		<gwt.version>2.4.0</gwt.version>
-		<junit.version>4.9</junit.version>
-		<jetty.version>8.0.1.v20110908</jetty.version>
+		<junit.version>4.10</junit.version>
+		<validation.version>1.0.0.GA</validation.version>
+		<jetty.version>8.0.4.v20111024</jetty.version>
 
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,12 +50,12 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
+			<version>${validation.version}</version>
 		</dependency>		
 		<dependency>
 			<groupId>com.verophyle</groupId>
 			<artifactId>verophyle-kernel</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${verophyle.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -10,7 +10,8 @@
 
 	<properties>
 		<gwt.version>2.4.0</gwt.version>
-		<junit.version>4.9</junit.version>
+		<junit.version>4.10</junit.version>
+		<validation.version>1.0.0.GA</validation.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -34,7 +35,7 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
+			<version>${validation.version}</version>
 		</dependency>		
 	</dependencies>
 

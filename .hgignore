@@ -1,6 +1,5 @@
 syntax: regexp
 target$
-src/main/gwt-unitCache
 src/main/webapp/VerophyleStandalone$
 src/main/webapp/VerophyleAppengine$
 src/main/webapp/META-INF

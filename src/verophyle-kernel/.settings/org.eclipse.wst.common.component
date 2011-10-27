@@ -3,7 +3,5 @@
     <wb-module deploy-name="verophyle-kernel">
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/src/test/java"/>
-        <wb-resource deploy-path="/" source-path="/target/generated-sources/gwt"/>
     </wb-module>
 </project-modules>
