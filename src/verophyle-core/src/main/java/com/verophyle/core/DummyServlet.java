@@ -15,7 +15,7 @@ public class DummyServlet extends HttpServlet {
 		response.setContentType("application/json");
 		
 		PrintWriter out = response.getWriter();
-		out.print("{ foo = 'bar' }");
+		out.print("{ foo = 'qux' }");
 		out.flush();
 	}
 	
