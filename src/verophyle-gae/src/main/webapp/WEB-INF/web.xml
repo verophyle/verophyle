@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<!-- Servlets -->
+
+	<servlet>
+		<servlet-name>dummyServlet</servlet-name>
+		<servlet-class>com.verophyle.core.DummyServlet</servlet-class>
+	</servlet>
+
+	<!-- Mappings -->
+	
+	<servlet-mapping>
+		<servlet-name>dummyServlet</servlet-name>
+		<url-pattern>Verophyle/dummy</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Default Page -->
+	<welcome-file-list>
+		<welcome-file>Verophyle.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>
