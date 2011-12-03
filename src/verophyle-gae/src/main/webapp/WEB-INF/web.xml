@@ -16,12 +16,12 @@
 	
 	<servlet-mapping>
 		<servlet-name>dummyServlet</servlet-name>
-		<url-pattern>Verophyle/dummy</url-pattern>
+		<url-pattern>verophyle/dummy</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Default Page -->
 	<welcome-file-list>
-		<welcome-file>Verophyle.html</welcome-file>
+		<welcome-file>verophyle.html</welcome-file>
 	</welcome-file-list>
 
 </web-app>
