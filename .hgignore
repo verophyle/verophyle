@@ -1,7 +1,8 @@
 syntax: regexp
 target$
-src/main/webapp/VerophyleStandalone$
-src/main/webapp/VerophyleAppengine$
+\.project
+\.classpath
+\.settings
 src/main/webapp/META-INF
 src/main/webapp/WEB-INF/deploy
 src/main/webapp/WEB-INF/classes
