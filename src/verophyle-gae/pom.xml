@@ -11,7 +11,7 @@
 	<properties>
 		<verophyle.version>0.0.1-SNAPSHOT</verophyle.version>
 	
-		<gae.version>1.6.0</gae.version>
+		<gae.version>1.6.1</gae.version>
 		<junit.version>4.10</junit.version>
 		<transaction.version>1.1</transaction.version>
 		<validation.version>1.0.0.GA</validation.version>
@@ -122,7 +122,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
