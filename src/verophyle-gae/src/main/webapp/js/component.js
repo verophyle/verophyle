@@ -3,8 +3,7 @@
 //
 
 verophyle.component.Component = function(data) {
-	this.data = data;
-	this.children = [];
+	
 };
 
 verophyle.component.Component.prototype = Object.create(Object.prototype, {
@@ -25,6 +24,12 @@ verophyle.component.Component.prototype = Object.create(Object.prototype, {
 		value: function(mode, parent) {
 			
 		}
-	}
+	},
+	
+	save: {
+		value: function(mode, parent, stream) {
+			
+		}
+	},
 	
 });

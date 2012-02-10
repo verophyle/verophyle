@@ -31,10 +31,12 @@ function setup() {
 function loadCode(files) {
 	var scriptsDiv = document.getElementById('verophyle_scripts');
 	
-	for (var f in files) {
-		var script = document.createElement('script');
-		script.setAttribute('src', f);
-		scriptsDiv.appendChild(script);
+	if (scriptsDiv) {
+		for (var f in files) {
+			var script = document.createElement('script');
+			script.setAttribute('src', f);
+			scriptsDiv.appendChild(script);
+		}
 	}
 }
 
