@@ -3,6 +3,7 @@ target$
 \.project
 \.classpath
 \.settings
+\.gwt
 src/main/webapp/META-INF
 src/main/webapp/WEB-INF/deploy
 src/main/webapp/WEB-INF/classes
