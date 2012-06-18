@@ -1,4 +1,0 @@
-//
-// topLevelComponent.js
-//
-
