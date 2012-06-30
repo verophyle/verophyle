@@ -10,10 +10,9 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<!-- GWT -->
+		<!-- Dependencies -->
 		<gwt.version>2.4.0</gwt.version>
-
-		<!-- JUnit -->
+		<guice.version>3.0</guice.version>
 		<junit.version>4.10</junit.version>
 
 		<!-- Plugins -->
@@ -32,6 +31,20 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
 			<scope>provided</scope>
 		</dependency>
