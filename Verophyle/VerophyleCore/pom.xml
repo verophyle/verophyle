@@ -21,11 +21,11 @@
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
 		<maven.surefire.version>2.12.2</maven.surefire.version>
-		<maven.gwt.version>2.3.0-1</maven.gwt.version>
+		<maven.gwt.version>2.4.0</maven.gwt.version>
 
 		<!-- Misc -->
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -50,7 +50,7 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
-			<scope>provided</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- JUnit -->

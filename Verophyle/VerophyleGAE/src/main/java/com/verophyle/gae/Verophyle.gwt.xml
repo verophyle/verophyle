@@ -15,9 +15,6 @@
   <!-- Other module inherits                                      -->
   <inherits name='com.verophyle.core.VerophyleCore'/>
 
-  <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.verophyle.gae.client.VerophyleGAE'/>
-
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
   <source path='shared'/>

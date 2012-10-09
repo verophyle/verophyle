@@ -17,7 +17,7 @@
 		<gwt.version>2.4.0</gwt.version>
 
 		<!-- GAE -->
-		<gae.version>1.7.0</gae.version>
+		<gae.version>1.7.2.1</gae.version>
 		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
 		<gae.application.version>1</gae.application.version>
 
@@ -26,14 +26,14 @@
 
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
-		<maven.gwt.version>2.3.0-1</maven.gwt.version>
+		<maven.gwt.version>2.4.0</maven.gwt.version>
 		<maven.gae.version>0.9.4</maven.gae.version>
 		<maven.resources.version>2.6</maven.resources.version>
 		<maven.surefire.version>2.12.2</maven.surefire.version>
 
 		<!-- Misc -->
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
