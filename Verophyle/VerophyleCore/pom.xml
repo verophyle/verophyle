@@ -16,6 +16,7 @@
 		<!-- Dependencies -->
 		<gwt.version>2.4.0</gwt.version>
 		<guice.version>3.0</guice.version>
+		<gin.version>2.0.0</gin.version>
 		<junit.version>4.10</junit.version>
 
 		<!-- Plugins -->
@@ -51,6 +52,19 @@
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
 			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- Guice and GIN-->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>${guice.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.gwt.inject</groupId>
+			<artifactId>gin</artifactId>
+			<version>${gin.version}</version>
 		</dependency>
 
 		<!-- JUnit -->
