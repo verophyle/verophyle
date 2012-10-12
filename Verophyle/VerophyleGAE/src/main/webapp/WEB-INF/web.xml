@@ -11,9 +11,25 @@
     <servlet-class>com.verophyle.core.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>requestFactoryServlet</servlet-name>
+  	<servlet-class>com.google.web.bindery.requestfactory.server.RequestFactoryServlet</servlet-class>
+  	<init-param>
+  		<param-name>symbolMapsDirectory</param-name>
+  		<param-value>WEB-INF/classes/symbolMaps/</param-value>
+  	</init-param>
+  </servlet>
+  
+  <!-- Servlet mappings -->
+  
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/Verophyle/Greet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>requestFactoryServlet</servlet-name>
+  	<url-pattern>/gwtRequest</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
