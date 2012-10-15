@@ -15,7 +15,6 @@ public class MainPlace extends Place {
 	}
 	
 	public static class Tokenizer implements PlaceTokenizer<MainPlace> {
-
 		@Override
 		public MainPlace getPlace(String token) {
 			return new MainPlace(token);
@@ -25,6 +24,5 @@ public class MainPlace extends Place {
 		public String getToken(MainPlace place) {
 			return place.getText();
 		}
-		
 	}
 }
