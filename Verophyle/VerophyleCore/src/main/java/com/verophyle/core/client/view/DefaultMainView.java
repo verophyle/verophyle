@@ -18,7 +18,7 @@ public class DefaultMainView extends Composite implements MainView {
 	
 	@Override
 	public Widget asWidget() {
-		return mainPanel;
+		return this;
 	}
 
 	@Override
