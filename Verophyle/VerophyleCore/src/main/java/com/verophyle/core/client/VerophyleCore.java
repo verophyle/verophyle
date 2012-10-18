@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.web.bindery.event.shared.EventBus;
 import com.verophyle.core.client.activity.MainActivityMapper;
 import com.verophyle.core.client.place.MainPlace;
-import com.verophyle.core.client.place.VerophyleCorePlaceHistoryMapper;
+import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -36,7 +36,7 @@ public class VerophyleCore implements EntryPoint {
 		mainManager.setDisplay(appWidget);
 		
 		// start place history handler
-		VerophyleCorePlaceHistoryMapper historyMapper = GWT.create(VerophyleCorePlaceHistoryMapper.class);
+		CorePlaceHistoryMapper historyMapper = GWT.create(CorePlaceHistoryMapper.class);
 		PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
 		historyHandler.register(placeController, eventBus, defaultPlace);
 		

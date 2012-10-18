@@ -7,17 +7,15 @@ import com.verophyle.core.client.TempFactory;
 import com.verophyle.core.client.place.MainPlace;
 
 public class MainActivityMapper implements ActivityMapper {
-	private TempFactory tempFactory;
 	
 	public MainActivityMapper(TempFactory tempFactory) {
 		super();
-		this.tempFactory = tempFactory;
 	}
 	
 	@Override
 	public Activity getActivity(Place place) {
 		if (place instanceof MainPlace)
-			return new MainActivity((MainPlace) place, tempFactory);
+			return new MainActivity();
 		
 		return null;
 	}

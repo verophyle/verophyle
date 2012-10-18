@@ -6,5 +6,5 @@ import com.google.gwt.place.shared.WithTokenizers;
 @WithTokenizers({
 	MainPlace.Tokenizer.class
 })
-public interface VerophyleCorePlaceHistoryMapper extends PlaceHistoryMapper {
+public interface CorePlaceHistoryMapper extends PlaceHistoryMapper {
 }
