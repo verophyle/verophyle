@@ -34,5 +34,11 @@ public class DefaultMainView extends Composite implements MainView {
 	@Override
 	public void setText(String text) {
 		textSpan.setInnerText(text);
+		onTextChanged(text);
 	}
+	
+	private void onTextChanged(String text) {
+		presenter.textChanged(text);
+	}
+	
 }

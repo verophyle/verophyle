@@ -9,6 +9,7 @@ import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.verophyle.core.client.activity.MainActivity;
+import com.verophyle.core.client.activity.MainActivityManager;
 import com.verophyle.core.client.activity.MainActivityMapper;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.core.client.place.MainPlace;
@@ -22,7 +23,8 @@ public class CoreGinModule extends AbstractGinModule {
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);
 
-		bind(MainActivityMapper.class);
+		bind(MainActivityManager.class).in(Singleton.class);
+		bind(MainActivityMapper.class).in(Singleton.class);
 		bind(MainActivity.class);
 		bind(MainView.class).to(DefaultMainView.class).in(Singleton.class);
 	}
@@ -43,5 +45,5 @@ public class CoreGinModule extends AbstractGinModule {
 		placeHistoryHandler.register(placeController, eventBus, new MainPlace("The default place."));
 		return placeHistoryHandler;
 	}
-
+	
 }

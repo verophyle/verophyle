@@ -9,5 +9,6 @@ public interface MainView extends IsWidget {
 	void setPresenter(Presenter presenter);
 	
 	public interface Presenter {
+		void textChanged(String text);
 	}
 }

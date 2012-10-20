@@ -27,6 +27,10 @@ public class MainActivity extends AbstractActivity implements MainView.Presenter
 		panel.setWidget(mainView.asWidget());
 	}
 
+	@Override
+	public void textChanged(String text) {
+	}
+	
 	public void setPlace(MainPlace mainPlace) {
 		this.text = mainPlace.getText();
 	}
@@ -34,5 +38,5 @@ public class MainActivity extends AbstractActivity implements MainView.Presenter
 	public void goTo(Place place) {
 		placeController.goTo(place);
 	}
-	
+
 }

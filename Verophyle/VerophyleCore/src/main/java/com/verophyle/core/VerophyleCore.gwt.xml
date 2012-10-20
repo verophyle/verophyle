@@ -19,7 +19,7 @@
   <inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
   
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.verophyle.core.client.VerophyleCore'/>
+  <entry-point class='com.verophyle.core.client.CoreEntryPoint'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
