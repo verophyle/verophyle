@@ -1,6 +1,7 @@
 package com.verophyle.core.client;
 
 import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.gwt.inject.client.AsyncProvider;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
@@ -8,11 +9,12 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
+import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.MainActivity;
 import com.verophyle.core.client.activity.MainActivityManager;
 import com.verophyle.core.client.activity.MainActivityMapper;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
-import com.verophyle.core.client.place.MainPlace;
+import com.verophyle.core.client.place.Main;
 import com.verophyle.core.client.view.DefaultMainView;
 import com.verophyle.core.client.view.MainView;
 
@@ -25,7 +27,7 @@ public class CoreGinModule extends AbstractGinModule {
 
 		bind(MainActivityManager.class).in(Singleton.class);
 		bind(MainActivityMapper.class).in(Singleton.class);
-		bind(MainActivity.class);
+		
 		bind(MainView.class).to(DefaultMainView.class).in(Singleton.class);
 	}
 	
@@ -42,8 +44,12 @@ public class CoreGinModule extends AbstractGinModule {
 			PlaceHistoryMapper placeHistoryMapper,
 			EventBus eventBus) {
 		PlaceHistoryHandler placeHistoryHandler = new PlaceHistoryHandler(placeHistoryMapper);
-		placeHistoryHandler.register(placeController, eventBus, new MainPlace("The default place."));
+		placeHistoryHandler.register(placeController, eventBus, new Main("First light!"));
 		return placeHistoryHandler;
 	}
-	
+
+	@Provides
+	public CoreActivityProxy<MainActivity, Main> getMainActivity(AsyncProvider<MainActivity> provider) {
+		return new CoreActivityProxy<MainActivity, Main>(provider);
+	}
 }

@@ -7,7 +7,8 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class DefaultMainView extends Composite implements MainView {
-	private Presenter presenter;
+	
+	//private Presenter presenter;
 	SimplePanel mainPanel = new SimplePanel();
 	Element textSpan = DOM.createSpan();
 	
@@ -23,7 +24,7 @@ public class DefaultMainView extends Composite implements MainView {
 
 	@Override
 	public void setPresenter(Presenter presenter) {
-		this.presenter = presenter;
+		//this.presenter = presenter;
 	}
 
 	@Override
@@ -34,11 +35,6 @@ public class DefaultMainView extends Composite implements MainView {
 	@Override
 	public void setText(String text) {
 		textSpan.setInnerText(text);
-		onTextChanged(text);
 	}
-	
-	private void onTextChanged(String text) {
-		presenter.textChanged(text);
-	}
-	
+		
 }

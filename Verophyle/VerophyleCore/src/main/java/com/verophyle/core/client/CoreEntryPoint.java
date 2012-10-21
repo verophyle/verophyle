@@ -20,7 +20,7 @@ public class CoreEntryPoint implements EntryPoint {
 	public void onModuleLoad() {
 		PlaceHistoryHandler placeHistoryHandler = injector.getPlaceHistoryHandler();
 		ActivityManager mainManager = injector.getMainActivityManager();
-		mainManager.setDisplay(appPanel);		
+		mainManager.setDisplay(appPanel);
 
 		RootPanel.get().add(appPanel);
 		

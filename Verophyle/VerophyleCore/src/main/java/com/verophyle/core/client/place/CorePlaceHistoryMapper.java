@@ -4,7 +4,7 @@ import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
 
 @WithTokenizers({
-	MainPlace.Tokenizer.class
+	Main.Tokenizer.class
 })
 public interface CorePlaceHistoryMapper extends PlaceHistoryMapper {
 }
