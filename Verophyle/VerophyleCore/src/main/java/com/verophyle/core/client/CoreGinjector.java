@@ -5,9 +5,11 @@ import com.google.gwt.inject.client.Ginjector;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.web.bindery.event.shared.EventBus;
 import com.verophyle.core.client.activity.CoreActivityProxy;
-import com.verophyle.core.client.activity.MainActivity;
-import com.verophyle.core.client.activity.MainActivityManager;
-import com.verophyle.core.client.place.Main;
+import com.verophyle.core.client.activity.main.MainIndexActivity;
+import com.verophyle.core.client.activity.main.MainActivityManager;
+import com.verophyle.core.client.activity.main.MainSecondActivity;
+import com.verophyle.core.client.place.Index;
+import com.verophyle.core.client.place.Second;
 
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
@@ -15,5 +17,6 @@ public interface CoreGinjector extends Ginjector {
 	PlaceHistoryHandler getPlaceHistoryHandler();
 	
 	MainActivityManager getMainActivityManager();
-	CoreActivityProxy<MainActivity, Main> getMainActivity();
+	CoreActivityProxy<MainIndexActivity, Index> getMainIndexActivity();
+	CoreActivityProxy<MainSecondActivity, Second> getMainSecondActivity();
 }

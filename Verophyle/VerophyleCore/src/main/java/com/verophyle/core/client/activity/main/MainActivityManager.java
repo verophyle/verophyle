@@ -1,4 +1,4 @@
-package com.verophyle.core.client.activity;
+package com.verophyle.core.client.activity.main;
 
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.inject.Inject;

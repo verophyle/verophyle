@@ -1,4 +1,4 @@
-package com.verophyle.core.client.view;
+package com.verophyle.core.client.view.main;
 
 import com.google.gwt.user.client.ui.IsWidget;
 

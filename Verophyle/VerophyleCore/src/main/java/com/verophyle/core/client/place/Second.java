@@ -3,10 +3,10 @@ package com.verophyle.core.client.place;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-public class Main extends Place {
+public class Second extends Place {
 	private String text;
 
-	public Main(String text) {
+	public Second(String text) {
 		this.text = text;
 	}
 	
@@ -14,14 +14,14 @@ public class Main extends Place {
 		return text;
 	}
 	
-	public static class Tokenizer implements PlaceTokenizer<Main> {
+	public static class Tokenizer implements PlaceTokenizer<Second> {
 		@Override
-		public Main getPlace(String token) {
-			return new Main(token);
+		public Second getPlace(String token) {
+			return new Second(token);
 		}
 
 		@Override
-		public String getToken(Main place) {
+		public String getToken(Second place) {
 			return place.getText();
 		}
 	}

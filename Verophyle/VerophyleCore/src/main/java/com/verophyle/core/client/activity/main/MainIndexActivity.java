@@ -1,27 +1,29 @@
-package com.verophyle.core.client.activity;
+package com.verophyle.core.client.activity.main;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
-import com.verophyle.core.client.place.Main;
-import com.verophyle.core.client.view.MainView;
+import com.verophyle.core.client.activity.CoreActivity;
+import com.verophyle.core.client.place.Index;
+import com.verophyle.core.client.view.main.MainIndexView;
+import com.verophyle.core.client.view.main.MainView;
 
-public class MainActivity extends CoreActivity<Main> implements MainView.Presenter {
+public class MainIndexActivity extends CoreActivity<Index> implements MainView.Presenter {
 	private PlaceController placeController;
-	private MainView mainView;
+	private MainIndexView mainView;
 	private String text;
 
 	@Inject
-	public MainActivity(PlaceController placeController, MainView mainView) {
+	public MainIndexActivity(PlaceController placeController, MainIndexView mainView) {
 		this.placeController = placeController;
 		this.mainView = mainView;
 	}
 	
 	@Override
-	public void setPlace(Main mainPlace) {
-		this.text = mainPlace.getText();
+	public void setPlace(Index place) {
+		this.text = place.getText();
 	}
 	
 	@Override

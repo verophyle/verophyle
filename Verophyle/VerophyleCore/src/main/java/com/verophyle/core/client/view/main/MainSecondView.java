@@ -1,4 +1,4 @@
-package com.verophyle.core.client.view;
+package com.verophyle.core.client.view.main;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
@@ -6,13 +6,13 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class DefaultMainView extends Composite implements MainView {
+public class MainSecondView extends Composite implements MainView {
 	
 	//private Presenter presenter;
 	SimplePanel mainPanel = new SimplePanel();
 	Element textSpan = DOM.createSpan();
 	
-	public DefaultMainView() {
+	public MainSecondView() {
 		mainPanel.getElement().appendChild(textSpan);
 		initWidget(mainPanel);
 	}
