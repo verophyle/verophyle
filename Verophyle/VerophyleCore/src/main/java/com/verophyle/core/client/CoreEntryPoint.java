@@ -4,25 +4,26 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.verophyle.core.client.view.AppView;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class CoreEntryPoint implements EntryPoint {
 	private final CoreGinjector injector = GWT.create(CoreGinjector.class);
-	private final SimplePanel appPanel = new SimplePanel();
 	
 	/**
 	 * Entry point method.
 	 */
 	public void onModuleLoad() {
 		PlaceHistoryHandler placeHistoryHandler = injector.getPlaceHistoryHandler();
+		AppView appView = injector.getAppView();
+		
 		ActivityManager mainManager = injector.getMainActivityManager();
-		mainManager.setDisplay(appPanel);
+		mainManager.setDisplay(appView.getContent());
 
-		RootPanel.get().add(appPanel);
+		RootLayoutPanel.get().add(appView);
 		
 		placeHistoryHandler.handleCurrentHistory();
 	}

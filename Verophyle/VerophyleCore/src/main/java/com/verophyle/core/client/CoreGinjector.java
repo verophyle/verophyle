@@ -10,11 +10,14 @@ import com.verophyle.core.client.activity.main.MainActivityManager;
 import com.verophyle.core.client.activity.main.MainSecondActivity;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
+import com.verophyle.core.client.view.AppView;
 
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
 	EventBus getEventBus();
 	PlaceHistoryHandler getPlaceHistoryHandler();
+	
+	AppView getAppView();
 	
 	MainActivityManager getMainActivityManager();
 	CoreActivityProxy<MainIndexActivity, Index> getMainIndexActivity();

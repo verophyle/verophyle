@@ -17,6 +17,8 @@ import com.verophyle.core.client.activity.main.MainSecondActivity;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
+import com.verophyle.core.client.view.AppView;
+import com.verophyle.core.client.view.AppViewImpl;
 import com.verophyle.core.client.view.main.MainIndexView;
 import com.verophyle.core.client.view.main.MainSecondView;
 
@@ -26,6 +28,8 @@ public class CoreGinModule extends AbstractGinModule {
 	protected void configure() {
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);
+		
+		bind(AppView.class).to(AppViewImpl.class).in(Singleton.class);
 
 		bind(MainActivityManager.class).in(Singleton.class);
 		bind(MainActivityMapper.class).in(Singleton.class);
