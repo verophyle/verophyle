@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 
 public class AppViewImpl extends Composite implements AppView {
 
@@ -16,13 +17,14 @@ public class AppViewImpl extends Composite implements AppView {
 	
 	//private Presenter presenter;
 	
-	@UiField private SplitLayoutPanel topLayoutPanel;
+	@UiField SplitLayoutPanel topLayoutPanel;
 	
-	@UiField private SimplePanel header;
-	@UiField private SimplePanel footer;
-	@UiField private SimplePanel sidebar;
-	@UiField private SimplePanel content;
+	@UiField SimplePanel header;
+	@UiField SimplePanel footer;
+	@UiField SimplePanel sidebar;
+	@UiField SimplePanel content;
 
+	@Inject
 	public AppViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}

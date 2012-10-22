@@ -1,8 +1,8 @@
-package com.verophyle.core.client.view.main;
+package com.verophyle.core.client.view.content;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-public interface MainView extends IsWidget {
+public interface ContentView extends IsWidget {
 	String getText();
 	void setText(String text);
 

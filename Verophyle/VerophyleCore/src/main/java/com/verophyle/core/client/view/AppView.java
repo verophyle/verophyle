@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 public interface AppView extends IsWidget {
 	
 	public AcceptsOneWidget getHeader();	
-	public AcceptsOneWidget  getSidebar();	
+	public AcceptsOneWidget getSidebar();	
 	public AcceptsOneWidget getContent();
 	public AcceptsOneWidget getFooter();
 	

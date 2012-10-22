@@ -10,17 +10,17 @@ import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.verophyle.core.client.activity.CoreActivityProxy;
-import com.verophyle.core.client.activity.main.MainActivityManager;
-import com.verophyle.core.client.activity.main.MainActivityMapper;
-import com.verophyle.core.client.activity.main.MainIndexActivity;
-import com.verophyle.core.client.activity.main.MainSecondActivity;
+import com.verophyle.core.client.activity.content.ContentActivityManager;
+import com.verophyle.core.client.activity.content.ContentActivityMapper;
+import com.verophyle.core.client.activity.content.ContentIndexActivity;
+import com.verophyle.core.client.activity.content.ContentSecondActivity;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.AppView;
 import com.verophyle.core.client.view.AppViewImpl;
-import com.verophyle.core.client.view.main.MainIndexView;
-import com.verophyle.core.client.view.main.MainSecondView;
+import com.verophyle.core.client.view.content.ContentIndexView;
+import com.verophyle.core.client.view.content.ContentSecondView;
 
 public class CoreGinModule extends AbstractGinModule {
 
@@ -31,11 +31,11 @@ public class CoreGinModule extends AbstractGinModule {
 		
 		bind(AppView.class).to(AppViewImpl.class).in(Singleton.class);
 
-		bind(MainActivityManager.class).in(Singleton.class);
-		bind(MainActivityMapper.class).in(Singleton.class);
+		bind(ContentActivityManager.class).in(Singleton.class);
+		bind(ContentActivityMapper.class).in(Singleton.class);
 		
-		bind(MainIndexView.class).in(Singleton.class);
-		bind(MainSecondView.class).in(Singleton.class);
+		bind(ContentIndexView.class).in(Singleton.class);
+		bind(ContentSecondView.class).in(Singleton.class);
 	}
 	
 	@Provides
@@ -50,17 +50,17 @@ public class CoreGinModule extends AbstractGinModule {
 												PlaceHistoryMapper placeHistoryMapper,
 												EventBus eventBus) {
 		PlaceHistoryHandler placeHistoryHandler = new PlaceHistoryHandler(placeHistoryMapper);
-		placeHistoryHandler.register(placeController, eventBus, new Index("First light!"));
+		placeHistoryHandler.register(placeController, eventBus, new Index("1"));
 		return placeHistoryHandler;
 	}
 
 	@Provides
-	public CoreActivityProxy<MainIndexActivity, Index> getMainIndexActivity(AsyncProvider<MainIndexActivity> provider) {
-		return new CoreActivityProxy<MainIndexActivity, Index>(provider);
+	public CoreActivityProxy<ContentIndexActivity, Index> getMainIndexActivity(AsyncProvider<ContentIndexActivity> provider) {
+		return new CoreActivityProxy<ContentIndexActivity, Index>(provider);
 	}
 	
 	@Provides
-	public CoreActivityProxy<MainSecondActivity, Second> getMainSecondActivity(AsyncProvider<MainSecondActivity> provider) {
-		return new CoreActivityProxy<MainSecondActivity, Second>(provider);
+	public CoreActivityProxy<ContentSecondActivity, Second> getMainSecondActivity(AsyncProvider<ContentSecondActivity> provider) {
+		return new CoreActivityProxy<ContentSecondActivity, Second>(provider);
 	}
 }
