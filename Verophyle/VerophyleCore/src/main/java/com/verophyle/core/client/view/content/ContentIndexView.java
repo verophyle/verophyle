@@ -3,17 +3,18 @@ package com.verophyle.core.client.view.content;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.verophyle.core.client.place.Second;
+import com.verophyle.core.client.view.CoreView;
 
-public class ContentIndexView extends Composite implements ContentView {
+public class ContentIndexView extends CoreView implements ContentView {
 	
 	private static ContentIndexViewUiBinder uiBinder = GWT.create(ContentIndexViewUiBinder.class);
-	interface ContentIndexViewUiBinder extends UiBinder<SimplePanel, ContentIndexView> { }
+	interface ContentIndexViewUiBinder extends UiBinder<FlowPanel, ContentIndexView> { }
 	
 	//private Presenter presenter;
 
@@ -22,7 +23,7 @@ public class ContentIndexView extends Composite implements ContentView {
 	
 	@Inject
 	public ContentIndexView() {
-		initWidget(uiBinder.createAndBindUi(this));
+		initWidget(uiBinder.createAndBindUi(this));		
 	}
 	
 	@Override
@@ -42,7 +43,11 @@ public class ContentIndexView extends Composite implements ContentView {
 
 	@Override
 	public void setText(String text) {
-		label.setText(text);		
-	}
+		label.setText(text);
 		
+		String historyToken = getHistoryToken(Second.class, text);		
+		hyperLink.setText(historyToken);
+		hyperLink.setTargetHistoryToken(historyToken);
+	}
+	
 }

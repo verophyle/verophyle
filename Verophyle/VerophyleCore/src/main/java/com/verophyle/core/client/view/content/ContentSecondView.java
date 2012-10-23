@@ -1,20 +1,27 @@
 package com.verophyle.core.client.view.content;
 
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Hyperlink;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.verophyle.core.client.place.Index;
+import com.verophyle.core.client.view.CoreView;
 
-public class ContentSecondView extends Composite implements ContentView {
+public class ContentSecondView extends CoreView implements ContentView {
+	
+	private static ContentSecondViewUiBinder uiBinder = GWT.create(ContentSecondViewUiBinder.class);
+	interface ContentSecondViewUiBinder extends UiBinder<FlowPanel, ContentSecondView> { }
 	
 	//private Presenter presenter;
-	SimplePanel mainPanel = new SimplePanel();
-	Element textSpan = DOM.createSpan();
+	
+	@UiField Label label;
+	@UiField Hyperlink hyperLink;
 	
 	public ContentSecondView() {
-		mainPanel.getElement().appendChild(textSpan);
-		initWidget(mainPanel);
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
 	@Override
@@ -29,12 +36,16 @@ public class ContentSecondView extends Composite implements ContentView {
 
 	@Override
 	public String getText() {
-		return textSpan.getInnerText();
+		return label.getText();
 	}
 
 	@Override
 	public void setText(String text) {
-		textSpan.setInnerText(text);
+		label.setText(text);
+		
+		String historyToken = getHistoryToken(Index.class, text);
+		hyperLink.setText(historyToken);
+		hyperLink.setTargetHistoryToken(historyToken);
 	}
 		
 }
