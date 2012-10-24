@@ -4,6 +4,8 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
 public class Index extends Place {
+	public static final String PLACENAME = "Index";
+	
 	private String text;
 
 	public Index(String text) {

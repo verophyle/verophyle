@@ -45,7 +45,7 @@ public class ContentIndexView extends CoreView implements ContentView {
 	public void setText(String text) {
 		label.setText(text);
 		
-		String historyToken = getHistoryToken(Second.class, text);		
+		String historyToken = getHistoryToken(new Second(text));
 		hyperLink.setText(historyToken);
 		hyperLink.setTargetHistoryToken(historyToken);
 	}

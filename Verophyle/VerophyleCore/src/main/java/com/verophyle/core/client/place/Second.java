@@ -4,6 +4,8 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
 public class Second extends Place {
+	public static final String PLACENAME = "Second";
+	
 	private String text;
 
 	public Second(String text) {

@@ -43,7 +43,7 @@ public class ContentSecondView extends CoreView implements ContentView {
 	public void setText(String text) {
 		label.setText(text);
 		
-		String historyToken = getHistoryToken(Index.class, text);
+		String historyToken = getHistoryToken(new Index(text));
 		hyperLink.setText(historyToken);
 		hyperLink.setTargetHistoryToken(historyToken);
 	}
