@@ -10,5 +10,6 @@
 		</g:HTML>
 		<g:Label ui:field="label"></g:Label>
 		<g:Hyperlink ui:field="hyperLink"></g:Hyperlink>
+		<g:Image ui:field="image"></g:Image>
 	</g:FlowPanel>
 </ui:UiBinder>

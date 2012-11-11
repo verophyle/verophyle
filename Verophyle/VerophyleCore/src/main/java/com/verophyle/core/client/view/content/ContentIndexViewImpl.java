@@ -5,9 +5,11 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Hyperlink;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.verophyle.core.client.Resources;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.CoreView;
 
@@ -20,9 +22,11 @@ public class ContentIndexViewImpl extends CoreView implements ContentIndexView {
 
 	@UiField Label label;
 	@UiField Hyperlink hyperLink;
+	@UiField(provided = true) Image image;
 	
 	@Inject
 	public ContentIndexViewImpl() {
+		image = new Image(Resources.INSTANCE.tajMahal());
 		initWidget(uiBinder.createAndBindUi(this));		
 	}
 	
