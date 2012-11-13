@@ -9,14 +9,14 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.verophyle.core.client.Resources;
+import com.verophyle.core.client.CoreResources;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.CoreView;
 
 public class ContentIndexViewImpl extends CoreView implements ContentIndexView {
 	
-	private static ContentIndexViewUiBinder uiBinder = GWT.create(ContentIndexViewUiBinder.class);
 	interface ContentIndexViewUiBinder extends UiBinder<FlowPanel, ContentIndexViewImpl> { }
+	private static ContentIndexViewUiBinder uiBinder = GWT.create(ContentIndexViewUiBinder.class);
 	
 	//private Presenter presenter;
 
@@ -26,7 +26,7 @@ public class ContentIndexViewImpl extends CoreView implements ContentIndexView {
 	
 	@Inject
 	public ContentIndexViewImpl() {
-		image = new Image(Resources.INSTANCE.tajMahal());
+		image = new Image(CoreResources.INSTANCE.tajMahal());
 		initWidget(uiBinder.createAndBindUi(this));		
 	}
 	

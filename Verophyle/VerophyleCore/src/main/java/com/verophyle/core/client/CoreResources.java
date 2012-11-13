@@ -4,8 +4,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
-public interface Resources extends ClientBundle {
-	public static final Resources INSTANCE = GWT.create(Resources.class);
+public interface CoreResources extends ClientBundle {
+	public static final CoreResources INSTANCE = GWT.create(CoreResources.class);
 	
 	@Source("taj-mahal.jpg")
 	ImageResource tajMahal();

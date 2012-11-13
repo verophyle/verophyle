@@ -15,7 +15,6 @@ public class ContentActivityMapper implements ActivityMapper {
 	
 	@Inject
 	public ContentActivityMapper(CoreGinjector injector) {
-		super();
 		this.injector = injector;
 	}
 	

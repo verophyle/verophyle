@@ -16,6 +16,11 @@ import com.verophyle.core.client.activity.content.ContentIndexActivity;
 import com.verophyle.core.client.activity.content.ContentIndexActivityImpl;
 import com.verophyle.core.client.activity.content.ContentSecondActivity;
 import com.verophyle.core.client.activity.content.ContentSecondActivityImpl;
+import com.verophyle.core.client.activity.header.HeaderActivity;
+import com.verophyle.core.client.activity.header.HeaderActivityImpl;
+import com.verophyle.core.client.activity.header.HeaderActivityManager;
+import com.verophyle.core.client.activity.header.HeaderActivityMapper;
+import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
@@ -25,6 +30,8 @@ import com.verophyle.core.client.view.content.ContentIndexView;
 import com.verophyle.core.client.view.content.ContentIndexViewImpl;
 import com.verophyle.core.client.view.content.ContentSecondView;
 import com.verophyle.core.client.view.content.ContentSecondViewImpl;
+import com.verophyle.core.client.view.header.HeaderView;
+import com.verophyle.core.client.view.header.HeaderViewImpl;
 
 public class CoreGinModule extends AbstractGinModule {
 
@@ -35,14 +42,19 @@ public class CoreGinModule extends AbstractGinModule {
 		bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);
 		
 		// activities
-		bind(ContentActivityManager.class).in(Singleton.class);
-		bind(ContentActivityMapper.class).in(Singleton.class);
+		bind(HeaderActivityManager.class).in(Singleton.class);
+		bind(HeaderActivityMapper.class).in(Singleton.class);		
+		bind(HeaderActivity.class).to(HeaderActivityImpl.class);
 		
+		bind(ContentActivityManager.class).in(Singleton.class);
+		bind(ContentActivityMapper.class).in(Singleton.class);		
 		bind(ContentIndexActivity.class).to(ContentIndexActivityImpl.class);
 		bind(ContentSecondActivity.class).to(ContentSecondActivityImpl.class);
 		
 		// views
 		bind(AppView.class).to(AppViewImpl.class).in(Singleton.class);
+		
+		bind(HeaderView.class).to(HeaderViewImpl.class).in(Singleton.class);
 
 		bind(ContentIndexView.class).to(ContentIndexViewImpl.class).in(Singleton.class);
 		bind(ContentSecondView.class).to(ContentSecondViewImpl.class).in(Singleton.class);
@@ -58,14 +70,19 @@ public class CoreGinModule extends AbstractGinModule {
 	@Provides
 	@Singleton
 	public PlaceHistoryHandler getHistoryHandler(PlaceController placeController, 
-												PlaceHistoryMapper placeHistoryMapper,
-												EventBus eventBus) {
+												 PlaceHistoryMapper placeHistoryMapper,
+												 EventBus eventBus) {
 		PlaceHistoryHandler placeHistoryHandler = new PlaceHistoryHandler(placeHistoryMapper);
 		placeHistoryHandler.register(placeController, eventBus, new Index("1"));
 		return placeHistoryHandler;
 	}
 
 	// activities
+	@Provides
+	public CoreActivityProxy<HeaderActivity, CorePlace> getHeaderActivity(AsyncProvider<HeaderActivity> provider) {
+		return new CoreActivityProxy<HeaderActivity, CorePlace>(provider);
+	}	
+	
 	@Provides
 	public CoreActivityProxy<ContentIndexActivity, Index> getMainIndexActivity(AsyncProvider<ContentIndexActivity> provider) {
 		return new CoreActivityProxy<ContentIndexActivity, Index>(provider);

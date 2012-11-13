@@ -12,8 +12,8 @@ import com.verophyle.core.client.view.CoreView;
 
 public class ContentSecondViewImpl extends CoreView implements ContentSecondView {
 	
-	private static ContentSecondViewUiBinder uiBinder = GWT.create(ContentSecondViewUiBinder.class);
 	interface ContentSecondViewUiBinder extends UiBinder<FlowPanel, ContentSecondViewImpl> { }
+	private static ContentSecondViewUiBinder uiBinder = GWT.create(ContentSecondViewUiBinder.class);
 	
 	//private Presenter presenter;
 	

@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	
+	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
+	ui:defaultLocale="en">
+	<ui:style>
+	</ui:style>
+	<g:HTMLPanel>
+		<h1><ui:msg key="applicationName">TemplateVerophyle</ui:msg></h1>
+		<p>Test.</p>
+	</g:HTMLPanel>
+</ui:UiBinder>

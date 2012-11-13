@@ -7,21 +7,18 @@ import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.verophyle.core.client.view.AppView;
 
-/**
- * Entry point classes define <code>onModuleLoad()</code>.
- */
 public class CoreEntryPoint implements EntryPoint {
 	private final CoreGinjector injector = GWT.create(CoreGinjector.class);
 	
-	/**
-	 * Entry point method.
-	 */
 	public void onModuleLoad() {
 		PlaceHistoryHandler placeHistoryHandler = injector.getPlaceHistoryHandler();
 		AppView appView = injector.getAppView();
 		
-		ActivityManager mainManager = injector.getMainActivityManager();
-		mainManager.setDisplay(appView.getContent());
+		ActivityManager headerManager = injector.getHeaderActivityManager();
+		headerManager.setDisplay(appView.getHeader());
+		
+		ActivityManager contentManager = injector.getContentActivityManager();
+		contentManager.setDisplay(appView.getContent());
 
 		RootLayoutPanel.get().add(appView);
 		

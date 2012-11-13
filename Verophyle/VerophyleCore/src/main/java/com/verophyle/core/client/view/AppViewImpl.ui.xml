@@ -4,10 +4,10 @@
 	<ui:style>
 	</ui:style>
 	<g:SplitLayoutPanel ui:field="topLayoutPanel">
-		<g:north size="100">
+		<g:north size="150">
 			<g:SimplePanel ui:field="header"></g:SimplePanel>
 		</g:north>
-		<g:west size="100">
+		<g:west size="200">
 			<g:SimplePanel ui:field="sidebar"></g:SimplePanel>
 		</g:west>
 		<g:center>

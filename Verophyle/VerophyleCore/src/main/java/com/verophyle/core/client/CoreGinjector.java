@@ -8,6 +8,9 @@ import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
 import com.verophyle.core.client.activity.content.ContentIndexActivity;
 import com.verophyle.core.client.activity.content.ContentSecondActivity;
+import com.verophyle.core.client.activity.header.HeaderActivity;
+import com.verophyle.core.client.activity.header.HeaderActivityManager;
+import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.AppView;
@@ -19,7 +22,10 @@ public interface CoreGinjector extends Ginjector {
 	
 	AppView getAppView();
 	
-	ContentActivityManager getMainActivityManager();
+	HeaderActivityManager getHeaderActivityManager();
+	CoreActivityProxy<HeaderActivity, CorePlace> getHeaderActivity();
+	
+	ContentActivityManager getContentActivityManager();
 	CoreActivityProxy<ContentIndexActivity, Index> getMainIndexActivity();
 	CoreActivityProxy<ContentSecondActivity, Second> getMainSecondActivity();
 }
