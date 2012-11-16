@@ -11,7 +11,6 @@ import com.verophyle.core.client.view.content.ContentIndexView;
 public class ContentIndexActivityImpl extends ContentActivity<Index> implements ContentIndexActivity {
 	private PlaceController placeController;
 	private ContentIndexView mainView;
-	private String text;
 
 	@Inject
 	public ContentIndexActivityImpl(PlaceController placeController, ContentIndexView mainView) {
@@ -21,20 +20,18 @@ public class ContentIndexActivityImpl extends ContentActivity<Index> implements 
 	
 	@Override
 	public void setPlace(Index place) {
-		this.text = place.getText();
+		setText(place.getText());
 	}
 	
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		mainView.setText(text);
+		super.start(panel, eventBus);
+		
+		mainView.setText(getText());
 		mainView.setPresenter(this);
 		panel.setWidget(mainView.asWidget());
 	}
 
-	@Override
-	public void textChanged(String text) {
-	}
-	
 	@Override
 	public void goTo(Place place) {
 		placeController.goTo(place);

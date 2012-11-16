@@ -73,7 +73,7 @@ public class CoreGinModule extends AbstractGinModule {
 												 PlaceHistoryMapper placeHistoryMapper,
 												 EventBus eventBus) {
 		PlaceHistoryHandler placeHistoryHandler = new PlaceHistoryHandler(placeHistoryMapper);
-		placeHistoryHandler.register(placeController, eventBus, new Index("1"));
+		placeHistoryHandler.register(placeController, eventBus, new Index("0"));
 		return placeHistoryHandler;
 	}
 

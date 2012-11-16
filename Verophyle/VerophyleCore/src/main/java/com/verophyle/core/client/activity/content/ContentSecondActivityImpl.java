@@ -11,7 +11,6 @@ import com.verophyle.core.client.view.content.ContentSecondView;
 public class ContentSecondActivityImpl extends ContentActivity<Second> implements ContentSecondActivity {
 	private PlaceController placeController;
 	private ContentSecondView mainView;
-	private String text;
 
 	@Inject
 	public ContentSecondActivityImpl(PlaceController placeController, ContentSecondView mainView) {
@@ -21,20 +20,18 @@ public class ContentSecondActivityImpl extends ContentActivity<Second> implement
 	
 	@Override
 	public void setPlace(Second place) {
-		this.text = place.getText();
+		setText(place.getText());
 	}
 	
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		mainView.setText(text);
+		super.start(panel, eventBus);
+		
+		mainView.setText(getText());
 		mainView.setPresenter(this);
 		panel.setWidget(mainView.asWidget());
 	}
 
-	@Override
-	public void textChanged(String text) {
-	}
-	
 	public void goTo(Place place) {
 		placeController.goTo(place);
 	}
