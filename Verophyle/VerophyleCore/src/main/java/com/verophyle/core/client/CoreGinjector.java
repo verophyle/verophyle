@@ -17,6 +17,8 @@ import com.verophyle.core.client.view.AppView;
 
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
+	CoreResources getCoreResources();
+	
 	EventBus getEventBus();
 	PlaceHistoryHandler getPlaceHistoryHandler();
 	

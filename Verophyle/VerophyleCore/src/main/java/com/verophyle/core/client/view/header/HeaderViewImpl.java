@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.inject.Inject;
+import com.verophyle.core.client.CoreResources;
 import com.verophyle.core.client.view.CoreView;
 
 public class HeaderViewImpl extends CoreView implements HeaderView {
@@ -12,7 +13,8 @@ public class HeaderViewImpl extends CoreView implements HeaderView {
 	private static HeaderViewUiBinder uiBinder = GWT.create(HeaderViewUiBinder.class);
 
 	@Inject
-	public HeaderViewImpl() {
+	public HeaderViewImpl(CoreResources res) {
+		res.css().ensureInjected();
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	

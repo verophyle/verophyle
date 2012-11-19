@@ -11,9 +11,7 @@ public class CoreEntryPoint implements EntryPoint {
 	private final CoreGinjector injector = GWT.create(CoreGinjector.class);
 	
 	public void onModuleLoad() {
-		PlaceHistoryHandler placeHistoryHandler = injector.getPlaceHistoryHandler();
 		AppView appView = injector.getAppView();
-		
 		ActivityManager headerManager = injector.getHeaderActivityManager();
 		headerManager.setDisplay(appView.getHeader());
 		
@@ -22,6 +20,7 @@ public class CoreEntryPoint implements EntryPoint {
 
 		RootLayoutPanel.get().add(appView);
 		
+		PlaceHistoryHandler placeHistoryHandler = injector.getPlaceHistoryHandler();
 		placeHistoryHandler.handleCurrentHistory();
-	}
+	}	
 }

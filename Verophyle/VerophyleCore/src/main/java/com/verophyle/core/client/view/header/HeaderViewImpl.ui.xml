@@ -5,10 +5,17 @@
 	
 	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
 	ui:defaultLocale="en">
-	<ui:style>
-	</ui:style>
+	
+	<ui:with field="res" type="com.verophyle.core.client.CoreResources"/>
+	
 	<g:HTMLPanel>
-		<h1><ui:msg key="applicationName">TemplateVerophyle</ui:msg></h1>
-		<p>Test.</p>
+		<div class="{res.css.header}">
+			<div class="{res.css.headerLogo}">
+				<ui:msg key="applicationName">Verophyle</ui:msg>
+			</div>
+			<div class="{res.css.headerLogin}">
+				...login...
+			</div>
+		</div>
 	</g:HTMLPanel>
 </ui:UiBinder>

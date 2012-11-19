@@ -38,6 +38,8 @@ public class CoreGinModule extends AbstractGinModule {
 	@Override
 	protected void configure() {
 		// global objects
+		bind(CoreResources.class).in(Singleton.class);
+		
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);
 		
