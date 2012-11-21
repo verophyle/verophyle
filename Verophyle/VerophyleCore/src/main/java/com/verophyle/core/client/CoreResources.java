@@ -6,5 +6,5 @@ public interface CoreResources extends ClientBundle {
 	
 	@Source("Core.css")
 	CoreCssResource css();
-
+	
 }

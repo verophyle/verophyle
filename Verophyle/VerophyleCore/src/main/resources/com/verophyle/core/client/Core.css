@@ -1,33 +1,86 @@
 @charset "UTF-8";
 
+// colors
+@def PRIMARY1 #A19B5C;
+@def PRIMARY2 #868256;
+@def PRIMARY3 #7B752F;
+@def PRIMARY4 #E9E4AC;
+@def PRIMARY5 #E9E7CB;
+
+@def SECONDARY_A1 #879857;
+@def SECONDARY_A2 #737F52;
+@def SECONDARY_A3 #62752D;
+@def SECONDARY_A4 #D7E7AA;
+@def SECONDARY_A5 #DFE7C9;
+
+@def SECONDARY_B1 #7A466A;
+@def SECONDARY_B1 #65415A;
+@def SECONDARY_B1 #5D244C;
+@def SECONDARY_B1 #E0A5CE;
+@def SECONDARY_B1 #E0C3D7;
+
+@def COMPLEMENTARY #55426D;
+@def COMPLEMENTARY #4A3D5B;
+@def COMPLEMENTARY #382254;
+@def COMPLEMENTARY #BFA8DD;
+@def COMPLEMENTARY #CEC3DD;
+
+// app view
+
 .header {
+	display: flex;
+	width: 100%;
+	height: 100%;
+
+	background-color: PRIMARY1;
+	color: black;
+	
+	font: 
+}
+
+	.headerLogo {
+		display: block;
+		height: 100%;
+		padding: 1em;
+		
+		box-flex: 1.0;
+		-moz-box-flex: 1.0;
+		-webkit-box-flex: 1.0;
+		
+		line-height: 6em;
+	}
+	
+	.headerLogin {
+		display: block;
+		height: 100%;
+		padding: 1em;
+		
+		box-flex: 4.0;
+		-moz-box-flex: 4.0;
+		-webkit-box-flex: 4.0;
+	}
+
+.sidebar {
 	display: block;
 	width: 100%;
 	height: 100%;
 	
-	border-style: solid;
-	border-color: black;
-	border-width: 2px;
+	background-color: PRIMARY1;
 }
 
-.headerLogo {
+.footer {
 	display: block;
-	float: left;
-	color: green;
-	background-color: #f0f0f0;
+	width: 100%;
+	height: 100%;
 	
-	border-style: solid;
-	border-color: gray;
-	border-width: 2px;
+	background-color: PRIMARY1;
 }
 
-.headerLogin {
+.content {
 	display: block;
-	float: right;
-	color: red;
-	background-color: #f0f0ff;
+	width: 100%;
+	height: 100%;
 	
-	border-style: solid;
-	border-color: blue;
-	border-width: 2px;
+	background-color: PRIMARY5;
 }
+

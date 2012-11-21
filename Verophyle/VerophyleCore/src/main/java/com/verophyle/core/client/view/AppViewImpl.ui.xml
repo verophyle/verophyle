@@ -3,17 +3,17 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
 	</ui:style>
-	<g:DockLayoutPanel unit="PX" ui:field="topLayoutPanel">
-		<g:north size="150">
+	<g:DockLayoutPanel unit="EM" ui:field="topLayoutPanel">
+		<g:north size="8">
 			<g:SimplePanel ui:field="header"></g:SimplePanel>
 		</g:north>
-		<g:west size="400">
+		<g:west size="6">
 			<g:SimplePanel ui:field="sidebar"></g:SimplePanel>
 		</g:west>
 		<g:center>
 			<g:SimplePanel ui:field="content"></g:SimplePanel>
 		</g:center>
-		<g:south size="100">
+		<g:south size="6">
 			<g:SimplePanel ui:field="footer"></g:SimplePanel>
 		</g:south>
 	</g:DockLayoutPanel>
