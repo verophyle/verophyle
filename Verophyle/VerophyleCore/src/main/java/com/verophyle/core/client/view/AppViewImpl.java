@@ -6,15 +6,13 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.verophyle.core.client.CoreResources;
 
-public class AppViewImpl extends CoreView implements AppView {
+public class AppViewImpl extends CoreViewImpl implements AppView {
 
 	private static AppViewImplUiBinder uiBinder = GWT.create(AppViewImplUiBinder.class);
 	interface AppViewImplUiBinder extends UiBinder<DockLayoutPanel, AppViewImpl> { }
-	
-	//private Presenter presenter;
 	
 	@UiField DockLayoutPanel topLayoutPanel;
 	
@@ -24,15 +22,11 @@ public class AppViewImpl extends CoreView implements AppView {
 	@UiField SimplePanel content;
 
 	@Inject
-	public AppViewImpl() {
+	public AppViewImpl(CoreResources res) {
+		super(res);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
-	@Override
-	public Widget asWidget() {
-		return this;
-	}
-
 	@Override
 	public AcceptsOneWidget getHeader() {
 		return header;
@@ -51,11 +45,6 @@ public class AppViewImpl extends CoreView implements AppView {
 	@Override
 	public AcceptsOneWidget getFooter() {
 		return footer;
-	}
-
-	@Override
-	public void setPresenter(Presenter presenter) {
-		//this.presenter = presenter;
 	}
 
 }

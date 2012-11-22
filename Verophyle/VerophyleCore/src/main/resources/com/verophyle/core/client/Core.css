@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-// colors
+/* colors */
 @def PRIMARY1 #A19B5C;
 @def PRIMARY2 #868256;
 @def PRIMARY3 #7B752F;
@@ -25,39 +25,44 @@
 @def COMPLEMENTARY #BFA8DD;
 @def COMPLEMENTARY #CEC3DD;
 
-// app view
+/* app view */
 
 .header {
-	display: flex;
+	display: box, -moz-box, -webkit-box;
 	width: 100%;
 	height: 100%;
+	
+	box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	
+	box-pack: center;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	
+	box-align: baseline;
+	-moz-box-align: baseline;
+	-webkit-box-align: baseline;
 
 	background-color: PRIMARY1;
 	color: black;
-	
-	font: 
 }
 
 	.headerLogo {
 		display: block;
 		height: 100%;
-		padding: 1em;
 		
 		box-flex: 1.0;
 		-moz-box-flex: 1.0;
 		-webkit-box-flex: 1.0;
 		
-		line-height: 6em;
+		font-size: 4em;
 	}
 	
 	.headerLogin {
 		display: block;
 		height: 100%;
 		padding: 1em;
-		
-		box-flex: 4.0;
-		-moz-box-flex: 4.0;
-		-webkit-box-flex: 4.0;
 	}
 
 .sidebar {

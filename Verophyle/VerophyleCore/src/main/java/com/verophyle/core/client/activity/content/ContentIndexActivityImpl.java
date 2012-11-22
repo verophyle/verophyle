@@ -8,21 +8,13 @@ import com.google.inject.Inject;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.view.content.ContentIndexView;
 
-public class ContentIndexActivityImpl extends ContentActivity<Index> implements ContentIndexActivity {
-	private PlaceController placeController;
-	private ContentIndexView mainView;
+public class ContentIndexActivityImpl extends ContentActivityImpl<Index, ContentIndexView> implements ContentIndexActivity {
 
 	@Inject
-	public ContentIndexActivityImpl(PlaceController placeController, ContentIndexView mainView) {
-		this.placeController = placeController;
-		this.mainView = mainView;
+	public ContentIndexActivityImpl(PlaceController placeController, ContentIndexView contentView) {
+		super(placeController, contentView);
 	}
-	
-	@Override
-	public void setPlace(Index place) {
-		setText(place.getText());
-	}
-	
+		
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		super.start(panel, eventBus);
@@ -30,11 +22,6 @@ public class ContentIndexActivityImpl extends ContentActivity<Index> implements 
 		mainView.setText(getText());
 		mainView.setPresenter(this);
 		panel.setWidget(mainView.asWidget());
-	}
-
-	@Override
-	public void goTo(Place place) {
-		placeController.goTo(place);
 	}
 
 }

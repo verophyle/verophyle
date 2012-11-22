@@ -8,7 +8,7 @@ import com.google.inject.Inject;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.content.ContentSecondView;
 
-public class ContentSecondActivityImpl extends ContentActivity<Second> implements ContentSecondActivity {
+public class ContentSecondActivityImpl extends ContentActivityImpl<Second> implements ContentSecondActivity {
 	private PlaceController placeController;
 	private ContentSecondView mainView;
 

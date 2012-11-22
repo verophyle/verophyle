@@ -6,4 +6,9 @@ public interface CoreCssResource extends CssResource {
 	String header();
 	String headerLogo();
 	String headerLogin();
+	
+	String sidebar();
+	String footer();
+	
+	String content();
 }

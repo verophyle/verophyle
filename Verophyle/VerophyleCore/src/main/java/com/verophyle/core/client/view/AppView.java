@@ -2,6 +2,7 @@ package com.verophyle.core.client.view;
 
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.verophyle.core.client.view.CoreView.CorePresenter;
 
 public interface AppView extends IsWidget {
 	
@@ -10,9 +11,7 @@ public interface AppView extends IsWidget {
 	public AcceptsOneWidget getContent();
 	public AcceptsOneWidget getFooter();
 	
-	public void setPresenter(Presenter presenter);
-
-	public interface Presenter {
+	public interface Presenter extends CorePresenter {
 	}
 	
 }

@@ -6,34 +6,25 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
+import com.verophyle.core.client.CoreResources;
 import com.verophyle.core.client.place.Index;
-import com.verophyle.core.client.view.CoreView;
+import com.verophyle.core.client.view.CoreViewImpl;
 
-public class ContentSecondViewImpl extends CoreView implements ContentSecondView {
+public class ContentSecondViewImpl extends CoreViewImpl implements ContentSecondView {
 	
 	interface ContentSecondViewUiBinder extends UiBinder<FlowPanel, ContentSecondViewImpl> { }
 	private static ContentSecondViewUiBinder uiBinder = GWT.create(ContentSecondViewUiBinder.class);
-	
-	//private Presenter presenter;
-	
+		
 	@UiField Label label;
 	@UiField Hyperlink hyperLink;
 	
-	public ContentSecondViewImpl() {
+	@Inject
+	public ContentSecondViewImpl(CoreResources res) {
+		super(res);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
-	@Override
-	public Widget asWidget() {
-		return this;
-	}
-
-	@Override
-	public void setPresenter(Presenter presenter) {
-		//this.presenter = presenter;
-	}
-
 	@Override
 	public String getText() {
 		return label.getText();

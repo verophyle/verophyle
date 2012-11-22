@@ -1,16 +1,12 @@
 package com.verophyle.core.client.view;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.place.shared.Place;
-import com.google.gwt.place.shared.PlaceHistoryMapper;
-import com.google.gwt.user.client.ui.Composite;
-import com.verophyle.core.client.place.CorePlaceHistoryMapper;
+import com.google.gwt.user.client.ui.IsWidget;
 
-public class CoreView extends Composite {
-	private static PlaceHistoryMapper placeHistoryMapper = GWT.create(CorePlaceHistoryMapper.class);
+public interface CoreView extends IsWidget {
 
-	protected static String getHistoryToken(Place place) {
-		return placeHistoryMapper.getToken(place);
+	public void setPresenter(CorePresenter presenter);
+	
+	public interface CorePresenter {
 	}
 	
 }

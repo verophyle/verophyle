@@ -1,13 +1,11 @@
 package com.verophyle.core.client.view.content;
 
-import com.google.gwt.user.client.ui.IsWidget;
+import com.verophyle.core.client.view.CoreView;
 
-public interface ContentView extends IsWidget {
+public interface ContentView extends CoreView {
 	String getText();
 	void setText(String text);
-
-	void setPresenter(Presenter presenter);
 	
-	public interface Presenter {
+	interface Presenter extends CorePresenter {
 	}
 }
