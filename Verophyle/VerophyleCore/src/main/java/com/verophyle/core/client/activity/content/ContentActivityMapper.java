@@ -22,7 +22,7 @@ public class ContentActivityMapper implements ActivityMapper {
 	public Activity getActivity(Place place) {
 		
 		if (place instanceof Index) {
-			CoreActivityProxy<ContentIndexActivity, Index> activity = injector.getMainIndexActivity();
+			CoreActivityProxy<ContentIndexActivity, Index> activity = injector.getActivity();
 			activity.setPlace((Index) place);
 			return activity;
 		}
