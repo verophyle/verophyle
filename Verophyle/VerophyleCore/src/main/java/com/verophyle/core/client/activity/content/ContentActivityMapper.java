@@ -1,39 +1,43 @@
 package com.verophyle.core.client.activity.content;
 
 import com.google.gwt.activity.shared.Activity;
-import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.google.inject.Inject;
-import com.verophyle.core.client.CoreGinjector;
+import com.google.inject.Provider;
+import com.verophyle.core.client.activity.CoreActivityMapper;
 import com.verophyle.core.client.activity.CoreActivityProxy;
+import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
 
-public class ContentActivityMapper implements ActivityMapper {
+public class ContentActivityMapper extends CoreActivityMapper<ContentActivity, CorePlace> {
 	
-	CoreGinjector injector;
+	private Provider<CoreActivityProxy<ContentIndexActivity, Index>> indexActivityProvider;
+	private Provider<CoreActivityProxy<ContentSecondActivity, Second>> secondActivityProvider;
 	
 	@Inject
-	public ContentActivityMapper(CoreGinjector injector) {
-		this.injector = injector;
+	public ContentActivityMapper(
+			Provider<CoreActivityProxy<ContentIndexActivity, Index>> indexActivityProvider, 
+			Provider<CoreActivityProxy<ContentSecondActivity, Second>> secondActivityProvider) {
+		super(null);
+		this.indexActivityProvider = indexActivityProvider;
+		this.secondActivityProvider = secondActivityProvider;
 	}
 	
 	@Override
 	public Activity getActivity(Place place) {
+		CoreActivityProxy<? extends ContentActivity, ? extends CorePlace> activity = null;
 		
 		if (place instanceof Index) {
-			CoreActivityProxy<ContentIndexActivity, Index> activity = injector.getActivity();
-			activity.setPlace((Index) place);
-			return activity;
+			activity = indexActivityProvider.get();
+		} else if (place instanceof Second) {
+			activity = secondActivityProvider.get();
 		}
 		
-		if (place instanceof Second) {
-			CoreActivityProxy<ContentSecondActivity, Second> activity = injector.getMainSecondActivity();
-			activity.setPlace((Second) place);
-			return activity;
-		}
+		if (activity != null)
+			activity.setPlace((CorePlace)place);
 		
-		return null;
+		return activity;
 	}
 
 }

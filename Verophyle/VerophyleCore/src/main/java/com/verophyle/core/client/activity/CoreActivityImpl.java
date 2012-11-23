@@ -10,14 +10,34 @@ import com.verophyle.core.client.view.CoreView;
 public abstract class CoreActivityImpl<P extends CorePlace, V extends CoreView> implements CoreActivity {
 	
 	private PlaceController placeController;
-	private CorePlace corePlace;
-	private CoreView coreView;
+	private CorePlace place;
+	private CoreView view;
 
 	protected CoreActivityImpl(PlaceController placeController, CoreView coreView) {
 		this.placeController = placeController;
-		this.coreView = coreView;
+		this.view = coreView;
+	}
+
+	@Override
+	public CoreView getView() {
+		return view;
 	}
 	
+	@Override
+	public CorePlace getPlace() {
+		return place;
+	}
+		
+	@Override
+	public void setPlace(CorePlace place) {
+		this.place = place;
+	}
+
+	@Override
+	public void goTo(Place place) {
+		placeController.goTo(place);
+	}
+
 	@Override
 	public String mayStop() {
 		return null;
@@ -33,18 +53,8 @@ public abstract class CoreActivityImpl<P extends CorePlace, V extends CoreView> 
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		coreView.setPresenter(this);
-		panel.setWidget(coreView.asWidget());
-	}
-
-	@Override
-	public void setPlace(CorePlace place) {
-		this.corePlace = place;
-	}
-
-	@Override
-	public void goTo(Place place) {
-		placeController.goTo(place);
+		view.setPresenter(this);
+		panel.setWidget(view.asWidget());
 	}
 
 }

@@ -1,15 +1,14 @@
 package com.verophyle.core.client;
 
 import com.google.gwt.inject.client.AbstractGinModule;
-import com.google.gwt.inject.client.AsyncProvider;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import com.google.inject.TypeLiteral;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import com.verophyle.core.client.activity.CoreActivity;
 import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
 import com.verophyle.core.client.activity.content.ContentActivityMapper;
@@ -52,16 +51,24 @@ public class CoreGinModule extends AbstractGinModule {
 		
 		// activities
 		bind(HeaderActivityManager.class).in(Singleton.class);
-		bind(HeaderActivityMapper.class).in(Singleton.class);		
+		bind(HeaderActivityMapper.class).in(Singleton.class);
+		
+		bind(new TypeLiteral<CoreActivityProxy<HeaderActivity, CorePlace>>(){});
 		bind(HeaderActivity.class).to(HeaderActivityImpl.class);
 		
 		bind(SidebarActivityManager.class).in(Singleton.class);
 		bind(SidebarActivityMapper.class).in(Singleton.class);
+		
+		bind(new TypeLiteral<CoreActivityProxy<SidebarActivity, CorePlace>>(){});
 		bind(SidebarActivity.class).to(SidebarActivityImpl.class);
 		
 		bind(ContentActivityManager.class).in(Singleton.class);
-		bind(ContentActivityMapper.class).in(Singleton.class);		
+		bind(ContentActivityMapper.class).in(Singleton.class);
+		
+		bind(new TypeLiteral<CoreActivityProxy<ContentIndexActivity, Index>>(){});
 		bind(ContentIndexActivity.class).to(ContentIndexActivityImpl.class);
+		
+		bind(new TypeLiteral<CoreActivityProxy<ContentSecondActivity, Second>>(){});
 		bind(ContentSecondActivity.class).to(ContentSecondActivityImpl.class);
 		
 		// views
@@ -89,28 +96,5 @@ public class CoreGinModule extends AbstractGinModule {
 		placeHistoryHandler.register(placeController, eventBus, new Index("0"));
 		return placeHistoryHandler;
 	}
-
-	// activities
 	
-	@Provides
-	public <P extends CorePlace, A extends CoreActivity> CoreActivityProxy<A, P> getActivity(AsyncProvider<A> provider) {
-		return new CoreActivityProxy<A, P>(provider);
-	}
-	
-	/*
-	@Provides
-	public CoreActivityProxy<HeaderActivity, CorePlace> getHeaderActivity(AsyncProvider<HeaderActivity> provider) {
-		return new CoreActivityProxy<HeaderActivity, CorePlace>(provider);
-	}
-	
-	@Provides
-	public CoreActivityProxy<ContentIndexActivity, Index> getMainIndexActivity(AsyncProvider<ContentIndexActivity> provider) {
-		return new CoreActivityProxy<ContentIndexActivity, Index>(provider);
-	}
-	
-	@Provides
-	public CoreActivityProxy<ContentSecondActivity, Second> getMainSecondActivity(AsyncProvider<ContentSecondActivity> provider) {
-		return new CoreActivityProxy<ContentSecondActivity, Second>(provider);
-	}
-	*/
 }

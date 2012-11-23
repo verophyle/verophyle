@@ -10,6 +10,7 @@
 	
 	<g:HTML>
 		<div class="{res.css.sidebar}">
+			blah blah blah
 		</div>
 	</g:HTML>
 </ui:UiBinder>

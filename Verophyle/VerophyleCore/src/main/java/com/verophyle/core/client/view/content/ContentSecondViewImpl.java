@@ -8,7 +8,6 @@ import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
 import com.google.inject.Inject;
 import com.verophyle.core.client.CoreResources;
-import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.view.CoreViewImpl;
 
 public class ContentSecondViewImpl extends CoreViewImpl implements ContentSecondView {
@@ -24,19 +23,5 @@ public class ContentSecondViewImpl extends CoreViewImpl implements ContentSecond
 		super(res);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-	
-	@Override
-	public String getText() {
-		return label.getText();
-	}
-
-	@Override
-	public void setText(String text) {
-		label.setText(text);
-		
-		String historyToken = getHistoryToken(new Index(text));
-		hyperLink.setText(historyToken);
-		hyperLink.setTargetHistoryToken(historyToken);
-	}
-		
+			
 }

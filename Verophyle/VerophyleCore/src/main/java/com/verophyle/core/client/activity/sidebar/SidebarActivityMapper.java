@@ -1,31 +1,16 @@
 package com.verophyle.core.client.activity.sidebar;
 
-import com.google.gwt.activity.shared.Activity;
-import com.google.gwt.activity.shared.ActivityMapper;
-import com.google.gwt.place.shared.Place;
 import com.google.inject.Inject;
-import com.verophyle.core.client.CoreGinjector;
+import com.google.inject.Provider;
+import com.verophyle.core.client.activity.CoreActivityMapper;
 import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.place.CorePlace;
 
-public class SidebarActivityMapper implements ActivityMapper {
-
-	private CoreGinjector injector;
+public class SidebarActivityMapper extends CoreActivityMapper<SidebarActivity, CorePlace> {
 	
 	@Inject
-	public SidebarActivityMapper(CoreGinjector injector) {
-		this.injector = injector;
-	}
-
-	@Override
-	public Activity getActivity(Place place) {
-		if (place instanceof CorePlace) {
-			CoreActivityProxy<SidebarActivity, CorePlace> activity = injector.getActivity();
-			activity.setPlace((CorePlace)place);
-			return activity;
-		}
-		
-		return null;
+	public SidebarActivityMapper(Provider<CoreActivityProxy<SidebarActivity, CorePlace>> provider) {
+		super(provider);
 	}
 	
 }

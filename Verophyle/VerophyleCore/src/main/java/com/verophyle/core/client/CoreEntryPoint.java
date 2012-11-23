@@ -12,8 +12,12 @@ public class CoreEntryPoint implements EntryPoint {
 	
 	public void onModuleLoad() {
 		AppView appView = injector.getAppView();
+		
 		ActivityManager headerManager = injector.getHeaderActivityManager();
 		headerManager.setDisplay(appView.getHeader());
+		
+		ActivityManager sidebarManager = injector.getSidebarActivityManager();
+		sidebarManager.setDisplay(appView.getSidebar());
 		
 		ActivityManager contentManager = injector.getContentActivityManager();
 		contentManager.setDisplay(appView.getContent());
