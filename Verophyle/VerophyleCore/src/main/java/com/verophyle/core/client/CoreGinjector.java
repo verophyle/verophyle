@@ -8,6 +8,8 @@ import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
 import com.verophyle.core.client.activity.content.ContentIndexActivity;
 import com.verophyle.core.client.activity.content.ContentSecondActivity;
+import com.verophyle.core.client.activity.footer.FooterActivity;
+import com.verophyle.core.client.activity.footer.FooterActivityManager;
 import com.verophyle.core.client.activity.header.HeaderActivity;
 import com.verophyle.core.client.activity.header.HeaderActivityManager;
 import com.verophyle.core.client.activity.sidebar.SidebarActivity;
@@ -15,6 +17,7 @@ import com.verophyle.core.client.activity.sidebar.SidebarActivityManager;
 import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
+import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.AppView;
 
 @GinModules({CoreGinModule.class})
@@ -31,6 +34,9 @@ public interface CoreGinjector extends Ginjector {
 
 	SidebarActivityManager getSidebarActivityManager();
 	CoreActivityProxy<SidebarActivity, CorePlace> getSidebarActivity();
+	
+	FooterActivityManager getFooterActivityManager();
+	CoreActivityProxy<FooterActivity, CorePlace> getFooterActivity();
 	
 	ContentActivityManager getContentActivityManager();
 	CoreActivityProxy<ContentIndexActivity, Index> getContentIndexActivity();

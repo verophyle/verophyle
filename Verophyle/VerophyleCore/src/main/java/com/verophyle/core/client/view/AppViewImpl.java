@@ -7,7 +7,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.inject.Inject;
-import com.verophyle.core.client.CoreResources;
+import com.verophyle.core.client.resources.CoreResources;
 
 public class AppViewImpl extends CoreViewImpl implements AppView {
 

@@ -1,4 +1,4 @@
-package com.verophyle.core.client.view.sidebar;
+package com.verophyle.core.client.view.footer;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -7,13 +7,13 @@ import com.google.inject.Inject;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
 
-public class SidebarViewImpl extends CoreViewImpl implements SidebarView {
+public class FooterViewImpl extends CoreViewImpl implements FooterView {
 
-	interface SidebarViewImplUiBinder extends UiBinder<HTML, SidebarViewImpl> {	}
-	private static SidebarViewImplUiBinder uiBinder = GWT.create(SidebarViewImplUiBinder.class);
+	interface FooterViewImplUiBinder extends UiBinder<HTML, FooterViewImpl> { }
+	private static FooterViewImplUiBinder uiBinder = GWT.create(FooterViewImplUiBinder.class);
 
 	@Inject
-	public SidebarViewImpl(CoreResources res) {
+	public FooterViewImpl(CoreResources res) {
 		super(res);
 		initWidget(uiBinder.createAndBindUi(this));
 	}

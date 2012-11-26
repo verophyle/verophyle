@@ -17,4 +17,6 @@
 
   <source path='client'/>
   <source path='shared'/>
+  
+  <stylesheet src="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600%26subset=latin,latin-ext"/>
 </module>

@@ -2,7 +2,7 @@ package com.verophyle.core.client.view;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.verophyle.core.client.CoreResources;
+import com.verophyle.core.client.resources.CoreResources;
 
 public abstract class CoreViewImpl extends Composite implements CoreView {
 	

@@ -16,6 +16,8 @@ import com.verophyle.core.client.activity.content.ContentIndexActivity;
 import com.verophyle.core.client.activity.content.ContentIndexActivityImpl;
 import com.verophyle.core.client.activity.content.ContentSecondActivity;
 import com.verophyle.core.client.activity.content.ContentSecondActivityImpl;
+import com.verophyle.core.client.activity.footer.FooterActivity;
+import com.verophyle.core.client.activity.footer.FooterActivityImpl;
 import com.verophyle.core.client.activity.header.HeaderActivity;
 import com.verophyle.core.client.activity.header.HeaderActivityImpl;
 import com.verophyle.core.client.activity.header.HeaderActivityManager;
@@ -28,12 +30,15 @@ import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
+import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.AppView;
 import com.verophyle.core.client.view.AppViewImpl;
 import com.verophyle.core.client.view.content.ContentIndexView;
 import com.verophyle.core.client.view.content.ContentIndexViewImpl;
 import com.verophyle.core.client.view.content.ContentSecondView;
 import com.verophyle.core.client.view.content.ContentSecondViewImpl;
+import com.verophyle.core.client.view.footer.FooterView;
+import com.verophyle.core.client.view.footer.FooterViewImpl;
 import com.verophyle.core.client.view.header.HeaderView;
 import com.verophyle.core.client.view.header.HeaderViewImpl;
 import com.verophyle.core.client.view.sidebar.SidebarView;
@@ -62,6 +67,9 @@ public class CoreGinModule extends AbstractGinModule {
 		bind(new TypeLiteral<CoreActivityProxy<SidebarActivity, CorePlace>>(){});
 		bind(SidebarActivity.class).to(SidebarActivityImpl.class);
 		
+		bind(new TypeLiteral<CoreActivityProxy<FooterActivity, CorePlace>>(){});
+		bind(FooterActivity.class).to(FooterActivityImpl.class);
+		
 		bind(ContentActivityManager.class).in(Singleton.class);
 		bind(ContentActivityMapper.class).in(Singleton.class);
 		
@@ -76,6 +84,7 @@ public class CoreGinModule extends AbstractGinModule {
 		
 		bind(HeaderView.class).to(HeaderViewImpl.class).in(Singleton.class);
 		bind(SidebarView.class).to(SidebarViewImpl.class).in(Singleton.class);
+		bind(FooterView.class).to(FooterViewImpl.class).in(Singleton.class);
 		bind(ContentIndexView.class).to(ContentIndexViewImpl.class).in(Singleton.class);
 		bind(ContentSecondView.class).to(ContentSecondViewImpl.class).in(Singleton.class);
 	}

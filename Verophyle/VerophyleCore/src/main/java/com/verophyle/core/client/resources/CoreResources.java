@@ -1,4 +1,4 @@
-package com.verophyle.core.client;
+package com.verophyle.core.client.resources;
 
 import com.google.gwt.resources.client.ClientBundle;
 

@@ -6,7 +6,7 @@
 	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
 	ui:defaultLocale="en">
 	
-	<ui:with field="res" type="com.verophyle.core.client.CoreResources"/>
+	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 	
 	<g:HTML>
 		<div class="{res.css.header}">
