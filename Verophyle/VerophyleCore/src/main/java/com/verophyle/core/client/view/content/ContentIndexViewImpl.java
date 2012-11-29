@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
 import com.google.inject.Inject;
+import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
 
@@ -19,8 +20,8 @@ public class ContentIndexViewImpl extends CoreViewImpl implements ContentIndexVi
 	@UiField Hyperlink hyperLink;
 	
 	@Inject
-	public ContentIndexViewImpl(CoreResources res) {
-		super(res);
+	public ContentIndexViewImpl(CoreLogger logger, CoreResources res) {
+		super(logger, res);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 		

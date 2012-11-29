@@ -49,6 +49,7 @@ public class CoreGinModule extends AbstractGinModule {
 	@Override
 	protected void configure() {
 		// global objects
+		bind(CoreLogger.class).to(CoreLoggerImpl.class).in(Singleton.class);
 		bind(CoreResources.class).in(Singleton.class);
 		
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);

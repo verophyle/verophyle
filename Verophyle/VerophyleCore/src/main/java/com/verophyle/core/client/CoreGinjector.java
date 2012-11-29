@@ -22,6 +22,8 @@ import com.verophyle.core.client.view.AppView;
 
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
+	CoreLogger getLogger();
+	
 	CoreResources getCoreResources();
 	
 	EventBus getEventBus();

@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.inject.Inject;
+import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.resources.CoreResources;
 
 public class AppViewImpl extends CoreViewImpl implements AppView {
@@ -22,8 +23,8 @@ public class AppViewImpl extends CoreViewImpl implements AppView {
 	@UiField SimplePanel content;
 
 	@Inject
-	public AppViewImpl(CoreResources res) {
-		super(res);
+	public AppViewImpl(CoreLogger logger, CoreResources res) {
+		super(logger, res);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	

@@ -1,5 +1,7 @@
 package com.verophyle.core.client;
 
+import java.util.logging.Level;
+
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -11,6 +13,8 @@ public class CoreEntryPoint implements EntryPoint {
 	private final CoreGinjector injector = GWT.create(CoreGinjector.class);
 	
 	public void onModuleLoad() {
+		injector.getLogger().log(Level.INFO, this.getClass().getName() + " onModuleLoad()");
+		
 		AppView appView = injector.getAppView();
 		
 		ActivityManager headerManager = injector.getHeaderActivityManager();

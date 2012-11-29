@@ -3,6 +3,7 @@ package com.verophyle.core.client.activity.content;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.activity.CoreActivityImpl;
 import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.view.content.ContentView;
@@ -11,8 +12,8 @@ public abstract class ContentActivityImpl<P extends CorePlace, V extends Content
 	extends CoreActivityImpl<P, V> 
 	implements ContentActivity {
 
-	protected ContentActivityImpl(PlaceController placeController, ContentView coreView) {
-		super(placeController, coreView);
+	protected ContentActivityImpl(CoreLogger logger, PlaceController placeController, ContentView coreView) {
+		super(logger, placeController, coreView);
 	}
 	
 	@Override
