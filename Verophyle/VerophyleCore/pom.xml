@@ -14,13 +14,12 @@
 
 	<properties>
 		<!-- Dependencies -->
-		<gwt.version>2.4.0</gwt.version>
-		<objectify.version>3.0</objectify.version>
+		<gwt.version>2.5.0</gwt.version>
+		<objectify.version>4.0b1</objectify.version>
 		<guice.version>3.0</guice.version>
 		<gin.version>2.0.0</gin.version>
-		<junit.version>4.10</junit.version>
+		<junit.version>4.11</junit.version>
 		<easymock.version>3.1</easymock.version>
-		<webfonts.version>0.1</webfonts.version>
 
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>

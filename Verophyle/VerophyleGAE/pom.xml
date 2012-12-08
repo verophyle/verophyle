@@ -14,19 +14,19 @@
 
 	<properties>
 		<!-- GWT -->
-		<gwt.version>2.4.0</gwt.version>
+		<gwt.version>2.5.0</gwt.version>
 
 		<!-- GAE -->
-		<gae.version>1.7.2.1</gae.version>
+		<gae.version>1.7.3</gae.version>
 		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
 		<gae.application.version>1</gae.application.version>
 
 		<!-- JUnit -->
-		<junit.version>4.10</junit.version>
+		<junit.version>4.11</junit.version>
 
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
-		<maven.gwt.version>2.4.0</maven.gwt.version>
+		<maven.gwt.version>2.5.0</maven.gwt.version>
 		<maven.gae.version>0.9.4</maven.gae.version>
 		<maven.resources.version>2.6</maven.resources.version>
 		<maven.surefire.version>2.12.2</maven.surefire.version>
@@ -143,14 +143,7 @@
 					see gwt-maven-plugin documentation at codehaus.org -->
 				<configuration>
 					<module>com.verophyle.gae.Verophyle</module>
-					<logLevel>INFO</logLevel>
-					
-					<!-- 
-					<appEngineVersion>${gae.version}</appEngineVersion>
-					<appEngineHome>${gae.home}</appEngineHome>
-					<server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
-					<copyWebapp>true</copyWebapp>
-					-->
+					<logLevel>INFO</logLevel>					
 				</configuration>
 			</plugin>
 
