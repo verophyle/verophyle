@@ -10,10 +10,9 @@
 
 	<g:FlowPanel styleName="{res.css.content}">
 		<g:HTML>
-			<h1>Content Index View</h1>
-			<p>Place transitions: </p>
+			<div class="{res.css.contentBody}">
+				Verophyle is in stealth mode.
+			</div>
 		</g:HTML>
-		<g:Label ui:field="label"></g:Label>
-		<g:Hyperlink ui:field="hyperLink"></g:Hyperlink>
 	</g:FlowPanel>
 </ui:UiBinder>

@@ -14,7 +14,7 @@
 				<ui:msg key="applicationName">Verophyle</ui:msg>
 			</div>
 			<div class="{res.css.headerLogin}">
-				...login...
+				&nbsp;
 			</div>
 		</div>
 	</g:HTML>

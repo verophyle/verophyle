@@ -1,29 +1,29 @@
 @charset "UTF-8";
 
 /* colors */
-@def PRIMARY1 #A19B5C;
-@def PRIMARY2 #868256;
-@def PRIMARY3 #7B752F;
-@def PRIMARY4 #E9E4AC;
-@def PRIMARY5 #E9E7CB;
+@def PRIMARY1 #D1CBA1;
+@def PRIMARY2 #A39F86;
+@def PRIMARY3 #91863E;
+@def PRIMARY4 #F0ECCC;
+@def PRIMARY5 #F0EDDB;
 
-@def SECONDARY_A1 #879857;
-@def SECONDARY_A2 #737F52;
-@def SECONDARY_A3 #62752D;
-@def SECONDARY_A4 #D7E7AA;
-@def SECONDARY_A5 #DFE7C9;
+@def SECONDARY_A1 #BAC698;
+@def SECONDARY_A2 #939A7E;
+@def SECONDARY_A3 #74893B;
+@def SECONDARY_A4 #E3EDC9;
+@def SECONDARY_A5 #E7EDD7;
 
-@def SECONDARY_B1 #7A466A;
-@def SECONDARY_B1 #65415A;
+@def SECONDARY_B1 #9E7993;
+@def SECONDARY_B1 #7B6574;
 @def SECONDARY_B1 #5D244C;
-@def SECONDARY_B1 #E0A5CE;
-@def SECONDARY_B1 #E0C3D7;
+@def SECONDARY_B1 #E0BED6;
+@def SECONDARY_B1 #E0CCDA;
 
-@def COMPLEMENTARY #55426D;
-@def COMPLEMENTARY #4A3D5B;
-@def COMPLEMENTARY #382254;
-@def COMPLEMENTARY #BFA8DD;
-@def COMPLEMENTARY #CEC3DD;
+@def COMPLEMENTARY #7B718F;
+@def COMPLEMENTARY #635D6F;
+@def COMPLEMENTARY #3F2C63;
+@def COMPLEMENTARY #C7BDDB;
+@def COMPLEMENTARY #CFC9DB;
 
 /* defaults */
 body {
@@ -67,8 +67,8 @@ body {
 	
 	overflow: hidden;
 	
-	background-color: PRIMARY1;
 	color: black;
+	background-color: PRIMARY3;
 }
 
 	.headerLogo {
@@ -83,7 +83,7 @@ body {
 		-webkit-flex: none;
 	}
 	
-	.headerLogin {		
+	.headerLogin {
 		flex: auto;
 		-o-flex: auto;
 		-ms-flex: auto;
@@ -96,7 +96,9 @@ body {
 	height: 100%;
 	
 	overflow: hidden;
-	background-color: PRIMARY1;
+	
+	color: black;
+	background-color: PRIMARY3;
 }
 
 .footer {
@@ -104,7 +106,9 @@ body {
 	height: 100%;
 	
 	overflow: hidden;
-	background-color: SECONDARY_A4;
+	
+	color: black;
+	background-color: PRIMARY1;
 }
 
 .content {
@@ -112,6 +116,16 @@ body {
 	height: 100%;
 	
 	overflow: hidden;
-	background-color: PRIMARY5;
+	
+	color: black;
+	background-color: PRIMARY1;
 }
+
+	.contentBody {
+		display: block;
+		height: 100%;
+		width: 100%;
+		
+		padding: 2em;
+	}
 

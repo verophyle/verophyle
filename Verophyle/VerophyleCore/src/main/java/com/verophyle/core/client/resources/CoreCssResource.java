@@ -11,4 +11,5 @@ public interface CoreCssResource extends CssResource {
 	String footer();
 	
 	String content();
+	String contentBody();
 }
