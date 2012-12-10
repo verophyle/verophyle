@@ -8,28 +8,23 @@
 	</prerequisites>
 
 	<groupId>com.verophyle</groupId>
-	<artifactId>verophyle-gae</artifactId>
+	<artifactId>verophyle-flashcards</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
-	<properties>	
-		<!-- GWT -->
+	<properties>
+		<!-- Dependencies -->
 		<gwt.version>2.5.0</gwt.version>
-
-		<!-- GAE -->
-		<gae.version>1.7.3</gae.version>
-		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
-		<gae.application.version>1</gae.application.version>
-
-		<!-- JUnit -->
+		<objectify.version>4.0b1</objectify.version>
+		<guice.version>3.0</guice.version>
+		<gin.version>2.0.0</gin.version>
 		<junit.version>4.11</junit.version>
+		<easymock.version>3.1</easymock.version>
 
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
-		<maven.gwt.version>2.5.0</maven.gwt.version>
-		<maven.gae.version>0.9.4</maven.gae.version>
-		<maven.resources.version>2.6</maven.resources.version>
 		<maven.surefire.version>2.12.2</maven.surefire.version>
+		<maven.gwt.version>2.4.0</maven.gwt.version>
 
 		<!-- Misc -->
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -37,6 +32,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>objectify-appengine</id>
+			<url>http://objectify-appengine.googlecode.com/svn/maven</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<!-- Verophyle Core -->
@@ -46,57 +48,64 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<!-- Verophyle Flashcards -->
-		<dependency>
-			<groupId>com.verophyle</groupId>
-			<artifactId>verophyle-flashcards</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<!-- Google Web Toolkit (GWT) -->
+		<!-- GWT -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwt.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<version>${gwt.version}</version>
+			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+				
+		<!-- RequestFactory -->
+		<dependency>
+			<groupId>com.google.web.bindery</groupId>
+			<artifactId>requestfactory-server</artifactId>
+			<version>${gwt.version}</version>
 		</dependency>
 
-		<!-- Google App Engine (GAE) -->
+		<!-- Objectify -->
 		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${gae.version}</version>
+			<groupId>com.googlecode.objectify</groupId>
+			<artifactId>objectify</artifactId>
+			<version>${objectify.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- Guice and GIN -->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>${guice.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-testing</artifactId>
-			<version>${gae.version}</version>
-			<scope>test</scope>
+			<groupId>com.google.gwt.inject</groupId>
+			<artifactId>gin</artifactId>
+			<version>${gin.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-stubs</artifactId>
-			<version>${gae.version}</version>
-			<scope>test</scope>
-			</dependency>
-
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-labs</artifactId>
-			<version>${gae.version}</version>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
 		</dependency>
 
 		<!-- JUnit -->
@@ -106,13 +115,19 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>${easymock.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
 		<plugins>
-			<!-- GWT Maven Plugin-->
+			<!-- GWT Maven Plugin -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
@@ -139,39 +154,24 @@
 				<!-- JS is only needed in the package phase, this speeds up testing -->
 				<executions>
 					<execution>
-					    <phase>prepare-package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>compile</goal>
+							<goal>resources</goal>
 						</goals>
 					</execution>
 				</executions>
 
-				<!-- Plugin configuration. There are many available options,
-					see gwt-maven-plugin documentation at codehaus.org -->
+				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+					documentation at codehaus.org -->
 				<configuration>
-					<module>com.verophyle.gae.Verophyle</module>
-					<logLevel>INFO</logLevel>					
+					<module>com.verophyle.core.VerophyleCore</module>
+					<logLevel>INFO</logLevel>
 				</configuration>
 			</plugin>
 
-			<!-- Google App Engine plugin -->
-			<plugin>
-				<groupId>net.kindleit</groupId>
-				<artifactId>maven-gae-plugin</artifactId>
-				<version>${maven.gae.version}</version>
-
-				<executions>
-					<execution>
-						<id />
-						<phase>validate</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
+			<!-- Add source folders to test classpath in order to run gwt-tests as 
+				normal junit-tests -->
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.version}</version>
@@ -194,28 +194,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- Copy static web files before executing gwt:run -->
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${maven.resources.version}</version>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/webapp</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 			<!-- Mark the project for Google Plugin for Eclipse (GPE) -->
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -232,14 +210,14 @@
 					</additionalBuildcommands>
 					<additionalProjectnatures>
 						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-						<projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
 					</additionalProjectnatures>
 				</configuration>
 			</plugin>
 
 		</plugins>
 
-		<!-- Required by m2e for import into eclipse. No effect on command line builds  -->
+		<!-- Required by m2e for import into eclipse. No effect on command line 
+			builds -->
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -250,21 +228,6 @@
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
-
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>net.kindleit</groupId>
-										<artifactId>maven-gae-plugin</artifactId>
-										<versionRange>[0.7.3,)</versionRange>
-										<goals>
-											<goal>unpack</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>org.bsc.maven</groupId>
