@@ -14,6 +14,14 @@
 	<extend-property name="locale" values="fr" />
 	<set-property-fallback name="locale" value="en" />
 
+	<set-property name="gwt.logging.developmentModeHandler" value="ENABLED"/>
+	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
+	<set-property name="gwt.logging.systemHandler" value="DISABLED"/>
+	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
+	<set-property name="gwt.logging.firebugHandler" value="DISABLED"/>
+	<set-property name="gwt.logging.popupHandler" value="DISABLED"/>
+	<set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED"/>
+
 	<entry-point class='com.verophyle.core.client.CoreEntryPoint' />
 
 	<source path='client' />
