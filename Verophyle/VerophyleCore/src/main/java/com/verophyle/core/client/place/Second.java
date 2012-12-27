@@ -1,7 +1,5 @@
 package com.verophyle.core.client.place;
 
-import com.google.gwt.place.shared.PlaceTokenizer;
-
 public class Second extends CorePlace {
 	public static final String PLACENAME = "Second";
 	
@@ -15,7 +13,7 @@ public class Second extends CorePlace {
 		return text;
 	}
 	
-	public static class Tokenizer implements PlaceTokenizer<Second> {
+	public static class Tokenizer extends CorePlace.Tokenizer<Second> {
 		@Override
 		public Second getPlace(String token) {
 			return new Second(token);
@@ -28,7 +26,7 @@ public class Second extends CorePlace {
 	}
 
 	@Override
-	public String getPlaceName() {
+	public String getPlaceKey() {
 		return PLACENAME;
 	}
 }

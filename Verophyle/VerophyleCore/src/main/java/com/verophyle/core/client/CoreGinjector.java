@@ -3,6 +3,7 @@ package com.verophyle.core.client;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
+import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.web.bindery.event.shared.EventBus;
 import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
@@ -23,10 +24,10 @@ import com.verophyle.core.client.view.AppView;
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
 	CoreLogger getLogger();
-	
 	CoreResources getCoreResources();
 	
 	EventBus getEventBus();
+	PlaceHistoryMapper getPlaceHistoryMapper();
 	PlaceHistoryHandler getPlaceHistoryHandler();
 	
 	AppView getAppView();

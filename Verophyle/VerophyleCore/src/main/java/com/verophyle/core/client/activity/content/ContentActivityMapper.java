@@ -16,9 +16,8 @@ public class ContentActivityMapper extends CoreActivityMapper<ContentActivity, C
 	private Provider<CoreActivityProxy<ContentSecondActivity, Second>> secondActivityProvider;
 	
 	@Inject
-	public ContentActivityMapper(
-			Provider<CoreActivityProxy<ContentIndexActivity, Index>> indexActivityProvider, 
-			Provider<CoreActivityProxy<ContentSecondActivity, Second>> secondActivityProvider) {
+	public ContentActivityMapper(Provider<CoreActivityProxy<ContentIndexActivity, Index>> indexActivityProvider, 
+								 Provider<CoreActivityProxy<ContentSecondActivity, Second>> secondActivityProvider) {
 		super(null);
 		this.indexActivityProvider = indexActivityProvider;
 		this.secondActivityProvider = secondActivityProvider;

@@ -10,7 +10,7 @@
 			<g:SimplePanel ui:field="sidebar"></g:SimplePanel>
 		</g:west>
 		<g:center>
-			<g:CustomScrollPanel ui:field="content"></g:CustomScrollPanel>
+			<g:SimplePanel ui:field="content"></g:SimplePanel>
 		</g:center>
 		<g:south size="6">
 			<g:SimplePanel ui:field="footer"></g:SimplePanel>

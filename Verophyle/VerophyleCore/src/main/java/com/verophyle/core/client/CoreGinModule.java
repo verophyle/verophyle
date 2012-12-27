@@ -54,7 +54,7 @@ public class CoreGinModule extends AbstractGinModule {
 		
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);
-		
+				
 		// activities
 		bind(HeaderActivityManager.class).in(Singleton.class);
 		bind(HeaderActivityMapper.class).in(Singleton.class);
