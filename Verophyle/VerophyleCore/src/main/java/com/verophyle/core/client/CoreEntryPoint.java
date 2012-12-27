@@ -7,6 +7,8 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.verophyle.core.client.place.CorePlaceHistoryMapper;
+import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.view.AppView;
 
 public class CoreEntryPoint implements EntryPoint {
@@ -14,6 +16,8 @@ public class CoreEntryPoint implements EntryPoint {
 	
 	public void onModuleLoad() {
 		injector.getLogger().log(Level.INFO, this.getClass().getName() + " onModuleLoad()");
+		
+		CorePlaceHistoryMapper.register(Index.KEY, new Index.Tokenizer());
 		
 		AppView appView = injector.getAppView();
 		

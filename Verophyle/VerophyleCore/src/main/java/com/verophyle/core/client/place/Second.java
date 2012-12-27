@@ -1,7 +1,7 @@
 package com.verophyle.core.client.place;
 
 public class Second extends CorePlace {
-	public static final String PLACENAME = "Second";
+	public static final String KEY = "Second";
 	
 	private String text;
 
@@ -27,6 +27,6 @@ public class Second extends CorePlace {
 
 	@Override
 	public String getPlaceKey() {
-		return PLACENAME;
+		return KEY;
 	}
 }
