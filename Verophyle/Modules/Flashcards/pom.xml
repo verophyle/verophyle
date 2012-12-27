@@ -58,13 +58,6 @@
 
 		<dependency>
 			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
 			<scope>runtime</scope>
@@ -157,7 +150,6 @@
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>compile</goal>
-							<goal>resources</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -216,8 +208,7 @@
 
 		</plugins>
 
-		<!-- Required by m2e for import into eclipse. No effect on command line 
-			builds -->
+		<!-- Required by m2e for import into eclipse. No effect on command line builds -->
 		<pluginManagement>
 			<plugins>
 				<plugin>
