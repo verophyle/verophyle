@@ -6,11 +6,11 @@
 		<g:north size="8">
 			<g:SimplePanel ui:field="header"></g:SimplePanel>
 		</g:north>
-		<g:west size="6">
+		<g:west size="20">
 			<g:SimplePanel ui:field="sidebar"></g:SimplePanel>
 		</g:west>
 		<g:center>
-			<g:SimplePanel ui:field="content"></g:SimplePanel>
+			<g:CustomScrollPanel ui:field="content"></g:CustomScrollPanel>
 		</g:center>
 		<g:south size="6">
 			<g:SimplePanel ui:field="footer"></g:SimplePanel>

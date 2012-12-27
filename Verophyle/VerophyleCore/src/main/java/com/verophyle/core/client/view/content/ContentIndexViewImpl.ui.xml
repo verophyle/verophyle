@@ -11,7 +11,62 @@
 	<g:FlowPanel styleName="{res.css.content}">
 		<g:HTML>
 			<div class="{res.css.contentBody}">
-				Verophyle is in stealth mode.
+				<h1>Verophyle is in stealth mode.</h1>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eros enim, 
+				facilisis quis laoreet quis, rutrum a nibh. Suspendisse vitae risus sem. Cras 
+				tellus justo, varius at commodo viverra, placerat eget neque. Cras elit massa, 
+				tristique ut porta ut, placerat et libero. Vestibulum nec rhoncus sapien. 
+				Suspendisse consequat molestie tortor at porta. Proin eget massa vitae massa 
+				semper commodo. Praesent vel ornare odio. Ut ullamcorper erat vitae purus 
+				commodo convallis rhoncus elit vehicula. Donec nisl nisl, posuere ut facilisis 
+				in, aliquet in felis. Maecenas sed lectus sed urna pharetra dapibus. Phasellus 
+				iaculis quam eget massa dapibus semper. Vivamus lectus erat, iaculis ac aliquet 
+				eu, facilisis vitae nisl. Praesent at felis lectus</p>
+
+				<p>In imperdiet euismod risus, sed placerat libero tristique ut. Cum sociis 
+				natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In 
+				rutrum, erat a feugiat elementum, felis libero bibendum mi, nec aliquet tortor 
+				eros in turpis. Sed vel quam dolor. Etiam cursus laoreet fermentum. Class 
+				aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos 
+				himenaeos. Praesent pulvinar fermentum turpis, eu dictum dolor adipiscing id. 
+				Aenean tempor enim sed lorem rutrum vitae interdum lorem ultrices. Duis quis 
+				elit leo. Nulla facilisi. Ut nec leo mi. Sed tincidunt iaculis pellentesque. 
+				Aliquam tellus turpis, congue sed sollicitudin eget, egestas sit amet lorem. 
+				Maecenas consectetur velit eget lectus posuere ut pulvinar ante cursus. 
+				Pellentesque vel purus id sem lacinia vestibulum vel eu neque.</p>
+<!-- 				
+				<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere 
+				cubilia Curae; Morbi congue urna sit amet justo ornare adipiscing. Vestibulum 
+				imperdiet, augue id egestas convallis, dolor orci varius leo, eget pharetra 
+				purus libero eget tortor. In hac habitasse platea dictumst. Nunc eu feugiat 
+				eros. Curabitur volutpat augue id ante molestie ut eleifend ipsum sollicitudin. 
+				Nunc consequat, justo id tempor consectetur, magna dui posuere lectus, nec 
+				accumsan enim sem nec lorem. Donec blandit placerat diam in mollis. Proin non 
+				orci libero. Donec laoreet adipiscing ornare. Ut sed dui sit amet nisi lacinia 
+				euismod. Nulla nisi leo, rutrum in pharetra hendrerit, vestibulum non lacus. 
+				Sed nec leo mi, ac pharetra dolor.</p>
+
+				<p>Maecenas in libero nunc, iaculis volutpat dui. Vivamus dictum enim a dolor 
+				aliquet viverra. Sed ac erat lacus. Fusce blandit pharetra lectus in lobortis. 
+				Mauris mi lectus, porta in gravida at, ullamcorper dignissim tortor. Aliquam 
+				quis lacus ipsum. Aliquam erat volutpat. Ut id odio sit amet mauris gravida 
+				elementum. Sed interdum rhoncus facilisis. Integer euismod libero sed purus 
+				luctus non lobortis metus malesuada. Fusce quis ipsum eu nibh convallis 
+				tincidunt vitae a lectus. Nam luctus, lectus vel eleifend fringilla, est felis 
+				pharetra elit, in pellentesque dui lectus vitae turpis. Duis ornare dignissim 
+				metus, et mattis est elementum quis. Nulla malesuada arcu ut mi varius eu 
+				tempus urna rhoncus.</p>
+
+				<p>Vestibulum pulvinar, diam in aliquam sodales, eros turpis scelerisque erat, 
+				tincidunt aliquet nulla neque in arcu. Phasellus ut malesuada tortor. Nam 
+				commodo ullamcorper nulla vitae convallis. Donec vehicula, sapien vitae commodo 
+				congue, mi nisi sodales mi, id varius risus nisl eu turpis. Nulla tellus velit, 
+				lobortis in gravida eu, ultrices non tortor. Duis et blandit quam. Fusce et 
+				mauris erat. Pellentesque habitant morbi tristique senectus et netus et 
+				malesuada fames ac turpis egestas. Sed fermentum egestas lacinia. Maecenas quis 
+				turpis tellus. Aenean pharetra venenatis urna id ornare.</p>
+-->				
 			</div>
 		</g:HTML>
 	</g:FlowPanel>

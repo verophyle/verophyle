@@ -10,7 +10,9 @@
 	
 	<g:HTML>
 		<div class="{res.css.sidebar}">
-			<div>&nbsp;</div>
+			<div class="{res.css.sidebarItem}">&nbsp;</div>
+			<div class="{res.css.sidebarItem}">&nbsp;</div>
+			<div class="{res.css.sidebarItem}">&nbsp;</div>
 		</div>
 	</g:HTML>
 </ui:UiBinder>

@@ -8,6 +8,8 @@ public interface CoreCssResource extends CssResource {
 	String headerLogin();
 	
 	String sidebar();
+	String sidebarItem();
+	
 	String footer();
 	
 	String content();

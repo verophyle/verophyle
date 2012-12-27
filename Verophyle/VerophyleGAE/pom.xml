@@ -17,7 +17,7 @@
 		<gwt.version>2.5.0</gwt.version>
 
 		<!-- GAE -->
-		<gae.version>1.7.3</gae.version>
+		<gae.version>1.7.4</gae.version>
 		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
 		<gae.application.version>1</gae.application.version>
 
@@ -27,7 +27,6 @@
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
 		<maven.gwt.version>2.5.0</maven.gwt.version>
-		<maven.gae.version>0.9.4</maven.gae.version>
 		<maven.resources.version>2.6</maven.resources.version>
 		<maven.surefire.version>2.12.2</maven.surefire.version>
 
@@ -156,19 +155,9 @@
 
 			<!-- Google App Engine plugin -->
 			<plugin>
-				<groupId>net.kindleit</groupId>
-				<artifactId>maven-gae-plugin</artifactId>
-				<version>${maven.gae.version}</version>
-
-				<executions>
-					<execution>
-						<id />
-						<phase>validate</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>${gae.version}</version>
 			</plugin>
 
 			<!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
@@ -250,20 +239,6 @@
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
-
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>net.kindleit</groupId>
-										<artifactId>maven-gae-plugin</artifactId>
-										<versionRange>[0.7.3,)</versionRange>
-										<goals>
-											<goal>unpack</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
 
 								<pluginExecution>
 									<pluginExecutionFilter>

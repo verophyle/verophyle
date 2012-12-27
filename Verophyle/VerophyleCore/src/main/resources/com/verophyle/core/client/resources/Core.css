@@ -1,34 +1,34 @@
 @charset "UTF-8";
 
 /* colors */
-@def PRIMARY1 #D1CBA1;
-@def PRIMARY2 #A39F86;
-@def PRIMARY3 #91863E;
-@def PRIMARY4 #F0ECCC;
-@def PRIMARY5 #F0EDDB;
+@def PRIMARY1 #9F9D86;
+@def PRIMARY2 #5D5C54;
+@def PRIMARY3 #423C09;
+@def PRIMARY4 #D3D0BA;
+@def PRIMARY5 #D3D1C1;
 
-@def SECONDARY_A1 #BAC698;
-@def SECONDARY_A2 #939A7E;
-@def SECONDARY_A3 #74893B;
-@def SECONDARY_A4 #E3EDC9;
-@def SECONDARY_A5 #E7EDD7;
+@def SECONDARY_A1 #617468;
+@def SECONDARY_A2 #3D433F;
+@def SECONDARY_A3 #073016;
+@def SECONDARY_A4 #A8BFB1;
+@def SECONDARY_A5 #AFBFB5;
 
-@def SECONDARY_B1 #9E7993;
-@def SECONDARY_B1 #7B6574;
-@def SECONDARY_B1 #5D244C;
-@def SECONDARY_B1 #E0BED6;
-@def SECONDARY_B1 #E0CCDA;
+@def SECONDARY_B1 #9F8A86;
+@def SECONDARY_B2 #5D5654;
+@def SECONDARY_B3 #421309;
+@def SECONDARY_B4 #D3BEBA;
+@def SECONDARY_B5 #D3C5C1;
 
-@def COMPLEMENTARY #7B718F;
-@def COMPLEMENTARY #635D6F;
-@def COMPLEMENTARY #3F2C63;
-@def COMPLEMENTARY #C7BDDB;
-@def COMPLEMENTARY #CFC9DB;
+@def COMPLEMENTARY1 #635C6C;
+@def COMPLEMENTARY2 #3C3A3F;
+@def COMPLEMENTARY3 #16062D;
+@def COMPLEMENTARY4 #AFA7BC;
+@def COMPLEMENTARY5 #B3ADBC;
 
 /* defaults */
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 /* gwt widgets */
@@ -68,19 +68,25 @@ body {
 	overflow: hidden;
 	
 	color: black;
-	background-color: PRIMARY3;
+	background-color: PRIMARY1;
 }
 
 	.headerLogo {
 		font-size: 4em;
 		line-height: 2em;
-		margin-left: 0.5em;
+		width: 5em;
 				
 		flex: none;
 		-o-flex: none;
 		-ms-flex: none;
 		-moz-flex: none;
 		-webkit-flex: none;
+		
+		text-align: center;
+		text-shadow: 2px 2px COMPLEMENTARY3;
+		
+		color: PRIMARY5;
+		background-color: SECONDARY_B3;
 	}
 	
 	.headerLogin {
@@ -93,6 +99,7 @@ body {
 
 .sidebar {
 	display: block;
+	width: 20em;
 	height: 100%;
 	
 	overflow: hidden;
@@ -100,6 +107,17 @@ body {
 	color: black;
 	background-color: PRIMARY3;
 }
+	
+	.sidebarItem {
+		margin: 2em;
+		padding: 1em;
+		
+		border-top: 3px solid COMPLEMENTARY3;
+		border-bottom: 3px solid COMPLEMENTARY3;
+
+		color: black;
+		background-color: SECONDARY_B5;
+	}
 
 .footer {
 	display: block;
@@ -108,24 +126,44 @@ body {
 	overflow: hidden;
 	
 	color: black;
-	background-color: PRIMARY1;
+	background-color: COMPLEMENTARY1;
 }
 
 .content {
 	display: block;
+	width: 100%;
 	height: 100%;
-	
-	overflow: hidden;
-	
+
 	color: black;
-	background-color: PRIMARY1;
+	background-color: red;
 }
 
 	.contentBody {
 		display: block;
-		height: 100%;
-		width: 100%;
 		
-		padding: 2em;
+		width: 40em;
+		padding-top: 4em;
+		padding-left: 6em;
+		padding-right: 6em;
+				
+		font-family: 'Poly', serif;
+		font-weight: 400;
+		
+		background-color: white;
 	}
+
+		.contentBody h1 {
+			font-size: 2em;
+			font-variant: small-caps;
+			
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+		}
+		
+		.contentBody p {
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+		}
+
+
 
