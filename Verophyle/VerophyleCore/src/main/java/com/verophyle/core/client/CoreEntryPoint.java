@@ -9,15 +9,28 @@ import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.core.client.place.Index;
+import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.AppView;
 
 public class CoreEntryPoint implements EntryPoint {
-	private final CoreGinjector injector = GWT.create(CoreGinjector.class);
+	private static final CoreGinjector injector = GWT.create(CoreGinjector.class);
+	
+	private static boolean loaded = false;
 	
 	public void onModuleLoad() {
-		injector.getLogger().log(Level.INFO, this.getClass().getName() + " onModuleLoad()");
-		
+		injector.getLogger().log(Level.INFO, this.getClass().getName() + ".onModuleLoad()");
+		loaded = true;
+	}
+	
+	public static boolean isLoaded() {
+		return loaded;
+	}
+	
+	public static void init() {
+		injector.getLogger().log(Level.INFO, "CoreEntryPoint.init()");
+
 		CorePlaceHistoryMapper.register(Index.KEY, new Index.Tokenizer());
+		CorePlaceHistoryMapper.register(Second.KEY, new Second.Tokenizer());
 		
 		AppView appView = injector.getAppView();
 		
@@ -34,8 +47,13 @@ public class CoreEntryPoint implements EntryPoint {
 		contentManager.setDisplay(appView.getContent());
 
 		RootLayoutPanel.get().add(appView);
-		
+	}
+	
+	public static void start() {		
+		injector.getLogger().log(Level.INFO, "CoreEntryPoint.start()");
+
 		PlaceHistoryHandler placeHistoryHandler = injector.getPlaceHistoryHandler();
-		placeHistoryHandler.handleCurrentHistory();
-	}	
+		placeHistoryHandler.handleCurrentHistory();		
+	}
+	
 }

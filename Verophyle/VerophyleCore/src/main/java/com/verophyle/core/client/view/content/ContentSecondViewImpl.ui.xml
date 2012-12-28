@@ -1,14 +1,16 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>
-	</ui:style>
-	<g:FlowPanel>
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	
+	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
+	ui:defaultLocale="en">
+	
+	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>	
+
+	<g:FlowPanel styleName="{res.css.content}">
 		<g:HTML>
-			<h1>Content Second View</h1>
-			<p>Place transitions: </p>
+			<h1>Second Place</h1>
+			<p>This illustrates the use of a second place.</p>
 		</g:HTML> 
-		<g:Label ui:field="label"></g:Label>
-		<g:Hyperlink ui:field="hyperLink"></g:Hyperlink>
 	</g:FlowPanel>
 </ui:UiBinder>

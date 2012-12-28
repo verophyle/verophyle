@@ -1,21 +1,27 @@
 package com.verophyle.core.client.place;
 
 import java.util.HashMap;
+import java.util.logging.Level;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.inject.Inject;
+import com.verophyle.core.client.CoreLogger;
 
 public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
 	
 	private static CorePlaceHistoryMapper instance = null;
-	private static HashMap<String, CorePlace.Tokenizer<? extends Place>> tokenizers = new HashMap<String, CorePlace.Tokenizer<? extends Place>>();
+	private static final HashMap<String, CorePlace.Tokenizer<? extends Place>> tokenizers = 
+			new HashMap<String, CorePlace.Tokenizer<? extends Place>>();
+	
+	private CoreLogger logger;
 	
 	@Inject
-	public CorePlaceHistoryMapper() throws Exception {
+	public CorePlaceHistoryMapper(CoreLogger logger) throws Exception {
 		if (instance != null)
 			throw new Exception("CorePlaceHistoryMapper must be a singleton.");
 		instance = this;
+		this.logger = logger;
 	}
 
 	public static CorePlaceHistoryMapper get() {
@@ -35,6 +41,8 @@ public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
 			if (tokenizer != null)
 				return tokenizer.getPlace(tokens.length > 1 ? tokens[1] : null);
 		}
+		
+		logger.log(Level.SEVERE, "unable to get place for " + token);
 		
 		return null;
 	}

@@ -157,7 +157,7 @@
 				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
 					documentation at codehaus.org -->
 				<configuration>
-					<module>com.verophyle.core.VerophyleCore</module>
+					<module>com.verophyle.flashcards.VerophyleFlashcards</module>
 					<logLevel>INFO</logLevel>
 				</configuration>
 			</plugin>
