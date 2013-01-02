@@ -23,8 +23,8 @@
 
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
-		<maven.surefire.version>2.12.2</maven.surefire.version>
-		<maven.gwt.version>2.4.0</maven.gwt.version>
+		<maven.surefire.version>2.13</maven.surefire.version>
+		<maven.gwt.version>2.5.0</maven.gwt.version>
 
 		<!-- Misc -->
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -55,7 +55,7 @@
 			<version>${gwt.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-				
+
 		<!-- RequestFactory -->
 		<dependency>
 			<groupId>com.google.web.bindery</groupId>
@@ -119,24 +119,6 @@
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>${maven.gwt.version}</version>
 
-				<dependencies>
-					<dependency>
-						<groupId>com.google.gwt</groupId>
-						<artifactId>gwt-user</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>com.google.gwt</groupId>
-						<artifactId>gwt-dev</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>com.google.gwt</groupId>
-						<artifactId>gwt-servlet</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-				</dependencies>
-
 				<!-- JS is only needed in the package phase, this speeds up testing -->
 				<executions>
 					<execution>
@@ -151,9 +133,18 @@
 				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
 					documentation at codehaus.org -->
 				<configuration>
+					<strict>true</strict>
 					<module>com.verophyle.core.VerophyleCore</module>
 					<logLevel>INFO</logLevel>
 				</configuration>
+
+				<dependencies>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-dev</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 			<!-- Add source folders to test classpath in order to run gwt-tests as 
