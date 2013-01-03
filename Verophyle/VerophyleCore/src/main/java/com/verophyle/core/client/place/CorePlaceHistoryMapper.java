@@ -12,7 +12,7 @@ public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
 	
 	private static CorePlaceHistoryMapper instance = null;
 	private static final HashMap<String, CorePlace.Tokenizer<? extends Place>> tokenizers = 
-			new HashMap<String, CorePlace.Tokenizer<? extends Place>>();
+		new HashMap<String, CorePlace.Tokenizer<? extends Place>>();
 	
 	private CoreLogger logger;
 	

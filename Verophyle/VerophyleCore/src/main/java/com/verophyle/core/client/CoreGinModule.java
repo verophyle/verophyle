@@ -45,7 +45,7 @@ import com.verophyle.core.client.view.sidebar.SidebarView;
 import com.verophyle.core.client.view.sidebar.SidebarViewImpl;
 
 public class CoreGinModule extends AbstractGinModule {
-
+	
 	@Override
 	protected void configure() {
 		// global objects

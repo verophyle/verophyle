@@ -7,12 +7,12 @@ import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.verophyle.core.client.CoreLogger;
 
-public class FlashcardsLoggerImpl implements CoreLogger {
+public class FlashcardsLogger implements CoreLogger {
 
 	private static Logger logger = Logger.getLogger(GWT.getModuleName());
 	
 	@Inject
-	public FlashcardsLoggerImpl() {
+	public FlashcardsLogger() {
 	}
 	
 	@Override

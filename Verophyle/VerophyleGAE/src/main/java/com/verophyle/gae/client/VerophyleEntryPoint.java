@@ -1,5 +1,7 @@
 package com.verophyle.gae.client;
 
+import java.util.logging.Level;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.Scheduler;
 import com.verophyle.core.client.CoreEntryPoint;
@@ -9,7 +11,9 @@ public class VerophyleEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		Scheduler.get().scheduleEntry(new Scheduler.RepeatingCommand() {
+		VerophyleGinjector.INSTANCE.getVerophyleLogger().log(Level.INFO, this.getClass().getName() + ".onModuleLoad()");
+		
+		Scheduler.get().scheduleFinally(new Scheduler.RepeatingCommand() {
 
 			@Override
 			public boolean execute() {
