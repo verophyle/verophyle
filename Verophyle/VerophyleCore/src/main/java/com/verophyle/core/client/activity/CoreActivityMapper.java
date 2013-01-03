@@ -1,6 +1,5 @@
 package com.verophyle.core.client.activity;
 
-import java.util.HashMap;
 import java.util.logging.Level;
 
 import com.google.gwt.activity.shared.Activity;
@@ -11,21 +10,18 @@ import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.place.CorePlace;
 
 public abstract class CoreActivityMapper<A extends CoreActivity, P extends CorePlace> implements ActivityMapper {	
-
-	private final HashMap<String, Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>>> providers = 
-			new HashMap<String, Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>>>();
-	
+	private CoreActivityRegistry registry;
 	private Provider<CoreActivityProxy<A, P>> defaultProvider;
 	private CoreLogger logger;
 	
-	public CoreActivityMapper(Provider<CoreActivityProxy<A, P>> defaultProvider, CoreLogger logger) {
+	public CoreActivityMapper(CoreActivityRegistry registry, Provider<CoreActivityProxy<A, P>> defaultProvider, CoreLogger logger) {
+		this.registry = registry;
 		this.defaultProvider = defaultProvider;
 		this.logger = logger;
 	}
 	
 	protected void register(String placeKey, Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>> provider) {
-		logger.log(Level.INFO, "CoreActivityMapper.register(\"" + placeKey + "\", ...)");
-		providers.put(placeKey, provider);
+		registry.register(placeKey, provider);
 	}
 	
 	@Override
@@ -34,7 +30,7 @@ public abstract class CoreActivityMapper<A extends CoreActivity, P extends CoreP
 		
 		if (corePlace != null) {
 			Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>> provider =
-				providers.get(corePlace.getPlaceKey());
+				registry.getProvider(corePlace.getPlaceKey());
 			
 			if (provider != null) {
 				CoreActivityProxy<? extends CoreActivity, ? extends CorePlace> activity =

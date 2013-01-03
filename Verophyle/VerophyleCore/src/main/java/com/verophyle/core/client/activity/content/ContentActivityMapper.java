@@ -12,10 +12,11 @@ import com.verophyle.core.client.place.Second;
 public class ContentActivityMapper extends CoreActivityMapper<ContentActivity, CorePlace> {
 
 	@Inject
-	public ContentActivityMapper(Provider<CoreActivityProxy<ContentIndexActivity, Index>> indexActivityProvider, 
+	public ContentActivityMapper(ContentActivityRegistry registry,
+								 Provider<CoreActivityProxy<ContentIndexActivity, Index>> indexActivityProvider, 
 								 Provider<CoreActivityProxy<ContentSecondActivity, Second>> secondActivityProvider,
 								 CoreLogger logger) {
-		super(null, logger);
+		super(registry, null, logger);
 		
 		register(Index.KEY, indexActivityProvider);
 		register(Second.KEY, secondActivityProvider);

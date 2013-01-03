@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.inject.Inject;
+import com.verophyle.core.client.CoreGinjector;
 import com.verophyle.core.client.CoreLogger;
 
 public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
@@ -25,7 +26,7 @@ public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
 	}
 
 	public static CorePlaceHistoryMapper get() {
-		return instance;
+		return instance != null ? instance : (CorePlaceHistoryMapper)CoreGinjector.INSTANCE.getPlaceHistoryMapper();
 	}
 	
 	public static void register(String key, CorePlace.Tokenizer<? extends Place> tokenizer) {

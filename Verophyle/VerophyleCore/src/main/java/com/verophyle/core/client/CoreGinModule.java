@@ -10,8 +10,11 @@ import com.google.inject.TypeLiteral;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.verophyle.core.client.activity.CoreActivityProxy;
+import com.verophyle.core.client.activity.CoreActivityRegistry;
+import com.verophyle.core.client.activity.CoreActivityRegistryImpl;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
 import com.verophyle.core.client.activity.content.ContentActivityMapper;
+import com.verophyle.core.client.activity.content.ContentActivityRegistry;
 import com.verophyle.core.client.activity.content.ContentIndexActivity;
 import com.verophyle.core.client.activity.content.ContentIndexActivityImpl;
 import com.verophyle.core.client.activity.content.ContentSecondActivity;
@@ -71,6 +74,7 @@ public class CoreGinModule extends AbstractGinModule {
 		bind(new TypeLiteral<CoreActivityProxy<FooterActivity, CorePlace>>(){});
 		bind(FooterActivity.class).to(FooterActivityImpl.class);
 		
+		bind(ContentActivityRegistry.class).to(CoreActivityRegistryImpl.class).in(Singleton.class);
 		bind(ContentActivityManager.class).in(Singleton.class);
 		bind(ContentActivityMapper.class).in(Singleton.class);
 		

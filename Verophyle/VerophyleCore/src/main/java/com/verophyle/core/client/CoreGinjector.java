@@ -9,6 +9,7 @@ import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.web.bindery.event.shared.EventBus;
 import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
+import com.verophyle.core.client.activity.content.ContentActivityRegistry;
 import com.verophyle.core.client.activity.content.ContentIndexActivity;
 import com.verophyle.core.client.activity.content.ContentSecondActivity;
 import com.verophyle.core.client.activity.footer.FooterActivityManager;
@@ -33,9 +34,12 @@ public interface CoreGinjector extends Ginjector {
 	
 	AppView getAppView();
 	
+	
 	HeaderActivityManager getHeaderActivityManager();
 	SidebarActivityManager getSidebarActivityManager();
 	FooterActivityManager getFooterActivityManager();
+	
+	ContentActivityRegistry getContentActivityRegistry();
 	ContentActivityManager getContentActivityManager();
 	
 	CoreActivityProxy<ContentIndexActivity, Index> getContentIndexActivity();
