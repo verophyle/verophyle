@@ -1,5 +1,6 @@
 package com.verophyle.flashcards.client;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.inject.Provides;
@@ -18,6 +19,7 @@ import com.verophyle.flashcards.client.activity.content.ContentFlashcardsActivit
 import com.verophyle.flashcards.client.place.Flashcards;
 import com.verophyle.flashcards.client.view.content.ContentFlashcardsView;
 import com.verophyle.flashcards.client.view.content.ContentFlashcardsViewImpl;
+import com.verophyle.flashcards.shared.FlashcardsRequestFactory;
 
 public class FlashcardsGinModule extends AbstractGinModule {
 	
@@ -52,6 +54,14 @@ public class FlashcardsGinModule extends AbstractGinModule {
 	@Singleton
 	public CorePlaceHistoryRegistry getPlaceHistoryRegistry() {
 		return CoreGinjector.INSTANCE.getPlaceHistoryRegistry();
+	}
+	
+	@Provides
+	@Singleton
+	public FlashcardsRequestFactory getRequestFactory(EventBus eventBus) {
+		FlashcardsRequestFactory requestFactory = GWT.create(FlashcardsRequestFactory.class);
+		requestFactory.initialize(eventBus);
+		return requestFactory;
 	}
 	
 	@Provides
