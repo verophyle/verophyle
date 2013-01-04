@@ -15,10 +15,20 @@
   	</init-param>
   </servlet>
   
+  <servlet>
+    <servlet-name>remoteLogging</servlet-name>
+    <servlet-class>com.google.gwt.logging.server.RemoteLoggingServiceImpl</servlet-class>
+  </servlet>
+  
   <!-- Servlet mappings -->
   <servlet-mapping>
   	<servlet-name>requestFactoryServlet</servlet-name>
   	<url-pattern>/gwtRequest</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>remoteLogging</servlet-name>
+    <url-pattern>/Verophyle/remote_logging</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

@@ -8,6 +8,10 @@ import com.google.inject.TypeLiteral;
 import com.google.web.bindery.event.shared.EventBus;
 import com.verophyle.core.client.CoreGinjector;
 import com.verophyle.core.client.activity.CoreActivityProxy;
+import com.verophyle.core.client.activity.CoreActivityRegistry;
+import com.verophyle.core.client.activity.content.ContentActivity;
+import com.verophyle.core.client.place.CorePlace;
+import com.verophyle.core.client.place.CorePlaceHistoryRegistry;
 import com.verophyle.flashcards.client.activity.content.ContentActivityMapper;
 import com.verophyle.flashcards.client.activity.content.ContentFlashcardsActivity;
 import com.verophyle.flashcards.client.activity.content.ContentFlashcardsActivityImpl;
@@ -42,6 +46,18 @@ public class FlashcardsGinModule extends AbstractGinModule {
 	@Singleton
 	public PlaceController getPlaceController(EventBus eventBus) {
 		return CoreGinjector.INSTANCE.getPlaceController();
+	}
+	
+	@Provides
+	@Singleton
+	public CorePlaceHistoryRegistry getPlaceHistoryRegistry() {
+		return CoreGinjector.INSTANCE.getPlaceHistoryRegistry();
+	}
+	
+	@Provides
+	@Singleton
+	public CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry() {
+		return CoreGinjector.INSTANCE.getContentActivityRegistry();
 	}
 	
 }

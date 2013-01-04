@@ -5,13 +5,16 @@ import com.google.inject.Provider;
 import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.activity.CoreActivityMapper;
 import com.verophyle.core.client.activity.CoreActivityProxy;
+import com.verophyle.core.client.activity.CoreActivityRegistry;
 import com.verophyle.core.client.place.CorePlace;
 
 public class FooterActivityMapper extends CoreActivityMapper<FooterActivity, CorePlace> {
 
 	@Inject
-	public FooterActivityMapper(Provider<CoreActivityProxy<FooterActivity, CorePlace>> provider, CoreLogger logger) {
-		super(provider, logger);
+	public FooterActivityMapper(CoreActivityRegistry<FooterActivity, CorePlace> registry,
+								Provider<CoreActivityProxy<FooterActivity, CorePlace>> provider, 
+								CoreLogger logger) {
+		super(registry, provider, logger);
 	}
 
 }

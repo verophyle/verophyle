@@ -10,17 +10,17 @@ import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.place.CorePlace;
 
 public abstract class CoreActivityMapper<A extends CoreActivity, P extends CorePlace> implements ActivityMapper {	
-	private CoreActivityRegistry registry;
+	private CoreActivityRegistry<A, P> registry;
 	private Provider<CoreActivityProxy<A, P>> defaultProvider;
 	private CoreLogger logger;
 	
-	public CoreActivityMapper(CoreActivityRegistry registry, Provider<CoreActivityProxy<A, P>> defaultProvider, CoreLogger logger) {
+	public CoreActivityMapper(CoreActivityRegistry<A, P> registry, Provider<CoreActivityProxy<A, P>> defaultProvider, CoreLogger logger) {
 		this.registry = registry;
 		this.defaultProvider = defaultProvider;
 		this.logger = logger;
 	}
 	
-	protected void register(String placeKey, Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>> provider) {
+	protected void register(String placeKey, Provider<? extends CoreActivityProxy<? extends A, ? extends P>> provider) {
 		registry.register(placeKey, provider);
 	}
 	

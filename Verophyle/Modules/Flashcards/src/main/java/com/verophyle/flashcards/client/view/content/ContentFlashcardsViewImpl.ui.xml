@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	
-	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
+	ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
 	ui:defaultLocale="en">
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
@@ -11,7 +11,7 @@
 	<g:FlowPanel styleName="{res.css.content}">
 		<g:HTML>
 			<div class="{res.css.contentBody}">
-				<h1>Flashcards</h1>
+				<h1><ui:msg key="flashcardsTitle">Flashcards</ui:msg></h1>
 				
 				<p>This is where you'll see a list of flashcard decks.</p>
 			</div>

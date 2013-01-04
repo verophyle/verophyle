@@ -6,7 +6,6 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.AppView;
@@ -24,23 +23,25 @@ public class CoreEntryPoint implements EntryPoint {
 	}
 	
 	public static void init() {
-		CoreGinjector.INSTANCE.getLogger().log(Level.INFO, "CoreEntryPoint.init()");
+		CoreGinjector injector = CoreGinjector.INSTANCE;
+		
+		injector.getLogger().log(Level.INFO, "CoreEntryPoint.init()");
 
-		CorePlaceHistoryMapper.register(Index.KEY, new Index.Tokenizer());
-		CorePlaceHistoryMapper.register(Second.KEY, new Second.Tokenizer());
+		injector.getPlaceHistoryRegistry().register(Index.KEY, new Index.Tokenizer());
+		injector.getPlaceHistoryRegistry().register(Second.KEY, new Second.Tokenizer());
 		
-		AppView appView = CoreGinjector.INSTANCE.getAppView();
+		AppView appView = injector.getAppView();
 		
-		ActivityManager headerManager = CoreGinjector.INSTANCE.getHeaderActivityManager();
+		ActivityManager headerManager = injector.getHeaderActivityManager();
 		headerManager.setDisplay(appView.getHeader());
 		
-		ActivityManager sidebarManager = CoreGinjector.INSTANCE.getSidebarActivityManager();
+		ActivityManager sidebarManager = injector.getSidebarActivityManager();
 		sidebarManager.setDisplay(appView.getSidebar());
 		
-		ActivityManager footerManager = CoreGinjector.INSTANCE.getFooterActivityManager();
+		ActivityManager footerManager = injector.getFooterActivityManager();
 		footerManager.setDisplay(appView.getFooter());
 		
-		ActivityManager contentManager = CoreGinjector.INSTANCE.getContentActivityManager();
+		ActivityManager contentManager = injector.getContentActivityManager();
 		contentManager.setDisplay(appView.getContent());
 
 		RootLayoutPanel.get().add(appView);

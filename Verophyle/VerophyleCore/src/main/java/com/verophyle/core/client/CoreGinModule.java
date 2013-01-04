@@ -12,15 +12,17 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.CoreActivityRegistry;
 import com.verophyle.core.client.activity.CoreActivityRegistryImpl;
+import com.verophyle.core.client.activity.content.ContentActivity;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
 import com.verophyle.core.client.activity.content.ContentActivityMapper;
-import com.verophyle.core.client.activity.content.ContentActivityRegistry;
 import com.verophyle.core.client.activity.content.ContentIndexActivity;
 import com.verophyle.core.client.activity.content.ContentIndexActivityImpl;
 import com.verophyle.core.client.activity.content.ContentSecondActivity;
 import com.verophyle.core.client.activity.content.ContentSecondActivityImpl;
 import com.verophyle.core.client.activity.footer.FooterActivity;
 import com.verophyle.core.client.activity.footer.FooterActivityImpl;
+import com.verophyle.core.client.activity.footer.FooterActivityManager;
+import com.verophyle.core.client.activity.footer.FooterActivityMapper;
 import com.verophyle.core.client.activity.header.HeaderActivity;
 import com.verophyle.core.client.activity.header.HeaderActivityImpl;
 import com.verophyle.core.client.activity.header.HeaderActivityManager;
@@ -31,6 +33,8 @@ import com.verophyle.core.client.activity.sidebar.SidebarActivityManager;
 import com.verophyle.core.client.activity.sidebar.SidebarActivityMapper;
 import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.place.CorePlaceHistoryMapper;
+import com.verophyle.core.client.place.CorePlaceHistoryRegistry;
+import com.verophyle.core.client.place.CorePlaceHistoryRegistryImpl;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.resources.CoreResources;
@@ -57,24 +61,36 @@ public class CoreGinModule extends AbstractGinModule {
 		
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);
+		bind(CorePlaceHistoryRegistry.class).to(CorePlaceHistoryRegistryImpl.class).in(Singleton.class);
 				
 		// activities
+		bind(new TypeLiteral<CoreActivityRegistry<HeaderActivity, CorePlace>>(){})
+			.to(new TypeLiteral<CoreActivityRegistryImpl<HeaderActivity, CorePlace>>(){})
+			.in(Singleton.class);
 		bind(HeaderActivityManager.class).in(Singleton.class);
-		bind(HeaderActivityMapper.class).in(Singleton.class);
-		
+		bind(HeaderActivityMapper.class).in(Singleton.class);		
 		bind(new TypeLiteral<CoreActivityProxy<HeaderActivity, CorePlace>>(){});
 		bind(HeaderActivity.class).to(HeaderActivityImpl.class);
 		
+		bind(new TypeLiteral<CoreActivityRegistry<SidebarActivity, CorePlace>>(){})
+			.to(new TypeLiteral<CoreActivityRegistryImpl<SidebarActivity, CorePlace>>(){})
+			.in(Singleton.class);
 		bind(SidebarActivityManager.class).in(Singleton.class);
 		bind(SidebarActivityMapper.class).in(Singleton.class);
-		
 		bind(new TypeLiteral<CoreActivityProxy<SidebarActivity, CorePlace>>(){});
 		bind(SidebarActivity.class).to(SidebarActivityImpl.class);
 		
+		bind(new TypeLiteral<CoreActivityRegistry<FooterActivity, CorePlace>>(){})
+			.to(new TypeLiteral<CoreActivityRegistryImpl<FooterActivity, CorePlace>>(){})
+			.in(Singleton.class);
+		bind(FooterActivityManager.class).in(Singleton.class);
+		bind(FooterActivityMapper.class).in(Singleton.class);
 		bind(new TypeLiteral<CoreActivityProxy<FooterActivity, CorePlace>>(){});
 		bind(FooterActivity.class).to(FooterActivityImpl.class);
 		
-		bind(ContentActivityRegistry.class).to(CoreActivityRegistryImpl.class).in(Singleton.class);
+		bind(new TypeLiteral<CoreActivityRegistry<ContentActivity, CorePlace>>(){})
+			.to(new TypeLiteral<CoreActivityRegistryImpl<ContentActivity, CorePlace>>(){})
+			.in(Singleton.class);
 		bind(ContentActivityManager.class).in(Singleton.class);
 		bind(ContentActivityMapper.class).in(Singleton.class);
 		

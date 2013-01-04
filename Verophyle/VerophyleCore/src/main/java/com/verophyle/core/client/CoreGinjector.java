@@ -7,16 +7,14 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.web.bindery.event.shared.EventBus;
-import com.verophyle.core.client.activity.CoreActivityProxy;
+import com.verophyle.core.client.activity.CoreActivityRegistry;
+import com.verophyle.core.client.activity.content.ContentActivity;
 import com.verophyle.core.client.activity.content.ContentActivityManager;
-import com.verophyle.core.client.activity.content.ContentActivityRegistry;
-import com.verophyle.core.client.activity.content.ContentIndexActivity;
-import com.verophyle.core.client.activity.content.ContentSecondActivity;
 import com.verophyle.core.client.activity.footer.FooterActivityManager;
 import com.verophyle.core.client.activity.header.HeaderActivityManager;
 import com.verophyle.core.client.activity.sidebar.SidebarActivityManager;
-import com.verophyle.core.client.place.Index;
-import com.verophyle.core.client.place.Second;
+import com.verophyle.core.client.place.CorePlace;
+import com.verophyle.core.client.place.CorePlaceHistoryRegistry;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.AppView;
 
@@ -28,20 +26,18 @@ public interface CoreGinjector extends Ginjector {
 	CoreResources getCoreResources();
 	
 	EventBus getEventBus();
-	PlaceController getPlaceController();
+	PlaceController getPlaceController();	
+
 	PlaceHistoryMapper getPlaceHistoryMapper();
 	PlaceHistoryHandler getPlaceHistoryHandler();
+	CorePlaceHistoryRegistry getPlaceHistoryRegistry();
 	
-	AppView getAppView();
-	
+	AppView getAppView();	
 	
 	HeaderActivityManager getHeaderActivityManager();
 	SidebarActivityManager getSidebarActivityManager();
 	FooterActivityManager getFooterActivityManager();
-	
-	ContentActivityRegistry getContentActivityRegistry();
+
+	CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry();
 	ContentActivityManager getContentActivityManager();
-	
-	CoreActivityProxy<ContentIndexActivity, Index> getContentIndexActivity();
-	CoreActivityProxy<ContentSecondActivity, Second> getContentSecondActivity();
 }

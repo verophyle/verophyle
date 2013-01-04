@@ -3,7 +3,6 @@ package com.verophyle.flashcards.client;
 import java.util.logging.Level;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.verophyle.core.client.place.CorePlaceHistoryMapper;
 import com.verophyle.flashcards.client.place.Flashcards;
 
 public class FlashcardsEntryPoint implements EntryPoint {
@@ -20,12 +19,14 @@ public class FlashcardsEntryPoint implements EntryPoint {
 	}
 	
 	public static void init() {
-		FlashcardsGinjector.INSTANCE.getLogger().log(Level.INFO, "FlashcardsEntryPoint.init()");
+		FlashcardsGinjector injector = FlashcardsGinjector.INSTANCE;
 		
-		// register place tokenizer
-		CorePlaceHistoryMapper.register(Flashcards.KEY, new Flashcards.Tokenizer());
+		injector.getLogger().log(Level.INFO, "FlashcardsEntryPoint.init()");
 		
-		// instantiate activity mapper to get providers registered
-		FlashcardsGinjector.INSTANCE.getContentActivityMapper();
+		// register place tokenizer		
+		injector.getPlaceHistoryRegistry().register(Flashcards.KEY, new Flashcards.Tokenizer());
+		
+		// register activity providers
+		injector.registerContentActivityMapper();
 	}
 }

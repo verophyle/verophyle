@@ -8,10 +8,10 @@ import com.google.inject.Provider;
 import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.place.CorePlace;
 
-public class CoreActivityRegistryImpl implements CoreActivityRegistry {
+public class CoreActivityRegistryImpl<A extends CoreActivity, P extends CorePlace> implements CoreActivityRegistry<A, P> {
 	
-	private final HashMap<String, Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>>> providers = 
-			new HashMap<String, Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>>>();
+	private final HashMap<String, Provider<? extends CoreActivityProxy<? extends A, ? extends P>>> providers = 
+			new HashMap<String, Provider<? extends CoreActivityProxy<? extends A, ? extends P>>>();
 	
 	private CoreLogger logger;
 	
@@ -20,12 +20,12 @@ public class CoreActivityRegistryImpl implements CoreActivityRegistry {
 		this.logger = logger;
 	}
 		
-	public void register(String placeKey, Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>> provider) {
+	public void register(String placeKey, Provider<? extends CoreActivityProxy<? extends A, ? extends P>> provider) {
 		logger.log(Level.INFO, "ContentActivityRegistry.register(\"" + placeKey + "\", ...)");
 		providers.put(placeKey, provider);
 	}
 	
-	public Provider<? extends CoreActivityProxy<? extends CoreActivity, ? extends CorePlace>> getProvider(String placeKey) {
+	public Provider<? extends CoreActivityProxy<? extends A, ? extends P>> getProvider(String placeKey) {
 		return providers.get(placeKey);
 	}
 	
