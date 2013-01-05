@@ -1,4 +1,6 @@
 package com.verophyle.core.client.activity.content;
 
-public interface ContentIndexActivity extends ContentActivity {
+import com.verophyle.core.client.view.content.ContentIndexView;
+
+public interface ContentIndexActivity extends ContentActivity, ContentIndexView.Presenter {
 }

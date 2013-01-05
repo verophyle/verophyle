@@ -10,13 +10,13 @@ import com.verophyle.core.client.view.CoreViewImpl;
 
 public class ContentIndexViewImpl extends CoreViewImpl implements ContentIndexView {
 	
-	interface ContentIndexViewUiBinder extends UiBinder<FlowPanel, ContentIndexViewImpl> { }
-	private static ContentIndexViewUiBinder uiBinder = GWT.create(ContentIndexViewUiBinder.class);
+	interface Binder extends UiBinder<FlowPanel, ContentIndexViewImpl> { }
+	private static Binder binder = GWT.create(Binder.class);
 		
 	@Inject
 	public ContentIndexViewImpl(CoreLogger logger, CoreResources res) {
 		super(logger, res);
-		initWidget(uiBinder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
 	}
 		
 }

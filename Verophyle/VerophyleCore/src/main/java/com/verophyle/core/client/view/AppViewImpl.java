@@ -12,8 +12,8 @@ import com.verophyle.core.client.resources.CoreResources;
 
 public class AppViewImpl extends CoreViewImpl implements AppView {
 
-	private static AppViewImplUiBinder uiBinder = GWT.create(AppViewImplUiBinder.class);
-	interface AppViewImplUiBinder extends UiBinder<DockLayoutPanel, AppViewImpl> { }
+	interface Binder extends UiBinder<DockLayoutPanel, AppViewImpl> { }
+	private static Binder binder = GWT.create(Binder.class);
 	
 	@UiField DockLayoutPanel topLayoutPanel;
 	
@@ -25,7 +25,7 @@ public class AppViewImpl extends CoreViewImpl implements AppView {
 	@Inject
 	public AppViewImpl(CoreLogger logger, CoreResources res) {
 		super(logger, res);
-		initWidget(uiBinder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
 	}
 	
 	@Override

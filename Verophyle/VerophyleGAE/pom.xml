@@ -12,14 +12,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<properties>	
+	<properties>
 		<!-- GWT -->
 		<gwt.version>2.5.0</gwt.version>
 
 		<!-- GAE -->
 		<gae.version>1.7.4</gae.version>
 		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
-		<gae.application.version>1</gae.application.version>
+		
+		<appengine.app.version>0</appengine.app.version>
+		<appengine.target.version>${gae.version}</appengine.target.version>
 
 		<!-- JUnit -->
 		<junit.version>4.11</junit.version>
@@ -215,6 +217,14 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
+					<archiveClasses>true</archiveClasses>
+					<webResources>
+						<resource>
+							<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF</targetPath>
+						</resource>
+					</webResources>
 					<packagingExcludes>WEB-INF/web.xml</packagingExcludes>
 				</configuration>
 			</plugin>

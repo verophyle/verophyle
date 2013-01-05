@@ -10,13 +10,13 @@ import com.verophyle.core.client.view.CoreViewImpl;
 
 public class SidebarViewImpl extends CoreViewImpl implements SidebarView {
 
-	interface SidebarViewImplUiBinder extends UiBinder<HTML, SidebarViewImpl> {	}
-	private static SidebarViewImplUiBinder uiBinder = GWT.create(SidebarViewImplUiBinder.class);
+	interface Binder extends UiBinder<HTML, SidebarViewImpl> {	}
+	private static Binder binder = GWT.create(Binder.class);
 
 	@Inject
 	public SidebarViewImpl(CoreLogger logger, CoreResources res) {
 		super(logger, res);
-		initWidget(uiBinder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
 	}
 
 }

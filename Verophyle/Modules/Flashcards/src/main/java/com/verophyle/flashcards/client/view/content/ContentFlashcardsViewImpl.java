@@ -10,13 +10,13 @@ import com.verophyle.flashcards.client.FlashcardsLogger;
 
 public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFlashcardsView {
 	
-	interface ContentFlashcardsViewUiBinder extends UiBinder<FlowPanel, ContentFlashcardsViewImpl> {}
-	private static ContentFlashcardsViewUiBinder uiBinder = GWT.create(ContentFlashcardsViewUiBinder.class);
+	interface Binder extends UiBinder<FlowPanel, ContentFlashcardsViewImpl> {}
+	private static Binder binder = GWT.create(Binder.class);
 
 	@Inject
 	public ContentFlashcardsViewImpl(FlashcardsLogger logger, CoreResources res) {
 		super(logger, res);
-		initWidget(uiBinder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
 	}
 	
 }

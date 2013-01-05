@@ -10,4 +10,5 @@ import com.verophyle.flashcards.server.FlashcardsServiceLocator;
 @Service(value = FlashcardDeckService.class, locator = FlashcardsServiceLocator.class)
 public interface FlashcardDeckRequest extends RequestContext {
 	Request<FlashcardDeck> createDeck(String name);
+	Request<FlashcardDeck> findDeck(Long id);
 }

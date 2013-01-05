@@ -8,7 +8,7 @@ import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.resources.CoreResources;
 
 public abstract class CoreViewImpl extends Composite implements CoreView {
-	
+		
 	private CoreLogger logger;
 	private CorePresenter presenter;
 	

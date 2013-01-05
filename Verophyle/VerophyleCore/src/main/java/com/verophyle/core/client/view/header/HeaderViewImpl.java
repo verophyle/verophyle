@@ -10,13 +10,13 @@ import com.verophyle.core.client.view.CoreViewImpl;
 
 public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
 	
-	interface HeaderViewUiBinder extends UiBinder<HTML, HeaderViewImpl> { }
-	private static HeaderViewUiBinder uiBinder = GWT.create(HeaderViewUiBinder.class);
+	interface Binder extends UiBinder<HTML, HeaderViewImpl> { }
+	private static Binder binder = GWT.create(Binder.class);
 
 	@Inject
 	public HeaderViewImpl(CoreLogger logger, CoreResources res) {
 		super(logger, res);
-		initWidget(uiBinder.createAndBindUi(this));
+		initWidget(binder.createAndBindUi(this));
 	}
 	
 }
