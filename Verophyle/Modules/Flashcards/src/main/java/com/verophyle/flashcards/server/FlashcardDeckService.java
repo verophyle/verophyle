@@ -2,7 +2,7 @@ package com.verophyle.flashcards.server;
 
 import java.util.HashMap;
 
-import com.verophyle.flashcards.domain.FlashcardDeck;
+import com.verophyle.flashcards.shared.FlashcardDeck;
 
 public class FlashcardDeckService {
 	

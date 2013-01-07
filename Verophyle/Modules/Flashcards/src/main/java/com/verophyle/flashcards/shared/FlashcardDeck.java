@@ -1,9 +1,9 @@
-package com.verophyle.flashcards.domain;
+package com.verophyle.flashcards.shared;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
-import com.verophyle.core.domain.CoreEntity;
+import com.verophyle.core.shared.CoreEntity;
 
 @Entity
 public class FlashcardDeck extends CoreEntity<Long> {
@@ -12,6 +12,11 @@ public class FlashcardDeck extends CoreEntity<Long> {
 	private String name;
 	
 	private int num;
+	
+	public FlashcardDeck() {
+		name = "Ozymandias";
+		num = 314;
+	}
 	
 	public String getName() {
 		return name;

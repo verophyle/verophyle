@@ -3,7 +3,7 @@ package com.verophyle.flashcards.server;
 import java.util.HashMap;
 
 import com.verophyle.core.server.CoreLocator;
-import com.verophyle.flashcards.domain.FlashcardDeck;
+import com.verophyle.flashcards.shared.FlashcardDeck;
 
 public class FlashcardsLocator extends CoreLocator<FlashcardDeck, Long> {
 	

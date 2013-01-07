@@ -6,6 +6,7 @@
 	<inherits name="com.google.gwt.inject.Inject" />
 	<inherits name="com.google.gwt.logging.Logging" />
 	<inherits name="com.google.gwt.resources.Resources" />
+	<inherits name="com.google.gwt.editor.Editor" />
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
 	<inherits name="com.googlecode.objectify.Objectify" />
@@ -26,5 +27,5 @@
 	<source path='client' />
 	<source path='shared' />
 
-	<stylesheet src="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Poly:400,400italic|Quando%26subset=latin%2Clatin-ext" />
+	<stylesheet src="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,600|Poly:400,400italic|Quando%26subset=latin%2Clatin-ext" />
 </module>

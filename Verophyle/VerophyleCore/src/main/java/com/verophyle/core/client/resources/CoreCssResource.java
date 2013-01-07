@@ -14,4 +14,8 @@ public interface CoreCssResource extends CssResource {
 	
 	String content();
 	String contentBody();
+	
+	String title();
+	String para();	
+	String listItem();
 }

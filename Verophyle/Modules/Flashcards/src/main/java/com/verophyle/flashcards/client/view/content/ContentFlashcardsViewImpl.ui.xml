@@ -9,12 +9,16 @@
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
 	<g:FlowPanel styleName="{res.css.content}">
-		<g:HTML>
-			<div class="{res.css.contentBody}">
-				<h1><ui:msg key="flashcardsTitle">Flashcards</ui:msg></h1>
-				
-				<p>This is where you'll see a list of flashcard decks.</p>
-			</div>
-		</g:HTML>
+		<g:HeaderPanel styleName="{res.css.contentBody}">
+			<g:ResizeLayoutPanel>
+				<g:Label styleName="{res.css.title}"><ui:msg key="title">Flashcards</ui:msg></g:Label>
+			</g:ResizeLayoutPanel>
+			<g:FlowPanel>
+				<g:TextBox ui:field="searchBox"></g:TextBox>
+				<g:CustomScrollPanel alwaysShowScrollBars="false">
+					<g:FlowPanel ui:field="deckListContainer"></g:FlowPanel>
+				</g:CustomScrollPanel>
+			</g:FlowPanel>
+		</g:HeaderPanel>
 	</g:FlowPanel>
 </ui:UiBinder>

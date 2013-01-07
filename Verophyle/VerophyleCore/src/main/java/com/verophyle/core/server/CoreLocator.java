@@ -1,7 +1,7 @@
 package com.verophyle.core.server;
 
 import com.google.web.bindery.requestfactory.shared.Locator;
-import com.verophyle.core.domain.CoreEntity;
+import com.verophyle.core.shared.CoreEntity;
 import com.verophyle.core.shared.NotImplementedException;
 
 public class CoreLocator<E extends CoreEntity<I>, I> extends Locator<E, I> {

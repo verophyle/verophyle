@@ -25,10 +25,14 @@
 @def COMPLEMENTARY4 #AFA7BC;
 @def COMPLEMENTARY5 #B3ADBC;
 
-/* defaults */
+/* font weights */
+@def FONT_BOLD 600;
+@def FONT_MED 500;
+@def FONT_LIGHT 400;
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
+	font-weight: FONT_LIGHT;
 }
 
 /* gwt widgets */
@@ -144,28 +148,37 @@ body {
 		display: block;
 		
 		width: 40em;
-		padding-top: 4em;
-		padding-left: 6em;
-		padding-right: 6em;
-				
-		font-family: 'Poly', serif;
-		font-weight: 400;
-		
+		padding-top: 2em;
+		padding-left: 4em;
+		padding-right: 4em;
+
 		background-color: white;
 	}
 
-		.contentBody h1 {
+		.title {
+			width: 100%;
+		
 			font-size: 2em;
-			font-variant: small-caps;
+			font-weight: FONT_BOLD;
 			
 			padding-top: 0.5em;
-			padding-bottom: 0.5em;
+			margin-bottom: 0.5em;
+			
+			border-bottom: 1px solid black;
 		}
 		
-		.contentBody p {
+		.para {
 			padding-top: 0.5em;
 			padding-bottom: 0.5em;
+			
+			font-family: 'Poly', serif;
+			font-weight: FONT_LIGHT;
 		}
 
-
+		.listItem {
+			padding-top: 0.25em;
+			padding-bottom: 0.25em;
+			
+			font-weight: FONT_MED;
+		}
 

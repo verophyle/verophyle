@@ -11,9 +11,9 @@
 	<g:FlowPanel styleName="{res.css.content}">
 		<g:HTML>
 			<div class="{res.css.contentBody}">
-				<h1>Verophyle is in stealth mode.</h1>
+				<div class="{res.css.title}">Verophyle is in stealth mode.</div>
 				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eros enim, 
+				<div class="{res.css.para}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eros enim, 
 				facilisis quis laoreet quis, rutrum a nibh. Suspendisse vitae risus sem. Cras 
 				tellus justo, varius at commodo viverra, placerat eget neque. Cras elit massa, 
 				tristique ut porta ut, placerat et libero. Vestibulum nec rhoncus sapien. 
@@ -22,7 +22,7 @@
 				commodo convallis rhoncus elit vehicula. Donec nisl nisl, posuere ut facilisis 
 				in, aliquet in felis. Maecenas sed lectus sed urna pharetra dapibus. Phasellus 
 				iaculis quam eget massa dapibus semper. Vivamus lectus erat, iaculis ac aliquet 
-				eu, facilisis vitae nisl. Praesent at felis lectus</p>
+				eu, facilisis vitae nisl. Praesent at felis lectus!</div>
 			</div>
 		</g:HTML>
 	</g:FlowPanel>

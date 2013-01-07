@@ -9,6 +9,8 @@ import com.verophyle.core.client.CoreLogger;
 
 public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
 	
+	public static final String SEPARATOR = "/";
+	
 	private CorePlaceHistoryRegistry registry;
 	private CoreLogger logger;
 	
@@ -20,7 +22,7 @@ public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
 
 	@Override
 	public Place getPlace(String token) {
-		String[] tokens = token.split(":", 2);
+		String[] tokens = token.split(SEPARATOR, 2);
 		
 		if (tokens.length > 0) {
 			CorePlace.Tokenizer<? extends Place> tokenizer = registry.getTokenizer(tokens[0]);
@@ -38,8 +40,10 @@ public class CorePlaceHistoryMapper implements PlaceHistoryMapper {
 		CorePlace corePlace = place instanceof CorePlace ? (CorePlace)place : null;
 		if (corePlace != null) {
 			CorePlace.Tokenizer<? extends Place> tokenizer = registry.getTokenizer(corePlace.getPlaceKey());
-			if (tokenizer != null)
-				return tokenizer.getCoreToken(place);
+			if (tokenizer != null) {
+				String stateToken = tokenizer.getCoreToken(place);
+				return stateToken.isEmpty() ? corePlace.getPlaceKey() : corePlace.getPlaceKey() + SEPARATOR + stateToken;
+			}
 		}
 		
 		return null;
