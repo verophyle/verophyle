@@ -72,12 +72,13 @@ public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFl
 		public DeckListItem create(int index) {
 			DeckListItem deck = new DeckListItem();
 			deckListContainer.insert(deck, index);
-			return null;
+			return deck;
 		}
 		
 		@Override
 		public void dispose(DeckListItem deck) {
-			deckListContainer.remove(deck);
+			if (deck != null)
+				deckListContainer.remove(deck);
 		}
 		
 		@Override

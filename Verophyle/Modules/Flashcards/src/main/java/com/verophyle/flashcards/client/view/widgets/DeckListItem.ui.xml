@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	
+	ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
+	ui:defaultLocale="en">
+	
+	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
+
+	<g:SimplePanel>
+		<g:Label styleName="{res.css.listItem}" ui:field="name"></g:Label> 
+	</g:SimplePanel>
+</ui:UiBinder>

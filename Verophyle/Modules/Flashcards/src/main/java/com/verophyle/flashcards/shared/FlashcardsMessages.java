@@ -1,8 +1,7 @@
 package com.verophyle.flashcards.shared;
 
-import com.google.gwt.i18n.client.Messages;
+import com.verophyle.core.shared.CoreMessages;
 
-public interface FlashcardsMessages extends Messages {
-	String title();
-	String search();
+public interface FlashcardsMessages extends CoreMessages {
+	String flashcardsTitle();
 }
