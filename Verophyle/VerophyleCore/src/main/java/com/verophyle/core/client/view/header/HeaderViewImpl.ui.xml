@@ -8,14 +8,11 @@
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 	
-	<g:HTML>
-		<div class="{res.css.header}">
-			<div class="{res.css.headerLogo}">
-				<ui:msg key="applicationTitle">Verophyle</ui:msg>
-			</div>
-			<div class="{res.css.headerLogin}">
-				&nbsp;
-			</div>
-		</div>
-	</g:HTML>
+	<g:FlowPanel addStyleNames="{res.css.header}">
+		<g:SimplePanel addStyleNames="{res.css.headerLogo}">
+			<ui:msg key="applicationTitle">Verophyle</ui:msg>
+		</g:SimplePanel>
+		<g:SimplePanel addStyleNames="{res.css.headerLogin}">
+		</g:SimplePanel>
+	</g:FlowPanel>
 </ui:UiBinder>

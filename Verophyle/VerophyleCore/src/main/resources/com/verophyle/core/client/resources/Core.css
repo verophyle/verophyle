@@ -31,6 +31,7 @@
 @def FONT_LIGHT 400;
 
 body {
+	position: static;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: FONT_LIGHT;
 }

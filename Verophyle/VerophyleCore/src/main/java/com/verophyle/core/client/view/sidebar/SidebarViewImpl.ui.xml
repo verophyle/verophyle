@@ -7,12 +7,9 @@
 	ui:defaultLocale="en">
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
-	
-	<g:HTML>
-		<div class="{res.css.sidebar}">
-			<div class="{res.css.sidebarItem}">&nbsp;</div>
-			<div class="{res.css.sidebarItem}">&nbsp;</div>
-			<div class="{res.css.sidebarItem}">&nbsp;</div>
-		</div>
-	</g:HTML>
+
+	<g:FlowPanel addStyleNames="{res.css.sidebar}">
+		<g:SimplePanel addStyleNames="{res.css.sidebarItem}">
+		</g:SimplePanel>
+	</g:FlowPanel>
 </ui:UiBinder>

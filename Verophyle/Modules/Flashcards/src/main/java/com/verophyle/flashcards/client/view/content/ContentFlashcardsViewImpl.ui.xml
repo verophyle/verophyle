@@ -8,17 +8,15 @@
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
-	<g:FlowPanel styleName="{res.css.content}">
-		<g:HeaderPanel styleName="{res.css.contentBody}">
-			<g:ResizeLayoutPanel>
-				<g:Label styleName="{res.css.title}"><ui:msg key="title">Flashcards</ui:msg></g:Label>
-			</g:ResizeLayoutPanel>
+	<g:SimplePanel addStyleNames="{res.css.content}">
+		<g:HeaderPanel addStyleNames="{res.css.contentBody}">
+			<g:Label addStyleNames="{res.css.title}">
+				<ui:msg key="title">Flashcards</ui:msg>
+			</g:Label>
 			<g:FlowPanel>
 				<g:TextBox ui:field="searchBox"></g:TextBox>
-				<g:CustomScrollPanel alwaysShowScrollBars="false">
-					<g:FlowPanel ui:field="deckListContainer"></g:FlowPanel>
-				</g:CustomScrollPanel>
+				<g:FlowPanel ui:field="deckListContainer"></g:FlowPanel>
 			</g:FlowPanel>
 		</g:HeaderPanel>
-	</g:FlowPanel>
+	</g:SimplePanel>
 </ui:UiBinder>
