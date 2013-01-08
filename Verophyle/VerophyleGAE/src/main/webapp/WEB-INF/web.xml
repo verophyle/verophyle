@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
   	<servlet-name>requestFactoryServlet</servlet-name>
-  	<servlet-class>com.google.web.bindery.requestfactory.server.RequestFactoryServlet</servlet-class>
+  	<servlet-class>com.verophyle.core.server.CoreRequestFactoryServlet</servlet-class>
   	<init-param>
   		<param-name>symbolMapsDirectory</param-name>
   		<param-value>WEB-INF/classes/symbolMaps/</param-value>

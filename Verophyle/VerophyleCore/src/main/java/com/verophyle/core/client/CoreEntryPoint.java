@@ -4,6 +4,7 @@ import java.util.logging.Level;
 
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.verophyle.core.client.place.Index;
@@ -23,6 +24,8 @@ public class CoreEntryPoint implements EntryPoint {
 	}
 	
 	public static void init() {
+		GWT.setUncaughtExceptionHandler(new CoreUncaughtExceptionHandler());
+		
 		CoreGinjector injector = CoreGinjector.INSTANCE;
 		
 		injector.getLogger().log(Level.INFO, "CoreEntryPoint.init()");

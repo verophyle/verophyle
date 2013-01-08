@@ -5,7 +5,7 @@ import com.verophyle.core.shared.CoreEntityProxy;
 import com.verophyle.flashcards.server.FlashcardsLocator;
 
 @ProxyFor(value = FlashcardDeck.class, locator = FlashcardsLocator.class)
-public interface FlashcardDeckProxy extends CoreEntityProxy<Long> {
+public interface FlashcardDeckProxy extends CoreEntityProxy {
 	String getName();
 	void setName(String name);
 	

@@ -29,8 +29,10 @@
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
 		<maven.gwt.version>2.5.0</maven.gwt.version>
-		<maven.resources.version>2.6</maven.resources.version>
+		<maven.compiler.version>3.0</maven.compiler.version>
 		<maven.surefire.version>2.13</maven.surefire.version>
+		<maven.resources.version>2.6</maven.resources.version>
+		<maven.war.version>2.3</maven.war.version>
 
 		<!-- Misc -->
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -107,6 +109,21 @@
 		<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
 		<plugins>
+			<!-- RequestFactory annotation processing -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.web.bindery</groupId>
+						<artifactId>requestfactory-apt</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>		
+		
 			<!-- GWT Maven Plugin-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -151,7 +168,6 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.version}</version>
-
 				<configuration>
 					<additionalClasspathElements>
 						<additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
@@ -216,6 +232,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.version}</version>
 				<configuration>
 					<archiveClasses>true</archiveClasses>
 					<webResources>

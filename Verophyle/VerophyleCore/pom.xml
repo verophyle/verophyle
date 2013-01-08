@@ -26,8 +26,9 @@
 
 		<!-- Plugins -->
 		<maven.eclipse.version>2.9</maven.eclipse.version>
-		<maven.surefire.version>2.13</maven.surefire.version>
 		<maven.gwt.version>2.5.0</maven.gwt.version>
+		<maven.compiler.version>3.0</maven.compiler.version>
+		<maven.surefire.version>2.13</maven.surefire.version>
 
 		<!-- Misc -->
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -187,12 +188,10 @@
 				</dependencies>
 			</plugin>
 
-			<!-- Add source folders to test classpath in order to run gwt-tests as 
-				normal junit-tests -->
+			<!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.version}</version>
-
 				<configuration>
 					<additionalClasspathElements>
 						<additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
@@ -231,6 +230,20 @@
 				</configuration>
 			</plugin>
 
+			<!-- RequestFactory annotation processing -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.web.bindery</groupId>
+						<artifactId>requestfactory-apt</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 
 		<!-- Required by m2e for import into eclipse. No effect on command line 
