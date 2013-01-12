@@ -9,10 +9,8 @@
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 	
 	<g:FlowPanel addStyleNames="{res.css.header}">
-		<g:SimplePanel addStyleNames="{res.css.headerLogo}">
+		<g:HTML addStyleNames="{res.css.headerLogo}">
 			<ui:msg key="applicationTitle">Verophyle</ui:msg>
-		</g:SimplePanel>
-		<g:SimplePanel addStyleNames="{res.css.headerLogin}">
-		</g:SimplePanel>
+		</g:HTML>
 	</g:FlowPanel>
 </ui:UiBinder>

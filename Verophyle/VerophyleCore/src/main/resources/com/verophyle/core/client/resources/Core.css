@@ -175,6 +175,11 @@ body {
 			font-family: 'Poly', serif;
 			font-weight: FONT_LIGHT;
 		}
+		
+		.list {
+			margin-top: 0.25em;
+			margin-bottom: 0.25em;
+		}
 
 		.listItem {
 			padding-top: 0.25em;

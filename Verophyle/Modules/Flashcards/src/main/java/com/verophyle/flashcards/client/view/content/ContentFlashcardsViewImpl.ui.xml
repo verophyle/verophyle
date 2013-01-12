@@ -2,6 +2,7 @@
 <ui:UiBinder 
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:core="urn:import:com.verophyle.core.client.view.widgets"
 	
 	ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
 	ui:defaultLocale="en">
@@ -9,14 +10,14 @@
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
 	<g:SimplePanel addStyleNames="{res.css.content}">
-		<g:HeaderPanel addStyleNames="{res.css.contentBody}">
-			<g:Label addStyleNames="{res.css.title}">
+		<g:FlowPanel addStyleNames="{res.css.contentBody}">
+			<g:HTML addStyleNames="{res.css.title}">
 				<ui:msg key="title">Flashcards</ui:msg>
-			</g:Label>
-			<g:FlowPanel>
-				<g:TextBox ui:field="searchBox"></g:TextBox>
+			</g:HTML>
+			<g:FlowPanel addStyleNames="">
+				<core:TextBoxWithIntroText ui:field="searchBox"><ui:msg key="search">Search</ui:msg></core:TextBoxWithIntroText>
 				<g:FlowPanel ui:field="deckListContainer"></g:FlowPanel>
 			</g:FlowPanel>
-		</g:HeaderPanel>
+		</g:FlowPanel>
 	</g:SimplePanel>
 </ui:UiBinder>

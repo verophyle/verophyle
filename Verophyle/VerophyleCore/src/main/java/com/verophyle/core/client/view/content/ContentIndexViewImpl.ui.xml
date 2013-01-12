@@ -10,10 +10,10 @@
 
 	<g:SimplePanel addStyleNames="{res.css.content}">
 		<g:FlowPanel addStyleNames="{res.css.contentBody}">
-			<g:SimplePanel addStyleNames="{res.css.title}">
+			<g:HTML addStyleNames="{res.css.title}">
 				<ui:msg>Verophyle is in stealth mode</ui:msg>
-			</g:SimplePanel>
-			<g:SimplePanel addStyleNames="{res.css.para}">
+			</g:HTML>
+			<g:HTML addStyleNames="{res.css.para}">
 				<ui:msg>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eros enim, 
 					facilisis quis laoreet quis, rutrum a nibh. Suspendisse vitae risus sem. Cras 
@@ -26,7 +26,7 @@
 					iaculis quam eget massa dapibus semper. Vivamus lectus erat, iaculis ac aliquet 
 					eu, facilisis vitae nisl. Praesent at felis lectus!
 				</ui:msg>
-			</g:SimplePanel>
+			</g:HTML>
 		</g:FlowPanel>
 	</g:SimplePanel>
 </ui:UiBinder>
