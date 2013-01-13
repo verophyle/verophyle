@@ -8,8 +8,8 @@
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 	
-	<g:FlowPanel addStyleNames="{res.css.header}">
-		<g:HTML addStyleNames="{res.css.headerLogo}">
+	<g:FlowPanel addStyleNames="{res.css.header} {res.css.horizontal}">
+		<g:HTML addStyleNames="{res.css.headerLogo}" ui:field="logo">
 			<ui:msg key="applicationTitle">Verophyle</ui:msg>
 		</g:HTML>
 	</g:FlowPanel>

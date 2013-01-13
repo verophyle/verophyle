@@ -7,8 +7,9 @@
 	ui:defaultLocale="en">
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
+	<ui:with field="fres" type="com.verophyle.flashcards.client.resources.FlashcardsResources"/>
 
 	<g:ResizeLayoutPanel>
-		<g:Label styleName="{res.css.listItem}" ui:field="name"></g:Label> 
+		<g:Label styleName="{fres.css.listItem}" ui:field="name"></g:Label> 
 	</g:ResizeLayoutPanel>
 </ui:UiBinder>

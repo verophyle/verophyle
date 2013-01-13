@@ -5,7 +5,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.ResizeLayoutPanel;
 import com.google.inject.Inject;
 import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.resources.CoreResources;
@@ -17,10 +17,10 @@ public class AppViewImpl extends CoreViewImpl implements AppView {
 	
 	@UiField DockLayoutPanel topLayoutPanel;
 	
-	@UiField SimplePanel header;
-	@UiField SimplePanel footer;
-	@UiField SimplePanel sidebar;
-	@UiField SimplePanel content;
+	@UiField ResizeLayoutPanel header;
+	@UiField ResizeLayoutPanel footer;
+	@UiField ResizeLayoutPanel sidebar;
+	@UiField ResizeLayoutPanel content;
 
 	@Inject
 	public AppViewImpl(CoreLogger logger, CoreResources res) {

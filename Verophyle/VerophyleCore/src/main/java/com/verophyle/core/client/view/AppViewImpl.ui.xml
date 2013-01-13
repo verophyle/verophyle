@@ -1,19 +1,22 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+<ui:UiBinder 
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
 	<g:DockLayoutPanel unit="EM" ui:field="topLayoutPanel">
 		<g:north size="8">
-			<g:SimplePanel ui:field="header"></g:SimplePanel>
+			<g:ResizeLayoutPanel ui:field="header"></g:ResizeLayoutPanel>
 		</g:north>
 		<g:west size="20">
-			<g:SimplePanel ui:field="sidebar"></g:SimplePanel>
+			<g:ResizeLayoutPanel ui:field="sidebar"></g:ResizeLayoutPanel>
 		</g:west>
 		<g:center>
-			<g:SimplePanel ui:field="content"></g:SimplePanel>
+			<g:ResizeLayoutPanel ui:field="content" addStyleNames="{res.css.content}"></g:ResizeLayoutPanel>
 		</g:center>
 		<g:south size="6">
-			<g:SimplePanel ui:field="footer"></g:SimplePanel>
+			<g:ResizeLayoutPanel ui:field="footer"></g:ResizeLayoutPanel>
 		</g:south>
 	</g:DockLayoutPanel>
 </ui:UiBinder>

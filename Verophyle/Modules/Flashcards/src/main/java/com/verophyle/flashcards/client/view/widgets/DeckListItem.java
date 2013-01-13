@@ -38,6 +38,7 @@ public class DeckListItem extends Composite implements ValueAwareEditor<Flashcar
 
 	@Override
 	public void setValue(FlashcardDeckProxy value) {
+		// the editor framework handles this for us
 	}
 
 }

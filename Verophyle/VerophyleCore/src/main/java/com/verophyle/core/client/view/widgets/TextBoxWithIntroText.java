@@ -1,5 +1,7 @@
 package com.verophyle.core.client.view.widgets;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.ui.TextBox;
@@ -13,17 +15,34 @@ public class TextBoxWithIntroText extends TextBox {
 	public TextBoxWithIntroText() {
 		super();
 		
-		addKeyPressHandler(handler);
+		this.addStyleName("coreTextBox");
+		this.addStyleName("initial");
+
+		addClickHandler(clickHandler);
+		addKeyPressHandler(keyPressHandler);
 	}
 	
-	private static final KeyPressHandler handler = new KeyPressHandler() {
+	private void Reset() {
+		if (initialText) {
+			setText("");
+			this.removeStyleName("initial");
+			initialText = false;
+		}
+	}
+	
+	private static final ClickHandler clickHandler = new ClickHandler() {
+		@Override
+		public void onClick(ClickEvent event) {
+			TextBoxWithIntroText tb = (TextBoxWithIntroText) event.getSource();
+			tb.Reset();
+		}
+	};
+	
+	private static final KeyPressHandler keyPressHandler = new KeyPressHandler() {
 		@Override
 		public void onKeyPress(KeyPressEvent event) {
 			TextBoxWithIntroText tb = (TextBoxWithIntroText) event.getSource();
-			if (tb.initialText){
-				tb.setText("");
-				tb.initialText = false;
-			}
+			tb.Reset();
 		}		
 	};
 	

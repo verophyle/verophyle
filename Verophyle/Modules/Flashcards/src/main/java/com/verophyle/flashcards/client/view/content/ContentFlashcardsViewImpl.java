@@ -10,7 +10,6 @@ import com.google.gwt.editor.client.adapters.ListEditor;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.requestfactory.gwt.client.RequestFactoryEditorDriver;
@@ -25,7 +24,7 @@ import com.verophyle.flashcards.shared.FlashcardsRequestFactory;
 
 public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFlashcardsView {
 	
-	interface Binder extends UiBinder<SimplePanel, ContentFlashcardsViewImpl> {}
+	interface Binder extends UiBinder<FlowPanel, ContentFlashcardsViewImpl> {}
 	interface Driver extends RequestFactoryEditorDriver<List<FlashcardDeckProxy>, ListEditor<FlashcardDeckProxy, DeckListItem>> { }
 	
 	private final Binder binder = GWT.create(Binder.class);

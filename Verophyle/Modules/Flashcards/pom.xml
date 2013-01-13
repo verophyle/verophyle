@@ -60,12 +60,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- 
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		-->
 
 		<!-- RequestFactory -->
 		<dependency>
@@ -101,7 +103,7 @@
 			the hibernate-validator POM -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
+			<artifactId>slf4j-jdk14</artifactId>
 			<version>${sl4j.version}</version>
 		</dependency>
 	
