@@ -6,17 +6,20 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.inject.Inject;
+import com.verophyle.core.client.CoreGinjector;
 
 public class TextBoxWithIntroText extends TextBox {
 	
 	private boolean initialText = true;
+	private static final String coreTextBoxStyle = CoreGinjector.INSTANCE.getCoreResources().css().coreTextBox();
+	private static final String initialStyle = CoreGinjector.INSTANCE.getCoreResources().css().initial();
 	
 	@Inject
 	public TextBoxWithIntroText() {
 		super();
 		
-		this.addStyleName("coreTextBox");
-		this.addStyleName("initial");
+		this.addStyleName(coreTextBoxStyle);
+		this.addStyleName(initialStyle);
 
 		addClickHandler(clickHandler);
 		addKeyPressHandler(keyPressHandler);
@@ -25,7 +28,7 @@ public class TextBoxWithIntroText extends TextBox {
 	private void Reset() {
 		if (initialText) {
 			setText("");
-			this.removeStyleName("initial");
+			this.removeStyleName(initialStyle);
 			initialText = false;
 		}
 	}

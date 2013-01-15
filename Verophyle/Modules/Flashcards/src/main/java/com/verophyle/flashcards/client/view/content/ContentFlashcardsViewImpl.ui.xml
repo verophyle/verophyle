@@ -7,8 +7,8 @@
 	ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
 	ui:defaultLocale="en">
 	
-	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 	<ui:with field="fres" type="com.verophyle.flashcards.client.resources.FlashcardsResources"/>
+	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
 	<g:FlowPanel addStyleNames="{res.css.contentBody} {res.css.vertical}">
 		<g:HTML addStyleNames="{res.css.title}"> 														<!-- title -->

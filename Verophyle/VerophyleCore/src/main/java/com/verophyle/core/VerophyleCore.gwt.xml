@@ -22,6 +22,8 @@
 	<set-property name="gwt.logging.popupHandler" value="DISABLED"/>
 	<set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED"/>
 
+	<set-configuration-property name="CssResource.style" value="pretty"/>
+
 	<entry-point class='com.verophyle.core.client.CoreEntryPoint' />
 
 	<source path='client' />

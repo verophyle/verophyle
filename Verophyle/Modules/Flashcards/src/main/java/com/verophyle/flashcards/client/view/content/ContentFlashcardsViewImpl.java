@@ -18,6 +18,7 @@ import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
 import com.verophyle.core.client.view.widgets.TextBoxWithIntroText;
 import com.verophyle.flashcards.client.FlashcardsLogger;
+import com.verophyle.flashcards.client.resources.FlashcardsResources;
 import com.verophyle.flashcards.client.view.widgets.DeckListItem;
 import com.verophyle.flashcards.shared.FlashcardDeckProxy;
 import com.verophyle.flashcards.shared.FlashcardsRequestFactory;
@@ -46,12 +47,14 @@ public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFl
 			EventBus eventBus, 
 			FlashcardsRequestFactory requestFactory, 
 			FlashcardsLogger logger,
-			CoreResources res) {
+			CoreResources res,
+			FlashcardsResources fres) {
 		super(logger, res);
 		
 		this.eventBus = eventBus;
 		this.requestFactory = requestFactory;
 		
+		fres.css().ensureInjected();		
 		initWidget(binder.createAndBindUi(this));
 		
 		ListEditor<FlashcardDeckProxy, DeckListItem> editor = ListEditor.of(new ListItemSource());

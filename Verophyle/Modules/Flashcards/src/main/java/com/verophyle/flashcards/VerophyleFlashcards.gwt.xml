@@ -3,6 +3,8 @@
 <module rename-to='VerophyleFlashcards'>
 	<inherits name="com.verophyle.core.VerophyleCore" />
 
+	<set-configuration-property name="CssResource.style" value="pretty"/>
+
 	<entry-point class='com.verophyle.flashcards.client.FlashcardsEntryPoint' />
 
 	<source path='client' />

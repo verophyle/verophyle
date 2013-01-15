@@ -13,6 +13,7 @@
 	border-right: 4px solid red;
 	
 	background-color: gray;
+	color: purple;
 }
 
 .listItem {
@@ -22,4 +23,5 @@
 	font-weight: FONT_MED;
 	
 	background-color: green;
+	color: pink;
 }
