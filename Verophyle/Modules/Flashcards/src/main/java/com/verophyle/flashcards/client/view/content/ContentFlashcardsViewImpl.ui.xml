@@ -11,17 +11,17 @@
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
 	<g:FlowPanel addStyleNames="{res.css.contentBody} {res.css.vertical}">
-		<g:HTML addStyleNames="{res.css.title}"> 														<!-- title -->
+		<g:HTML addStyleNames="{res.css.title}">
 			<ui:msg key="title">Flashcards</ui:msg>
 		</g:HTML>
 
 		<g:FlowPanel addStyleNames="{res.css.horizontal}">
 			<g:FlowPanel addStyleNames="{res.css.vertical}">
-				<core:TextBoxWithIntroText ui:field="searchBox">										<!-- search -->
+				<core:TextBoxWithIntroText addStyleNames="{fres.css.search}" ui:field="searchBox">
 					<ui:msg key="search">Search</ui:msg>
 				</core:TextBoxWithIntroText>
 				
-				<g:FlowPanel addStyleNames="{fres.css.list}" ui:field="deckListContainer">		<!-- list -->
+				<g:FlowPanel addStyleNames="{fres.css.list} {res.css.verticalScroll}" ui:field="deckListContainer">
 				</g:FlowPanel>
 			</g:FlowPanel>
 			

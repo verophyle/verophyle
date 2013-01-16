@@ -1,27 +1,33 @@
 @eval COMPLEMENTARY3 com.verophyle.core.client.CoreGinjector.INSTANCE.getCoreResources().css().COMPLEMENTARY3();
 @eval FONT_MED com.verophyle.core.client.CoreGinjector.INSTANCE.getCoreResources().css().FONT_MED();
 
+.search {
+	-webkit-flex: initial;
+	margin-bottom: 0.5em;
+}
+
 .list {
 	height: 100%;
+	-webkit-flex: auto;
 	
-	margin-right: 2em;
+	display: -webkit-flex;
+	-webkit-flex-flow: column nowrap;
+	-webkit-align-items: flex-start;
 	
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 
-	border-top: 4px solid red;
-	border-right: 4px solid red;
-	
-	background-color: gray;
-	color: purple;
+	border-top: 1px solid COMPLEMENTARY3;
+	border-right: 1px solid COMPLEMENTARY3;	
 }
 
 .listItem {
+	-webkit-flex: auto;
+	
+	width: 100%;
+	
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 	
 	font-weight: FONT_MED;
-	
-	background-color: green;
-	color: pink;
 }
