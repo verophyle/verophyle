@@ -1,4 +1,4 @@
-package com.verophyle.flashcards.shared;
+package com.verophyle.flashcards.shared.rf;
 
 import com.google.web.bindery.requestfactory.shared.RequestFactory;
 

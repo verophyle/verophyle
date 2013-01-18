@@ -1,25 +1,26 @@
-package com.verophyle.flashcards.server;
+package com.verophyle.flashcards.server.rf;
 
 import java.util.HashMap;
 
-import com.verophyle.core.server.CoreLocator;
-import com.verophyle.flashcards.shared.FlashcardDeck;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.verophyle.core.server.rf.CoreLocator;
+import com.verophyle.flashcards.shared.domain.FlashcardDeck;
 
 public class FlashcardsLocator extends CoreLocator<FlashcardDeck, Long> {
 	
 	private static HashMap<Long, FlashcardDeck> decks = new HashMap<Long, FlashcardDeck>();
 	
+	@Inject
+	public FlashcardsLocator(Injector injector) {
+		super(injector);
+	}
+	
 	@Override
 	public FlashcardDeck create(Class<? extends FlashcardDeck> clazz) {
-		try {
-			FlashcardDeck deck = clazz.newInstance();
-			decks.put(deck.getId(), deck);			
-			return deck;
-		} catch (InstantiationException e) {
-			throw new RuntimeException(e);
-		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e);
-		}
+		FlashcardDeck deck = super.create(clazz);
+		decks.put(deck.getId(), deck);			
+		return deck;
 	}
 	
 	@Override

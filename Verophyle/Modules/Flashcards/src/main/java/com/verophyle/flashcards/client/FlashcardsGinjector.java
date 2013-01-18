@@ -5,7 +5,7 @@ import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.verophyle.core.client.place.CorePlaceHistoryRegistry;
 import com.verophyle.flashcards.client.activity.content.ContentActivityMapper;
-import com.verophyle.flashcards.shared.FlashcardsRequestFactory;
+import com.verophyle.flashcards.shared.rf.FlashcardsRequestFactory;
 
 @GinModules({FlashcardsGinModule.class})
 public interface FlashcardsGinjector extends Ginjector {

@@ -112,6 +112,7 @@
 			<artifactId>objectify</artifactId>
 			<version>${objectify.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
@@ -125,6 +126,12 @@
 			<version>${guice.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-servlet</artifactId>
+			<version>${guice.version}</version>
+		</dependency>
+            
 		<dependency>
 			<groupId>com.google.gwt.inject</groupId>
 			<artifactId>gin</artifactId>

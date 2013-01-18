@@ -1,9 +1,9 @@
-package com.verophyle.flashcards.shared;
+package com.verophyle.flashcards.shared.domain;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
-import com.verophyle.core.shared.CoreEntity;
+import com.verophyle.core.shared.domain.CoreEntity;
 
 @Entity
 public class FlashcardDeck extends CoreEntity<Long> {

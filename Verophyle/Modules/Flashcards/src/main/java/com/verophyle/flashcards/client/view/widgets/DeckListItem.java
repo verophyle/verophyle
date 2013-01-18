@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ResizeLayoutPanel;
 import com.google.inject.Inject;
-import com.verophyle.flashcards.shared.FlashcardDeckProxy;
+import com.verophyle.flashcards.shared.rf.FlashcardDeckProxy;
 
 public class DeckListItem extends Composite implements ValueAwareEditor<FlashcardDeckProxy> {
 	

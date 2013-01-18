@@ -19,7 +19,7 @@ import com.verophyle.flashcards.client.activity.content.ContentFlashcardsActivit
 import com.verophyle.flashcards.client.place.Flashcards;
 import com.verophyle.flashcards.client.view.content.ContentFlashcardsView;
 import com.verophyle.flashcards.client.view.content.ContentFlashcardsViewImpl;
-import com.verophyle.flashcards.shared.FlashcardsRequestFactory;
+import com.verophyle.flashcards.shared.rf.FlashcardsRequestFactory;
 
 public class FlashcardsGinModule extends AbstractGinModule {
 	

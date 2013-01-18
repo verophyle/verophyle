@@ -33,6 +33,7 @@
 		<maven.surefire.version>2.13</maven.surefire.version>
 		<maven.resources.version>2.6</maven.resources.version>
 		<maven.war.version>2.3</maven.war.version>
+		<guice.version>3.0</guice.version>
 
 		<!-- Misc -->
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -98,6 +99,19 @@
 			<version>${gae.version}</version>
 		</dependency>
 
+		<!-- Guice -->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>${guice.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-servlet</artifactId>
+			<version>${guice.version}</version>
+		</dependency>
+            
 		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>

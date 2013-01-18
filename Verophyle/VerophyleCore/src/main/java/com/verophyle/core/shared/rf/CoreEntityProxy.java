@@ -1,4 +1,4 @@
-package com.verophyle.core.shared;
+package com.verophyle.core.shared.rf;
 
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 

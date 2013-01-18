@@ -1,10 +1,11 @@
-package com.verophyle.flashcards.server;
+package com.verophyle.flashcards.server.rf;
 
 import java.util.HashMap;
 
 import org.slf4j.Logger;
 
-import com.verophyle.flashcards.shared.FlashcardDeck;
+import com.google.inject.Inject;
+import com.verophyle.flashcards.shared.domain.FlashcardDeck;
 
 public class FlashcardDeckService {
 	
@@ -12,8 +13,9 @@ public class FlashcardDeckService {
 
 	private Logger logger;
 	
-	public FlashcardDeckService() {
-		this.logger = FlashcardsGuiceModule.INJECTOR.getInstance(Logger.class);
+	@Inject
+	public FlashcardDeckService(Logger logger) {
+		this.logger = logger;
 	}
 	
 	public FlashcardDeck createDeck(String name) {

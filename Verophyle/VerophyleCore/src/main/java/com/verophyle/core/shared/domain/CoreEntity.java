@@ -1,4 +1,4 @@
-package com.verophyle.core.shared;
+package com.verophyle.core.shared.domain;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;

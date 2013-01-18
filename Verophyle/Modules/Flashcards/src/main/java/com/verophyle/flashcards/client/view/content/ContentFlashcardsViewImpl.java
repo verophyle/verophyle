@@ -20,8 +20,8 @@ import com.verophyle.core.client.view.widgets.TextBoxWithIntroText;
 import com.verophyle.flashcards.client.FlashcardsLogger;
 import com.verophyle.flashcards.client.resources.FlashcardsResources;
 import com.verophyle.flashcards.client.view.widgets.DeckListItem;
-import com.verophyle.flashcards.shared.FlashcardDeckProxy;
-import com.verophyle.flashcards.shared.FlashcardsRequestFactory;
+import com.verophyle.flashcards.shared.rf.FlashcardDeckProxy;
+import com.verophyle.flashcards.shared.rf.FlashcardsRequestFactory;
 
 public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFlashcardsView {
 	
