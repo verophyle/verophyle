@@ -3,5 +3,5 @@ package com.verophyle.flashcards.shared.rf;
 import com.google.web.bindery.requestfactory.shared.RequestFactory;
 
 public interface FlashcardsRequestFactory extends RequestFactory {
-	FlashcardDeckRequest flashcardDeckRequest();
+	DeckRequest flashcardDeckRequest();
 }

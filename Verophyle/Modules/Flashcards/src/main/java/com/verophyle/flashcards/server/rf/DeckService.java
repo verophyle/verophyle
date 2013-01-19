@@ -7,21 +7,23 @@ import org.slf4j.Logger;
 import com.google.inject.Inject;
 import com.verophyle.flashcards.shared.domain.FlashcardDeck;
 
-public class FlashcardDeckService {
+public class DeckService {
 	
 	static HashMap<Long, FlashcardDeck> decks = new HashMap<Long, FlashcardDeck>();
 
-	private Logger logger;
+	private final Logger logger;
+	private final DeckLocator locator;	
 	
 	@Inject
-	public FlashcardDeckService(Logger logger) {
+	public DeckService(Logger logger, DeckLocator locator) {
 		this.logger = logger;
+		this.locator = locator;
 	}
 	
 	public FlashcardDeck createDeck(String name) {
-		logger.info("createDeck(" + name + ")");
+		logger.info("createDeck(" + name + ")");		
 		
-		FlashcardDeck deck = new FlashcardDeck();
+		FlashcardDeck deck = locator.create(FlashcardDeck.class);
 		deck.setName(name);
 		decks.put(deck.getId(), deck);
 		return deck;

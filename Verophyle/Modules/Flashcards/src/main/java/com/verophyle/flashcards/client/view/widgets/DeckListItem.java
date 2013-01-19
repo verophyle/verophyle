@@ -9,9 +9,9 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ResizeLayoutPanel;
 import com.google.inject.Inject;
-import com.verophyle.flashcards.shared.rf.FlashcardDeckProxy;
+import com.verophyle.flashcards.shared.rf.DeckProxy;
 
-public class DeckListItem extends Composite implements ValueAwareEditor<FlashcardDeckProxy> {
+public class DeckListItem extends Composite implements ValueAwareEditor<DeckProxy> {
 	
 	interface Binder extends UiBinder<ResizeLayoutPanel, DeckListItem> { }
 	private static Binder binder = GWT.create(Binder.class);
@@ -25,7 +25,7 @@ public class DeckListItem extends Composite implements ValueAwareEditor<Flashcar
 	}
 
 	@Override
-	public void setDelegate(EditorDelegate<FlashcardDeckProxy> delegate) {
+	public void setDelegate(EditorDelegate<DeckProxy> delegate) {
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class DeckListItem extends Composite implements ValueAwareEditor<Flashcar
 	}
 
 	@Override
-	public void setValue(FlashcardDeckProxy value) {
+	public void setValue(DeckProxy value) {
 		// the editor framework handles this for us
 	}
 

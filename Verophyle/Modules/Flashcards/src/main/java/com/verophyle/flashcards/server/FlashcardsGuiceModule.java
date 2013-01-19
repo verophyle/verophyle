@@ -1,15 +1,18 @@
 package com.verophyle.flashcards.server;
 
 import com.google.inject.AbstractModule;
-import com.verophyle.flashcards.server.rf.FlashcardDeckService;
-import com.verophyle.flashcards.server.rf.FlashcardsServiceLocator;
+import com.google.inject.Singleton;
+import com.verophyle.flashcards.server.rf.DeckLocator;
+import com.verophyle.flashcards.server.rf.DeckService;
+import com.verophyle.flashcards.shared.domain.FlashcardDeck;
 
 public class FlashcardsGuiceModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		bind(FlashcardDeckService.class);
-		bind(FlashcardsServiceLocator.class);
+		bind(FlashcardDeck.class);
+		bind(DeckLocator.class).in(Singleton.class);		
+		bind(DeckService.class).in(Singleton.class);
 	}
 
 }

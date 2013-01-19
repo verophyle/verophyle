@@ -20,13 +20,13 @@ import com.verophyle.core.client.view.widgets.TextBoxWithIntroText;
 import com.verophyle.flashcards.client.FlashcardsLogger;
 import com.verophyle.flashcards.client.resources.FlashcardsResources;
 import com.verophyle.flashcards.client.view.widgets.DeckListItem;
-import com.verophyle.flashcards.shared.rf.FlashcardDeckProxy;
+import com.verophyle.flashcards.shared.rf.DeckProxy;
 import com.verophyle.flashcards.shared.rf.FlashcardsRequestFactory;
 
 public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFlashcardsView {
 	
 	interface Binder extends UiBinder<FlowPanel, ContentFlashcardsViewImpl> {}
-	interface Driver extends RequestFactoryEditorDriver<List<FlashcardDeckProxy>, ListEditor<FlashcardDeckProxy, DeckListItem>> { }
+	interface Driver extends RequestFactoryEditorDriver<List<DeckProxy>, ListEditor<DeckProxy, DeckListItem>> { }
 	
 	private final Binder binder = GWT.create(Binder.class);
 	private final Driver driver = GWT.create(Driver.class);
@@ -40,7 +40,7 @@ public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFl
 	private final EventBus eventBus;
 	private final FlashcardsRequestFactory requestFactory;
 	
-	private final List<FlashcardDeckProxy> deckList;
+	private final List<DeckProxy> deckList;
 	
 	@Inject
 	public ContentFlashcardsViewImpl(
@@ -57,18 +57,18 @@ public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFl
 		fres.css().ensureInjected();		
 		initWidget(binder.createAndBindUi(this));
 		
-		ListEditor<FlashcardDeckProxy, DeckListItem> editor = ListEditor.of(new ListItemSource());
+		ListEditor<DeckProxy, DeckListItem> editor = ListEditor.of(new ListItemSource());
 		driver.initialize(this.eventBus, this.requestFactory, editor);
-		driver.display(new ArrayList<FlashcardDeckProxy>());
+		driver.display(new ArrayList<DeckProxy>());
 		
 		deckList = editor.getList();
 	}
 	
 	@Override
 	protected void onLoad() {
-		requestFactory.flashcardDeckRequest().createDeck("User-Maat-Re").fire(new Receiver<FlashcardDeckProxy>() {
+		requestFactory.flashcardDeckRequest().createDeck("User-Maat-Re").fire(new Receiver<DeckProxy>() {
 			@Override
-			public void onSuccess(FlashcardDeckProxy response) {
+			public void onSuccess(DeckProxy response) {
 				deckList.add(response);
 			}
 		});
