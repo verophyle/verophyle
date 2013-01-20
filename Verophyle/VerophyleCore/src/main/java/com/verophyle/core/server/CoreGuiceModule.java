@@ -15,9 +15,9 @@ import com.google.web.bindery.requestfactory.server.ExceptionHandler;
 import com.google.web.bindery.requestfactory.server.ServiceLayerDecorator;
 import com.verophyle.core.server.rf.CoreConstraintValidatorFactory;
 import com.verophyle.core.server.rf.CoreExceptionHandler;
-import com.verophyle.core.server.rf.CoreLocator;
 import com.verophyle.core.server.rf.CoreServiceLayerDecorator;
 import com.verophyle.core.server.rf.CoreServiceLocator;
+import com.verophyle.core.server.rf.CoreServiceLocatorImpl;
 
 public class CoreGuiceModule extends AbstractModule {
 
@@ -26,8 +26,7 @@ public class CoreGuiceModule extends AbstractModule {
 		// RequestFactory
 		bind(ExceptionHandler.class).to(CoreExceptionHandler.class);
 		bind(ServiceLayerDecorator.class).to(CoreServiceLayerDecorator.class);
-		bind(CoreServiceLocator.class);
-		bind(CoreLocator.class);
+		bind(CoreServiceLocator.class).to(CoreServiceLocatorImpl.class);
 	}
 
 	@Provides

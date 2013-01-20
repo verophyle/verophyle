@@ -15,7 +15,7 @@
 	</filter-mapping>
 
 	<listener>
-		<listener-class>com.verophyle.gae.server.guice.VerophyleServletContextListener</listener-class>
+		<listener-class>com.verophyle.gae.server.VerophyleServletContextListener</listener-class>
 	</listener>
 
 	<!-- Default page to serve -->
