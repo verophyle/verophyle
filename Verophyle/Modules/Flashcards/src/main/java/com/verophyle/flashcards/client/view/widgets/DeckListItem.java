@@ -7,13 +7,12 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.ResizeLayoutPanel;
 import com.google.inject.Inject;
 import com.verophyle.flashcards.shared.rf.DeckProxy;
 
 public class DeckListItem extends Composite implements ValueAwareEditor<DeckProxy> {
 	
-	interface Binder extends UiBinder<ResizeLayoutPanel, DeckListItem> { }
+	interface Binder extends UiBinder<Label, DeckListItem> { }
 	private static Binder binder = GWT.create(Binder.class);
 	
 	@UiField
