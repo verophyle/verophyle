@@ -108,6 +108,12 @@ body {
 	.headerLogin {
 		flex: auto;
 	}
+	
+		.headerLoginInfo {
+		}
+		
+		.headerLoginButton {
+		}
 
 .sidebar {
 	width: 20em;

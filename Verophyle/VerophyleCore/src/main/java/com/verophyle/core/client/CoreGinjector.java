@@ -17,6 +17,7 @@ import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.place.CorePlaceHistoryRegistry;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.AppView;
+import com.verophyle.core.shared.CoreMessages;
 
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
@@ -24,6 +25,7 @@ public interface CoreGinjector extends Ginjector {
 	
 	CoreLogger getLogger();
 	CoreResources getCoreResources();
+	CoreMessages getCoreMessages();
 	
 	EventBus getEventBus();
 	PlaceController getPlaceController();	

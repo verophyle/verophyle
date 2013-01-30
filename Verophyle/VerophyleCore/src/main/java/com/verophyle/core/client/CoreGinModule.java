@@ -50,6 +50,7 @@ import com.verophyle.core.client.view.header.HeaderView;
 import com.verophyle.core.client.view.header.HeaderViewImpl;
 import com.verophyle.core.client.view.sidebar.SidebarView;
 import com.verophyle.core.client.view.sidebar.SidebarViewImpl;
+import com.verophyle.core.shared.CoreMessages;
 
 public class CoreGinModule extends AbstractGinModule {
 	
@@ -58,6 +59,7 @@ public class CoreGinModule extends AbstractGinModule {
 		// global objects
 		bind(CoreLogger.class).to(CoreLoggerImpl.class).in(Singleton.class);
 		bind(CoreResources.class).in(Singleton.class);
+		bind(CoreMessages.class).in(Singleton.class);
 		
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);

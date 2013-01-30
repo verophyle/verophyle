@@ -12,6 +12,8 @@ import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
+import com.verophyle.core.client.view.widgets.UserAuthentication;
+import com.verophyle.core.shared.CoreMessages;
 
 public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
 	
@@ -21,17 +23,32 @@ public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
 	@UiField
 	HTML logo;
 	
+	@UiField
+	UserAuthentication userAuth;
+	
+	CoreMessages messages;
+	
 	@Inject
-	public HeaderViewImpl(CoreLogger logger, CoreResources res) {
+	public HeaderViewImpl(CoreLogger logger, CoreResources res, CoreMessages messages) {
 		super(logger, res);
-		initWidget(binder.createAndBindUi(this));
+		this.messages = messages;
 		
+		initWidget(binder.createAndBindUi(this));		
+		initLogo();
+		initUserAuth();
+	}
+	
+	private void initLogo() {
 		logo.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				getPresenter().goTo(new Index(""));
 			}
-		});
+		});		
+	}
+	
+	private void initUserAuth() {
+		
 	}
 	
 }

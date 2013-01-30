@@ -26,15 +26,16 @@ public class CoreGuiceModule extends AbstractModule {
 		// RequestFactory
 		bind(ExceptionHandler.class).to(CoreExceptionHandler.class);
 		bind(ServiceLayerDecorator.class).to(CoreServiceLayerDecorator.class);
-		bind(CoreServiceLocator.class).to(CoreServiceLocatorImpl.class);
+		bind(CoreServiceLocator.class).to(CoreServiceLocatorImpl.class);		
 	}
 
+	// misc
 	@Provides
 	@Singleton
 	public Logger getLogger() {
 		return LoggerFactory.getLogger("VerophyleCore");
 	}
-	
+		
 	// RequestFactory
 	@Provides
 	@Singleton

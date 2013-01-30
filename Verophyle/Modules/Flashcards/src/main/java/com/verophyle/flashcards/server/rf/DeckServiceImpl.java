@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.slf4j.Logger;
 
 import com.google.inject.Inject;
+import com.verophyle.core.server.rf.CoreLocator;
 import com.verophyle.flashcards.shared.domain.FlashcardDeck;
 
 public class DeckServiceImpl implements DeckService {
@@ -12,10 +13,10 @@ public class DeckServiceImpl implements DeckService {
 	static HashMap<Long, FlashcardDeck> decks = new HashMap<Long, FlashcardDeck>();
 
 	private final Logger logger;
-	private final DeckLocator locator;	
+	private final CoreLocator<FlashcardDeck, Long> locator;	
 	
 	@Inject
-	public DeckServiceImpl(Logger logger, DeckLocator locator) {
+	public DeckServiceImpl(Logger logger, CoreLocator<FlashcardDeck, Long> locator) {
 		this.logger = logger;
 		this.locator = locator;
 	}

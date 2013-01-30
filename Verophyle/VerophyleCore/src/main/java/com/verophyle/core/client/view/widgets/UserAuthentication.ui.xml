@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	
+	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
+	ui:defaultLocale="en">
+	
+	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
+
+	<g:FlowPanel addStyleName="{res.css.vertical}">
+		<g:Label ui:field="userInfo" addStyleName="{res.css.headerLoginInfo}"></g:Label>
+		<g:Button ui:field="userLogin" addStyleName="{res.css.headerLoginButton}"></g:Button>
+	</g:FlowPanel>
+</ui:UiBinder> 

@@ -2,15 +2,18 @@
 <ui:UiBinder 
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	
+	xmlns:core="urn:import:com.verophyle.core.client.view.widgets"
+		
 	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
 	ui:defaultLocale="en">
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 	
-	<g:FlowPanel addStyleNames="{res.css.header} {res.css.horizontal}">
+	<g:FlowPanel addStyleNames="{res.css.header} {res.css.horizontal}">	
 		<g:HTML addStyleNames="{res.css.headerLogo}" ui:field="logo">
 			<ui:msg key="applicationTitle">Verophyle</ui:msg>
 		</g:HTML>
+		
+		<core:UserAuthentication addStyleNames="{res.css.headerLogin}" ui:field="userAuth"/>
 	</g:FlowPanel>
 </ui:UiBinder>
