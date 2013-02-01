@@ -1,28 +1,36 @@
 package com.verophyle.core.shared.domain;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Version;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.OnSave;
 
-public class CoreEntity<I> {
+@Entity
+public class CoreEntity {
 	
 	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private I id;
+	Long id;
 	
-	@Version
-	@Column(name = "version")
-	private Integer version;
+	Integer version = 0;
+
+	@OnSave
+	void onSave() {
+		version++;
+	}
 	
-	public I getId() {
+	public Long getId() {
 		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public Integer getVersion() {
 		return version;
+	}
+	
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 	
 }

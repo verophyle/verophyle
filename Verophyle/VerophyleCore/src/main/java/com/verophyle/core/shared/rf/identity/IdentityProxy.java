@@ -1,4 +1,4 @@
-package com.verophyle.core.shared.rf.user;
+package com.verophyle.core.shared.rf.identity;
 
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.verophyle.core.server.rf.identity.IdentityLocater;

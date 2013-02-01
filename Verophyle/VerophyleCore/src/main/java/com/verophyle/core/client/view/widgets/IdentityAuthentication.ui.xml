@@ -8,8 +8,12 @@
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
-	<g:FlowPanel addStyleName="{res.css.vertical}">
-		<g:Label ui:field="userInfo" addStyleName="{res.css.headerLoginInfo}"></g:Label>
-		<g:Button ui:field="userLogin" addStyleName="{res.css.headerLoginButton}"></g:Button>
+	<g:FlowPanel addStyleNames="{res.css.vertical}">
+		<g:FlowPanel addStyleNames="{res.css.headerLoginInfo}">
+			<g:Label ui:field="identityInfo"></g:Label>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{res.css.headerLoginButton}">
+			<g:Button ui:field="identityLogin"></g:Button>
+		</g:FlowPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 

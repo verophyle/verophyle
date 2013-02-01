@@ -13,10 +13,10 @@ public class DeckServiceImpl implements DeckService {
 	static HashMap<Long, FlashcardDeck> decks = new HashMap<Long, FlashcardDeck>();
 
 	private final Logger logger;
-	private final CoreLocator<FlashcardDeck, Long> locator;	
+	private final CoreLocator<FlashcardDeck> locator;	
 	
 	@Inject
-	public DeckServiceImpl(Logger logger, CoreLocator<FlashcardDeck, Long> locator) {
+	public DeckServiceImpl(Logger logger, DeckLocator locator) {
 		this.logger = logger;
 		this.locator = locator;
 	}

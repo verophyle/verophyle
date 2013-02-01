@@ -1,5 +1,6 @@
 package com.verophyle.core.client;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
@@ -51,6 +52,7 @@ import com.verophyle.core.client.view.header.HeaderViewImpl;
 import com.verophyle.core.client.view.sidebar.SidebarView;
 import com.verophyle.core.client.view.sidebar.SidebarViewImpl;
 import com.verophyle.core.shared.CoreMessages;
+import com.verophyle.core.shared.rf.CoreRequestFactory;
 
 public class CoreGinModule extends AbstractGinModule {
 	
@@ -127,6 +129,15 @@ public class CoreGinModule extends AbstractGinModule {
 		PlaceHistoryHandler placeHistoryHandler = new PlaceHistoryHandler(placeHistoryMapper);
 		placeHistoryHandler.register(placeController, eventBus, new Index("0"));
 		return placeHistoryHandler;
+	}
+
+	// requestfactory
+	@Provides
+	@Singleton
+	public CoreRequestFactory getRequestFactory(EventBus eventBus) {
+		CoreRequestFactory requestFactory = GWT.create(CoreRequestFactory.class);
+		requestFactory.initialize(eventBus);
+		return requestFactory;
 	}
 	
 }

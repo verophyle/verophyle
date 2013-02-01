@@ -5,11 +5,11 @@ import com.google.inject.Injector;
 import com.verophyle.core.server.rf.CoreLocator;
 import com.verophyle.core.shared.domain.Identity;
 
-public class IdentityLocater extends CoreLocator<Identity, Long> {
+public class IdentityLocater extends CoreLocator<Identity> {
 
 	@Inject
 	public IdentityLocater(Injector injector) {
-		super(injector, Identity.class, Long.class);
+		super(injector, Identity.class);
 	}
 
 }

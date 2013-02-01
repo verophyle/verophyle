@@ -1,21 +1,22 @@
 package com.verophyle.core.server.rf;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.web.bindery.requestfactory.shared.Locator;
+import com.googlecode.objectify.Key;
 import com.verophyle.core.shared.domain.CoreEntity;
 
-public class CoreLocator<E extends CoreEntity<I>, I> extends Locator<E, I> {
+public abstract class CoreLocator<E extends CoreEntity> extends Locator<E, Long> {
 
 	private final Injector injector;
 	private final Class<E> domainType;
-	private final Class<I> idType;
-	
+
 	@Inject
-	public CoreLocator(Injector injector, Class<E> domainType, Class<I> idType) {
+	public CoreLocator(Injector injector, Class<E> domainType) {
 		super();		
 		this.domainType = domainType;
-		this.idType = idType;
 		this.injector = injector;
 	}
 	
@@ -25,7 +26,7 @@ public class CoreLocator<E extends CoreEntity<I>, I> extends Locator<E, I> {
 	}
 
 	@Override
-	public I getId(E domainObject) {
+	public Long getId(E domainObject) {
 		return domainObject.getId();
 	}
 
@@ -35,14 +36,18 @@ public class CoreLocator<E extends CoreEntity<I>, I> extends Locator<E, I> {
 	}
 
 	@Override
-	public E find(Class<? extends E> clazz, I id) {
-		// TODO: get the service & find
-		return null;
+	public E find(Class<? extends E> clazz, Long id) {
+		if (id != null) {
+		Key<? extends E> key = Key.create(clazz, id);		
+			return ofy().load().type(clazz).filterKey(key).first().get();
+		} else {
+			return null;
+		}
 	}
 
 	@Override
-	public Class<I> getIdType() {
-		return idType;
+	public Class<Long> getIdType() {
+		return Long.class;
 	}
 
 	@Override

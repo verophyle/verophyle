@@ -1,12 +1,14 @@
 package com.verophyle.gae.server;
 
 import com.google.appengine.api.users.User;
+import com.google.inject.Inject;
 import com.verophyle.core.server.CoreUser;
 
 public class GaeUser implements CoreUser {
 
 	private final User user;
 	
+	@Inject
 	public GaeUser(User user) {
 		assert user != null;		
 		this.user = user;

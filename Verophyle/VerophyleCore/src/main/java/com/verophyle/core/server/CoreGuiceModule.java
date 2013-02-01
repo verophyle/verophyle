@@ -18,6 +18,8 @@ import com.verophyle.core.server.rf.CoreExceptionHandler;
 import com.verophyle.core.server.rf.CoreServiceLayerDecorator;
 import com.verophyle.core.server.rf.CoreServiceLocator;
 import com.verophyle.core.server.rf.CoreServiceLocatorImpl;
+import com.verophyle.core.server.rf.identity.IdentityService;
+import com.verophyle.core.server.rf.identity.IdentityServiceImpl;
 
 public class CoreGuiceModule extends AbstractModule {
 
@@ -26,7 +28,9 @@ public class CoreGuiceModule extends AbstractModule {
 		// RequestFactory
 		bind(ExceptionHandler.class).to(CoreExceptionHandler.class);
 		bind(ServiceLayerDecorator.class).to(CoreServiceLayerDecorator.class);
-		bind(CoreServiceLocator.class).to(CoreServiceLocatorImpl.class);		
+		bind(CoreServiceLocator.class).to(CoreServiceLocatorImpl.class);
+		
+		bind(IdentityService.class).to(IdentityServiceImpl.class);
 	}
 
 	// misc
@@ -46,7 +50,7 @@ public class CoreGuiceModule extends AbstractModule {
 				.constraintValidatorFactory(new CoreConstraintValidatorFactory(injector))
 				.buildValidatorFactory();
 	}
-
+	
 	@Provides
 	@Singleton
 	public Validator getValidator(ValidatorFactory validatorFactory) {

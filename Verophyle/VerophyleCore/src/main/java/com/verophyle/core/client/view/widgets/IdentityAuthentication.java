@@ -9,28 +9,28 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.inject.Inject;
 
-public class UserAuthentication extends Composite {
+public class IdentityAuthentication extends Composite {
 
-	interface Binder extends UiBinder<FlowPanel, UserAuthentication> {}
+	interface Binder extends UiBinder<FlowPanel, IdentityAuthentication> {}
 	private static Binder binder = GWT.create(Binder.class);
 
 	@UiField
-	Label userInfo;
+	Label identityInfo;
 	
 	@UiField
-	Button userLogin;
+	Button identityLogin;
 	
 	@Inject
-	public UserAuthentication() {
+	public IdentityAuthentication() {
 		initWidget(binder.createAndBindUi(this));
 	}
 	
-	public Label getUserInfo() {
-		return userInfo;
+	public Label getIdentityInfo() {
+		return identityInfo;
 	}
 	
-	public Button getUserLogin() {
-		return userLogin;
+	public Button getIdentityLogin() {
+		return identityLogin;
 	}
 	
 }

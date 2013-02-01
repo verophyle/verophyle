@@ -1,12 +1,12 @@
 package com.verophyle.flashcards.shared.domain;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
+import com.googlecode.objectify.annotation.EntitySubclass;
 import com.verophyle.core.shared.domain.CoreEntity;
 
-@Entity
-public class FlashcardDeck extends CoreEntity<Long> {
+@EntitySubclass(index = true)
+public class FlashcardDeck extends CoreEntity {
 	
 	@Size(min = 1, max = 400)
 	private String name;

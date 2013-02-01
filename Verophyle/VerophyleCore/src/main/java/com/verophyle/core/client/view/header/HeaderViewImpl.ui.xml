@@ -14,6 +14,6 @@
 			<ui:msg key="applicationTitle">Verophyle</ui:msg>
 		</g:HTML>
 		
-		<core:UserAuthentication addStyleNames="{res.css.headerLogin}" ui:field="userAuth"/>
+		<core:IdentityAuthentication addStyleNames="{res.css.headerLogin}" ui:field="identityAuth"/>
 	</g:FlowPanel>
 </ui:UiBinder>

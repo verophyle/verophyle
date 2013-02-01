@@ -1,10 +1,12 @@
 package com.verophyle.gae.server;
 
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import com.google.inject.Inject;
+import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.ServletModule;
-import com.verophyle.core.server.CoreUser;
+import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
 import com.verophyle.core.server.rf.CoreRequestFactoryServlet;
 
@@ -21,10 +23,19 @@ public class VerophyleServletModule extends ServletModule {
 		bind(CoreRequestFactoryServlet.class).in(Singleton.class);
 		
 		serve("/Verophyle/remote_logging").with(RemoteLoggingServiceImpl.class);
-		serve("/gwtRequest").with(CoreRequestFactoryServlet.class);
-		
-		bind(CoreUser.class).to(GaeUser.class);
-		bind(CoreUserService.class).to(GaeUserService.class);
+		serve("/gwtRequest").with(CoreRequestFactoryServlet.class);		
+	}
+	
+	@Provides
+	@Singleton
+	public CoreUserService getUserService() {
+		return new GaeUserService(UserServiceFactory.getUserService());
+	}
+	
+	@Provides
+	@Singleton
+	public CoreObjectifyService getObjectifyService() {
+		return new GaeObjectifyService();
 	}
 	
 }

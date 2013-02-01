@@ -12,7 +12,7 @@ import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
-import com.verophyle.core.client.view.widgets.UserAuthentication;
+import com.verophyle.core.client.view.widgets.IdentityAuthentication;
 import com.verophyle.core.shared.CoreMessages;
 
 public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
@@ -24,7 +24,7 @@ public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
 	HTML logo;
 	
 	@UiField
-	UserAuthentication userAuth;
+	IdentityAuthentication identityAuth;
 	
 	CoreMessages messages;
 	
@@ -33,9 +33,13 @@ public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
 		super(logger, res);
 		this.messages = messages;
 		
-		initWidget(binder.createAndBindUi(this));		
+		initWidget(binder.createAndBindUi(this));
 		initLogo();
-		initUserAuth();
+	}
+	
+	@Override
+	public IdentityAuthentication getIdentityAuth() {
+		return identityAuth;
 	}
 	
 	private void initLogo() {
@@ -46,9 +50,5 @@ public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
 			}
 		});		
 	}
-	
-	private void initUserAuth() {
 		
-	}
-	
 }

@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
+import com.google.inject.Inject;
 import com.verophyle.core.server.CoreUser;
 import com.verophyle.core.server.CoreUserService;
 
@@ -11,6 +12,7 @@ public class GaeUserService implements CoreUserService {
 	
 	private final UserService userService;
 
+	@Inject
 	public GaeUserService(UserService userService) {
 		assert userService != null;
 		this.userService = userService;

@@ -64,14 +64,6 @@
 			<version>${gwt.version}</version>
 		</dependency>
 
-		<!-- 
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-		</dependency>
-		-->
-
 		<!-- Google App Engine (GAE) -->
 		<dependency>
 			<groupId>com.google.appengine</groupId>

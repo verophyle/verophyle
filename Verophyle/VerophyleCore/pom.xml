@@ -53,15 +53,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- 
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		-->
-
 		<!-- RequestFactory -->
 		<dependency>
 			<groupId>com.google.web.bindery</groupId>
@@ -113,12 +104,6 @@
 			<version>${objectify.version}</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0.2</version>
-		</dependency>
-
 		<!-- Guice and GIN -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
