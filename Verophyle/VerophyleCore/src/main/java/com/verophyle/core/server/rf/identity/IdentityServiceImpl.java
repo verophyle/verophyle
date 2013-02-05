@@ -25,8 +25,7 @@ public class IdentityServiceImpl implements IdentityService {
 		// get current user, if any
 		CoreUser currentUser;
 		if (userService.isUserLoggedIn() && (currentUser = userService.getCurrentUser()) != null) {
-			Identity identity = ofy.load().type(Identity.class).filter("handle =", currentUser.getNickname()).first().get();
-			
+			Identity identity = ofy.load().type(Identity.class).filter("handle =", currentUser.getNickname()).first().get();			
 			return identity;
 		} else {
 			// get or create guest user
@@ -39,6 +38,7 @@ public class IdentityServiceImpl implements IdentityService {
 				ofy.save().entity(guest).now();
 			}
 			
+			guest.setAnonymous(true);
 			return guest;
 		}
 	}

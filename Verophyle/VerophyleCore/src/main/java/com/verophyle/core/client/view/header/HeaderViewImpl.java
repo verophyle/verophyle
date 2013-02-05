@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.inject.Inject;
 import com.verophyle.core.client.CoreLogger;
-import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
 import com.verophyle.core.client.view.widgets.IdentityAuthentication;
@@ -46,9 +45,8 @@ public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
 		logo.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				getPresenter().goTo(new Index(""));
+				((HeaderView.Presenter)getPresenter()).onLogoClick();
 			}
 		});		
-	}
-		
+	}	
 }

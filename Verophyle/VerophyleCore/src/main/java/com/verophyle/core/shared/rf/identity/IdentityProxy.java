@@ -9,4 +9,7 @@ import com.verophyle.core.shared.rf.CoreEntityProxy;
 public interface IdentityProxy extends CoreEntityProxy {
 	String getHandle();
 	void setHandle(String handle);
+	
+	boolean isAnonymous();
+	boolean isAdministrator();
 }

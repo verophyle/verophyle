@@ -8,6 +8,8 @@ public class Identity extends CoreEntity {
 	public static final String GUEST_HANDLE = "Anonymous";
 
 	private String handle;
+	private boolean anonymous;
+	private boolean administrator;
 	
 	public Identity() {
 	}
@@ -18,6 +20,22 @@ public class Identity extends CoreEntity {
 	
 	public void setHandle(String handle) {
 		this.handle = handle;
+	}
+	
+	public boolean isAnonymous() {
+		return anonymous;
+	}
+	
+	public void setAnonymous(boolean anonymous) {
+		this.anonymous = anonymous;
+	}
+	
+	public boolean isAdministrator() {
+		return administrator;
+	}
+	
+	public void setAdministrator(boolean administrator) {
+		this.administrator = administrator;
 	}
 	
 }

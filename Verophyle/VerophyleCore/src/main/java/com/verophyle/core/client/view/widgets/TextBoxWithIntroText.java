@@ -18,6 +18,8 @@ public class TextBoxWithIntroText extends TextBox {
 	public TextBoxWithIntroText() {
 		super();
 		
+		this.removeStyleName("gwt-TextBox");
+		
 		this.addStyleName(coreTextBoxStyle);
 		this.addStyleName(initialStyle);
 

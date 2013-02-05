@@ -8,6 +8,7 @@ public interface HeaderView extends CoreView {
 	public IdentityAuthentication getIdentityAuth();
 
 	public interface Presenter extends CorePresenter {
+		void onLogoClick();
 	}
 
 }

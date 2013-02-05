@@ -1,29 +1,17 @@
 @charset "UTF-8";
 
 /* colors */
-@def PRIMARY1 #9F9D86;
-@def PRIMARY2 #5D5C54;
-@def PRIMARY3 #423C09;
-@def PRIMARY4 #D3D0BA;
-@def PRIMARY5 #D3D1C1;
+@def PRIMARY1 #4E5B80;
+@def PRIMARY2 #3E4353;
+@def PRIMARY3 #0B1A41;
+@def PRIMARY4 #8F9EC7;
+@def PRIMARY5 #A0ABC7;
 
-@def SECONDARY_A1 #617468;
-@def SECONDARY_A2 #3D433F;
-@def SECONDARY_A3 #073016;
-@def SECONDARY_A4 #A8BFB1;
-@def SECONDARY_A5 #AFBFB5;
-
-@def SECONDARY_B1 #9F8A86;
-@def SECONDARY_B2 #5D5654;
-@def SECONDARY_B3 #421309;
-@def SECONDARY_B4 #D3BEBA;
-@def SECONDARY_B5 #D3C5C1;
-
-@def COMPLEMENTARY1 #635C6C;
-@def COMPLEMENTARY2 #3C3A3F;
-@def COMPLEMENTARY3 #16062D;
-@def COMPLEMENTARY4 #AFA7BC;
-@def COMPLEMENTARY5 #B3ADBC;
+@def COMPLEMENTARY1 #BEA36B;
+@def COMPLEMENTARY2 #7B7058;
+@def COMPLEMENTARY3 #604610;
+@def COMPLEMENTARY4 #E2CB9B;
+@def COMPLEMENTARY5 #E2D3B1;
 
 /* font weights */
 @def FONT_BOLD 600;
@@ -32,38 +20,49 @@
 
 
 /* defaults */
-
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: FONT_LIGHT;
 }
 
-
 /* gwt widgets */
-@external gwt-TextBox;
-
-.gwt-TextBox .coreTextBox {
-	border: 1px solid SECONDARY_B3;
-	border-radius: 3px;
+.coreButton {
+	margin: 0;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	
-	color: PRIMARY2;
+	border: 3px solid PRIMARY2 !important;
+	border-radius: 0 !important;
+	
+	color: COMPLEMENTARY5 !important;
+	background-color: PRIMARY4 !important;
+	
+	cursor: pointer;
+	cursor: hand;
 }
 
-.gwt-TextBox .coreTextBox .initial {
+.coreTextBox {
+	border: 1px solid COMPLEMENTARY2 !important;
+	border-radius: 3px !important;	
+	color: PRIMARY2 !important;
+}
+
+.coreTextBox .initial {
 	color: PRIMARY5;
 }
 
 /* layout */
-
 .horizontal {
 	display: -webkit-flex;
 	-webkit-flex-flow: row nowrap;
+	-webkit-justify-content: space-around;
 	-webkit-align-items: stretch;
 }
 
 .vertical {
 	display: -webkit-flex;
 	-webkit-flex-flow: column nowrap;
+	-webkit-justify-content: space-around;
 	-webkit-align-items: stretch;
 }
 
@@ -99,20 +98,45 @@ body {
 		-webkit-flex: none;
 		
 		text-align: center;
-		text-shadow: 2px 2px COMPLEMENTARY3;
+		text-shadow: 2px 2px PRIMARY3;
 		
 		color: PRIMARY5;
-		background-color: SECONDARY_B3;
+		background-color: PRIMARY2;
+		
+		cursor: pointer;
+		cursor: hand;
 	}
 	
 	.headerLogin {
-		flex: auto;
+		-webkit-flex: initial;
+		
+		width: 12em;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		margin-right: 1em;
+		padding-left: 1em;
+		padding-right: 1em;
+		
+		border-top: 3px solid COMPLEMENTARY3;
+		border-bottom: 3px solid COMPLEMENTARY3;
+		
+		color: black;
+		background-color: COMPLEMENTARY5;
 	}
 	
 		.headerLoginInfo {
+			-webkit-flex: 1;
+			padding-top: 0.75em;
+			padding-bottom: 0.25em;
+			text-align: left;
+			overflow: hidden;
 		}
 		
 		.headerLoginButton {
+			-webkit-flex: 1;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+			text-align: left;
 		}
 
 .sidebar {
@@ -122,7 +146,7 @@ body {
 	overflow: hidden;
 	
 	color: black;
-	background-color: PRIMARY3;
+	background-color: PRIMARY4;
 }
 	
 	.sidebarItem {
@@ -133,7 +157,7 @@ body {
 		border-bottom: 3px solid COMPLEMENTARY3;
 
 		color: black;
-		background-color: SECONDARY_B5;
+		background-color: COMPLEMENTARY5;
 	}
 
 .footer {
@@ -143,7 +167,7 @@ body {
 	overflow: hidden;
 	
 	color: black;
-	background-color: COMPLEMENTARY1;
+	background-color: COMPLEMENTARY5;
 }
 
 .content {

@@ -11,6 +11,8 @@
 	<inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
 	<inherits name="com.googlecode.objectify.Objectify" />
 
+	<inherits name='com.google.gwt.user.theme.clean.CleanResources'/>
+
 	<extend-property name="locale" values="en" />
 	<extend-property name="locale" values="fr" />
 	<set-property-fallback name="locale" value="en" />

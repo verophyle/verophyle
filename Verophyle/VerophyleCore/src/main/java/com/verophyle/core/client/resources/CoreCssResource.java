@@ -28,6 +28,7 @@ public interface CoreCssResource extends CssResource {
 	String title();
 	String para();
 	
+	String coreButton();
 	String coreTextBox();
 	String initial();
 }

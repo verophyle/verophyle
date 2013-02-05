@@ -23,6 +23,7 @@ public class IdentityAuthentication extends Composite {
 	@Inject
 	public IdentityAuthentication() {
 		initWidget(binder.createAndBindUi(this));
+		identityLogin.removeStyleName("gwt-Button");
 	}
 	
 	public Label getIdentityInfo() {

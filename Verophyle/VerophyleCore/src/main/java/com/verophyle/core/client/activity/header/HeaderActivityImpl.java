@@ -12,20 +12,30 @@ import com.google.web.bindery.requestfactory.shared.ServerFailure;
 import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.activity.CoreActivityImpl;
 import com.verophyle.core.client.place.CorePlace;
+import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.view.header.HeaderView;
+import com.verophyle.core.client.view.widgets.IdentityAuthentication;
+import com.verophyle.core.shared.CoreMessages;
 import com.verophyle.core.shared.rf.CoreRequestFactory;
 import com.verophyle.core.shared.rf.identity.IdentityProxy;
 import com.verophyle.core.shared.rf.identity.IdentityRequest;
 
 public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> implements HeaderActivity {
 
+	private final CoreMessages coreMessages;
 	private final CoreRequestFactory requestFactory;
 	private final HeaderView headerView;
 	
 	@Inject
-	public HeaderActivityImpl(CoreLogger logger, CoreRequestFactory requestFactory, PlaceController placeController, HeaderView headerView) {
+	public HeaderActivityImpl(
+			CoreLogger logger, 
+			CoreMessages coreMessages, 
+			CoreRequestFactory requestFactory, 
+			PlaceController placeController, 
+			HeaderView headerView) {
 		super(logger, placeController, headerView);
 		
+		this.coreMessages = coreMessages;
 		this.requestFactory = requestFactory;
 		this.headerView = headerView;
 	}
@@ -41,19 +51,37 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 
 			@Override
 			public void onSuccess(IdentityProxy identity) {
-				String handle = identity != null ? identity.getHandle() : "?";
-				headerView.getIdentityAuth().getIdentityInfo().setText(handle);
+				IdentityAuthentication auth = headerView.getIdentityAuth();
+				
+				if (identity != null) {
+					auth.getIdentityInfo().setText(identity.getHandle());
+					
+					if (identity.isAnonymous())
+						auth.getIdentityLogin().setText(coreMessages.login());
+					else
+						auth.getIdentityLogin().setText(coreMessages.logout());					
+				} else {
+					auth.getIdentityInfo().setText("?? error ??");
+					auth.getIdentityLogin().setText(coreMessages.login());
+				}
 			}
 
 			@Override
 			public void onFailure(ServerFailure error) {
-				headerView.getIdentityAuth().getIdentityInfo().setText("?? error ??");
-				
 				log(Level.SEVERE, error.getExceptionType() + "\n" + error.getMessage());
+
+				IdentityAuthentication auth = headerView.getIdentityAuth();
+
+				auth.getIdentityInfo().setText("?? error ??");
+				auth.getIdentityLogin().setText(coreMessages.login());
 			}
 			
 		});
-		
+	}
+
+	@Override
+	public void onLogoClick() {
+		goTo(new Index(""));
 	}
 
 }
