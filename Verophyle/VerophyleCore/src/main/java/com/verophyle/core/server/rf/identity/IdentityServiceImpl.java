@@ -1,5 +1,6 @@
 package com.verophyle.core.server.rf.identity;
 
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.googlecode.objectify.Objectify;
 import com.verophyle.core.server.CoreObjectifyService;
@@ -43,4 +44,14 @@ public class IdentityServiceImpl implements IdentityService {
 		}
 	}
 
+	@Override
+	public String getLoginUrl() {
+		return userService.createLoginUrl(Window.Location.getHref());
+	}
+
+	@Override
+	public String getLogoutUrl() {
+		return userService.createLogoutUrl(Window.Location.getHref());
+	}
+	
 }

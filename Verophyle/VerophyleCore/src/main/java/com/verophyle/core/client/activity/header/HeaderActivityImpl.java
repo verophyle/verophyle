@@ -39,7 +39,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 		this.requestFactory = requestFactory;
 		this.headerView = headerView;
 	}
-		
+	
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		super.start(panel, eventBus);
@@ -57,12 +57,12 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 					auth.getIdentityInfo().setText(identity.getHandle());
 					
 					if (identity.isAnonymous())
-						auth.getIdentityLogin().setText(coreMessages.login());
+						setLogin();
 					else
-						auth.getIdentityLogin().setText(coreMessages.logout());					
+						setLogout();
 				} else {
 					auth.getIdentityInfo().setText("?? error ??");
-					auth.getIdentityLogin().setText(coreMessages.login());
+					setLogin();
 				}
 			}
 
@@ -73,7 +73,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 				IdentityAuthentication auth = headerView.getIdentityAuth();
 
 				auth.getIdentityInfo().setText("?? error ??");
-				auth.getIdentityLogin().setText(coreMessages.login());
+				setLogin();
 			}
 			
 		});
@@ -84,4 +84,30 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 		goTo(new Index(""));
 	}
 
+	private void setLogin() {
+		final IdentityAuthentication auth = headerView.getIdentityAuth();
+		auth.getIdentityLogin().setText(coreMessages.login());
+		
+		requestFactory.identityRequest().getLoginUrl().fire(new Receiver<String>() {
+			@Override
+			public void onSuccess(String response) {
+				auth.setUrl(response);
+				auth.getIdentityLogin().setTitle(response);
+			}
+		});
+	}
+	
+	private void setLogout() {
+		final IdentityAuthentication auth = headerView.getIdentityAuth();
+		auth.getIdentityLogin().setText(coreMessages.logout());
+		
+		requestFactory.identityRequest().getLogoutUrl().fire(new Receiver<String>() {
+			@Override
+			public void onSuccess(String response) {
+				auth.setUrl(response);
+				auth.getIdentityLogin().setTitle(response);
+			}
+		});
+	}
+	
 }

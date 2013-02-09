@@ -3,5 +3,7 @@ package com.verophyle.core.server.rf.identity;
 import com.verophyle.core.shared.domain.Identity;
 
 public interface IdentityService {
-	Identity getCurrentIdentity();
+	Identity getCurrentIdentity();	
+	String getLoginUrl();
+	String getLogoutUrl();
 }
