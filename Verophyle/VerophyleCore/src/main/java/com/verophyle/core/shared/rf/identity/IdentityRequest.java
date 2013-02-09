@@ -9,6 +9,6 @@ import com.verophyle.core.server.rf.identity.IdentityService;
 @Service(value = IdentityService.class, locator = CoreServiceLocator.class)
 public interface IdentityRequest extends RequestContext {
 	Request<IdentityProxy> getCurrentIdentity();
-	Request<String> getLoginUrl();
-	Request<String> getLogoutUrl();
+	Request<String> getLoginUrl(String currentUrl);
+	Request<String> getLogoutUrl(String currentUrl);
 }

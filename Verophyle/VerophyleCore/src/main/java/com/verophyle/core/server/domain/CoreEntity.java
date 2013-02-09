@@ -1,4 +1,4 @@
-package com.verophyle.core.shared.domain;
+package com.verophyle.core.server.domain;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;

@@ -2,8 +2,8 @@ package com.verophyle.core.server.rf.identity;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.verophyle.core.server.domain.Identity;
 import com.verophyle.core.server.rf.CoreLocator;
-import com.verophyle.core.shared.domain.Identity;
 
 public class IdentityLocater extends CoreLocator<Identity> {
 

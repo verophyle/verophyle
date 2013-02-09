@@ -6,7 +6,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.web.bindery.requestfactory.shared.Locator;
 import com.googlecode.objectify.Key;
-import com.verophyle.core.shared.domain.CoreEntity;
+import com.verophyle.core.server.domain.CoreEntity;
 
 public abstract class CoreLocator<E extends CoreEntity> extends Locator<E, Long> {
 

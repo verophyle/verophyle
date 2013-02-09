@@ -3,7 +3,7 @@ package com.verophyle.flashcards.shared.domain;
 import javax.validation.constraints.Size;
 
 import com.googlecode.objectify.annotation.EntitySubclass;
-import com.verophyle.core.shared.domain.CoreEntity;
+import com.verophyle.core.server.domain.CoreEntity;
 
 @EntitySubclass(index = true)
 public class FlashcardDeck extends CoreEntity {

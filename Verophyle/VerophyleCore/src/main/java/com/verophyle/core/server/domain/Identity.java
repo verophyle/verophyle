@@ -1,15 +1,18 @@
-package com.verophyle.core.shared.domain;
+package com.verophyle.core.server.domain;
 
 import com.googlecode.objectify.annotation.EntitySubclass;
+import com.googlecode.objectify.annotation.Index;
 
 @EntitySubclass(index = true)
 public class Identity extends CoreEntity {
 	
 	public static final String GUEST_HANDLE = "Anonymous";
 
-	private String handle;
-	private boolean anonymous;
-	private boolean administrator;
+	@Index
+	String handle;
+	
+	boolean anonymous;
+	boolean administrator;
 	
 	public Identity() {
 	}

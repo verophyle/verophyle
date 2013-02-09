@@ -1,12 +1,11 @@
 package com.verophyle.core.server.rf.identity;
 
-import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.googlecode.objectify.Objectify;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUser;
 import com.verophyle.core.server.CoreUserService;
-import com.verophyle.core.shared.domain.Identity;
+import com.verophyle.core.server.domain.Identity;
 
 public class IdentityServiceImpl implements IdentityService {
 
@@ -26,32 +25,40 @@ public class IdentityServiceImpl implements IdentityService {
 		// get current user, if any
 		CoreUser currentUser;
 		if (userService.isUserLoggedIn() && (currentUser = userService.getCurrentUser()) != null) {
-			Identity identity = ofy.load().type(Identity.class).filter("handle =", currentUser.getNickname()).first().get();			
-			return identity;
-		} else {
-			// get or create guest user
-			Identity guest = ofy.load().type(Identity.class).filter("handle =", Identity.GUEST_HANDLE).first().get();
+			Identity identity = ofy.load().type(Identity.class).filter("handle =", currentUser.getNickname()).first().get();
 			
-			if (guest == null) {
-				guest = new Identity();
-				guest.setHandle(Identity.GUEST_HANDLE);
-				
-				ofy.save().entity(guest).now();
+			if (identity == null) {
+				// create new identity for this user
+				identity = new Identity();
+				identity.setHandle(currentUser.getNickname());
+				ofy.save().entity(identity).now();
 			}
+
+			return identity;
+		}
+
+		// get or create guest user
+		Identity guest = ofy.load().type(Identity.class).filter("handle =", Identity.GUEST_HANDLE).first().get();
+		
+		if (guest == null) {
+			guest = new Identity();
+			guest.setHandle(Identity.GUEST_HANDLE);
 			
 			guest.setAnonymous(true);
-			return guest;
+			ofy.save().entity(guest).now();
 		}
+		
+		return guest;
 	}
 
 	@Override
-	public String getLoginUrl() {
-		return userService.createLoginUrl(Window.Location.getHref());
+	public String getLoginUrl(String currentUrl) {
+		return userService.createLoginUrl(currentUrl);
 	}
 
 	@Override
-	public String getLogoutUrl() {
-		return userService.createLogoutUrl(Window.Location.getHref());
+	public String getLogoutUrl(String currentUrl) {
+		return userService.createLogoutUrl(currentUrl);
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.logging.Level;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 import com.google.web.bindery.requestfactory.shared.Receiver;
@@ -88,7 +89,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 		final IdentityAuthentication auth = headerView.getIdentityAuth();
 		auth.getIdentityLogin().setText(coreMessages.login());
 		
-		requestFactory.identityRequest().getLoginUrl().fire(new Receiver<String>() {
+		requestFactory.identityRequest().getLoginUrl(Window.Location.getHref()).fire(new Receiver<String>() {
 			@Override
 			public void onSuccess(String response) {
 				auth.setUrl(response);
@@ -101,7 +102,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 		final IdentityAuthentication auth = headerView.getIdentityAuth();
 		auth.getIdentityLogin().setText(coreMessages.logout());
 		
-		requestFactory.identityRequest().getLogoutUrl().fire(new Receiver<String>() {
+		requestFactory.identityRequest().getLogoutUrl(Window.Location.getHref()).fire(new Receiver<String>() {
 			@Override
 			public void onSuccess(String response) {
 				auth.setUrl(response);

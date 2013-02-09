@@ -1,8 +1,8 @@
 package com.verophyle.core.server;
 
 import com.googlecode.objectify.Objectify;
-import com.verophyle.core.shared.domain.CoreEntity;
-import com.verophyle.core.shared.domain.Identity;
+import com.verophyle.core.server.domain.CoreEntity;
+import com.verophyle.core.server.domain.Identity;
 
 public abstract class CoreObjectifyService  {
 
