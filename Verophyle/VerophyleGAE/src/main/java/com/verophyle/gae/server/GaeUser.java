@@ -2,15 +2,29 @@ package com.verophyle.gae.server;
 
 import com.google.appengine.api.users.User;
 import com.google.inject.Inject;
-import com.verophyle.core.server.CoreUser;
+import com.googlecode.objectify.annotation.EntitySubclass;
+import com.verophyle.core.server.domain.CoreUser;
 
-public class GaeUser implements CoreUser {
+@EntitySubclass(index = true)
+public class GaeUser extends CoreUser {
 
-	private final User user;
+	User user;
+	
+	@Inject
+	public GaeUser() {
+	}
 	
 	@Inject
 	public GaeUser(User user) {
 		assert user != null;		
+		this.user = user;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
 		this.user = user;
 	}
 	
@@ -47,4 +61,14 @@ public class GaeUser implements CoreUser {
 		return user.getUserId();
 	}
 
+	@Override
+	public int hashCode() {
+		return user != null ? user.hashCode() : 0;
+	}
+	
+	@Override
+	public String toString() {
+		return "GaeUser[" + (user != null ? user.toString() : "<null") + "]";
+	}
+	
 }

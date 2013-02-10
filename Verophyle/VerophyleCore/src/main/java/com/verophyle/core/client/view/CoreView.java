@@ -2,13 +2,19 @@ package com.verophyle.core.client.view;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.UIObject;
 
 public interface CoreView extends IsWidget {
 
-	public void setPresenter(CorePresenter presenter);
+	void setPresenter(CorePresenter presenter);
 	
-	public interface CorePresenter {
+	interface CorePresenter {
 		void goTo(Place place);
 	}
 	
+	void fadeIn();
+	void fadeIn(UIObject uiObject);
+	
+	void fadeOut();
+	void fadeOut(UIObject uiObject);
 }

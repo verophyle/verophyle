@@ -1,5 +1,9 @@
 package com.verophyle.core.server.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.EntitySubclass;
 import com.googlecode.objectify.annotation.Index;
 
@@ -11,8 +15,9 @@ public class Identity extends CoreEntity {
 	@Index
 	String handle;
 	
+	List<Ref<CoreUser>> users = new ArrayList<Ref<CoreUser>>();
+	
 	boolean anonymous;
-	boolean administrator;
 	
 	public Identity() {
 	}
@@ -25,6 +30,10 @@ public class Identity extends CoreEntity {
 		this.handle = handle;
 	}
 	
+	public List<Ref<CoreUser>> getUsers() {
+		return users;
+	}
+		
 	public boolean isAnonymous() {
 		return anonymous;
 	}
@@ -32,13 +41,5 @@ public class Identity extends CoreEntity {
 	public void setAnonymous(boolean anonymous) {
 		this.anonymous = anonymous;
 	}
-	
-	public boolean isAdministrator() {
-		return administrator;
-	}
-	
-	public void setAdministrator(boolean administrator) {
-		this.administrator = administrator;
-	}
-	
+		
 }

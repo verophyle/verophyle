@@ -11,5 +11,4 @@ public interface IdentityProxy extends CoreEntityProxy {
 	void setHandle(String handle);
 	
 	boolean isAnonymous();
-	boolean isAdministrator();
 }

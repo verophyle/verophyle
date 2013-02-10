@@ -5,17 +5,21 @@ import java.util.Set;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.inject.Inject;
-import com.verophyle.core.server.CoreUser;
+import com.googlecode.objectify.Objectify;
+import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
+import com.verophyle.core.server.domain.CoreUser;
 
 public class GaeUserService implements CoreUserService {
 	
 	private final UserService userService;
+	private final CoreObjectifyService objectifyService;
 
 	@Inject
-	public GaeUserService(UserService userService) {
+	public GaeUserService(UserService userService, CoreObjectifyService objectifyService) {
 		assert userService != null;
 		this.userService = userService;
+		this.objectifyService = objectifyService;
 	}
 	
 	@Override
@@ -46,7 +50,20 @@ public class GaeUserService implements CoreUserService {
 	@Override
 	public CoreUser getCurrentUser() {
 		User currentUser = userService.getCurrentUser();
-		return currentUser != null ? new GaeUser(currentUser) : null;
+		
+		if (currentUser != null) {
+			Objectify ofy = objectifyService.ofy();			
+			GaeUser existingUser = ofy.load().type(GaeUser.class).filter("user =", currentUser).first().get();
+
+			if (existingUser == null) {
+				existingUser = new GaeUser(currentUser);
+				ofy.save().entity(existingUser).now();
+			}
+			
+			return existingUser;
+		}
+		
+		return null;
 	}
 
 	@Override

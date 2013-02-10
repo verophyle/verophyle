@@ -45,24 +45,37 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		super.start(panel, eventBus);
 		
-		IdentityRequest request = requestFactory.identityRequest();
-		Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
+		final IdentityRequest request = requestFactory.identityRequest();
+		final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
 		
+		// request the current identity, then set the name and button accordingly
 		currentIdentity.fire(new Receiver<IdentityProxy>() {
 
 			@Override
 			public void onSuccess(IdentityProxy identity) {
-				IdentityAuthentication auth = headerView.getIdentityAuth();
+				final IdentityAuthentication auth = headerView.getIdentityAuth();
 				
-				if (identity != null) {
+				if (identity != null) {					
 					auth.getIdentityInfo().setText(identity.getHandle());
 					
 					if (identity.isAnonymous())
 						setLogin();
 					else
 						setLogout();
+
+					// request the gravatar url
+					final IdentityRequest gravatarRequest = requestFactory.identityRequest();
+					gravatarRequest.getGravatarImageUrl(identity).fire(new Receiver<String>() {
+
+						@Override
+						public void onSuccess(String response) {
+							if (response != null && !response.isEmpty())
+								auth.getGravatarImage().setUrl(response);
+						}
+						
+					});
 				} else {
-					auth.getIdentityInfo().setText("?? error ??");
+					auth.getIdentityInfo().setText("?? no id found ??");
 					setLogin();
 				}
 			}
@@ -73,7 +86,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 
 				IdentityAuthentication auth = headerView.getIdentityAuth();
 
-				auth.getIdentityInfo().setText("?? error ??");
+				auth.getIdentityInfo().setText("?? req failed ??");
 				setLogin();
 			}
 			
@@ -94,6 +107,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 			public void onSuccess(String response) {
 				auth.setUrl(response);
 				auth.getIdentityLogin().setTitle(response);
+				headerView.fadeIn(auth);
 			}
 		});
 	}
@@ -107,6 +121,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 			public void onSuccess(String response) {
 				auth.setUrl(response);
 				auth.getIdentityLogin().setTitle(response);
+				headerView.fadeIn(auth);
 			}
 		});
 	}

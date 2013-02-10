@@ -8,12 +8,17 @@
 	
 	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
-	<g:FlowPanel addStyleNames="{res.css.vertical}">
-		<g:FlowPanel addStyleNames="{res.css.headerLoginInfo}">
-			<g:Label ui:field="identityInfo"></g:Label>
+	<g:FlowPanel addStyleNames="{res.css.headerLogin} {res.css.horizontal}">
+		<g:FlowPanel addStyleNames="{res.css.headerLoginAuth} {res.css.vertical}">
+			<g:FlowPanel addStyleNames="{res.css.headerLoginInfo}">
+				<g:Label ui:field="identityInfo"></g:Label>
+			</g:FlowPanel>
+			<g:FlowPanel addStyleNames="{res.css.headerLoginButton}">
+				<g:Button addStyleNames="{res.css.coreButton}" ui:field="identityLogin"></g:Button>
+			</g:FlowPanel>
 		</g:FlowPanel>
-		<g:FlowPanel addStyleNames="{res.css.headerLoginButton}">
-			<g:Button addStyleNames="{res.css.coreButton}" ui:field="identityLogin"></g:Button>
+		<g:FlowPanel addStyleNames="{res.css.headerLoginImage}">
+			<g:Image width="50" height="50" ui:field="gravatarImage"></g:Image>
 		</g:FlowPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 

@@ -28,8 +28,8 @@ public class VerophyleServletModule extends ServletModule {
 	
 	@Provides
 	@Singleton
-	public CoreUserService getUserService() {
-		return new GaeUserService(UserServiceFactory.getUserService());
+	public CoreUserService getUserService(CoreObjectifyService objectifyService) {
+		return new GaeUserService(UserServiceFactory.getUserService(), objectifyService);
 	}
 	
 	@Provides

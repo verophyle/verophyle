@@ -9,6 +9,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.inject.Inject;
 
@@ -24,6 +25,9 @@ public class IdentityAuthentication extends Composite {
 	
 	@UiField
 	Button identityLogin;
+	
+	@UiField
+	Image gravatarImage;
 	
 	@Inject
 	public IdentityAuthentication() {
@@ -52,6 +56,10 @@ public class IdentityAuthentication extends Composite {
 	
 	public Button getIdentityLogin() {
 		return identityLogin;
+	}
+	
+	public Image getGravatarImage() {
+		return gravatarImage;
 	}
 	
 	private void onLoginClick() {

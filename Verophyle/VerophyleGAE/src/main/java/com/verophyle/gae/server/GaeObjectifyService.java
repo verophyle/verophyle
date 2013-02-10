@@ -9,6 +9,7 @@ public class GaeObjectifyService extends CoreObjectifyService {
 
 	public GaeObjectifyService() {
 		super();
+		register(GaeUser.class);
 	}
 	
 	@Override
