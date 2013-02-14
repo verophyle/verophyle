@@ -13,7 +13,7 @@ public class Identity extends CoreEntity {
 	public static final String GUEST_HANDLE = "Anonymous";
 
 	@Index
-	String handle;
+	String gaeNickname;
 	
 	List<Ref<CoreUser>> users = new ArrayList<Ref<CoreUser>>();
 	
@@ -22,12 +22,12 @@ public class Identity extends CoreEntity {
 	public Identity() {
 	}
 	
-	public String getHandle() {
-		return handle;
+	public String getGaeNickname() {
+		return gaeNickname;
 	}
 	
-	public void setHandle(String handle) {
-		this.handle = handle;
+	public void setGaeNickname(String handle) {
+		this.gaeNickname = handle;
 	}
 	
 	public List<Ref<CoreUser>> getUsers() {

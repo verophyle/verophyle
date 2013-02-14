@@ -17,7 +17,7 @@
 				<g:Button addStyleNames="{res.css.coreButton}" ui:field="identityLogin"></g:Button>
 			</g:FlowPanel>
 		</g:FlowPanel>
-		<g:FlowPanel addStyleNames="{res.css.headerLoginImage}">
+		<g:FlowPanel addStyleNames="{res.css.headerLoginImage} {res.css.vertical}">
 			<g:Image width="50" height="50" ui:field="gravatarImage"></g:Image>
 		</g:FlowPanel>
 	</g:FlowPanel>

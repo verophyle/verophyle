@@ -1,8 +1,11 @@
 package com.verophyle.core.server.rf.identity;
 
+import java.util.logging.Level;
+
 import com.google.inject.Inject;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.Ref;
+import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
 import com.verophyle.core.server.domain.CoreUser;
@@ -11,13 +14,15 @@ import com.verophyle.core.shared.Gravatar;
 
 public class IdentityServiceImpl implements IdentityService {
 
+	private final CoreLogger logger;
 	private final CoreUserService userService;
 	private final CoreObjectifyService objectifyService;
 	
 	@Inject
-	public IdentityServiceImpl(CoreUserService userService, CoreObjectifyService objectifyService) {
+	public IdentityServiceImpl(CoreLogger logger, CoreUserService userService, CoreObjectifyService objectifyService) {
 		this.userService = userService;
 		this.objectifyService = objectifyService;
+		this.logger = logger;
 	}
 	
 	@Override
@@ -27,11 +32,13 @@ public class IdentityServiceImpl implements IdentityService {
 		// get current user
 		CoreUser currentUser;
 		if (userService.isUserLoggedIn() && (currentUser = userService.getCurrentUser()) != null) {
+			logger.log(Level.INFO, "IdentityServiceImpl: current user is " + currentUser.getNickname());
+			
 			// search for identities with that user's handle
 			for (Identity identity : ofy.load().type(Identity.class).filter("handle =", currentUser.getNickname())) {
 				// see if any of the identity's users is the current one
 				for (Ref<CoreUser> coreUser : identity.getUsers()) {
-					if (coreUser.get().getUserId().equals(currentUser.getUserId())) {
+					if (coreUser.get().getUserId().equals(currentUser.getUserId())) {						
 						return identity;
 					}
 				}
@@ -43,7 +50,7 @@ public class IdentityServiceImpl implements IdentityService {
 				nickname = nickname + " n00b";
 			
 			Identity identity = new Identity();
-			identity.setHandle(currentUser.getNickname());
+			identity.setGaeNickname(currentUser.getNickname());
 			identity.getUsers().add(Ref.create(currentUser));
 				
 			ofy.save().entity(identity).now();
@@ -56,7 +63,7 @@ public class IdentityServiceImpl implements IdentityService {
 		
 		if (guest == null) {
 			guest = new Identity();
-			guest.setHandle(Identity.GUEST_HANDLE);
+			guest.setGaeNickname(Identity.GUEST_HANDLE);
 			
 			guest.setAnonymous(true);
 			ofy.save().entity(guest).now();

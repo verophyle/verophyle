@@ -113,7 +113,8 @@ body {
 		margin-top: 1em;
 		margin-bottom: 1em;
 		margin-right: 1em;
-		padding-left: 1em;
+		
+		padding-left: 0.5em;
 		padding-right: 0.5em;
 		
 		border-top: 3px solid COMPLEMENTARY3;
@@ -125,6 +126,9 @@ body {
 	
 		.headerLoginAuth {
 			-webkit-flex: 1;
+			
+			margin-left: 0.5em;
+			margin-right: 0.5em;
 		}
 	
 			.headerLoginInfo {
@@ -145,19 +149,16 @@ body {
 		
 		.headerLoginImage {
 			-webkit-flex: none;
-			
-			height: 100%;
-			width: 80px;
-			
+						
+			margin-top: 1em;
+			margin-bottom: 1em;
 			margin-left: 1em;
 		}
 		
 			.headerLogin img {
-				position: relative;
-				top: 50%;
-							
+				-webkit-flex: auto;
 				width: 80px;
-				height: 80px;			
+				height: 80px;
 				overflow: hidden;
 			}
 
