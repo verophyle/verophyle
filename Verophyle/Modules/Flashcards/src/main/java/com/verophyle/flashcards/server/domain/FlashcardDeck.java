@@ -1,4 +1,4 @@
-package com.verophyle.flashcards.shared.domain;
+package com.verophyle.flashcards.server.domain;
 
 import javax.validation.constraints.Size;
 

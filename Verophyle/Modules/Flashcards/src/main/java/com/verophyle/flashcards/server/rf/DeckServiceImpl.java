@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 
 import com.google.inject.Inject;
 import com.verophyle.core.server.rf.CoreLocator;
-import com.verophyle.flashcards.shared.domain.FlashcardDeck;
+import com.verophyle.flashcards.server.domain.FlashcardDeck;
 
 public class DeckServiceImpl implements DeckService {
 	

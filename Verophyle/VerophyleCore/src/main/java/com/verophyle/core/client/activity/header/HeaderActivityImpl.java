@@ -56,7 +56,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 				final IdentityAuthentication auth = headerView.getIdentityAuth();
 				
 				if (identity != null) {					
-					auth.getIdentityInfo().setText(identity.getHandle());
+					auth.getIdentityInfo().setText(identity.getNickname());
 					
 					if (identity.isAnonymous())
 						setLogin();

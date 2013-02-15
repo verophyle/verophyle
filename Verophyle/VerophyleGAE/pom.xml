@@ -17,9 +17,9 @@
 		<gwt.version>2.5.0</gwt.version>
 
 		<!-- GAE -->
-		<gae.version>1.7.4</gae.version>
-		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
-		
+		<gae.version>1.7.5</gae.version>
+		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-api-1.0-sdk/${gae.version}</gae.home>
+
 		<appengine.app.version>0</appengine.app.version>
 		<appengine.target.version>${gae.version}</appengine.target.version>
 
@@ -36,8 +36,8 @@
 		<guice.version>3.0</guice.version>
 
 		<!-- Misc -->
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -97,13 +97,13 @@
 			<artifactId>guice</artifactId>
 			<version>${guice.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.inject.extensions</groupId>
 			<artifactId>guice-servlet</artifactId>
 			<version>${guice.version}</version>
 		</dependency>
-            
+
 		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -130,8 +130,8 @@
 						<version>${gwt.version}</version>
 					</dependency>
 				</dependencies>
-			</plugin>		
-		
+			</plugin>
+
 			<!-- GWT Maven Plugin-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

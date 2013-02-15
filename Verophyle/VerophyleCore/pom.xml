@@ -31,8 +31,8 @@
 		<maven.surefire.version>2.13</maven.surefire.version>
 
 		<!-- Misc -->
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -59,14 +59,14 @@
 			<artifactId>requestfactory-server</artifactId>
 			<version>${gwt.version}</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>${validation.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -82,28 +82,28 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-	
-		<!-- Required by Hibernate validator because slf4j-log4j is optional in 
+
+		<!-- Required by Hibernate validator because slf4j-log4j is optional in
 			the hibernate-validator POM -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-jdk14</artifactId>
 			<version>${sl4j.version}</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${sl4j.version}</version>
 		</dependency>
-    
+
     	<!-- Objectify -->
 		<dependency>
 			<groupId>com.googlecode.objectify</groupId>
 			<artifactId>objectify</artifactId>
 			<version>${objectify.version}</version>
 		</dependency>
-		
+
 		<!-- Guice and GIN -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -116,7 +116,7 @@
 			<artifactId>guice-servlet</artifactId>
 			<version>${guice.version}</version>
 		</dependency>
-            
+
 		<dependency>
 			<groupId>com.google.gwt.inject</groupId>
 			<artifactId>gin</artifactId>
@@ -136,7 +136,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.easymock</groupId>
 			<artifactId>easymock</artifactId>
@@ -165,7 +165,7 @@
 					</execution>
 				</executions>
 
-				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin
 					documentation at codehaus.org -->
 				<configuration>
 					<strict>true</strict>
@@ -240,7 +240,7 @@
 			</plugin>
 		</plugins>
 
-		<!-- Required by m2e for import into eclipse. No effect on command line 
+		<!-- Required by m2e for import into eclipse. No effect on command line
 			builds -->
 		<pluginManagement>
 			<plugins>
