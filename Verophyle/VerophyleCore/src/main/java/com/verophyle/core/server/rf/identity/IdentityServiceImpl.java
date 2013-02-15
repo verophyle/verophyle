@@ -34,11 +34,11 @@ public class IdentityServiceImpl implements IdentityService {
 			logger.info("IdentityServiceImpl() current user is " + currentUser.getNickname());
 			
 			// search for identities with that user
-			for (Identity identity : ofy.load().type(Identity.class).filter("users =", currentUser)) {
+			for (Identity identity : ofy.load().type(Identity.class).filter("users", currentUser)) {
 				// see if any of the identity's users is the current one
 				for (Ref<CoreUser> coreUser : identity.getUsers()) {
 					if (coreUser.get().getUserId().equals(currentUser.getUserId())) {
-						logger.info("IdentityServiceImpl() found identity");
+						logger.info("IdentityServiceImpl() found identity " + identity.getNickname());
 						return identity;
 					}
 				}
