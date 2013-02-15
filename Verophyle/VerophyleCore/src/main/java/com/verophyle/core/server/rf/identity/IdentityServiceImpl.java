@@ -31,27 +31,25 @@ public class IdentityServiceImpl implements IdentityService {
 		// get current user
 		CoreUser currentUser;
 		if (userService.isUserLoggedIn() && (currentUser = userService.getCurrentUser()) != null) {
-			logger.info("IdentityServiceImpl() current user is " + currentUser.getNickname());
+			logger.info("current user is " + currentUser.getNickname());
 			
 			// search for identities with that user
-			for (Identity identity : ofy.load().type(Identity.class).filter("users", currentUser)) {
-				// see if any of the identity's users is the current one
-				for (Ref<CoreUser> coreUser : identity.getUsers()) {
-					if (coreUser.get().getUserId().equals(currentUser.getUserId())) {
-						logger.info("IdentityServiceImpl() found identity " + identity.getNickname());
-						return identity;
-					}
-				}
-			}
+			Identity identity = ofy.load().type(Identity.class)
+				.filter("users.userId", currentUser.getUserId()).first().get();
 			
+			if (identity != null) {
+				logger.info("found identity " + identity.getNickname());
+				return identity;				
+			}
+						
 			// no existing identity found; create new identity for this user						
 			String nickname = currentUser.getNickname();
-			if (nickname.equals(Identity.GUEST_HANDLE))
+			if (nickname.equals(Identity.GUEST_NICKNAME))
 				nickname = nickname + " n00b";
 			
-			logger.info("IdentityServiceImpl() creating new identity " + nickname);
+			logger.info("creating new identity " + nickname);
 			
-			Identity identity = new Identity();
+			identity = new Identity();
 			identity.setNickname(currentUser.getNickname());
 			identity.getUsers().add(Ref.create(currentUser));
 				
@@ -61,13 +59,15 @@ public class IdentityServiceImpl implements IdentityService {
 		}
 
 		// get or create guest user
-		logger.info("IdentityServiceImpl() no user logged in; using guest identity");
-		
-		Identity guest = ofy.load().type(Identity.class).filter("handle =", Identity.GUEST_HANDLE).first().get();
+		logger.info("no user logged in; searching for " + Identity.GUEST_NICKNAME);		
+		Identity guest = ofy.load().type(Identity.class)
+			.filter("nickname", Identity.GUEST_NICKNAME).first().get();
 		
 		if (guest == null) {
+			logger.info("no guest identity; creating " + Identity.GUEST_NICKNAME);
+			
 			guest = new Identity();
-			guest.setNickname(Identity.GUEST_HANDLE);
+			guest.setNickname(Identity.GUEST_NICKNAME);
 			
 			guest.setAnonymous(true);
 			ofy.save().entity(guest).now();

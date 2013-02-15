@@ -10,8 +10,9 @@ import com.googlecode.objectify.annotation.Index;
 @EntitySubclass(index = true)
 public class Identity extends CoreEntity {
 	
-	public static final String GUEST_HANDLE = "Anonymous";
+	public static final String GUEST_NICKNAME = "Anonymous";
 
+	@Index
 	String nickname;
 	
 	@Index
