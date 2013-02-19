@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 
+/**
+ * Client-side logger implementation.
+ */
 public class CoreLoggerImpl implements CoreLogger {
 	
 	private static Logger logger = Logger.getLogger(GWT.getModuleName());

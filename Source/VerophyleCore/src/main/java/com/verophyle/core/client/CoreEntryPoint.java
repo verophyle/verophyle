@@ -11,18 +11,32 @@ import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.place.Second;
 import com.verophyle.core.client.view.AppView;
 
+/**
+ * Entry point for the Core module.
+ * 
+ * Initialization is delayed until all modules are loaded, then init() is called, then start() is called.
+ */
 public class CoreEntryPoint implements EntryPoint {
 	private static boolean loaded = false;
 	
+	/**
+	 * Called when the module is loaded.
+	 */
 	public void onModuleLoad() {
 		CoreGinjector.INSTANCE.getLogger().log(Level.INFO, this.getClass().getName() + ".onModuleLoad()");
 		loaded = true;
 	}
 	
+	/**
+	 * Whether or not the module has been loaded.
+	 */
 	public static boolean isLoaded() {
 		return loaded;
 	}
-	
+
+	/**
+	 * Initialized the module.
+	 */
 	public static void init() {
 		GWT.setUncaughtExceptionHandler(new CoreUncaughtExceptionHandler());
 		
@@ -50,6 +64,9 @@ public class CoreEntryPoint implements EntryPoint {
 		RootLayoutPanel.get().add(appView);
 	}
 	
+	/**
+	 * Performs startup actions on the module.
+	 */
 	public static void start() {		
 		CoreGinjector.INSTANCE.getLogger().log(Level.INFO, "CoreEntryPoint.start()");
 

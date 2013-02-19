@@ -19,6 +19,11 @@ import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.AppView;
 import com.verophyle.core.shared.CoreMessages;
 
+/**
+ * Ginjector for the core module.
+ * 
+ * The implementation will be provided by GIN in the GWT compile.
+ */
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
 	CoreGinjector INSTANCE = GWT.create(CoreGinjector.class);

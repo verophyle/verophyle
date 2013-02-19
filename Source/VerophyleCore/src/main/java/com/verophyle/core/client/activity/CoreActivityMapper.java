@@ -9,21 +9,43 @@ import com.google.inject.Provider;
 import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.place.CorePlace;
 
+/**
+ * Base class for activity mappers.  These take places and map them to the appropriate activities.
+ * 
+ * Each module will register its activities with the core registry, and then the activity mapper
+ * will choose the appropriate activity for each place.
+ * 
+ * The only reason subclasses of this exist is because of type erasure. 
+ * 
+ * @param <A> Activity class.
+ * @param <P> Place class.
+ */
 public abstract class CoreActivityMapper<A extends CoreActivity, P extends CorePlace> implements ActivityMapper {	
 	private CoreActivityRegistry<A, P> registry;
 	private Provider<CoreActivityProxy<A, P>> defaultProvider;
 	private CoreLogger logger;
 	
-	public CoreActivityMapper(CoreActivityRegistry<A, P> registry, Provider<CoreActivityProxy<A, P>> defaultProvider, CoreLogger logger) {
+	protected CoreActivityMapper(CoreActivityRegistry<A, P> registry, Provider<CoreActivityProxy<A, P>> defaultProvider, CoreLogger logger) {
 		this.registry = registry;
 		this.defaultProvider = defaultProvider;
 		this.logger = logger;
 	}
 	
+	/**
+	 * Register an activity provider.
+	 * 
+	 * This is called by the various Verophyle modules to register their activities.
+	 * 
+	 * @param placeKey Place key (i.e. the name of the Place class).
+	 * @param provider Provider.
+	 */
 	protected void register(String placeKey, Provider<? extends CoreActivityProxy<? extends A, ? extends P>> provider) {
 		registry.register(placeKey, provider);
 	}
 	
+	/**
+	 * Get an activity that corresponds to the given place.
+	 */
 	@Override
 	public Activity getActivity(Place place) {
 		CorePlace corePlace = place instanceof CorePlace ? (CorePlace)place : null;

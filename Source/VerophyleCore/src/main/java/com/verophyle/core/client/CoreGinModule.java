@@ -54,6 +54,9 @@ import com.verophyle.core.client.view.sidebar.SidebarViewImpl;
 import com.verophyle.core.shared.CoreMessages;
 import com.verophyle.core.shared.rf.CoreRequestFactory;
 
+/**
+ * GIN module for the Core module.
+ */
 public class CoreGinModule extends AbstractGinModule {
 	
 	@Override

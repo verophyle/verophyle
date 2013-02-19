@@ -6,6 +6,9 @@ import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.view.content.ContentIndexView;
 
+/**
+ * Implementation of the Index activity.
+ */
 public class ContentIndexActivityImpl extends ContentActivityImpl<Index, ContentIndexView> implements ContentIndexActivity {
 	
 	@Inject

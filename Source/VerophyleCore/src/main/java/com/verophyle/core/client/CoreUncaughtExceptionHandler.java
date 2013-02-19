@@ -4,6 +4,9 @@ import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.UmbrellaException;
 
+/**
+ * Client-side exception handler.
+ */
 public class CoreUncaughtExceptionHandler implements UncaughtExceptionHandler {
 
 	@Override

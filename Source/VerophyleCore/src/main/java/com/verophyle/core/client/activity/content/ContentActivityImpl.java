@@ -8,6 +8,12 @@ import com.verophyle.core.client.activity.CoreActivityImpl;
 import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.view.content.ContentView;
 
+/**
+ * Base class for Content activities.
+ * 
+ * @param <P> Place class.
+ * @param <V> View class.
+ */
 public abstract class ContentActivityImpl<P extends CorePlace, V extends ContentView> 
 	extends CoreActivityImpl<P, V> 
 	implements ContentActivity {
