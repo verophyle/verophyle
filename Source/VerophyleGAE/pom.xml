@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project 
-	xmlns="http://maven.apache.org/POM/4.0.0" 
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -10,61 +10,28 @@
 	</prerequisites>
 
 	<artifactId>verophyle-gae</artifactId>
-	<version>${verophyle.version}</version>
 	<packaging>war</packaging>
 
 	<parent>
 		<groupId>com.verophyle</groupId>
 		<artifactId>verophyle</artifactId>
-		<version>FIXED</version>
+		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
-
-	<properties>
-		<java.version>1.6</java.version>
-	
-		<!-- GWT -->
-		<gwt.version>2.5.0</gwt.version>
-
-		<!-- GAE -->
-		<gae.version>1.7.5</gae.version>
-		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-api-1.0-sdk/${gae.version}</gae.home>
-
-		<appengine.app.version>0</appengine.app.version>
-		<appengine.target.version>${gae.version}</appengine.target.version>
-
-		<!-- JUnit -->
-		<junit.version>4.11</junit.version>
-
-		<!-- Plugins -->
-		<maven.eclipse.version>2.9</maven.eclipse.version>
-		<maven.gwt.version>2.5.0</maven.gwt.version>
-		<maven.compiler.version>3.0</maven.compiler.version>
-		<maven.surefire.version>2.13</maven.surefire.version>
-		<maven.resources.version>2.6</maven.resources.version>
-		<maven.war.version>2.3</maven.war.version>
-		<guice.version>3.0</guice.version>
-
-		<!-- Misc -->
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	</properties>
 
 	<dependencies>
 		<!-- Verophyle Core -->
 		<dependency>
 			<groupId>com.verophyle</groupId>
 			<artifactId>verophyle-core</artifactId>
-			<version>${project.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 
 		<!-- Verophyle Flashcards -->
 		<dependency>
 			<groupId>com.verophyle</groupId>
 			<artifactId>verophyle-flashcards</artifactId>
-			<version>${project.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 
 		<!-- Google Web Toolkit (GWT) -->
@@ -93,7 +60,7 @@
 			<artifactId>appengine-api-stubs</artifactId>
 			<version>${gae.version}</version>
 			<scope>test</scope>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
@@ -121,6 +88,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -249,6 +217,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- WAR packaging config -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -264,6 +233,20 @@
 					</webResources>
 					<packagingExcludes>WEB-INF/web.xml</packagingExcludes>
 				</configuration>
+			</plugin>
+
+			<!-- Integration testing -->
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven.failsafe.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>

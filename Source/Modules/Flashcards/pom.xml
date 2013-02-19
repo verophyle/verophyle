@@ -10,56 +10,21 @@
 	</prerequisites>
 
 	<artifactId>verophyle-flashcards</artifactId>
-	<version>${verophyle.version}</version>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>com.verophyle</groupId>
 		<artifactId>verophyle</artifactId>
-		<version>FIXED</version>
+		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../..</relativePath>
 	</parent>
-
-	<properties>
-		<java.version>1.6</java.version>
-	
-		<!-- Dependencies -->
-		<gwt.version>2.5.0</gwt.version>
-		<objectify.version>4.0b1</objectify.version>
-		<guice.version>3.0</guice.version>
-		<gin.version>2.0.0</gin.version>
-		<junit.version>4.11</junit.version>
-		<easymock.version>3.1</easymock.version>
-		<validation.version>1.0.0.GA</validation.version>
-		<hibernate.version>4.1.0.Final</hibernate.version>
-		<sl4j.version>1.7.2</sl4j.version>
-
-		<!-- Plugins -->
-		<maven.eclipse.version>2.9</maven.eclipse.version>
-		<maven.gwt.version>2.5.0</maven.gwt.version>
-		<maven.compiler.version>3.0</maven.compiler.version>
-		<maven.surefire.version>2.13</maven.surefire.version>
-
-		<!-- Misc -->
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	</properties>
-
-	<repositories>
-		<repository>
-			<id>objectify-appengine</id>
-			<url>http://objectify-appengine.googlecode.com/svn/maven</url>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<!-- Verophyle Core -->
 		<dependency>
 			<groupId>com.verophyle</groupId>
 			<artifactId>verophyle-core</artifactId>
-			<version>${project.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 
 		<!-- GWT -->
