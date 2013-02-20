@@ -118,16 +118,6 @@
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>${maven.gwt.version}</version>
 
-				<!-- JS is only needed in the package phase, this speeds up testing -->
-				<executions>
-					<execution>
-					    <phase>prepare-package</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-
 				<!-- Plugin configuration. There are many available options,
 					see gwt-maven-plugin documentation at codehaus.org -->
 				<configuration>
@@ -143,6 +133,16 @@
 						<version>${gwt.version}</version>
 					</dependency>
 				</dependencies>
+
+				<!-- JS is only needed in the package phase, this speeds up testing -->
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- Google App Engine plugin -->
@@ -150,6 +150,22 @@
 				<groupId>com.google.appengine</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>${gae.version}</version>
+
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>devserver</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>integration-test</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<!-- shut down dev server -->
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
@@ -237,10 +253,15 @@
 
 			<!-- Integration testing -->
 			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${maven.failsafe.version}</version>
+				<artifactId>maven-invoker-plugin</artifactId>
+				<version>${maven.invoker.version}</version>
+				<configuration>
+					<projectsDirectory>${basedir}/../Testing/IntegrationTests</projectsDirectory>
+					<localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
+				</configuration>
 				<executions>
 					<execution>
+						<id>integration-test</id>
 						<goals>
 							<goal>integration-test</goal>
 							<goal>verify</goal>
