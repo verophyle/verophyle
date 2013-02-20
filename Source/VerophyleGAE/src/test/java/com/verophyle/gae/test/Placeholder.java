@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle.  All rights reserved.
+ */
 package com.verophyle.gae.test;
 
 import org.junit.runner.RunWith;

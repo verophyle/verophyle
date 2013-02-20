@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle.  All rights reserved.
+ */
 package com.verophyle.core.shared.rf.identity;
 
 import com.google.web.bindery.requestfactory.shared.ProxyFor;

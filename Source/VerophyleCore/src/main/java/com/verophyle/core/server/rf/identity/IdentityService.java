@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle.  All rights reserved.
+ */
 package com.verophyle.core.server.rf.identity;
 
 import com.verophyle.core.server.domain.Identity;

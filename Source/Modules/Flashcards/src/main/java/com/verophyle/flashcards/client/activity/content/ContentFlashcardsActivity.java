@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle.  All rights reserved.
+ */
 package com.verophyle.flashcards.client.activity.content;
 
 import com.verophyle.core.client.activity.content.ContentActivity;

@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle.  All rights reserved.
+ */
 package com.verophyle.flashcards.server;
 
 import com.google.inject.AbstractModule;

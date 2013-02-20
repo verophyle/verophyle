@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle.  All rights reserved.
+ */
 package com.verophyle.core.server.domain;
 
 import com.googlecode.objectify.annotation.EntitySubclass;

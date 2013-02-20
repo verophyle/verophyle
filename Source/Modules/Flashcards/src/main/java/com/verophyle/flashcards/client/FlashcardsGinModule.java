@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle.  All rights reserved.
+ */
 package com.verophyle.flashcards.client;
 
 import com.google.gwt.core.client.GWT;
