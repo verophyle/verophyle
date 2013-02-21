@@ -124,6 +124,13 @@
           <strict>true</strict>
           <module>com.verophyle.gae.Verophyle</module>
           <logLevel>INFO</logLevel>
+
+          <appEngineGroupId>com.google.appengine</appEngineGroupId>
+          <appEngineArtifactId>appengine-api-1.0-sdk</appEngineArtifactId>          
+          <appEngineVersion>${gae.version}</appEngineVersion>
+          <appEngineHome>${gae.home}</appEngineHome>
+          
+          <runTarget>Verophyle.html</runTarget>
         </configuration>
 
         <dependencies>
@@ -148,34 +155,8 @@
       <plugin>
         <groupId>com.google.appengine</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
-        <version>1.7.6-GWT-SNAPSHOT</version>
+        <version>${gae.version}</version>
       </plugin>
-
-      <!-- Google App Engine plugin (unofficial) -->
-      <!--
-      <plugin>
-        <groupId>net.kindleit</groupId>
-        <artifactId>maven-gae-plugin</artifactId>
-        <version>${maven.gae.version}</version>
-        <configuration>
-          <sdkDir>${gae.home}</sdkDir>
-        </configuration>
-        <executions>
-          <execution>
-            <id>start-gae</id>
-            <goals>
-              <goal>start</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>stop-gae</id>
-            <goals>
-              <goal>stop</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      -->
 
       <!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
       <plugin>
