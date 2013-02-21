@@ -21,6 +21,7 @@
 		<appengine.target.version>${gae.version}</appengine.target.version>
 
 		<!-- Dependencies -->
+		<gae.version>1.7.5</gae.version>
 		<gwt.version>2.5.0</gwt.version>
 		<objectify.version>4.0b1</objectify.version>
 		<guice.version>3.0</guice.version>
@@ -31,13 +32,17 @@
 		<hibernate.version>4.1.0.Final</hibernate.version>
 		<selenium.version>2.30.0</selenium.version>
 		<sl4j.version>1.7.2</sl4j.version>
-		<gae.version>1.7.5</gae.version>
+
+		<!-- for kindleit plugin
 		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-api-1.0-sdk/${gae.version}</gae.home>
+		<gae.monitor.port>8999</gae.monitor.port>
+		-->
 
 		<!-- Plugins -->
 		<maven.compiler.version>3.0</maven.compiler.version>
 		<maven.eclipse.version>2.9</maven.eclipse.version>
 		<maven.gwt.version>2.5.0</maven.gwt.version>
+		<maven.gae.version>0.9.5</maven.gae.version>
 		<maven.resources.version>2.6</maven.resources.version>
 		<maven.invoker.version>1.8</maven.invoker.version>
 		<maven.war.version>2.3</maven.war.version>
@@ -56,9 +61,11 @@
 		<module>VerophyleCore</module>
 		<module>Modules/Flashcards</module>
 		<module>VerophyleGAE</module>
+		<!--
 		<module>Testing/IntegrationTests</module>
+		-->
 	</modules>
-	
+
 	<build>
 		<plugins>
 			<plugin>

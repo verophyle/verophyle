@@ -145,28 +145,37 @@
 				</executions>
 			</plugin>
 
-			<!-- Google App Engine plugin -->
 			<plugin>
 				<groupId>com.google.appengine</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
-				<version>${gae.version}</version>
+				<version>1.7.6-GWT-SNAPSHOT</version>
+			</plugin>
 
+			<!-- Google App Engine plugin (unofficial) -->
+			<!--
+			<plugin>
+				<groupId>net.kindleit</groupId>
+				<artifactId>maven-gae-plugin</artifactId>
+				<version>${maven.gae.version}</version>
+				<configuration>
+					<sdkDir>${gae.home}</sdkDir>
+				</configuration>
 				<executions>
 					<execution>
-						<phase>pre-integration-test</phase>
+						<id>start-gae</id>
 						<goals>
-							<goal>devserver</goal>
+							<goal>start</goal>
 						</goals>
 					</execution>
 					<execution>
-						<id>integration-test</id>
-						<phase>post-integration-test</phase>
+						<id>stop-gae</id>
 						<goals>
-							<!-- shut down dev server -->
+							<goal>stop</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
+			-->
 
 			<!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
 			<plugin>
@@ -256,15 +265,18 @@
 				<artifactId>maven-invoker-plugin</artifactId>
 				<version>${maven.invoker.version}</version>
 				<configuration>
-					<projectsDirectory>${basedir}/../Testing/IntegrationTests</projectsDirectory>
+					<projectsDirectory>${basedir}/../Testing/</projectsDirectory>
+					<settingsFile>${basedir}/../Testing/settings.xml</settingsFile>
+					<cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+					<cloneClean>true</cloneClean>
 					<localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
 				</configuration>
 				<executions>
 					<execution>
 						<id>integration-test</id>
 						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
+							<goal>install</goal>
+							<goal>run</goal>
 						</goals>
 					</execution>
 				</executions>

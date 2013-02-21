@@ -141,7 +141,7 @@
 					<execution>
 						<phase>prepare-package</phase>
 						<goals>
-							<goal>compile</goal>
+							<!-- <goal>compile</goal> -->
 							<goal>resources</goal>
 						</goals>
 					</execution>
