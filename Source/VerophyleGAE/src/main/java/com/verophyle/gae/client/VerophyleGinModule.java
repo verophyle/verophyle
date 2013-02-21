@@ -8,9 +8,9 @@ import com.google.inject.Singleton;
 
 public class VerophyleGinModule extends AbstractGinModule {
 
-	@Override
-	protected void configure() {
-		bind(VerophyleLogger.class).in(Singleton.class);
-	}
+  @Override
+  protected void configure() {
+    bind(VerophyleLogger.class).in(Singleton.class);
+  }
 
 }

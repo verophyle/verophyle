@@ -15,13 +15,13 @@ import com.verophyle.flashcards.client.place.Flashcards;
 
 public class ContentActivityMapper extends CoreActivityMapper<ContentActivity, CorePlace> {
 
-	@Inject
-	public ContentActivityMapper(CoreActivityRegistry<ContentActivity, CorePlace> registry, 
-								 Provider<CoreActivityProxy<ContentFlashcardsActivity, Flashcards>> flashcardsProvider, 
-								 FlashcardsLogger logger) {
-		super(registry, null, logger);
-		
-		register(Flashcards.KEY, flashcardsProvider);
-	}
+  @Inject
+  public ContentActivityMapper(CoreActivityRegistry<ContentActivity, CorePlace> registry, 
+                 Provider<CoreActivityProxy<ContentFlashcardsActivity, Flashcards>> flashcardsProvider, 
+                 FlashcardsLogger logger) {
+    super(registry, null, logger);
+    
+    register(Flashcards.KEY, flashcardsProvider);
+  }
 
 }

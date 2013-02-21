@@ -12,9 +12,9 @@ import com.verophyle.flashcards.client.view.content.ContentFlashcardsView;
 
 public class ContentFlashcardsActivityImpl extends CoreActivityImpl<Flashcards, ContentFlashcardsView> implements ContentFlashcardsActivity {
 
-	@Inject
-	protected ContentFlashcardsActivityImpl(FlashcardsLogger logger, PlaceController placeController, ContentFlashcardsView coreView) {
-		super(logger, placeController, coreView);
-	}
+  @Inject
+  protected ContentFlashcardsActivityImpl(FlashcardsLogger logger, PlaceController placeController, ContentFlashcardsView coreView) {
+    super(logger, placeController, coreView);
+  }
 
 }

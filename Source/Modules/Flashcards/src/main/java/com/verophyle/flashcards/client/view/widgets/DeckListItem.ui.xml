@@ -5,14 +5,14 @@
 -->
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder 
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	
-	ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
-	ui:defaultLocale="en">
-	
-	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
-	<ui:with field="fres" type="com.verophyle.flashcards.client.resources.FlashcardsResources"/>
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  
+  ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
+  ui:defaultLocale="en">
+  
+  <ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
+  <ui:with field="fres" type="com.verophyle.flashcards.client.resources.FlashcardsResources"/>
 
-	<g:Label styleName="{fres.css.listItem}" ui:field="name"></g:Label> 
+  <g:Label styleName="{fres.css.listItem}" ui:field="name"></g:Label> 
 </ui:UiBinder>

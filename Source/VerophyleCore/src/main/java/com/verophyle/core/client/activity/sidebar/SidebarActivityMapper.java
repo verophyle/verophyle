@@ -12,12 +12,12 @@ import com.verophyle.core.client.activity.CoreActivityRegistry;
 import com.verophyle.core.client.place.CorePlace;
 
 public class SidebarActivityMapper extends CoreActivityMapper<SidebarActivity, CorePlace> {
-	
-	@Inject
-	public SidebarActivityMapper(CoreActivityRegistry<SidebarActivity, CorePlace> registry, 
-								 Provider<CoreActivityProxy<SidebarActivity, CorePlace>> provider, 
-								 CoreLogger logger) {
-		super(registry, provider, logger);
-	}
-	
+  
+  @Inject
+  public SidebarActivityMapper(CoreActivityRegistry<SidebarActivity, CorePlace> registry, 
+                 Provider<CoreActivityProxy<SidebarActivity, CorePlace>> provider, 
+                 CoreLogger logger) {
+    super(registry, provider, logger);
+  }
+  
 }

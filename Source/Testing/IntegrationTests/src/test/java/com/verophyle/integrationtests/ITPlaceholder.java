@@ -8,10 +8,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class ITPlaceholder {
-	
-	@Test
-	public void alwaysPasses() {
-		assertTrue(true);
-	}
-	
+  
+  @Test
+  public void alwaysPasses() {
+    assertTrue(true);
+  }
+  
 }

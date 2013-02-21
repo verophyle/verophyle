@@ -13,11 +13,11 @@ import com.verophyle.core.client.place.CorePlace;
 
 public class FooterActivityMapper extends CoreActivityMapper<FooterActivity, CorePlace> {
 
-	@Inject
-	public FooterActivityMapper(CoreActivityRegistry<FooterActivity, CorePlace> registry,
-								Provider<CoreActivityProxy<FooterActivity, CorePlace>> provider, 
-								CoreLogger logger) {
-		super(registry, provider, logger);
-	}
+  @Inject
+  public FooterActivityMapper(CoreActivityRegistry<FooterActivity, CorePlace> registry,
+                Provider<CoreActivityProxy<FooterActivity, CorePlace>> provider, 
+                CoreLogger logger) {
+    super(registry, provider, logger);
+  }
 
 }

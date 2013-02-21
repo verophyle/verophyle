@@ -12,12 +12,12 @@ import com.verophyle.flashcards.shared.rf.FlashcardsRequestFactory;
 
 @GinModules({FlashcardsGinModule.class})
 public interface FlashcardsGinjector extends Ginjector {
-	FlashcardsGinjector INSTANCE = GWT.create(FlashcardsGinjector.class);
-	
-	FlashcardsLogger getLogger();
-	CorePlaceHistoryRegistry getPlaceHistoryRegistry();
-	
-	FlashcardsRequestFactory getRequestFactory(); 
-	
-	ContentActivityMapper registerContentActivityMapper();
+  FlashcardsGinjector INSTANCE = GWT.create(FlashcardsGinjector.class);
+  
+  FlashcardsLogger getLogger();
+  CorePlaceHistoryRegistry getPlaceHistoryRegistry();
+  
+  FlashcardsRequestFactory getRequestFactory(); 
+  
+  ContentActivityMapper registerContentActivityMapper();
 }

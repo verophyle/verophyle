@@ -15,7 +15,7 @@ import com.verophyle.core.client.view.CoreView.CorePresenter;
  * They also are the presenters for the more heavy-weight view objects.
  */
 public interface CoreActivity extends Activity, CorePresenter {
-	CoreView getView();
-	CorePlace getPlace();
-	void setPlace(CorePlace place);
+  CoreView getView();
+  CorePlace getPlace();
+  void setPlace(CorePlace place);
 }

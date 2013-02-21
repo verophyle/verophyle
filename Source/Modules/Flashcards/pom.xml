@@ -1,261 +1,261 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<prerequisites>
-		<maven>3.0.4</maven>
-	</prerequisites>
+  <modelVersion>4.0.0</modelVersion>
+  <prerequisites>
+    <maven>3.0.4</maven>
+  </prerequisites>
 
-	<artifactId>verophyle-flashcards</artifactId>
-	<packaging>jar</packaging>
+  <artifactId>verophyle-flashcards</artifactId>
+  <packaging>jar</packaging>
 
-	<parent>
-		<groupId>com.verophyle</groupId>
-		<artifactId>verophyle</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../..</relativePath>
-	</parent>
+  <parent>
+    <groupId>com.verophyle</groupId>
+    <artifactId>verophyle</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../..</relativePath>
+  </parent>
 
-	<dependencies>
-		<!-- Verophyle Core -->
-		<dependency>
-			<groupId>com.verophyle</groupId>
-			<artifactId>verophyle-core</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
+  <dependencies>
+    <!-- Verophyle Core -->
+    <dependency>
+      <groupId>com.verophyle</groupId>
+      <artifactId>verophyle-core</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
 
-		<!-- GWT -->
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
+    <!-- GWT -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
 
-		<!-- RequestFactory -->
-		<dependency>
-			<groupId>com.google.web.bindery</groupId>
-			<artifactId>requestfactory-server</artifactId>
-			<version>${gwt.version}</version>
-		</dependency>
+    <!-- RequestFactory -->
+    <dependency>
+      <groupId>com.google.web.bindery</groupId>
+      <artifactId>requestfactory-server</artifactId>
+      <version>${gwt.version}</version>
+    </dependency>
 
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${validation.version}</version>
-			<classifier>sources</classifier>
-		</dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${validation.version}</version>
+      <classifier>sources</classifier>
+    </dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.xml.bind</groupId>
-					<artifactId>jaxb-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.xml.bind</groupId>
-					<artifactId>jaxb-impl</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.sun.xml.bind</groupId>
+          <artifactId>jaxb-impl</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
-		<!-- Required by Hibernate validator because slf4j-log4j is optional in
-			the hibernate-validator POM -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-			<version>${sl4j.version}</version>
-		</dependency>
+    <!-- Required by Hibernate validator because slf4j-log4j is optional in
+      the hibernate-validator POM -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>${sl4j.version}</version>
+    </dependency>
 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${sl4j.version}</version>
-		</dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${sl4j.version}</version>
+    </dependency>
 
-		<!-- Objectify -->
-		<dependency>
-			<groupId>com.googlecode.objectify</groupId>
-			<artifactId>objectify</artifactId>
-			<version>${objectify.version}</version>
-		</dependency>
+    <!-- Objectify -->
+    <dependency>
+      <groupId>com.googlecode.objectify</groupId>
+      <artifactId>objectify</artifactId>
+      <version>${objectify.version}</version>
+    </dependency>
 
-		<!-- Guice and GIN -->
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-			<version>${guice.version}</version>
-		</dependency>
+    <!-- Guice and GIN -->
+    <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
 
-		<dependency>
-			<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-servlet</artifactId>
-			<version>${guice.version}</version>
-		</dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-servlet</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
 
-		<dependency>
-			<groupId>com.google.gwt.inject</groupId>
-			<artifactId>gin</artifactId>
-			<version>${gin.version}</version>
-		</dependency>
+    <dependency>
+      <groupId>com.google.gwt.inject</groupId>
+      <artifactId>gin</artifactId>
+      <version>${gin.version}</version>
+    </dependency>
 
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
 
-		<!-- JUnit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
+    <!-- JUnit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
 
-		<dependency>
-			<groupId>org.easymock</groupId>
-			<artifactId>easymock</artifactId>
-			<version>${easymock.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>${easymock.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-	<build>
+  <build>
 
-		<plugins>
-			<!-- GWT Maven Plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>${maven.gwt.version}</version>
+    <plugins>
+      <!-- GWT Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>${maven.gwt.version}</version>
 
-				<!-- JS is only needed in the package phase, this speeds up testing -->
-				<executions>
-					<execution>
-						<phase>prepare-package</phase>
-						<goals>
-							<!-- <goal>compile</goal> -->
-							<goal>resources</goal>
-						</goals>
-					</execution>
-				</executions>
+        <!-- JS is only needed in the package phase, this speeds up testing -->
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <!-- <goal>compile</goal> -->
+              <goal>resources</goal>
+            </goals>
+          </execution>
+        </executions>
 
-				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin
-					documentation at codehaus.org -->
-				<configuration>
-					<strict>true</strict>
-					<module>com.verophyle.flashcards.VerophyleFlashcards</module>
-					<logLevel>INFO</logLevel>
-				</configuration>
+        <!-- Plugin configuration. There are many available options, see gwt-maven-plugin
+          documentation at codehaus.org -->
+        <configuration>
+          <strict>true</strict>
+          <module>com.verophyle.flashcards.VerophyleFlashcards</module>
+          <logLevel>INFO</logLevel>
+        </configuration>
 
-				<dependencies>
-					<dependency>
-						<groupId>com.google.gwt</groupId>
-						<artifactId>gwt-dev</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+        <dependencies>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
 
-			<!-- Add source folders to test classpath in order to run gwt-tests as
-				normal junit-tests -->
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven.surefire.version}</version>
-				<configuration>
-					<additionalClasspathElements>
-						<additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
-						<additionalClasspathElement>${project.build.testSourceDirectory}</additionalClasspathElement>
-					</additionalClasspathElements>
-					<useManifestOnlyJar>false</useManifestOnlyJar>
-					<forkMode>always</forkMode>
+      <!-- Add source folders to test classpath in order to run gwt-tests as
+        normal junit-tests -->
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.version}</version>
+        <configuration>
+          <additionalClasspathElements>
+            <additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
+            <additionalClasspathElement>${project.build.testSourceDirectory}</additionalClasspathElement>
+          </additionalClasspathElements>
+          <useManifestOnlyJar>false</useManifestOnlyJar>
+          <forkMode>always</forkMode>
 
-					<!-- Folder for generated testing stuff -->
-					<systemProperties>
-						<property>
-							<name>gwt.args</name>
-							<value>-out ${project.build.directory}/${project.build.finalName}</value>
-						</property>
-					</systemProperties>
-				</configuration>
-			</plugin>
+          <!-- Folder for generated testing stuff -->
+          <systemProperties>
+            <property>
+              <name>gwt.args</name>
+              <value>-out ${project.build.directory}/${project.build.finalName}</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
 
-			<!-- Mark the project for Google Plugin for Eclipse (GPE) -->
-			<plugin>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>${maven.eclipse.version}</version>
+      <!-- Mark the project for Google Plugin for Eclipse (GPE) -->
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>${maven.eclipse.version}</version>
 
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
-					<additionalBuildcommands>
-						<buildCommand>
-							<name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
-						</buildCommand>
-					</additionalBuildcommands>
-					<additionalProjectnatures>
-						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-					</additionalProjectnatures>
-				</configuration>
-			</plugin>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>false</downloadJavadocs>
+          <wtpversion>2.0</wtpversion>
+          <additionalBuildcommands>
+            <buildCommand>
+              <name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
+            </buildCommand>
+          </additionalBuildcommands>
+          <additionalProjectnatures>
+            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+          </additionalProjectnatures>
+        </configuration>
+      </plugin>
 
-			<!-- RequestFactory annotation processing -->
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.version}</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>com.google.web.bindery</groupId>
-						<artifactId>requestfactory-apt</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins>
+      <!-- RequestFactory annotation processing -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.version}</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.google.web.bindery</groupId>
+            <artifactId>requestfactory-apt</artifactId>
+            <version>${gwt.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
 
-		<!-- Required by m2e for import into eclipse. No effect on command line builds -->
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
+    <!-- Required by m2e for import into eclipse. No effect on command line builds -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
 
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.bsc.maven</groupId>
-										<artifactId>maven-processor-plugin</artifactId>
-										<versionRange>[2.0.5,)</versionRange>
-										<goals>
-											<goal>process</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.bsc.maven</groupId>
+                    <artifactId>maven-processor-plugin</artifactId>
+                    <versionRange>[2.0.5,)</versionRange>
+                    <goals>
+                      <goal>process</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
 
-	</build>
+  </build>
 
 </project>

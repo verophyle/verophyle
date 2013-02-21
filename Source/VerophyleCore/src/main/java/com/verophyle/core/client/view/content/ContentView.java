@@ -7,7 +7,7 @@ import com.verophyle.core.client.view.CoreView;
 
 public interface ContentView extends CoreView {
 
-	interface Presenter extends CorePresenter {
-	}
-	
+  interface Presenter extends CorePresenter {
+  }
+  
 }

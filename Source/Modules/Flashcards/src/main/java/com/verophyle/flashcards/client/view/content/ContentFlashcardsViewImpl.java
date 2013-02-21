@@ -27,79 +27,79 @@ import com.verophyle.flashcards.shared.rf.DeckProxy;
 import com.verophyle.flashcards.shared.rf.FlashcardsRequestFactory;
 
 public class ContentFlashcardsViewImpl extends CoreViewImpl implements ContentFlashcardsView {
-	
-	interface Binder extends UiBinder<FlowPanel, ContentFlashcardsViewImpl> {}
-	interface Driver extends RequestFactoryEditorDriver<List<DeckProxy>, ListEditor<DeckProxy, DeckListItem>> { }
-	
-	private final Binder binder = GWT.create(Binder.class);
-	private final Driver driver = GWT.create(Driver.class);
-	
-	@UiField
-	TextBoxWithIntroText searchBox;
-	
-	@UiField
-	FlowPanel deckListContainer;
-	
-	private final EventBus eventBus;
-	private final FlashcardsRequestFactory requestFactory;
-	
-	private final List<DeckProxy> deckList;
-	
-	@Inject
-	public ContentFlashcardsViewImpl(
-			EventBus eventBus, 
-			FlashcardsRequestFactory requestFactory, 
-			FlashcardsLogger logger,
-			CoreResources res,
-			FlashcardsResources fres) {
-		super(logger, res);
-		
-		this.eventBus = eventBus;
-		this.requestFactory = requestFactory;
-		
-		fres.css().ensureInjected();		
-		initWidget(binder.createAndBindUi(this));
-		
-		ListEditor<DeckProxy, DeckListItem> editor = ListEditor.of(new ListItemSource());
-		driver.initialize(this.eventBus, this.requestFactory, editor);
-		driver.display(new ArrayList<DeckProxy>());
-		
-		deckList = editor.getList();
-	}
-	
-	@Override
-	protected void onLoad() {
-		requestFactory.flashcardDeckRequest().createDeck("User-Maat-Re").fire(new Receiver<DeckProxy>() {
-			@Override
-			public void onSuccess(DeckProxy response) {
-				deckList.add(response);
-			}
-		});
-	}
-	
-	
-	private class ListItemSource extends EditorSource<DeckListItem> {
-		private LinkedList<DeckListItem> unused = new LinkedList<DeckListItem>();
-		
-		@Override
-		public DeckListItem create(int index) {
-			DeckListItem deck = unused.size() > 0 ? unused.removeFirst() : new DeckListItem();
-			deckListContainer.insert(deck, index);
-			return deck;
-		}
-		
-		@Override
-		public void dispose(DeckListItem deck) {
-			if (deck != null) {
-				deckListContainer.remove(deck);
-				unused.addLast(deck);
-			}
-		}
-		
-		@Override
-		public void setIndex(DeckListItem deck, int index) {
-			deckListContainer.insert(deck, index);
-		}
-	}
-	
+  
+  interface Binder extends UiBinder<FlowPanel, ContentFlashcardsViewImpl> {}
+  interface Driver extends RequestFactoryEditorDriver<List<DeckProxy>, ListEditor<DeckProxy, DeckListItem>> { }
+  
+  private final Binder binder = GWT.create(Binder.class);
+  private final Driver driver = GWT.create(Driver.class);
+  
+  @UiField
+  TextBoxWithIntroText searchBox;
+  
+  @UiField
+  FlowPanel deckListContainer;
+  
+  private final EventBus eventBus;
+  private final FlashcardsRequestFactory requestFactory;
+  
+  private final List<DeckProxy> deckList;
+  
+  @Inject
+  public ContentFlashcardsViewImpl(
+      EventBus eventBus, 
+      FlashcardsRequestFactory requestFactory, 
+      FlashcardsLogger logger,
+      CoreResources res,
+      FlashcardsResources fres) {
+    super(logger, res);
+    
+    this.eventBus = eventBus;
+    this.requestFactory = requestFactory;
+    
+    fres.css().ensureInjected();    
+    initWidget(binder.createAndBindUi(this));
+    
+    ListEditor<DeckProxy, DeckListItem> editor = ListEditor.of(new ListItemSource());
+    driver.initialize(this.eventBus, this.requestFactory, editor);
+    driver.display(new ArrayList<DeckProxy>());
+    
+    deckList = editor.getList();
+  }
+  
+  @Override
+  protected void onLoad() {
+    requestFactory.flashcardDeckRequest().createDeck("User-Maat-Re").fire(new Receiver<DeckProxy>() {
+      @Override
+      public void onSuccess(DeckProxy response) {
+        deckList.add(response);
+      }
+    });
+  }
+  
+  
+  private class ListItemSource extends EditorSource<DeckListItem> {
+    private LinkedList<DeckListItem> unused = new LinkedList<DeckListItem>();
+    
+    @Override
+    public DeckListItem create(int index) {
+      DeckListItem deck = unused.size() > 0 ? unused.removeFirst() : new DeckListItem();
+      deckListContainer.insert(deck, index);
+      return deck;
+    }
+    
+    @Override
+    public void dispose(DeckListItem deck) {
+      if (deck != null) {
+        deckListContainer.remove(deck);
+        unused.addLast(deck);
+      }
+    }
+    
+    @Override
+    public void setIndex(DeckListItem deck, int index) {
+      deckListContainer.insert(deck, index);
+    }
+  }
+  
 }

@@ -6,35 +6,35 @@
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
 <module rename-to='VerophyleCore'>
-	<inherits name="com.google.gwt.activity.Activity" />
-	<inherits name="com.google.gwt.i18n.I18N" />
-	<inherits name="com.google.gwt.inject.Inject" />
-	<inherits name="com.google.gwt.logging.Logging" />
-	<inherits name="com.google.gwt.resources.Resources" />
-	<inherits name="com.google.gwt.editor.Editor" />
-	<inherits name='com.google.gwt.user.User' />
-	<inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
-	<inherits name="com.googlecode.objectify.Objectify" />
+  <inherits name="com.google.gwt.activity.Activity" />
+  <inherits name="com.google.gwt.i18n.I18N" />
+  <inherits name="com.google.gwt.inject.Inject" />
+  <inherits name="com.google.gwt.logging.Logging" />
+  <inherits name="com.google.gwt.resources.Resources" />
+  <inherits name="com.google.gwt.editor.Editor" />
+  <inherits name='com.google.gwt.user.User' />
+  <inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
+  <inherits name="com.googlecode.objectify.Objectify" />
 
-	<inherits name='com.google.gwt.user.theme.clean.CleanResources'/>
+  <inherits name='com.google.gwt.user.theme.clean.CleanResources'/>
 
-	<extend-property name="locale" values="en" />
-	<extend-property name="locale" values="fr" />
-	<set-property-fallback name="locale" value="en" />
+  <extend-property name="locale" values="en" />
+  <extend-property name="locale" values="fr" />
+  <set-property-fallback name="locale" value="en" />
 
-	<set-property name="gwt.logging.developmentModeHandler" value="DISABLED"/>
-	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
-	<set-property name="gwt.logging.systemHandler" value="ENABLED"/>
-	<set-property name="gwt.logging.firebugHandler" value="DISABLED"/>
-	<set-property name="gwt.logging.popupHandler" value="DISABLED"/>
-	<set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED"/>
+  <set-property name="gwt.logging.developmentModeHandler" value="DISABLED"/>
+  <set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
+  <set-property name="gwt.logging.systemHandler" value="ENABLED"/>
+  <set-property name="gwt.logging.firebugHandler" value="DISABLED"/>
+  <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
+  <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED"/>
 
-	<set-configuration-property name="CssResource.style" value="pretty"/>
+  <set-configuration-property name="CssResource.style" value="pretty"/>
 
-	<entry-point class='com.verophyle.core.client.CoreEntryPoint' />
+  <entry-point class='com.verophyle.core.client.CoreEntryPoint' />
 
-	<source path='client' />
-	<source path='shared' />
+  <source path='client' />
+  <source path='shared' />
 
-	<stylesheet src="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,600|Poly:400,400italic|Quando%26subset=latin%2Clatin-ext" />
+  <stylesheet src="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,600|Poly:400,400italic|Quando%26subset=latin%2Clatin-ext" />
 </module>

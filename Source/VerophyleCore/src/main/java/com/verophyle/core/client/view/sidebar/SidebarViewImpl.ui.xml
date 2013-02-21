@@ -5,16 +5,16 @@
 -->
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder 
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	
-	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
-	ui:defaultLocale="en">
-	
-	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  
+  ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
+  ui:defaultLocale="en">
+  
+  <ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
-	<g:FlowPanel addStyleNames="{res.css.sidebar}">
-		<g:SimplePanel addStyleNames="{res.css.sidebarItem}">
-		</g:SimplePanel>
-	</g:FlowPanel>
+  <g:FlowPanel addStyleNames="{res.css.sidebar}">
+    <g:SimplePanel addStyleNames="{res.css.sidebarItem}">
+    </g:SimplePanel>
+  </g:FlowPanel>
 </ui:UiBinder>

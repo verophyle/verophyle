@@ -25,52 +25,52 @@ import com.verophyle.flashcards.client.view.content.ContentFlashcardsViewImpl;
 import com.verophyle.flashcards.shared.rf.FlashcardsRequestFactory;
 
 public class FlashcardsGinModule extends AbstractGinModule {
-	
-	@Override
-	protected void configure() {
-		// global objects
-		bind(FlashcardsLogger.class).in(Singleton.class);
-		
-		// activities
-		bind(ContentActivityMapper.class).in(Singleton.class);
-		
-		bind(new TypeLiteral<CoreActivityProxy<ContentFlashcardsActivity, Flashcards>>(){});
-		bind(ContentFlashcardsActivity.class).to(ContentFlashcardsActivityImpl.class);
-		
-		// views
-		bind(ContentFlashcardsView.class).to(ContentFlashcardsViewImpl.class).in(Singleton.class);
-	}
-	
-	@Provides
-	@Singleton
-	public EventBus getEventBus() {
-		return CoreGinjector.INSTANCE.getEventBus();
-	}
+  
+  @Override
+  protected void configure() {
+    // global objects
+    bind(FlashcardsLogger.class).in(Singleton.class);
+    
+    // activities
+    bind(ContentActivityMapper.class).in(Singleton.class);
+    
+    bind(new TypeLiteral<CoreActivityProxy<ContentFlashcardsActivity, Flashcards>>(){});
+    bind(ContentFlashcardsActivity.class).to(ContentFlashcardsActivityImpl.class);
+    
+    // views
+    bind(ContentFlashcardsView.class).to(ContentFlashcardsViewImpl.class).in(Singleton.class);
+  }
+  
+  @Provides
+  @Singleton
+  public EventBus getEventBus() {
+    return CoreGinjector.INSTANCE.getEventBus();
+  }
 
-	@Provides
-	@Singleton
-	public PlaceController getPlaceController(EventBus eventBus) {
-		return CoreGinjector.INSTANCE.getPlaceController();
-	}
-	
-	@Provides
-	@Singleton
-	public CorePlaceHistoryRegistry getPlaceHistoryRegistry() {
-		return CoreGinjector.INSTANCE.getPlaceHistoryRegistry();
-	}
-	
-	@Provides
-	@Singleton
-	public FlashcardsRequestFactory getRequestFactory(EventBus eventBus) {
-		FlashcardsRequestFactory requestFactory = GWT.create(FlashcardsRequestFactory.class);
-		requestFactory.initialize(eventBus);
-		return requestFactory;
-	}
-	
-	@Provides
-	@Singleton
-	public CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry() {
-		return CoreGinjector.INSTANCE.getContentActivityRegistry();
-	}
-	
+  @Provides
+  @Singleton
+  public PlaceController getPlaceController(EventBus eventBus) {
+    return CoreGinjector.INSTANCE.getPlaceController();
+  }
+  
+  @Provides
+  @Singleton
+  public CorePlaceHistoryRegistry getPlaceHistoryRegistry() {
+    return CoreGinjector.INSTANCE.getPlaceHistoryRegistry();
+  }
+  
+  @Provides
+  @Singleton
+  public FlashcardsRequestFactory getRequestFactory(EventBus eventBus) {
+    FlashcardsRequestFactory requestFactory = GWT.create(FlashcardsRequestFactory.class);
+    requestFactory.initialize(eventBus);
+    return requestFactory;
+  }
+  
+  @Provides
+  @Singleton
+  public CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry() {
+    return CoreGinjector.INSTANCE.getContentActivityRegistry();
+  }
+  
 }

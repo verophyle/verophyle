@@ -12,14 +12,14 @@ import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
 
 public class ContentSecondViewImpl extends CoreViewImpl implements ContentSecondView {
-	
-	interface Binder extends UiBinder<FlowPanel, ContentSecondViewImpl> { }
-	private static Binder binder = GWT.create(Binder.class);
-			
-	@Inject
-	public ContentSecondViewImpl(CoreLogger logger, CoreResources res) {
-		super(logger, res);
-		initWidget(binder.createAndBindUi(this));
-	}
-			
+  
+  interface Binder extends UiBinder<FlowPanel, ContentSecondViewImpl> { }
+  private static Binder binder = GWT.create(Binder.class);
+      
+  @Inject
+  public ContentSecondViewImpl(CoreLogger logger, CoreResources res) {
+    super(logger, res);
+    initWidget(binder.createAndBindUi(this));
+  }
+      
 }

@@ -13,10 +13,10 @@ import com.verophyle.core.client.view.content.ContentIndexView;
  * Implementation of the Index activity.
  */
 public class ContentIndexActivityImpl extends ContentActivityImpl<Index, ContentIndexView> implements ContentIndexActivity {
-	
-	@Inject
-	public ContentIndexActivityImpl(CoreLogger logger, PlaceController placeController, ContentIndexView contentView) {
-		super(logger, placeController, contentView);
-	}
-	
+  
+  @Inject
+  public ContentIndexActivityImpl(CoreLogger logger, PlaceController placeController, ContentIndexView contentView) {
+    super(logger, placeController, contentView);
+  }
+  
 }

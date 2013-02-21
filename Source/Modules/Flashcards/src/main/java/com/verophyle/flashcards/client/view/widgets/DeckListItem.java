@@ -14,33 +14,33 @@ import com.google.inject.Inject;
 import com.verophyle.flashcards.shared.rf.DeckProxy;
 
 public class DeckListItem extends Composite implements ValueAwareEditor<DeckProxy> {
-	
-	interface Binder extends UiBinder<Label, DeckListItem> { }
-	private static Binder binder = GWT.create(Binder.class);
-	
-	@UiField
-	Label name;
-	
-	@Inject
-	public DeckListItem() {
-		initWidget(binder.createAndBindUi(this));
-	}
+  
+  interface Binder extends UiBinder<Label, DeckListItem> { }
+  private static Binder binder = GWT.create(Binder.class);
+  
+  @UiField
+  Label name;
+  
+  @Inject
+  public DeckListItem() {
+    initWidget(binder.createAndBindUi(this));
+  }
 
-	@Override
-	public void setDelegate(EditorDelegate<DeckProxy> delegate) {
-	}
+  @Override
+  public void setDelegate(EditorDelegate<DeckProxy> delegate) {
+  }
 
-	@Override
-	public void flush() {
-	}
+  @Override
+  public void flush() {
+  }
 
-	@Override
-	public void onPropertyChange(String... paths) {
-	}
+  @Override
+  public void onPropertyChange(String... paths) {
+  }
 
-	@Override
-	public void setValue(DeckProxy value) {
-		// the editor framework handles this for us
-	}
+  @Override
+  public void setValue(DeckProxy value) {
+    // the editor framework handles this for us
+  }
 
 }

@@ -11,6 +11,6 @@ import com.verophyle.flashcards.server.rf.DeckService;
 
 @Service(value = DeckService.class, locator = CoreServiceLocator.class)
 public interface DeckRequest extends RequestContext {
-	Request<DeckProxy> createDeck(String name);
-	Request<DeckProxy> findDeck(Long id);
+  Request<DeckProxy> createDeck(String name);
+  Request<DeckProxy> findDeck(Long id);
 }

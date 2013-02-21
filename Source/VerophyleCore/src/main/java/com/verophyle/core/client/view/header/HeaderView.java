@@ -7,11 +7,11 @@ import com.verophyle.core.client.view.CoreView;
 import com.verophyle.core.client.view.widgets.IdentityAuthentication;
 
 public interface HeaderView extends CoreView {
-	
-	public IdentityAuthentication getIdentityAuth();
+  
+  public IdentityAuthentication getIdentityAuth();
 
-	public interface Presenter extends CorePresenter {
-		void onLogoClick();
-	}
+  public interface Presenter extends CorePresenter {
+    void onLogoClick();
+  }
 
 }

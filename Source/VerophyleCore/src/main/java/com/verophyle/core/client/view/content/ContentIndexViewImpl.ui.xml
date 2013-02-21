@@ -5,31 +5,31 @@
 -->
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder 
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	
-	ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
-	ui:defaultLocale="en">
-	
-	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>	
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  
+  ui:baseMessagesInterface="com.verophyle.core.shared.CoreMessages"
+  ui:defaultLocale="en">
+  
+  <ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>  
 
-	<g:FlowPanel addStyleNames="{res.css.contentBody} {res.css.vertical}">
-		<g:HTML addStyleNames="{res.css.title}">
-			<ui:msg>Verophyle is in stealth mode</ui:msg>
-		</g:HTML>
-		<g:HTML addStyleNames="{res.css.para}">
-			<ui:msg>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eros enim, 
-				facilisis quis laoreet quis, rutrum a nibh. Suspendisse vitae risus sem. Cras 
-				tellus justo, varius at commodo viverra, placerat eget neque. Cras elit massa, 
-				tristique ut porta ut, placerat et libero. Vestibulum nec rhoncus sapien. 
-				Suspendisse consequat molestie tortor at porta. Proin eget massa vitae massa 
-				semper commodo. Praesent vel ornare odio. Ut ullamcorper erat vitae purus 
-				commodo convallis rhoncus elit vehicula. Donec nisl nisl, posuere ut facilisis 
-				in, aliquet in felis. Maecenas sed lectus sed urna pharetra dapibus. Phasellus 
-				iaculis quam eget massa dapibus semper. Vivamus lectus erat, iaculis ac aliquet 
-				eu, facilisis vitae nisl. Praesent at felis lectus!
-			</ui:msg>
-		</g:HTML>
-	</g:FlowPanel>
+  <g:FlowPanel addStyleNames="{res.css.contentBody} {res.css.vertical}">
+    <g:HTML addStyleNames="{res.css.title}">
+      <ui:msg>Verophyle is in stealth mode</ui:msg>
+    </g:HTML>
+    <g:HTML addStyleNames="{res.css.para}">
+      <ui:msg>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eros enim, 
+        facilisis quis laoreet quis, rutrum a nibh. Suspendisse vitae risus sem. Cras 
+        tellus justo, varius at commodo viverra, placerat eget neque. Cras elit massa, 
+        tristique ut porta ut, placerat et libero. Vestibulum nec rhoncus sapien. 
+        Suspendisse consequat molestie tortor at porta. Proin eget massa vitae massa 
+        semper commodo. Praesent vel ornare odio. Ut ullamcorper erat vitae purus 
+        commodo convallis rhoncus elit vehicula. Donec nisl nisl, posuere ut facilisis 
+        in, aliquet in felis. Maecenas sed lectus sed urna pharetra dapibus. Phasellus 
+        iaculis quam eget massa dapibus semper. Vivamus lectus erat, iaculis ac aliquet 
+        eu, facilisis vitae nisl. Praesent at felis lectus!
+      </ui:msg>
+    </g:HTML>
+  </g:FlowPanel>
 </ui:UiBinder>

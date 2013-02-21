@@ -10,9 +10,9 @@ import com.verophyle.flashcards.server.rf.DeckLocator;
 
 @ProxyFor(value = FlashcardDeck.class, locator = DeckLocator.class)
 public interface DeckProxy extends CoreEntityProxy {
-	String getName();
-	void setName(String name);
-	
-	int getNum();
-	void setNum(int num);
+  String getName();
+  void setName(String name);
+  
+  int getNum();
+  void setNum(int num);
 }

@@ -8,10 +8,10 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 
 public class FooterActivityManager extends ActivityManager {
-	
-	@Inject
-	public FooterActivityManager(FooterActivityMapper mapper, EventBus eventBus) {
-		super(mapper, eventBus);
-	}
+  
+  @Inject
+  public FooterActivityManager(FooterActivityMapper mapper, EventBus eventBus) {
+    super(mapper, eventBus);
+  }
 
 }

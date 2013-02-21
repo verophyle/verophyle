@@ -12,9 +12,9 @@ import com.google.web.bindery.event.shared.EventBus;
  */
 public class ContentActivityManager extends ActivityManager {
 
-	@Inject
-	public ContentActivityManager(ContentActivityMapper mapper, EventBus eventBus) {
-		super(mapper, eventBus);
-	}
+  @Inject
+  public ContentActivityManager(ContentActivityMapper mapper, EventBus eventBus) {
+    super(mapper, eventBus);
+  }
 
 }

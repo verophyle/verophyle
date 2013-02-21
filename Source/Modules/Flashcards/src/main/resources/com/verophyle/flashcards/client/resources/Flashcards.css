@@ -5,37 +5,37 @@
 @eval FONT_MED com.verophyle.core.client.CoreGinjector.INSTANCE.getCoreResources().css().FONT_MED();
 
 .search {
-	-webkit-flex: initial;
-	margin-bottom: 0.5em;
-	margin-right: 1.4em;
+  -webkit-flex: initial;
+  margin-bottom: 0.5em;
+  margin-right: 1.4em;
 }
 
 .list {
-	height: 100%;
-	-webkit-flex: auto;
-	
-	display: -webkit-flex;
-	-webkit-flex-flow: column nowrap;
-	-webkit-align-items: flex-start;
-	
-	padding-top: 0.25em;
-	padding-bottom: 0.25em;
+  height: 100%;
+  -webkit-flex: auto;
+  
+  display: -webkit-flex;
+  -webkit-flex-flow: column nowrap;
+  -webkit-align-items: flex-start;
+  
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
 
-	margin-right: 1em;
-	
-	border-top: 1px solid COMPLEMENTARY3;
-	border-right: 1px solid COMPLEMENTARY3;	
+  margin-right: 1em;
+  
+  border-top: 1px solid COMPLEMENTARY3;
+  border-right: 1px solid COMPLEMENTARY3;  
 }
 
 .listItem {
-	-webkit-flex: auto;
-	
-	width: 100%;
-	
-	padding-top: 0.25em;
-	padding-bottom: 0.25em;
-	
-	cursor: pointer;
-	
-	font-weight: FONT_MED;
+  -webkit-flex: auto;
+  
+  width: 100%;
+  
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  
+  cursor: pointer;
+  
+  font-weight: FONT_MED;
 }

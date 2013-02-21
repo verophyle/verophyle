@@ -12,26 +12,26 @@ import com.verophyle.flashcards.client.FlashcardsEntryPoint;
 
 public class VerophyleEntryPoint implements EntryPoint {
 
-	@Override
-	public void onModuleLoad() {
-		VerophyleGinjector.INSTANCE.getVerophyleLogger().log(Level.INFO, this.getClass().getName() + ".onModuleLoad()");
-		
-		Scheduler.get().scheduleFinally(new Scheduler.RepeatingCommand() {
+  @Override
+  public void onModuleLoad() {
+    VerophyleGinjector.INSTANCE.getVerophyleLogger().log(Level.INFO, this.getClass().getName() + ".onModuleLoad()");
+    
+    Scheduler.get().scheduleFinally(new Scheduler.RepeatingCommand() {
 
-			@Override
-			public boolean execute() {
-				if (CoreEntryPoint.isLoaded() && FlashcardsEntryPoint.isLoaded()) {
-					CoreEntryPoint.init();
-					FlashcardsEntryPoint.init();
-					
-					CoreEntryPoint.start();					
-					return false;
-				}
-				
-				return true;
-			}
-			
-		});
-	}
+      @Override
+      public boolean execute() {
+        if (CoreEntryPoint.isLoaded() && FlashcardsEntryPoint.isLoaded()) {
+          CoreEntryPoint.init();
+          FlashcardsEntryPoint.init();
+          
+          CoreEntryPoint.start();          
+          return false;
+        }
+        
+        return true;
+      }
+      
+    });
+  }
 
 }

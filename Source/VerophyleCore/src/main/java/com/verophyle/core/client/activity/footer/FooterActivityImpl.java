@@ -12,9 +12,9 @@ import com.verophyle.core.client.view.footer.FooterView;
 
 public class FooterActivityImpl extends CoreActivityImpl<CorePlace, FooterView> implements FooterView.Presenter, FooterActivity {
 
-	@Inject
-	public FooterActivityImpl(CoreLogger logger, PlaceController placeController, FooterView footerView) {
-		super(logger, placeController, footerView);
-	}
-	
+  @Inject
+  public FooterActivityImpl(CoreLogger logger, PlaceController placeController, FooterView footerView) {
+    super(logger, placeController, footerView);
+  }
+  
 }

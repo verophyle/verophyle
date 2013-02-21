@@ -11,13 +11,13 @@ import com.verophyle.flashcards.server.FlashcardsGuiceModule;
 
 public class VerophyleServletContextListener extends GuiceServletContextListener {
 
-	@Override
-	protected Injector getInjector() {
-		return Guice.createInjector(
-				new CoreGuiceModule(),
-				new FlashcardsGuiceModule(),
-				new VerophyleServletModule()
-			);
-	}
+  @Override
+  protected Injector getInjector() {
+    return Guice.createInjector(
+        new CoreGuiceModule(),
+        new FlashcardsGuiceModule(),
+        new VerophyleServletModule()
+      );
+  }
 
 }

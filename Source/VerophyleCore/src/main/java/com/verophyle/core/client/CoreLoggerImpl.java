@@ -13,16 +13,16 @@ import com.google.inject.Inject;
  * Client-side logger implementation.
  */
 public class CoreLoggerImpl implements CoreLogger {
-	
-	private static Logger logger = Logger.getLogger(GWT.getModuleName());
+  
+  private static Logger logger = Logger.getLogger(GWT.getModuleName());
 
-	@Inject
-	public CoreLoggerImpl() {
-	}
-	
-	@Override
-	public void log(Level level, String text) {
-		logger.log(level, text);
-	}
+  @Inject
+  public CoreLoggerImpl() {
+  }
+  
+  @Override
+  public void log(Level level, String text) {
+    logger.log(level, text);
+  }
 
 }

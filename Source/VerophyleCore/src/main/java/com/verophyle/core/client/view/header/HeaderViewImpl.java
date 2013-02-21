@@ -18,38 +18,38 @@ import com.verophyle.core.client.view.widgets.IdentityAuthentication;
 import com.verophyle.core.shared.CoreMessages;
 
 public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
-	
-	interface Binder extends UiBinder<FlowPanel, HeaderViewImpl> { }
-	private static Binder binder = GWT.create(Binder.class);
+  
+  interface Binder extends UiBinder<FlowPanel, HeaderViewImpl> { }
+  private static Binder binder = GWT.create(Binder.class);
 
-	@UiField
-	HTML logo;
-	
-	@UiField
-	IdentityAuthentication identityAuth;
-	
-	CoreMessages messages;
-	
-	@Inject
-	public HeaderViewImpl(CoreLogger logger, CoreResources res, CoreMessages messages) {
-		super(logger, res);
-		this.messages = messages;
-		
-		initWidget(binder.createAndBindUi(this));
-		initLogo();
-	}
-	
-	@Override
-	public IdentityAuthentication getIdentityAuth() {
-		return identityAuth;
-	}
-	
-	private void initLogo() {
-		logo.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				((HeaderView.Presenter)getPresenter()).onLogoClick();
-			}
-		});		
-	}	
+  @UiField
+  HTML logo;
+  
+  @UiField
+  IdentityAuthentication identityAuth;
+  
+  CoreMessages messages;
+  
+  @Inject
+  public HeaderViewImpl(CoreLogger logger, CoreResources res, CoreMessages messages) {
+    super(logger, res);
+    this.messages = messages;
+    
+    initWidget(binder.createAndBindUi(this));
+    initLogo();
+  }
+  
+  @Override
+  public IdentityAuthentication getIdentityAuth() {
+    return identityAuth;
+  }
+  
+  private void initLogo() {
+    logo.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent event) {
+        ((HeaderView.Presenter)getPresenter()).onLogoClick();
+      }
+    });    
+  }  
 }

@@ -10,9 +10,9 @@ import com.verophyle.core.server.rf.CoreLocator;
 
 public class IdentityLocater extends CoreLocator<Identity> {
 
-	@Inject
-	public IdentityLocater(Injector injector) {
-		super(injector, Identity.class);
-	}
+  @Inject
+  public IdentityLocater(Injector injector) {
+    super(injector, Identity.class);
+  }
 
 }

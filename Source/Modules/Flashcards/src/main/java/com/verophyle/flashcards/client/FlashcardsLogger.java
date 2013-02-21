@@ -12,15 +12,15 @@ import com.verophyle.core.client.CoreLogger;
 
 public class FlashcardsLogger implements CoreLogger {
 
-	private static Logger logger = Logger.getLogger(GWT.getModuleName());
-	
-	@Inject
-	public FlashcardsLogger() {
-	}
-	
-	@Override
-	public void log(Level level, String text) {
-		logger.log(level, text);
-	}
-	
+  private static Logger logger = Logger.getLogger(GWT.getModuleName());
+  
+  @Inject
+  public FlashcardsLogger() {
+  }
+  
+  @Override
+  public void log(Level level, String text) {
+    logger.log(level, text);
+  }
+  
 }

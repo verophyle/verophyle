@@ -18,16 +18,16 @@ import com.verophyle.core.client.view.content.ContentView;
  * @param <V> View class.
  */
 public abstract class ContentActivityImpl<P extends CorePlace, V extends ContentView> 
-	extends CoreActivityImpl<P, V> 
-	implements ContentActivity {
+  extends CoreActivityImpl<P, V> 
+  implements ContentActivity {
 
-	protected ContentActivityImpl(CoreLogger logger, PlaceController placeController, ContentView coreView) {
-		super(logger, placeController, coreView);
-	}
-	
-	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		super.start(panel, eventBus);
-	}
+  protected ContentActivityImpl(CoreLogger logger, PlaceController placeController, ContentView coreView) {
+    super(logger, placeController, coreView);
+  }
+  
+  @Override
+  public void start(AcceptsOneWidget panel, EventBus eventBus) {
+    super.start(panel, eventBus);
+  }
 
 }

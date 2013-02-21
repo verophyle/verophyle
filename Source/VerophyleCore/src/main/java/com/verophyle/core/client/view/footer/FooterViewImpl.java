@@ -13,13 +13,13 @@ import com.verophyle.core.client.view.CoreViewImpl;
 
 public class FooterViewImpl extends CoreViewImpl implements FooterView {
 
-	interface Binder extends UiBinder<FlowPanel, FooterViewImpl> { }
-	private static Binder binder = GWT.create(Binder.class);
+  interface Binder extends UiBinder<FlowPanel, FooterViewImpl> { }
+  private static Binder binder = GWT.create(Binder.class);
 
-	@Inject
-	public FooterViewImpl(CoreLogger logger, CoreResources res) {
-		super(logger, res);
-		initWidget(binder.createAndBindUi(this));
-	}
+  @Inject
+  public FooterViewImpl(CoreLogger logger, CoreResources res) {
+    super(logger, res);
+    initWidget(binder.createAndBindUi(this));
+  }
 
 }

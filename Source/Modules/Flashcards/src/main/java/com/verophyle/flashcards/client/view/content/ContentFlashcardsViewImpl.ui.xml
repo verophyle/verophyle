@@ -5,34 +5,34 @@
 -->
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder 
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:core="urn:import:com.verophyle.core.client.view.widgets"
-	
-	ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
-	ui:defaultLocale="en">
-	
-	<ui:with field="fres" type="com.verophyle.flashcards.client.resources.FlashcardsResources"/>
-	<ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:core="urn:import:com.verophyle.core.client.view.widgets"
+  
+  ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
+  ui:defaultLocale="en">
+  
+  <ui:with field="fres" type="com.verophyle.flashcards.client.resources.FlashcardsResources"/>
+  <ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
-	<g:FlowPanel addStyleNames="{res.css.contentBody} {res.css.vertical}">
-		<g:HTML addStyleNames="{res.css.title}">
-			<ui:msg key="title">Flashcards</ui:msg>
-		</g:HTML>
+  <g:FlowPanel addStyleNames="{res.css.contentBody} {res.css.vertical}">
+    <g:HTML addStyleNames="{res.css.title}">
+      <ui:msg key="title">Flashcards</ui:msg>
+    </g:HTML>
 
-		<g:FlowPanel addStyleNames="{res.css.horizontal}">
-			<g:FlowPanel addStyleNames="{res.css.vertical}">
-				<core:TextBoxWithIntroText addStyleNames="{fres.css.search}" ui:field="searchBox">
-					<ui:msg key="search">Search</ui:msg>
-				</core:TextBoxWithIntroText>
-				
-				<g:FlowPanel addStyleNames="{fres.css.list} {res.css.verticalScroll}" ui:field="deckListContainer">
-				</g:FlowPanel>
-			</g:FlowPanel>
-			
-			<g:FlowPanel>
-				<g:HTML>editor</g:HTML>
-			</g:FlowPanel>
-		</g:FlowPanel>		
-	</g:FlowPanel>
+    <g:FlowPanel addStyleNames="{res.css.horizontal}">
+      <g:FlowPanel addStyleNames="{res.css.vertical}">
+        <core:TextBoxWithIntroText addStyleNames="{fres.css.search}" ui:field="searchBox">
+          <ui:msg key="search">Search</ui:msg>
+        </core:TextBoxWithIntroText>
+        
+        <g:FlowPanel addStyleNames="{fres.css.list} {res.css.verticalScroll}" ui:field="deckListContainer">
+        </g:FlowPanel>
+      </g:FlowPanel>
+      
+      <g:FlowPanel>
+        <g:HTML>editor</g:HTML>
+      </g:FlowPanel>
+    </g:FlowPanel>    
+  </g:FlowPanel>
 </ui:UiBinder>

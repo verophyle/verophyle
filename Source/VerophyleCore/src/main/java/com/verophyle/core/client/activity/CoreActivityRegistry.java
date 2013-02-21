@@ -12,6 +12,6 @@ import com.verophyle.core.client.place.CorePlace;
  * @param <P> Place class.
  */
 public interface CoreActivityRegistry<A extends CoreActivity, P extends CorePlace> {
-	void register(String placeKey, Provider<? extends CoreActivityProxy<? extends A, ? extends P>> provider);
-	Provider<? extends CoreActivityProxy<? extends A, ? extends P>> getProvider(String placeKey);
+  void register(String placeKey, Provider<? extends CoreActivityProxy<? extends A, ? extends P>> provider);
+  Provider<? extends CoreActivityProxy<? extends A, ? extends P>> getProvider(String placeKey);
 }

@@ -26,38 +26,38 @@ import com.verophyle.core.server.rf.identity.IdentityServiceImpl;
 
 public class CoreGuiceModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		// RequestFactory
-		bind(ExceptionHandler.class).to(CoreExceptionHandler.class);
-		bind(ServiceLayerDecorator.class).to(CoreServiceLayerDecorator.class);
-		bind(CoreServiceLocator.class).to(CoreServiceLocatorImpl.class);
-		
-		bind(IdentityService.class).to(IdentityServiceImpl.class);
-	}
+  @Override
+  protected void configure() {
+    // RequestFactory
+    bind(ExceptionHandler.class).to(CoreExceptionHandler.class);
+    bind(ServiceLayerDecorator.class).to(CoreServiceLayerDecorator.class);
+    bind(CoreServiceLocator.class).to(CoreServiceLocatorImpl.class);
+    
+    bind(IdentityService.class).to(IdentityServiceImpl.class);
+  }
 
-	// misc
-	@Provides
-	@Singleton
-	public Logger getLogger() {
-		return LoggerFactory.getLogger("VerophyleCore");
-	}
-		
-	// RequestFactory
-	@Provides
-	@Singleton
-	public ValidatorFactory getValidatorFactory(Injector injector) {
-		return Validation
-				.byDefaultProvider()
-				.configure()
-				.constraintValidatorFactory(new CoreConstraintValidatorFactory(injector))
-				.buildValidatorFactory();
-	}
-	
-	@Provides
-	@Singleton
-	public Validator getValidator(ValidatorFactory validatorFactory) {
-		return validatorFactory.getValidator();
-	}
-	
+  // misc
+  @Provides
+  @Singleton
+  public Logger getLogger() {
+    return LoggerFactory.getLogger("VerophyleCore");
+  }
+    
+  // RequestFactory
+  @Provides
+  @Singleton
+  public ValidatorFactory getValidatorFactory(Injector injector) {
+    return Validation
+        .byDefaultProvider()
+        .configure()
+        .constraintValidatorFactory(new CoreConstraintValidatorFactory(injector))
+        .buildValidatorFactory();
+  }
+  
+  @Provides
+  @Singleton
+  public Validator getValidator(ValidatorFactory validatorFactory) {
+    return validatorFactory.getValidator();
+  }
+  
 }

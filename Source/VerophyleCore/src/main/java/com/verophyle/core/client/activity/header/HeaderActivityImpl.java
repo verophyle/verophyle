@@ -26,107 +26,107 @@ import com.verophyle.core.shared.rf.identity.IdentityRequest;
 
 public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> implements HeaderActivity {
 
-	private final CoreMessages coreMessages;
-	private final CoreRequestFactory requestFactory;
-	private final HeaderView headerView;
-	
-	@Inject
-	public HeaderActivityImpl(
-			CoreLogger logger, 
-			CoreMessages coreMessages, 
-			CoreRequestFactory requestFactory, 
-			PlaceController placeController, 
-			HeaderView headerView) {
-		super(logger, placeController, headerView);
-		
-		this.coreMessages = coreMessages;
-		this.requestFactory = requestFactory;
-		this.headerView = headerView;
-	}
-	
-	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		super.start(panel, eventBus);
-		
-		final IdentityRequest request = requestFactory.identityRequest();
-		final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
-		
-		// request the current identity, then set the name and button accordingly
-		currentIdentity.fire(new Receiver<IdentityProxy>() {
+  private final CoreMessages coreMessages;
+  private final CoreRequestFactory requestFactory;
+  private final HeaderView headerView;
+  
+  @Inject
+  public HeaderActivityImpl(
+      CoreLogger logger, 
+      CoreMessages coreMessages, 
+      CoreRequestFactory requestFactory, 
+      PlaceController placeController, 
+      HeaderView headerView) {
+    super(logger, placeController, headerView);
+    
+    this.coreMessages = coreMessages;
+    this.requestFactory = requestFactory;
+    this.headerView = headerView;
+  }
+  
+  @Override
+  public void start(AcceptsOneWidget panel, EventBus eventBus) {
+    super.start(panel, eventBus);
+    
+    final IdentityRequest request = requestFactory.identityRequest();
+    final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
+    
+    // request the current identity, then set the name and button accordingly
+    currentIdentity.fire(new Receiver<IdentityProxy>() {
 
-			@Override
-			public void onSuccess(IdentityProxy identity) {
-				final IdentityAuthentication auth = headerView.getIdentityAuth();
-				
-				if (identity != null) {					
-					auth.getIdentityInfo().setText(identity.getNickname());
-					
-					if (identity.isAnonymous())
-						setLogin();
-					else
-						setLogout();
+      @Override
+      public void onSuccess(IdentityProxy identity) {
+        final IdentityAuthentication auth = headerView.getIdentityAuth();
+        
+        if (identity != null) {          
+          auth.getIdentityInfo().setText(identity.getNickname());
+          
+          if (identity.isAnonymous())
+            setLogin();
+          else
+            setLogout();
 
-					// request the gravatar url
-					final IdentityRequest gravatarRequest = requestFactory.identityRequest();
-					gravatarRequest.getGravatarImageUrl(identity).fire(new Receiver<String>() {
+          // request the gravatar url
+          final IdentityRequest gravatarRequest = requestFactory.identityRequest();
+          gravatarRequest.getGravatarImageUrl(identity).fire(new Receiver<String>() {
 
-						@Override
-						public void onSuccess(String response) {
-							if (response != null && !response.isEmpty())
-								auth.getGravatarImage().setUrl(response);
-						}
-						
-					});
-				} else {
-					auth.getIdentityInfo().setText("?? no id found ??");
-					setLogin();
-				}
-			}
+            @Override
+            public void onSuccess(String response) {
+              if (response != null && !response.isEmpty())
+                auth.getGravatarImage().setUrl(response);
+            }
+            
+          });
+        } else {
+          auth.getIdentityInfo().setText("?? no id found ??");
+          setLogin();
+        }
+      }
 
-			@Override
-			public void onFailure(ServerFailure error) {
-				log(Level.SEVERE, error.getExceptionType() + "\n" + error.getMessage());
+      @Override
+      public void onFailure(ServerFailure error) {
+        log(Level.SEVERE, error.getExceptionType() + "\n" + error.getMessage());
 
-				IdentityAuthentication auth = headerView.getIdentityAuth();
+        IdentityAuthentication auth = headerView.getIdentityAuth();
 
-				auth.getIdentityInfo().setText("?? req failed ??");
-				setLogin();
-			}
-			
-		});
-	}
+        auth.getIdentityInfo().setText("?? req failed ??");
+        setLogin();
+      }
+      
+    });
+  }
 
-	@Override
-	public void onLogoClick() {
-		goTo(new Index(""));
-	}
+  @Override
+  public void onLogoClick() {
+    goTo(new Index(""));
+  }
 
-	private void setLogin() {
-		final IdentityAuthentication auth = headerView.getIdentityAuth();
-		auth.getIdentityLogin().setText(coreMessages.login());
-		
-		requestFactory.identityRequest().getLoginUrl(Window.Location.getHref()).fire(new Receiver<String>() {
-			@Override
-			public void onSuccess(String response) {
-				auth.setUrl(response);
-				auth.getIdentityLogin().setTitle(response);
-				headerView.fadeIn(auth);
-			}
-		});
-	}
-	
-	private void setLogout() {
-		final IdentityAuthentication auth = headerView.getIdentityAuth();
-		auth.getIdentityLogin().setText(coreMessages.logout());
-		
-		requestFactory.identityRequest().getLogoutUrl(Window.Location.getHref()).fire(new Receiver<String>() {
-			@Override
-			public void onSuccess(String response) {
-				auth.setUrl(response);
-				auth.getIdentityLogin().setTitle(response);
-				headerView.fadeIn(auth);
-			}
-		});
-	}
-	
+  private void setLogin() {
+    final IdentityAuthentication auth = headerView.getIdentityAuth();
+    auth.getIdentityLogin().setText(coreMessages.login());
+    
+    requestFactory.identityRequest().getLoginUrl(Window.Location.getHref()).fire(new Receiver<String>() {
+      @Override
+      public void onSuccess(String response) {
+        auth.setUrl(response);
+        auth.getIdentityLogin().setTitle(response);
+        headerView.fadeIn(auth);
+      }
+    });
+  }
+  
+  private void setLogout() {
+    final IdentityAuthentication auth = headerView.getIdentityAuth();
+    auth.getIdentityLogin().setText(coreMessages.logout());
+    
+    requestFactory.identityRequest().getLogoutUrl(Window.Location.getHref()).fire(new Receiver<String>() {
+      @Override
+      public void onSuccess(String response) {
+        auth.setUrl(response);
+        auth.getIdentityLogin().setTitle(response);
+        headerView.fadeIn(auth);
+      }
+    });
+  }
+  
 }

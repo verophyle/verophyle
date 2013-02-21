@@ -9,15 +9,15 @@ import com.google.gwt.user.client.ui.UIObject;
 
 public interface CoreView extends IsWidget {
 
-	void setPresenter(CorePresenter presenter);
-	
-	interface CorePresenter {
-		void goTo(Place place);
-	}
-	
-	void fadeIn();
-	void fadeIn(UIObject uiObject);
-	
-	void fadeOut();
-	void fadeOut(UIObject uiObject);
+  void setPresenter(CorePresenter presenter);
+  
+  interface CorePresenter {
+    void goTo(Place place);
+  }
+  
+  void fadeIn();
+  void fadeIn(UIObject uiObject);
+  
+  void fadeOut();
+  void fadeOut(UIObject uiObject);
 }

@@ -9,7 +9,7 @@ import com.google.gwt.inject.client.Ginjector;
 
 @GinModules({VerophyleGinModule.class})
 public interface VerophyleGinjector extends Ginjector {
-	VerophyleGinjector INSTANCE = GWT.create(VerophyleGinjector.class);
-	
-	VerophyleLogger getVerophyleLogger();
+  VerophyleGinjector INSTANCE = GWT.create(VerophyleGinjector.class);
+  
+  VerophyleLogger getVerophyleLogger();
 }

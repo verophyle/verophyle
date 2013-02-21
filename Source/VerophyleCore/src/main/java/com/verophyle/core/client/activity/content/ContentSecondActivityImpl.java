@@ -11,9 +11,9 @@ import com.verophyle.core.client.view.content.ContentSecondView;
 
 public class ContentSecondActivityImpl extends ContentActivityImpl<Second, ContentSecondView> implements ContentSecondActivity {
 
-	@Inject
-	public ContentSecondActivityImpl(CoreLogger logger, PlaceController placeController, ContentSecondView mainView) {
-		super(logger, placeController, mainView);
-	}
-	
+  @Inject
+  public ContentSecondActivityImpl(CoreLogger logger, PlaceController placeController, ContentSecondView mainView) {
+    super(logger, placeController, mainView);
+  }
+  
 }

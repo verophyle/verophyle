@@ -10,9 +10,9 @@ import com.verophyle.core.shared.rf.CoreEntityProxy;
 
 @ProxyFor(value = Identity.class, locator = IdentityLocater.class)
 public interface IdentityProxy extends CoreEntityProxy {
-	String getNickname();
-	void setNickname(String nickname);
-	
-	boolean isAnonymous();
-	boolean isAdministrator();
+  String getNickname();
+  void setNickname(String nickname);
+  
+  boolean isAnonymous();
+  boolean isAdministrator();
 }

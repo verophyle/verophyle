@@ -9,31 +9,31 @@ import com.googlecode.objectify.annotation.OnSave;
 
 @Entity
 public class CoreEntity {
-	
-	@Id
-	Long id;
-	
-	Integer version = 0;
+  
+  @Id
+  Long id;
+  
+  Integer version = 0;
 
-	@OnSave
-	void onSave() {
-		version++;
-	}
-	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public Integer getVersion() {
-		return version;
-	}
-	
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-	
+  @OnSave
+  void onSave() {
+    version++;
+  }
+  
+  public Long getId() {
+    return id;
+  }
+  
+  public void setId(Long id) {
+    this.id = id;
+  }
+  
+  public Integer getVersion() {
+    return version;
+  }
+  
+  public void setVersion(Integer version) {
+    this.version = version;
+  }
+  
 }

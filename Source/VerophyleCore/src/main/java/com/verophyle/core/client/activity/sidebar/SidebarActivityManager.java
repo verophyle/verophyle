@@ -9,9 +9,9 @@ import com.google.web.bindery.event.shared.EventBus;
 
 public class SidebarActivityManager extends ActivityManager {
 
-	@Inject
-	public SidebarActivityManager(SidebarActivityMapper mapper, EventBus eventBus) {
-		super(mapper, eventBus);
-	}
-	
+  @Inject
+  public SidebarActivityManager(SidebarActivityMapper mapper, EventBus eventBus) {
+    super(mapper, eventBus);
+  }
+  
 }

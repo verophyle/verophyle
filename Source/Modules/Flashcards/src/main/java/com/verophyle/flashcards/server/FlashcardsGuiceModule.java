@@ -12,11 +12,11 @@ import com.verophyle.flashcards.server.rf.DeckServiceImpl;
 
 public class FlashcardsGuiceModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		bind(FlashcardDeck.class);
-		bind(DeckLocator.class).in(Singleton.class);
-		bind(DeckService.class).to(DeckServiceImpl.class).in(Singleton.class);
-	}
-	
+  @Override
+  protected void configure() {
+    bind(FlashcardDeck.class);
+    bind(DeckLocator.class).in(Singleton.class);
+    bind(DeckService.class).to(DeckServiceImpl.class).in(Singleton.class);
+  }
+  
 }

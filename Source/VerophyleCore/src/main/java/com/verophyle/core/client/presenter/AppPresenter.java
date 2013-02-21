@@ -8,7 +8,7 @@ import com.verophyle.core.client.view.AppView;
 
 public class AppPresenter implements AppView.Presenter {
 
-	@Override
-	public void goTo(Place place) {
-	}
+  @Override
+  public void goTo(Place place) {
+  }
 }

@@ -12,18 +12,18 @@ import com.google.web.bindery.event.shared.UmbrellaException;
  */
 public class CoreUncaughtExceptionHandler implements UncaughtExceptionHandler {
 
-	@Override
-	public void onUncaughtException(Throwable e) {
-		e = getException(e);
-		Window.alert(e.getMessage());
-	}
+  @Override
+  public void onUncaughtException(Throwable e) {
+    e = getException(e);
+    Window.alert(e.getMessage());
+  }
 
-	private static Throwable getException(Throwable throwable) {
-		Throwable result = throwable;
-		if (throwable instanceof UmbrellaException && ((UmbrellaException) throwable).getCauses().size() == 1) {
-			result = ((UmbrellaException)throwable).getCauses().iterator().next();
-		}
-		return result;
-	}
-	
+  private static Throwable getException(Throwable throwable) {
+    Throwable result = throwable;
+    if (throwable instanceof UmbrellaException && ((UmbrellaException) throwable).getCauses().size() == 1) {
+      result = ((UmbrellaException)throwable).getCauses().iterator().next();
+    }
+    return result;
+  }
+  
 }

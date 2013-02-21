@@ -29,25 +29,25 @@ import com.verophyle.core.shared.CoreMessages;
  */
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
-	CoreGinjector INSTANCE = GWT.create(CoreGinjector.class);
-	
-	CoreLogger getLogger();
-	CoreResources getCoreResources();
-	CoreMessages getCoreMessages();
-	
-	EventBus getEventBus();
-	PlaceController getPlaceController();	
+  CoreGinjector INSTANCE = GWT.create(CoreGinjector.class);
+  
+  CoreLogger getLogger();
+  CoreResources getCoreResources();
+  CoreMessages getCoreMessages();
+  
+  EventBus getEventBus();
+  PlaceController getPlaceController();  
 
-	PlaceHistoryMapper getPlaceHistoryMapper();
-	PlaceHistoryHandler getPlaceHistoryHandler();
-	CorePlaceHistoryRegistry getPlaceHistoryRegistry();
-	
-	AppView getAppView();	
-	
-	HeaderActivityManager getHeaderActivityManager();
-	SidebarActivityManager getSidebarActivityManager();
-	FooterActivityManager getFooterActivityManager();
+  PlaceHistoryMapper getPlaceHistoryMapper();
+  PlaceHistoryHandler getPlaceHistoryHandler();
+  CorePlaceHistoryRegistry getPlaceHistoryRegistry();
+  
+  AppView getAppView();  
+  
+  HeaderActivityManager getHeaderActivityManager();
+  SidebarActivityManager getSidebarActivityManager();
+  FooterActivityManager getFooterActivityManager();
 
-	CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry();
-	ContentActivityManager getContentActivityManager();
+  CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry();
+  ContentActivityManager getContentActivityManager();
 }

@@ -9,9 +9,9 @@ import com.google.web.bindery.event.shared.EventBus;
 
 public class HeaderActivityManager extends ActivityManager {
 
-	@Inject
-	public HeaderActivityManager(HeaderActivityMapper mapper, EventBus eventBus) {
-		super(mapper, eventBus);
-	}
+  @Inject
+  public HeaderActivityManager(HeaderActivityMapper mapper, EventBus eventBus) {
+    super(mapper, eventBus);
+  }
 
 }

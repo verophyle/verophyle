@@ -20,61 +20,61 @@ import com.verophyle.core.client.view.AppView;
  * Initialization is delayed until all modules are loaded, then init() is called, then start() is called.
  */
 public class CoreEntryPoint implements EntryPoint {
-	private static boolean loaded = false;
-	
-	/**
-	 * Called when the module is loaded.
-	 */
-	public void onModuleLoad() {
-		CoreGinjector.INSTANCE.getLogger().log(Level.INFO, this.getClass().getName() + ".onModuleLoad()");
-		loaded = true;
-	}
-	
-	/**
-	 * Whether or not the module has been loaded.
-	 */
-	public static boolean isLoaded() {
-		return loaded;
-	}
+  private static boolean loaded = false;
+  
+  /**
+   * Called when the module is loaded.
+   */
+  public void onModuleLoad() {
+    CoreGinjector.INSTANCE.getLogger().log(Level.INFO, this.getClass().getName() + ".onModuleLoad()");
+    loaded = true;
+  }
+  
+  /**
+   * Whether or not the module has been loaded.
+   */
+  public static boolean isLoaded() {
+    return loaded;
+  }
 
-	/**
-	 * Initialized the module.
-	 */
-	public static void init() {
-		GWT.setUncaughtExceptionHandler(new CoreUncaughtExceptionHandler());
-		
-		CoreGinjector injector = CoreGinjector.INSTANCE;
-		
-		injector.getLogger().log(Level.INFO, "CoreEntryPoint.init()");
+  /**
+   * Initialized the module.
+   */
+  public static void init() {
+    GWT.setUncaughtExceptionHandler(new CoreUncaughtExceptionHandler());
+    
+    CoreGinjector injector = CoreGinjector.INSTANCE;
+    
+    injector.getLogger().log(Level.INFO, "CoreEntryPoint.init()");
 
-		injector.getPlaceHistoryRegistry().register(Index.KEY, new Index.Tokenizer());
-		injector.getPlaceHistoryRegistry().register(Second.KEY, new Second.Tokenizer());
-		
-		AppView appView = injector.getAppView();
-		
-		ActivityManager headerManager = injector.getHeaderActivityManager();
-		headerManager.setDisplay(appView.getHeader());
-		
-		ActivityManager sidebarManager = injector.getSidebarActivityManager();
-		sidebarManager.setDisplay(appView.getSidebar());
-		
-		ActivityManager footerManager = injector.getFooterActivityManager();
-		footerManager.setDisplay(appView.getFooter());
-		
-		ActivityManager contentManager = injector.getContentActivityManager();
-		contentManager.setDisplay(appView.getContent());
+    injector.getPlaceHistoryRegistry().register(Index.KEY, new Index.Tokenizer());
+    injector.getPlaceHistoryRegistry().register(Second.KEY, new Second.Tokenizer());
+    
+    AppView appView = injector.getAppView();
+    
+    ActivityManager headerManager = injector.getHeaderActivityManager();
+    headerManager.setDisplay(appView.getHeader());
+    
+    ActivityManager sidebarManager = injector.getSidebarActivityManager();
+    sidebarManager.setDisplay(appView.getSidebar());
+    
+    ActivityManager footerManager = injector.getFooterActivityManager();
+    footerManager.setDisplay(appView.getFooter());
+    
+    ActivityManager contentManager = injector.getContentActivityManager();
+    contentManager.setDisplay(appView.getContent());
 
-		RootLayoutPanel.get().add(appView);
-	}
-	
-	/**
-	 * Performs startup actions on the module.
-	 */
-	public static void start() {		
-		CoreGinjector.INSTANCE.getLogger().log(Level.INFO, "CoreEntryPoint.start()");
+    RootLayoutPanel.get().add(appView);
+  }
+  
+  /**
+   * Performs startup actions on the module.
+   */
+  public static void start() {    
+    CoreGinjector.INSTANCE.getLogger().log(Level.INFO, "CoreEntryPoint.start()");
 
-		PlaceHistoryHandler placeHistoryHandler = CoreGinjector.INSTANCE.getPlaceHistoryHandler();
-		placeHistoryHandler.handleCurrentHistory();		
-	}
-	
+    PlaceHistoryHandler placeHistoryHandler = CoreGinjector.INSTANCE.getPlaceHistoryHandler();
+    placeHistoryHandler.handleCurrentHistory();    
+  }
+  
 }
