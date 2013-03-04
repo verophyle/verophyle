@@ -152,10 +152,11 @@
         </executions>
       </plugin>
 
+      <!-- Google App Engine Plugin -->
       <plugin>
         <groupId>com.google.appengine</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
-        <version>${gae.version}</version>
+        <version>1.7.6-GWT-SNAPSHOT</version>
       </plugin>
 
       <!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->

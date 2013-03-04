@@ -11,6 +11,9 @@ import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.CoreActivityRegistry;
 import com.verophyle.core.client.place.CorePlace;
 
+/**
+ * Activity mapper for header activities.
+ */
 public class HeaderActivityMapper extends CoreActivityMapper<HeaderActivity, CorePlace> {
     
   @Inject

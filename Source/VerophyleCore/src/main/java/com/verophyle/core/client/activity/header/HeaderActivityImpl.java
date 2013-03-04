@@ -24,6 +24,9 @@ import com.verophyle.core.shared.rf.CoreRequestFactory;
 import com.verophyle.core.shared.rf.identity.IdentityProxy;
 import com.verophyle.core.shared.rf.identity.IdentityRequest;
 
+/**
+ * Implementation of the header activity.
+ */
 public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> implements HeaderActivity {
 
   private final CoreMessages coreMessages;
@@ -96,6 +99,11 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     });
   }
 
+  /**
+   * Called when the user clicks on the logo in the top-left corner.
+   * 
+   * Goes to the Index place.
+   */
   @Override
   public void onLogoClick() {
     goTo(new Index(""));

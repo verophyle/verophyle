@@ -7,6 +7,9 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 
+/**
+ * Activity manager for header activities.
+ */
 public class HeaderActivityManager extends ActivityManager {
 
   @Inject

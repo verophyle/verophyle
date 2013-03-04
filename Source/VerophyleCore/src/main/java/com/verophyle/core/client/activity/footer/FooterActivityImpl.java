@@ -10,6 +10,9 @@ import com.verophyle.core.client.activity.CoreActivityImpl;
 import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.view.footer.FooterView;
 
+/**
+ * Implementation of the footer activity.
+ */
 public class FooterActivityImpl extends CoreActivityImpl<CorePlace, FooterView> implements FooterView.Presenter, FooterActivity {
 
   @Inject

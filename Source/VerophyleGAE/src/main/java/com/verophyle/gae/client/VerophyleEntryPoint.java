@@ -10,6 +10,13 @@ import com.google.gwt.core.client.Scheduler;
 import com.verophyle.core.client.CoreEntryPoint;
 import com.verophyle.flashcards.client.FlashcardsEntryPoint;
 
+/**
+ * Entry point for the verophyle GAE module.
+ * 
+ * When loaded, it waits for all the other modules to be loaded
+ * and then calls their <code>init()</code> functions.  Finally,
+ * it calls <code>CoreEntryPoint.start()</code>.
+ */
 public class VerophyleEntryPoint implements EntryPoint {
 
   @Override

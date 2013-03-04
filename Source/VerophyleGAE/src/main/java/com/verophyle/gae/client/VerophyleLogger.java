@@ -10,6 +10,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.verophyle.core.client.CoreLogger;
 
+/**
+ * Client-side logger implementation for the GAE module.
+ */
 public class VerophyleLogger implements CoreLogger {
   private static Logger logger = Logger.getLogger(GWT.getModuleName());  
 
@@ -17,6 +20,9 @@ public class VerophyleLogger implements CoreLogger {
   public VerophyleLogger() {
   }
   
+  /**
+   * Write a message to the log at the given level.
+   */
   @Override
   public void log(Level level, String text) {
     logger.log(level, text);

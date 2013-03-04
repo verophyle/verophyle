@@ -17,7 +17,7 @@ import com.verophyle.core.client.view.AppView;
 /**
  * Entry point for the Core module.
  * 
- * Initialization is delayed until all modules are loaded, then init() is called, then start() is called.
+ * Initialization is delayed until all modules are loaded, then {@link #init()} is called, then {@link #start()} is called.
  */
 public class CoreEntryPoint implements EntryPoint {
   private static boolean loaded = false;

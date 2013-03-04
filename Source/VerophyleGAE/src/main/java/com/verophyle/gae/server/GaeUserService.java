@@ -13,6 +13,11 @@ import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
 import com.verophyle.core.server.domain.CoreUser;
 
+/**
+ * User service for the GAE module.
+ * 
+ * Wraps an App Engine UserService module.
+ */
 public class GaeUserService implements CoreUserService {
   
   private final UserService userService;
