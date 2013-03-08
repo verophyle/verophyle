@@ -5,6 +5,10 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 
+/**
+ * Base class for services.
+ *
+ */
 public abstract class Service {
 
   private static final List<Service> ALL_SERVICES = new ArrayList<Service>();
