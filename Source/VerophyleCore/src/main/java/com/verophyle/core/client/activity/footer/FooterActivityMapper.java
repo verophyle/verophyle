@@ -11,6 +11,9 @@ import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.CoreActivityRegistry;
 import com.verophyle.core.client.place.CorePlace;
 
+/**
+ * Activity mapper for the footer.
+ */
 public class FooterActivityMapper extends CoreActivityMapper<FooterActivity, CorePlace> {
 
   @Inject

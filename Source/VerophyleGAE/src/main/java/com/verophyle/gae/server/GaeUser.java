@@ -8,6 +8,11 @@ import com.google.inject.Inject;
 import com.googlecode.objectify.annotation.EntitySubclass;
 import com.verophyle.core.server.domain.CoreUser;
 
+/**
+ * Implementation of {@link CoreUser} for GAE.
+ * 
+ * Wraps an App Engine user object.
+ */
 @EntitySubclass(index = true)
 public class GaeUser extends CoreUser {
 
@@ -17,6 +22,10 @@ public class GaeUser extends CoreUser {
   public GaeUser() {
   }
   
+  /**
+   * Constructor with an existing User object.
+   * @param user The App Engine User object.
+   */
   @Inject
   public GaeUser(User user) {
     assert user != null;    

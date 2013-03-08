@@ -13,6 +13,9 @@ import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
 import com.verophyle.core.server.rf.CoreRequestFactoryServlet;
 
+/**
+ * Guice servlet module for the GAE GWT module.
+ */
 public class VerophyleServletModule extends ServletModule {
   
   @Inject
@@ -29,12 +32,19 @@ public class VerophyleServletModule extends ServletModule {
     serve("/gwtRequest").with(CoreRequestFactoryServlet.class);    
   }
   
+  /**
+   * Gets the user service.
+   * @param objectifyService Objectify service.
+   */
   @Provides
   @Singleton
   public CoreUserService getUserService(CoreObjectifyService objectifyService) {
     return new GaeUserService(UserServiceFactory.getUserService(), objectifyService);
   }
-  
+
+  /**
+   * Gets the Objectify service.
+   */
   @Provides
   @Singleton
   public CoreObjectifyService getObjectifyService() {

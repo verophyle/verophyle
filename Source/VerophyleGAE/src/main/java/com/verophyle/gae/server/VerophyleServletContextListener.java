@@ -9,6 +9,9 @@ import com.google.inject.servlet.GuiceServletContextListener;
 import com.verophyle.core.server.CoreGuiceModule;
 import com.verophyle.flashcards.server.FlashcardsGuiceModule;
 
+/**
+ * Servlet listener that creats the server-side Guice injector.
+ */
 public class VerophyleServletContextListener extends GuiceServletContextListener {
 
   @Override

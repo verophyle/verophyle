@@ -8,6 +8,9 @@ import com.googlecode.objectify.ObjectifyService;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.domain.CoreEntity;
 
+/**
+ * Objectify service implementation for the GAE module.
+ */
 public class GaeObjectifyService extends CoreObjectifyService {
 
   public GaeObjectifyService() {
