@@ -118,19 +118,19 @@
         <artifactId>gwt-maven-plugin</artifactId>
         <version>${maven.gwt.version}</version>
 
-        <!-- Plugin configuration. There are many available options,
-          see gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
           <strict>true</strict>
-          <module>com.verophyle.gae.Verophyle</module>
+          <style>DETAILED</style>
           <logLevel>INFO</logLevel>
 
-          <appEngineGroupId>com.google.appengine</appEngineGroupId>
-          <appEngineArtifactId>appengine-api-1.0-sdk</appEngineArtifactId>          
-          <appEngineVersion>${gae.version}</appEngineVersion>
-          <appEngineHome>${gae.home}</appEngineHome>
-          
+          <module>com.verophyle.gae.Verophyle</module>
           <runTarget>Verophyle.html</runTarget>
+          <runTimeout>120</runTimeout>
+          <timeOut>120</timeOut>
+          <inplace>true</inplace>
+
+          <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+          <appEngineVersion>${gae.version}</appEngineVersion>
         </configuration>
 
         <dependencies>
@@ -138,15 +138,23 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
             <version>${gwt.version}</version>
-          </dependency>
+          </dependency>          
         </dependencies>
 
         <!-- JS is only needed in the package phase, this speeds up testing -->
         <executions>
           <execution>
+            <id>compile-gwt</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>start-gwt-devmode</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run</goal>
             </goals>
           </execution>
         </executions>
@@ -156,7 +164,7 @@
       <plugin>
         <groupId>com.google.appengine</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
-        <version>1.7.6-GWT-SNAPSHOT</version>
+        <version>${gae.version}</version>
       </plugin>
 
       <!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
