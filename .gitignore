@@ -1,4 +1,5 @@
 *.class
+build.log
 
 # Package Files #
 *.jar

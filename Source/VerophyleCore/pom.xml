@@ -127,7 +127,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>${maven.gwt.version}</version>
+        <version>${gwt.version}</version>
 
         <!-- JS is only needed in the package phase, this speeds up testing -->
         <executions>
