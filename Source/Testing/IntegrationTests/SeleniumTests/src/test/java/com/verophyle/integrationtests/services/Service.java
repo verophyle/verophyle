@@ -1,4 +1,4 @@
-package com.verophyle.integrationtests;
+package com.verophyle.integrationtests.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +13,12 @@ public abstract class Service {
 
   private static final List<Service> ALL_SERVICES = new ArrayList<Service>();
 
-  private WebDriver driver;
-
   protected Service() {
+    addService(this);
   }
 
-  public WebDriver getDriver() {
-    return driver;
-  }
-
-  protected void setDriver(WebDriver driver) {
-    this.driver = driver;
-  }
-
+  public abstract WebDriver getDriver();
+  
   public static List<Service> getAllServices() {
     return ALL_SERVICES;
   }

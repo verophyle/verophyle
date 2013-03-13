@@ -260,6 +260,7 @@
 						<id>start-jetty</id>
 						<phase>pre-integration-test</phase>
 						<goals>
+						  <goal>stop</goal>
 							<goal>run</goal>
 						</goals>
 						<configuration>
@@ -295,6 +296,7 @@
           <execution>
             <id>integration-test</id>
             <goals>
+              <goal>integration-test</goal>
               <goal>run</goal>
             </goals>
           </execution>
