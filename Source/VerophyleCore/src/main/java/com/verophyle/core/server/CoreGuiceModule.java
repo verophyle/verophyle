@@ -1,5 +1,5 @@
 /**
- * Copyright © 2013 Verophyle.  All rights reserved.
+ * Copyright © ${year} Verophyle Informatics.  All rights reserved.
  */
 package com.verophyle.core.server;
 

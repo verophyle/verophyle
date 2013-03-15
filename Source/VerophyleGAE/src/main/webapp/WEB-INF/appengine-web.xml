@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-    Copyright © 2013 Verophyle.  All rights reserved.
+    Copyright © ${year} Verophyle Informatics.  All rights reserved.
 
 -->
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">

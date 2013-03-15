@@ -1,3 +1,7 @@
+====
+    Copyright © ${year} Verophyle Informatics.  All rights reserved.
+====
+
 user-agent: *
 allow: /Verophyle.html
 disallow: /

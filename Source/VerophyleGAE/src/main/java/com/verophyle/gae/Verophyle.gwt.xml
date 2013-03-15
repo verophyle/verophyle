@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2013 Verophyle.  All rights reserved.
+    Copyright © ${year} Verophyle Informatics.  All rights reserved.
 
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">

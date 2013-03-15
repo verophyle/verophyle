@@ -1,5 +1,5 @@
 /**
- * Copyright © 2013 Verophyle.  All rights reserved.
+ * Copyright © ${year} Verophyle Informatics.  All rights reserved.
  */
 @eval COMPLEMENTARY3 com.verophyle.core.client.CoreGinjector.INSTANCE.getCoreResources().css().COMPLEMENTARY3();
 @eval FONT_MED com.verophyle.core.client.CoreGinjector.INSTANCE.getCoreResources().css().FONT_MED();

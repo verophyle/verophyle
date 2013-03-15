@@ -1,3 +1,6 @@
+/**
+ * Copyright © ${year} Verophyle Informatics.  All rights reserved.
+ */
 package com.verophyle.integrationtests;
 
 public final class Common {

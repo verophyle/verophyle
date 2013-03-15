@@ -42,7 +42,7 @@
     <maven.surefire.version>2.13</maven.surefire.version>
     <maven.failsafe.version>2.13</maven.failsafe.version>
     <maven.license.version>1.10.b1</maven.license.version>
-    
+
     <!-- Misc -->
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -64,7 +64,21 @@
         <version>${maven.license.version}</version>
         <configuration>
           <header>header.txt</header>
+          <strictCheck>true</strictCheck>
+          <failIfMissing>true</failIfMissing>
+          <useDefaultExcludes>true</useDefaultExcludes>
+          <excludes>
+            <exclude>**/*.log</exclude>
+            <exclude>**/*.symbolMap</exclude>
+          </excludes>
         </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

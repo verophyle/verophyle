@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2013 Verophyle.  All rights reserved.
+    Copyright © ${year} Verophyle Informatics.  All rights reserved.
 
 -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
