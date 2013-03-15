@@ -16,7 +16,7 @@ public class ChromeService {
   static {
     if (service == null) {
       service = new ChromeDriverService.Builder()
-        .usingDriverExecutable(new File("chromedriver" + File.separator + getOsDir() + File.separator + "chromedriver"))
+        .usingDriverExecutable(new File("chromedriver" + File.separator + getChromePath()))
         .usingAnyFreePort()
         .build();
     }    
@@ -43,10 +43,10 @@ public class ChromeService {
     }
   }
   
-  private static String getOsDir() {
+  private static String getChromePath() {
     String os = System.getProperty("os.name").toLowerCase();
     if (os.contains("win"))
-      return "windows";
+      return "windows" + File.separator + "chromedriver.exe";
     
     throw new RuntimeException("Unable to get Chrome driver directory for " + os);
   }

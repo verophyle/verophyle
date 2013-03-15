@@ -41,6 +41,42 @@
       <version>${gwt.version}</version>
     </dependency>
 
+    <!-- RequestFactory -->
+    <dependency>
+      <groupId>com.google.web.bindery</groupId>
+      <artifactId>requestfactory-server</artifactId>
+      <version>${gwt.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.web.bindery</groupId>
+      <artifactId>requestfactory-apt</artifactId>
+      <version>${gwt.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${validation.version}</version>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.sun.xml.bind</groupId>
+          <artifactId>jaxb-impl</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
     <!-- Google App Engine (GAE) -->
     <dependency>
       <groupId>com.google.appengine</groupId>
@@ -120,31 +156,33 @@
 
         <configuration>
           <module>com.verophyle.gae.Verophyle</module>
-        
           <strict>true</strict>
           <style>DETAILED</style>
           <logLevel>INFO</logLevel>
           <localWorkers>4</localWorkers>
         </configuration>
 
-        <dependencies>
-          <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <version>${gwt.version}</version>
-          </dependency>          
-        </dependencies>
-
-        <!-- JS is only needed in the package phase, this speeds up testing -->
         <executions>
           <execution>
             <id>compile-gwt</id>
-            <phase>prepare-package</phase>
             <goals>
               <goal>compile</goal>
             </goals>
           </execution>
         </executions>
+
+        <dependencies>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
 
       <!-- Google App Engine Plugin -->
@@ -152,28 +190,6 @@
         <groupId>com.google.appengine</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
         <version>${gae.version}</version>
-      </plugin>
-
-      <!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven.surefire.version}</version>
-        <configuration>
-          <additionalClasspathElements>
-            <additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
-            <additionalClasspathElement>${project.build.testSourceDirectory}</additionalClasspathElement>
-          </additionalClasspathElements>
-          <useManifestOnlyJar>false</useManifestOnlyJar>
-          <forkMode>always</forkMode>
-
-          <!-- Folder for generated testing stuff -->
-          <systemProperties>
-            <property>
-              <name>gwt.args</name>
-              <value>-out ${project.build.directory}/${project.build.finalName}</value>
-            </property>
-          </systemProperties>
-        </configuration>
       </plugin>
 
       <!-- Copy static web files before executing gwt:run -->
@@ -245,43 +261,43 @@
         <configuration>
           <webAppConfig>
             <contextPath>/</contextPath>
-							<baseResource implementation="org.mortbay.resource.ResourceCollection">
-								<!-- need both the webbapp dir and location where GWT puts stuff -->
-								<resourcesAsCSV>
-									${basedir}/src/main/webapp,${project.build.directory}/${project.build.finalName}
-								</resourcesAsCSV>
-							</baseResource>          
+            <baseResource implementation="org.mortbay.resource.ResourceCollection">
+              <!-- need both the webbapp dir and location where GWT puts stuff -->
+              <resourcesAsCSV>
+                ${basedir}/src/main/webapp,${project.build.directory}/${project.build.finalName}
+              </resourcesAsCSV>
+            </baseResource>
           </webAppConfig>
           <stopPort>9966</stopPort>
-          <stopKey>stop-jetty</stopKey>        
+          <stopKey>stop-jetty</stopKey>
         </configuration>
-				<executions>
-					<execution>
-						<id>start-jetty</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-						  <goal>stop</goal>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<daemon>true</daemon>
-							<scanIntervalSeconds>5</scanIntervalSeconds>
-							<connectors>
-								<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-									<port>9080</port>
-									<maxIdleTime>60000</maxIdleTime>
-								</connector>
-							</connectors>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-jetty</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
+          <executions>
+            <execution>
+              <id>start-jetty</id>
+              <phase>pre-integration-test</phase>
+              <goals>
+                <goal>stop</goal>
+                <goal>run</goal>
+              </goals>
+              <configuration>
+                <daemon>true</daemon>
+                <scanIntervalSeconds>5</scanIntervalSeconds>
+                <connectors>
+                  <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                  <port>9080</port>
+                  <maxIdleTime>60000</maxIdleTime>
+                </connector>
+              </connectors>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-jetty</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <!-- Integration testing -->
@@ -291,66 +307,22 @@
         <version>${maven.invoker.version}</version>
         <configuration>
           <projectsDirectory>${basedir}/../Testing/IntegrationTests</projectsDirectory>
+          <goals>
+            <goal>verify</goal>
+          </goals>
         </configuration>
         <executions>
           <execution>
             <id>integration-test</id>
             <goals>
               <goal>integration-test</goal>
-              <goal>run</goal>
+              <goal>verify</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
 
     </plugins>
-
-    <!-- Required by m2e for import into eclipse. No effect on command line builds  -->
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-
-          <configuration>
-            <lifecycleMappingMetadata>
-              <pluginExecutions>
-
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.bsc.maven</groupId>
-                    <artifactId>maven-processor-plugin</artifactId>
-                    <versionRange>[2.0.5,)</versionRange>
-                    <goals>
-                      <goal>process</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <execute />
-                  </action>
-                </pluginExecution>
-
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-invoker-plugin</artifactId>
-                    <versionRange>[1.8,)</versionRange>
-                    <goals>
-                      <goal>install</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore/>
-                  </action>
-                </pluginExecution>
-                
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
 
   </build>
 

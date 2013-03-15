@@ -43,6 +43,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.google.web.bindery</groupId>
+      <artifactId>requestfactory-apt</artifactId>
+      <version>${gwt.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
       <version>${validation.version}</version>
@@ -128,6 +134,8 @@
   </dependencies>
 
   <build>
+    <!-- Generate compiled stuff in the folder used for development mode -->
+    <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
     <plugins>
       <!-- GWT Maven Plugin -->
@@ -136,75 +144,30 @@
         <artifactId>gwt-maven-plugin</artifactId>
         <version>${gwt.version}</version>
 
-        <!-- JS is only needed in the package phase, this speeds up testing -->
+        <configuration>
+          <module>com.verophyle.flashcards.VerophyleFlashcards</module>
+        </configuration>
+
         <executions>
           <execution>
-            <phase>prepare-package</phase>
             <goals>
-              <!-- <goal>compile</goal> -->
               <goal>resources</goal>
             </goals>
           </execution>
         </executions>
 
-        <!-- Plugin configuration. There are many available options, see gwt-maven-plugin
-          documentation at codehaus.org -->
-        <configuration>
-          <strict>true</strict>
-          <module>com.verophyle.flashcards.VerophyleFlashcards</module>
-          <logLevel>INFO</logLevel>
-        </configuration>
-
         <dependencies>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+          </dependency>
           <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
             <version>${gwt.version}</version>
           </dependency>
         </dependencies>
-      </plugin>
-
-      <!-- Add source folders to test classpath in order to run gwt-tests as
-        normal junit-tests -->
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven.surefire.version}</version>
-        <configuration>
-          <additionalClasspathElements>
-            <additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
-            <additionalClasspathElement>${project.build.testSourceDirectory}</additionalClasspathElement>
-          </additionalClasspathElements>
-          <useManifestOnlyJar>false</useManifestOnlyJar>
-          <forkMode>always</forkMode>
-
-          <!-- Folder for generated testing stuff -->
-          <systemProperties>
-            <property>
-              <name>gwt.args</name>
-              <value>-out ${project.build.directory}/${project.build.finalName}</value>
-            </property>
-          </systemProperties>
-        </configuration>
-      </plugin>
-
-      <!-- Mark the project for Google Plugin for Eclipse (GPE) -->
-      <plugin>
-        <artifactId>maven-eclipse-plugin</artifactId>
-        <version>${maven.eclipse.version}</version>
-
-        <configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>false</downloadJavadocs>
-          <wtpversion>2.0</wtpversion>
-          <additionalBuildcommands>
-            <buildCommand>
-              <name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
-            </buildCommand>
-          </additionalBuildcommands>
-          <additionalProjectnatures>
-            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-          </additionalProjectnatures>
-        </configuration>
       </plugin>
 
       <!-- RequestFactory annotation processing -->
@@ -223,38 +186,28 @@
           </dependency>
         </dependencies>
       </plugin>
+
+      <!-- Mark the project for Google Plugin for Eclipse (GPE) -->
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>${maven.eclipse.version}</version>
+
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+          <wtpversion>2.0</wtpversion>
+          <additionalBuildcommands>
+            <buildCommand>
+              <name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
+            </buildCommand>
+          </additionalBuildcommands>
+          <additionalProjectnatures>
+            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+          </additionalProjectnatures>
+        </configuration>
+      </plugin>
+
     </plugins>
-
-    <!-- Required by m2e for import into eclipse. No effect on command line builds -->
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-
-          <configuration>
-            <lifecycleMappingMetadata>
-              <pluginExecutions>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.bsc.maven</groupId>
-                    <artifactId>maven-processor-plugin</artifactId>
-                    <versionRange>[2.0.5,)</versionRange>
-                    <goals>
-                      <goal>process</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <execute />
-                  </action>
-                </pluginExecution>
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
 
   </build>
 

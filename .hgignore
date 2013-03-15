@@ -13,3 +13,4 @@ src/main/webapp/\.tmp
 Fonts
 \.apt_generated
 build\.log
+chromedriver\.log
