@@ -19,6 +19,8 @@
       <ui:msg key="applicationTitle">Verophyle</ui:msg>
     </g:HTML>
     
+    <!-- 
     <core:IdentityAuthentication ui:field="identityAuth" visible="false"/>
+    -->
   </g:FlowPanel>
 </ui:UiBinder>

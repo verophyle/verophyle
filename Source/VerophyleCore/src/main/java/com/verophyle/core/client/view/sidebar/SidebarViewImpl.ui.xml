@@ -14,7 +14,9 @@
   <ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
 
   <g:FlowPanel addStyleNames="{res.css.sidebar}">
+    <!--
     <g:SimplePanel addStyleNames="{res.css.sidebarItem}">
     </g:SimplePanel>
+    -->
   </g:FlowPanel>
 </ui:UiBinder>
