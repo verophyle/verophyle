@@ -65,6 +65,30 @@
         </executions>
       </plugin>
 
+      <plugin>
+        <groupId>com.mycila.maven-license-plugin</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+        <version>${maven.license.version}</version>
+        <configuration>
+          <header>${project.parent.basedir}/header.txt</header>
+          <strictCheck>true</strictCheck>
+          <failIfMissing>true</failIfMissing>
+          <useDefaultExcludes>true</useDefaultExcludes>
+          <excludes>
+            <exclude>**/interpolated-pom.xml</exclude>
+            <exclude>**/*.log</exclude>
+            <exclude>**/*.symbolMap</exclude>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
 
