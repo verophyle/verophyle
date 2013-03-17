@@ -1,5 +1,5 @@
 /**
- * Copyright © ${year} Verophyle Informatics.  All rights reserved.
+ * Copyright © 2013 Verophyle Informatics.  All rights reserved.
  */
 package com.verophyle.core.client.view.footer;
 
