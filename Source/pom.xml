@@ -14,6 +14,11 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <scm>
+    <connection>scm:hg:https://verophyle.kilnhg.com/Code/Repositories/Group/Verophyle</connection>
+    <url>https://verophyle.kilnhg.com/Code/Repositories/Group/Verophyle</url>
+  </scm>
+
   <properties>
     <java.version>1.7</java.version>
 
