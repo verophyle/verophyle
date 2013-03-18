@@ -27,7 +27,7 @@
 
     <!-- Dependencies & Plugins -->
     <gae.version>1.7.5</gae.version>
-    <gwt.version>2.5.0</gwt.version>
+    <gwt.version>2.5.1</gwt.version>
     <objectify.version>4.0b1</objectify.version>
     <guice.version>3.0</guice.version>
     <gin.version>2.0.0</gin.version>
@@ -36,8 +36,8 @@
     <validation.version>1.0.0.GA</validation.version>
     <hibernate.version>4.1.0.Final</hibernate.version>
     <selenium.version>2.30.0</selenium.version>
-    <sl4j.version>1.7.2</sl4j.version>
-    <jetty.version>6.1.25</jetty.version>
+    <sl4j.version>1.7.4</sl4j.version>
+    <jetty.version>6.1.26</jetty.version>
 
     <maven.compiler.version>3.0</maven.compiler.version>
     <maven.eclipse.version>2.9</maven.eclipse.version>
@@ -76,6 +76,7 @@
           <excludes>
             <exclude>**/*.log</exclude>
             <exclude>**/*.symbolMap</exclude>
+            <exclude>**/*.factorypath</exclude>
           </excludes>
         </configuration>
         <executions>
