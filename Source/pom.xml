@@ -57,6 +57,7 @@
 
   <modules>
     <module>VerophyleCore</module>
+    <module>Modules/Docs</module>
     <module>Modules/Flashcards</module>
     <module>VerophyleGAE</module>
   </modules>
