@@ -16,7 +16,6 @@ import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
 import com.verophyle.core.client.view.widgets.IdentityAuthentication;
 import com.verophyle.core.shared.CoreMessages;
-import com.verophyle.core.shared.NotImplementedException;
 
 public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
   
@@ -26,8 +25,8 @@ public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
   @UiField
   HTML logo;
   
-  //@UiField
-  //IdentityAuthentication identityAuth;
+  @UiField
+  IdentityAuthentication identityAuth;
   
   CoreMessages messages;
   
@@ -42,8 +41,7 @@ public class HeaderViewImpl extends CoreViewImpl implements HeaderView {
   
   @Override
   public IdentityAuthentication getIdentityAuth() {
-    throw new NotImplementedException();
-    //return identityAuth;
+    return identityAuth;
   }
   
   private void initLogo() {

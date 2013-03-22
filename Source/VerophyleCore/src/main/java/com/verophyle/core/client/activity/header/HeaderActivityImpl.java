@@ -27,7 +27,6 @@ import com.verophyle.core.shared.rf.identity.IdentityRequest;
 /**
  * Implementation of the header activity.
  */
-@SuppressWarnings("unused")
 public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> implements HeaderActivity {
 
   private final CoreMessages coreMessages;
@@ -52,7 +51,6 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   public void start(AcceptsOneWidget panel, EventBus eventBus) {
     super.start(panel, eventBus);
     
-    /*
     final IdentityRequest request = requestFactory.identityRequest();
     final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
     
@@ -99,7 +97,6 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       }
       
     });
-    */
   }
 
   /**
