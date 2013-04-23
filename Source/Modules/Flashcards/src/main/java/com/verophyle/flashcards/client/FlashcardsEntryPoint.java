@@ -31,5 +31,8 @@ public class FlashcardsEntryPoint implements EntryPoint {
     
     // register activity providers
     injector.registerContentActivityMapper();
+    
+    // register menu providers
+    injector.getMenuRegistry().addMenuProvider(new FlashcardsMenuProvider());
   }
 }

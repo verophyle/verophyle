@@ -21,7 +21,7 @@ public class Capability extends CoreEntity {
 
   @OnSave
   @Override
-  void onSave() {
+  protected void onSave() {
     version++;
   }
   

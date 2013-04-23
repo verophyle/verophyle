@@ -50,4 +50,6 @@ public interface CoreGinjector extends Ginjector {
 
   CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry();
   ContentActivityManager getContentActivityManager();
+  
+  CoreMenuRegistry getMenuRegistry();
 }

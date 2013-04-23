@@ -28,7 +28,7 @@ public class Identity extends CoreEntity {
 
   @OnSave
   @Override
-  void onSave() {
+  protected void onSave() {
     version++;
   }
   

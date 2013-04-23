@@ -126,13 +126,13 @@ public class CoreGinModule extends AbstractGinModule {
   // global objects
   @Provides
   @Singleton
-  public PlaceController getPlaceController(EventBus eventBus) {
+  public PlaceController providePlaceController(EventBus eventBus) {
     return new PlaceController(eventBus);
   }
   
   @Provides
   @Singleton
-  public PlaceHistoryHandler getHistoryHandler(PlaceController placeController, 
+  public PlaceHistoryHandler provideHistoryHandler(PlaceController placeController, 
                          PlaceHistoryMapper placeHistoryMapper,
                          EventBus eventBus) {
     PlaceHistoryHandler placeHistoryHandler = new PlaceHistoryHandler(placeHistoryMapper);
@@ -143,7 +143,7 @@ public class CoreGinModule extends AbstractGinModule {
   // requestfactory
   @Provides
   @Singleton
-  public CoreRequestFactory getRequestFactory(EventBus eventBus) {
+  public CoreRequestFactory provideRequestFactory(EventBus eventBus) {
     CoreRequestFactory requestFactory = GWT.create(CoreRequestFactory.class);
     requestFactory.initialize(eventBus);
     return requestFactory;

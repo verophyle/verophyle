@@ -67,7 +67,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
         final IdentityAuthentication auth = headerView.getIdentityAuth();
         
         if (identity != null) {
-          if (isInWhiteList(identity)) {
+          if (identity.isAnonymous() || isInWhiteList(identity)) {
             auth.getIdentityInfo().setText(identity.getNickname());
 
             if (identity.isAnonymous())
@@ -119,9 +119,12 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   }
 
   private boolean isInWhiteList(IdentityProxy identity) {
-    for (CoreUserProxy user : identity.getUsers()) {
-      if (WHITELIST.contains(user.getEmail()))
-        return true;
+    List<CoreUserProxy> users = identity.getUsers();
+    if (users != null) {    
+      for (CoreUserProxy user : identity.getUsers()) {
+        if (WHITELIST.contains(user.getEmail()))
+          return true;
+      }
     }
     return false;
   }

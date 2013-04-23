@@ -19,7 +19,7 @@ public class CoreUser extends CoreEntity {
 
   @OnSave
   @Override
-  void onSave() {
+  protected void onSave() {
     version++;
   }
   

@@ -8,7 +8,6 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
 public interface CoreView extends IsWidget {
-
   void setPresenter(CorePresenter presenter);
   
   interface CorePresenter {

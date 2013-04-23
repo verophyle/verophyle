@@ -11,6 +11,7 @@ import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.web.bindery.event.shared.EventBus;
 import com.verophyle.core.client.CoreGinjector;
+import com.verophyle.core.client.CoreMenuRegistry;
 import com.verophyle.core.client.activity.CoreActivityProxy;
 import com.verophyle.core.client.activity.CoreActivityRegistry;
 import com.verophyle.core.client.activity.content.ContentActivity;
@@ -43,25 +44,25 @@ public class FlashcardsGinModule extends AbstractGinModule {
   
   @Provides
   @Singleton
-  public EventBus getEventBus() {
+  public EventBus provideEventBus() {
     return CoreGinjector.INSTANCE.getEventBus();
   }
 
   @Provides
   @Singleton
-  public PlaceController getPlaceController(EventBus eventBus) {
+  public PlaceController providePlaceController(EventBus eventBus) {
     return CoreGinjector.INSTANCE.getPlaceController();
   }
   
   @Provides
   @Singleton
-  public CorePlaceHistoryRegistry getPlaceHistoryRegistry() {
+  public CorePlaceHistoryRegistry providePlaceHistoryRegistry() {
     return CoreGinjector.INSTANCE.getPlaceHistoryRegistry();
   }
   
   @Provides
   @Singleton
-  public FlashcardsRequestFactory getRequestFactory(EventBus eventBus) {
+  public FlashcardsRequestFactory provideRequestFactory(EventBus eventBus) {
     FlashcardsRequestFactory requestFactory = GWT.create(FlashcardsRequestFactory.class);
     requestFactory.initialize(eventBus);
     return requestFactory;
@@ -69,8 +70,14 @@ public class FlashcardsGinModule extends AbstractGinModule {
   
   @Provides
   @Singleton
-  public CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry() {
+  public CoreActivityRegistry<ContentActivity, CorePlace> provideContentActivityRegistry() {
     return CoreGinjector.INSTANCE.getContentActivityRegistry();
+  }
+  
+  @Provides
+  @Singleton
+  public CoreMenuRegistry provideMenuRegistry() {
+    return CoreGinjector.INSTANCE.getMenuRegistry();
   }
   
 }
