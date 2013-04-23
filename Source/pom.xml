@@ -38,6 +38,7 @@
     <selenium.version>2.30.0</selenium.version>
     <sl4j.version>1.7.4</sl4j.version>
     <jetty.version>6.1.26</jetty.version>
+    <guava.version>14.0.1</guava.version>
 
     <maven.compiler.version>3.0</maven.compiler.version>
     <maven.eclipse.version>2.9</maven.eclipse.version>

@@ -3,7 +3,7 @@
  */
 package com.verophyle.core.server.rf;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+import static com.googlecode.objectify.ObjectifyService.*;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;

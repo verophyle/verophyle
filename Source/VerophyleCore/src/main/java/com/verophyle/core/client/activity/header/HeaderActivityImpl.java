@@ -3,6 +3,8 @@
  */
 package com.verophyle.core.client.activity.header;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 
 import com.google.gwt.event.shared.EventBus;
@@ -21,6 +23,7 @@ import com.verophyle.core.client.view.header.HeaderView;
 import com.verophyle.core.client.view.widgets.IdentityAuthentication;
 import com.verophyle.core.shared.CoreMessages;
 import com.verophyle.core.shared.rf.CoreRequestFactory;
+import com.verophyle.core.shared.rf.CoreUserProxy;
 import com.verophyle.core.shared.rf.identity.IdentityProxy;
 import com.verophyle.core.shared.rf.identity.IdentityRequest;
 
@@ -32,6 +35,8 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   private final CoreMessages coreMessages;
   private final CoreRequestFactory requestFactory;
   private final HeaderView headerView;
+  
+  private static final List<String> WHITELIST = Arrays.asList(new String[] { "gordon.tisher@gmail.com", "gordon.tisher@verophyle.com" });
   
   @Inject
   public HeaderActivityImpl(
@@ -61,25 +66,30 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       public void onSuccess(IdentityProxy identity) {
         final IdentityAuthentication auth = headerView.getIdentityAuth();
         
-        if (identity != null) {          
-          auth.getIdentityInfo().setText(identity.getNickname());
-          
-          if (identity.isAnonymous())
+        if (identity != null) {
+          if (isInWhiteList(identity)) {
+            auth.getIdentityInfo().setText(identity.getNickname());
+
+            if (identity.isAnonymous())
+              setLogin();
+            else
+              setLogout();
+
+            // request the gravatar url
+            final IdentityRequest gravatarRequest = requestFactory.identityRequest();
+            gravatarRequest.getGravatarImageUrl(identity).fire(new Receiver<String>() {
+
+              @Override
+              public void onSuccess(String response) {
+                if (response != null && !response.isEmpty())
+                  auth.getGravatarImage().setUrl(response);
+              }
+
+            });
+          } else {
+            auth.getIdentityInfo().setText("?? unauthorized ??");
             setLogin();
-          else
-            setLogout();
-
-          // request the gravatar url
-          final IdentityRequest gravatarRequest = requestFactory.identityRequest();
-          gravatarRequest.getGravatarImageUrl(identity).fire(new Receiver<String>() {
-
-            @Override
-            public void onSuccess(String response) {
-              if (response != null && !response.isEmpty())
-                auth.getGravatarImage().setUrl(response);
-            }
-            
-          });
+          }
         } else {
           auth.getIdentityInfo().setText("?? no id found ??");
           setLogin();
@@ -101,7 +111,6 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 
   /**
    * Called when the user clicks on the logo in the top-left corner.
-   * 
    * Goes to the Index place.
    */
   @Override
@@ -109,6 +118,14 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     goTo(new Index(""));
   }
 
+  private boolean isInWhiteList(IdentityProxy identity) {
+    for (CoreUserProxy user : identity.getUsers()) {
+      if (WHITELIST.contains(user.getEmail()))
+        return true;
+    }
+    return false;
+  }
+  
   private void setLogin() {
     final IdentityAuthentication auth = headerView.getIdentityAuth();
     auth.getIdentityLogin().setText(coreMessages.login());

@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 
 import com.google.inject.Inject;
 import com.googlecode.objectify.Objectify;
-import com.googlecode.objectify.Ref;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
 import com.verophyle.core.server.domain.CoreUser;
@@ -54,7 +53,7 @@ public class IdentityServiceImpl implements IdentityService {
       
       identity = new Identity();
       identity.setNickname(currentUser.getNickname());
-      identity.getUsers().add(Ref.create(currentUser));
+      identity.addUser(currentUser);
         
       ofy.save().entity(identity).now();
 
@@ -84,8 +83,8 @@ public class IdentityServiceImpl implements IdentityService {
     if (identity == null)
       return null;
     
-    for (Ref<CoreUser> coreUser : identity.getUsers()) {
-      String email = coreUser.get().getEmail();
+    for (CoreUser coreUser : identity.getUsers()) {
+      String email = coreUser.getEmail();
       if (email != null && !email.isEmpty())
         return makeGravatarImageUrl(email);
     }

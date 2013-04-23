@@ -125,6 +125,13 @@
       <version>${easymock.version}</version>
       <scope>test</scope>
     </dependency>
+  
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava-gwt</artifactId>
+      <version>${guava.version}</version>
+    </dependency>    
+    
   </dependencies>
 
   <build>

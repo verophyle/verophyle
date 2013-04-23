@@ -72,7 +72,7 @@ public class CoreGinModule extends AbstractGinModule {
     bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
     bind(PlaceHistoryMapper.class).to(CorePlaceHistoryMapper.class).in(Singleton.class);
     bind(CorePlaceHistoryRegistry.class).to(CorePlaceHistoryRegistryImpl.class).in(Singleton.class);
-        
+    
     // activities
     bind(new TypeLiteral<CoreActivityRegistry<HeaderActivity, CorePlace>>(){})
       .to(new TypeLiteral<CoreActivityRegistryImpl<HeaderActivity, CorePlace>>(){})
@@ -118,6 +118,9 @@ public class CoreGinModule extends AbstractGinModule {
     bind(FooterView.class).to(FooterViewImpl.class).in(Singleton.class);
     bind(ContentIndexView.class).to(ContentIndexViewImpl.class).in(Singleton.class);
     bind(ContentSecondView.class).to(ContentSecondViewImpl.class).in(Singleton.class);
+    
+    // menus
+    bind(CoreMenuRegistry.class).to(CoreMenuRegistryImpl.class).in(Singleton.class);
   }
   
   // global objects
