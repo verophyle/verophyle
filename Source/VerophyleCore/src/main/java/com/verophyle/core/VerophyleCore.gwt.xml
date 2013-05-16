@@ -6,6 +6,7 @@
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
 <module rename-to='VerophyleCore'>
+  <inherits name="javax.validation.Validation" />
   <inherits name="com.google.gwt.activity.Activity" />
   <inherits name="com.google.gwt.i18n.I18N" />
   <inherits name="com.google.gwt.inject.Inject" />

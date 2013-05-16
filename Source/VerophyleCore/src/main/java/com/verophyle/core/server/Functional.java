@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle Informatics.  All rights reserved.
+ */
 package com.verophyle.core.server;
 
 import java.util.List;
