@@ -3,8 +3,6 @@
  */
 package com.verophyle.core.client.activity.header;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
@@ -141,12 +139,9 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     requestFactory.identityRequest().getLoginUrl(Window.Location.getHref()).fire(new Receiver<String>() {
       @Override
       public void onSuccess(String response) {
-        try {
-          auth.setUrl(new URL(response));
-          auth.getIdentityLogin().setTitle(response);
-          headerView.fadeIn(auth);
-        } catch (final MalformedURLException e) {
-        }
+        auth.setUrl(response);
+        auth.getIdentityLogin().setTitle(response);
+        headerView.fadeIn(auth);
       }
     });
   }
@@ -158,12 +153,9 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     requestFactory.identityRequest().getLogoutUrl(Window.Location.getHref()).fire(new Receiver<String>() {
       @Override
       public void onSuccess(String response) {
-        try {
-          auth.setUrl(new URL(response));
-          auth.getIdentityLogin().setTitle(response);
-          headerView.fadeIn(auth);
-        } catch (final MalformedURLException e) {
-        }
+        auth.setUrl(response);
+        auth.getIdentityLogin().setTitle(response);
+        headerView.fadeIn(auth);
       }
     });
   }

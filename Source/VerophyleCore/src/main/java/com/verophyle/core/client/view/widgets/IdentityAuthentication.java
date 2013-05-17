@@ -3,8 +3,6 @@
  */
 package com.verophyle.core.client.view.widgets;
 
-import java.net.URL;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -23,7 +21,7 @@ public class IdentityAuthentication extends Composite {
   interface Binder extends UiBinder<FlowPanel, IdentityAuthentication> {}
   private static Binder binder = GWT.create(Binder.class);
 
-  private URL url;
+  private String url;
 
   @UiField
   Label identityInfo;
@@ -47,11 +45,11 @@ public class IdentityAuthentication extends Composite {
     });
   }
 
-  public URL getUrl() {
+  public String getUrl() {
     return url;
   }
 
-  public void setUrl(URL url) {
+  public void setUrl(String url) {
     this.url = url;
   }
 
@@ -69,7 +67,7 @@ public class IdentityAuthentication extends Composite {
 
   private void onLoginClick() {
     if (url != null) {
-      Window.Location.replace(url.toExternalForm());
+      Window.Location.replace(url);
     }
   }
 

@@ -77,6 +77,7 @@
             <exclude>**/*.symbolMap</exclude>
             <exclude>**/*.factorypath</exclude>
             <exclude>**/manifest.txt</exclude>
+            <exclude>**/robots.txt</exclude>
           </excludes>
         </configuration>
         <executions>

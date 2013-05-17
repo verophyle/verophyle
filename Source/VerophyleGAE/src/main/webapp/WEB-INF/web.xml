@@ -22,9 +22,4 @@
   <listener>
     <listener-class>com.verophyle.gae.server.VerophyleServletContextListener</listener-class>
   </listener>
-
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>Verophyle.html</welcome-file>
-  </welcome-file-list>
 </web-app>

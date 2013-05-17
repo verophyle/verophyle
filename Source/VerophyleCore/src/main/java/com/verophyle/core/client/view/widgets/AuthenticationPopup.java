@@ -10,9 +10,9 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.PopupPanel;
 
-public class LoginPopup extends Composite {
+public class AuthenticationPopup extends Composite {
 
-  interface Binder extends UiBinder<PopupPanel, LoginPopup> {}
+  interface Binder extends UiBinder<PopupPanel, AuthenticationPopup> {}
   private static Binder binder = GWT.create(Binder.class);
 
   private final URL initialUrl;
@@ -23,7 +23,7 @@ public class LoginPopup extends Composite {
   @UiField
   Frame frame;
 
-  public LoginPopup(URL initialUrl) {
+  public AuthenticationPopup(URL initialUrl) {
     this.initialUrl = initialUrl;
 
     initWidget(binder.createAndBindUi(this));

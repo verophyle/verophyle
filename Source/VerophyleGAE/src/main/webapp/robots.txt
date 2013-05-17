@@ -1,7 +1,4 @@
-====
-    Copyright © 2013 Verophyle Informatics.  All rights reserved.
-====
-
 user-agent: *
-allow: /Verophyle.html
-disallow: /
+disallow: /Verophyle/remote_logging
+disallow: /gwtRequest
+disallow: /Authentication
