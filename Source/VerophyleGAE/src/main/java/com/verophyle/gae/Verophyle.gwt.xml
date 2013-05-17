@@ -7,9 +7,10 @@
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
 <module rename-to='Verophyle'>
   <inherits name='com.verophyle.core.VerophyleCore'/>
+  <inherits name='com.verophyle.docs.VerophyleDocs'/>
   <inherits name='com.verophyle.flashcards.VerophyleFlashcards'/>
 
-  <set-configuration-property name="CssResource.style" value="pretty"/>
+  <!--  <set-configuration-property name="CssResource.style" value="pretty"/> -->
 
   <entry-point class='com.verophyle.gae.client.VerophyleEntryPoint' />
 

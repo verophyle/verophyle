@@ -34,19 +34,31 @@
       <version>${project.parent.version}</version>
     </dependency>
 
-    <!-- Google Web Toolkit (GWT) -->
+    <!-- Verophyle Docs -->
     <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-servlet</artifactId>
-      <version>${gwt.version}</version>
-      <scope>runtime</scope>
+      <groupId>com.verophyle</groupId>
+      <artifactId>verophyle-docs</artifactId>
+      <version>${project.parent.version}</version>
     </dependency>
 
+    <!-- Google Web Toolkit (GWT) -->
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${gwt.version}</version>
-      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${validation.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${validation.version}</version>
+      <classifier>sources</classifier>
     </dependency>
 
     <!-- RequestFactory -->
@@ -60,13 +72,6 @@
       <groupId>com.google.web.bindery</groupId>
       <artifactId>requestfactory-apt</artifactId>
       <version>${gwt.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>${validation.version}</version>
-      <classifier>sources</classifier>
     </dependency>
 
     <dependency>

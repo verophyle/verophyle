@@ -22,10 +22,6 @@
   <properties>
     <java.version>1.7</java.version>
 
-    <appengine.app.version>0</appengine.app.version>
-    <appengine.target.version>${gae.version}</appengine.target.version>
-
-    <!-- Dependencies & Plugins -->
     <gae.version>1.8.0</gae.version>
     <gwt.version>2.5.1</gwt.version>
     <objectify.version>4.0b3</objectify.version>
@@ -33,8 +29,8 @@
     <gin.version>2.0.0</gin.version>
     <junit.version>4.11</junit.version>
     <easymock.version>3.1</easymock.version>
-    <validation.version>1.1.0.Final</validation.version>
-    <hibernate.version>5.0.1.Final</hibernate.version>
+    <validation.version>1.0.0.GA</validation.version>
+    <hibernate.version>4.3.1.Final</hibernate.version>
     <selenium.version>2.32.0</selenium.version>
     <sl4j.version>1.7.5</sl4j.version>
     <jetty.version>6.1.26</jetty.version>
@@ -48,11 +44,14 @@
     <maven.surefire.version>2.14.1</maven.surefire.version>
     <maven.license.version>1.10.b1</maven.license.version>
 
-    <!-- Misc -->
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <appengine.app.version>0</appengine.app.version>
+    <appengine.target.version>${gae.version}</appengine.target.version>
+
   </properties>
 
   <modules>

@@ -5,12 +5,12 @@
 
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
-<module rename-to='VerophyleFlashcards'>
+<module rename-to='VerophyleDocs'>
   <inherits name="com.verophyle.core.VerophyleCore" />
 
   <!-- <set-configuration-property name="CssResource.style" value="pretty"/> -->
 
-  <entry-point class='com.verophyle.flashcards.client.FlashcardsEntryPoint' />
+  <entry-point class='com.verophyle.docs.client.DocsEntryPoint' />
 
   <source path='client' />
   <source path='shared' />

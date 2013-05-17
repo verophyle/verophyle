@@ -18,11 +18,11 @@ public abstract class CoreLocator<E extends CoreEntity> extends Locator<E, Long>
 
   @Inject
   public CoreLocator(Injector injector, Class<E> domainType) {
-    super();    
+    super();
     this.domainType = domainType;
     this.injector = injector;
   }
-  
+
   @Override
   public E create(Class<? extends E> clazz) {
     return injector.getInstance(clazz);
@@ -41,8 +41,8 @@ public abstract class CoreLocator<E extends CoreEntity> extends Locator<E, Long>
   @Override
   public E find(Class<? extends E> clazz, Long id) {
     if (id != null) {
-    Key<? extends E> key = Key.create(clazz, id);    
-      return ofy().load().type(clazz).filterKey(key).first().get();
+    final Key<? extends E> key = Key.create(clazz, id);
+      return ofy().load().type(clazz).filterKey(key).first().now();
     } else {
       return null;
     }

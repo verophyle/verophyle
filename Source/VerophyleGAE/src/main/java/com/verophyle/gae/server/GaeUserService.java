@@ -15,11 +15,11 @@ import com.verophyle.core.server.domain.CoreUser;
 
 /**
  * User service for the GAE module.
- * 
+ *
  * Wraps an App Engine UserService module.
  */
 public class GaeUserService implements CoreUserService {
-  
+
   private final UserService userService;
   private final CoreObjectifyService objectifyService;
 
@@ -29,7 +29,7 @@ public class GaeUserService implements CoreUserService {
     this.userService = userService;
     this.objectifyService = objectifyService;
   }
-  
+
   @Override
   public String createLoginUrl(String destinationUrl) {
     return userService.createLoginURL(destinationUrl);
@@ -57,20 +57,20 @@ public class GaeUserService implements CoreUserService {
 
   @Override
   public CoreUser getCurrentUser() {
-    User currentUser = userService.getCurrentUser();
-    
+    final User currentUser = userService.getCurrentUser();
+
     if (currentUser != null) {
-      Objectify ofy = objectifyService.ofy();      
-      GaeUser existingUser = ofy.load().type(GaeUser.class).filter("user =", currentUser).first().get();
+      final Objectify ofy = objectifyService.ofy();
+      GaeUser existingUser = ofy.load().type(GaeUser.class).filter("user =", currentUser).first().now();
 
       if (existingUser == null) {
         existingUser = new GaeUser(currentUser);
         ofy.save().entity(existingUser).now();
       }
-      
+
       return existingUser;
     }
-    
+
     return null;
   }
 
@@ -83,5 +83,5 @@ public class GaeUserService implements CoreUserService {
   public boolean isUserLoggedIn() {
     return userService.isUserLoggedIn();
   }
-  
+
 }

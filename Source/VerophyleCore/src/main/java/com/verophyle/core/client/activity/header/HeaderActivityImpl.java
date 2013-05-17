@@ -35,37 +35,40 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   private final CoreMessages coreMessages;
   private final CoreRequestFactory requestFactory;
   private final HeaderView headerView;
-  
-  private static final List<String> WHITELIST = Arrays.asList(new String[] { "gordon.tisher@gmail.com", "gordon.tisher@verophyle.com" });
-  
+
+  private static final List<String> WHITELIST = Arrays.asList(
+      "gordon.tisher@gmail.com",
+      "gordon.tisher@verophyle.com"
+  );
+
   @Inject
   public HeaderActivityImpl(
-      CoreLogger logger, 
-      CoreMessages coreMessages, 
-      CoreRequestFactory requestFactory, 
-      PlaceController placeController, 
+      CoreLogger logger,
+      CoreMessages coreMessages,
+      CoreRequestFactory requestFactory,
+      PlaceController placeController,
       HeaderView headerView) {
     super(logger, placeController, headerView);
-    
+
     this.coreMessages = coreMessages;
     this.requestFactory = requestFactory;
     this.headerView = headerView;
   }
-  
+
   @Override
   public void start(AcceptsOneWidget panel, EventBus eventBus) {
     super.start(panel, eventBus);
-    
+
     final IdentityRequest request = requestFactory.identityRequest();
     final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
-    
+
     // request the current identity, then set the name and button accordingly
     currentIdentity.fire(new Receiver<IdentityProxy>() {
 
       @Override
       public void onSuccess(IdentityProxy identity) {
         final IdentityAuthentication auth = headerView.getIdentityAuth();
-        
+
         if (identity != null) {
           if (identity.isAnonymous() || isInWhiteList(identity)) {
             auth.getIdentityInfo().setText(identity.getNickname());
@@ -88,7 +91,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
             });
           } else {
             auth.getIdentityInfo().setText("?? unauthorized ??");
-            setLogin();
+            setLogout();
           }
         } else {
           auth.getIdentityInfo().setText("?? no id found ??");
@@ -100,12 +103,12 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       public void onFailure(ServerFailure error) {
         log(Level.SEVERE, error.getExceptionType() + "\n" + error.getMessage());
 
-        IdentityAuthentication auth = headerView.getIdentityAuth();
+        final IdentityAuthentication auth = headerView.getIdentityAuth();
 
         auth.getIdentityInfo().setText("?? req failed ??");
         setLogin();
       }
-      
+
     });
   }
 
@@ -119,20 +122,20 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   }
 
   private boolean isInWhiteList(IdentityProxy identity) {
-    List<CoreUserProxy> users = identity.getUsers();
-    if (users != null) {    
-      for (CoreUserProxy user : identity.getUsers()) {
+    final List<CoreUserProxy> users = identity.getUsers();
+    if (users != null) {
+      for (final CoreUserProxy user : identity.getUsers()) {
         if (WHITELIST.contains(user.getEmail()))
           return true;
       }
     }
     return false;
   }
-  
+
   private void setLogin() {
     final IdentityAuthentication auth = headerView.getIdentityAuth();
     auth.getIdentityLogin().setText(coreMessages.login());
-    
+
     requestFactory.identityRequest().getLoginUrl(Window.Location.getHref()).fire(new Receiver<String>() {
       @Override
       public void onSuccess(String response) {
@@ -142,11 +145,11 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       }
     });
   }
-  
+
   private void setLogout() {
     final IdentityAuthentication auth = headerView.getIdentityAuth();
     auth.getIdentityLogin().setText(coreMessages.logout());
-    
+
     requestFactory.identityRequest().getLogoutUrl(Window.Location.getHref()).fire(new Receiver<String>() {
       @Override
       public void onSuccess(String response) {
@@ -156,5 +159,5 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       }
     });
   }
-  
+
 }
