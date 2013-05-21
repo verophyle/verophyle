@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.http.client.UrlBuilder;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -58,7 +59,10 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   @Override
   public void start(AcceptsOneWidget panel, EventBus eventBus) {
     super.start(panel, eventBus);
+    init();
+  }
 
+  private void init() {
     final IdentityRequest request = requestFactory.identityRequest();
     final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
 
@@ -136,7 +140,9 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     final IdentityAuthentication auth = headerView.getIdentityAuth();
     auth.getIdentityLogin().setText(coreMessages.login());
 
-    requestFactory.identityRequest().getLoginUrl(Window.Location.getHref()).fire(new Receiver<String>() {
+    final String destination = getDestinationUrl("login");
+
+    requestFactory.identityRequest().getLoginUrl(destination).fire(new Receiver<String>() {
       @Override
       public void onSuccess(String response) {
         auth.setUrl(response);
@@ -150,7 +156,9 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     final IdentityAuthentication auth = headerView.getIdentityAuth();
     auth.getIdentityLogin().setText(coreMessages.logout());
 
-    requestFactory.identityRequest().getLogoutUrl(Window.Location.getHref()).fire(new Receiver<String>() {
+    final String destination = getDestinationUrl("logout");
+
+    requestFactory.identityRequest().getLogoutUrl(destination).fire(new Receiver<String>() {
       @Override
       public void onSuccess(String response) {
         auth.setUrl(response);
@@ -158,6 +166,13 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
         headerView.fadeIn(auth);
       }
     });
+  }
+
+  private String getDestinationUrl(String cmd) {
+    final UrlBuilder builder = Window.Location.createUrlBuilder();
+    builder.setPath("Authentication");
+    builder.setParameter("c", cmd);
+    return builder.buildString();
   }
 
 }

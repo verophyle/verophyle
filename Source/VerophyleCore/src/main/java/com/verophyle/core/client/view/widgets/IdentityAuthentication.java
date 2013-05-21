@@ -8,7 +8,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -67,7 +66,8 @@ public class IdentityAuthentication extends Composite {
 
   private void onLoginClick() {
     if (url != null) {
-      Window.Location.replace(url);
+      final AuthenticationPopup popup = new AuthenticationPopup(url);
+      popup.show();
     }
   }
 

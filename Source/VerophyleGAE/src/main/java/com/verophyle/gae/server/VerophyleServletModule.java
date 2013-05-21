@@ -35,7 +35,7 @@ public class VerophyleServletModule extends ServletModule {
     serve("/Verophyle/remote_logging").with(RemoteLoggingServiceImpl.class);
     serve("/gwtRequest").with(CoreRequestFactoryServlet.class);
     serve("/Authentication").with(AuthenticationServlet.class);
-    serve("/*").with(MainServlet.class);
+    serveRegex("/(?!_ah).*").with(MainServlet.class);
   }
 
   /**

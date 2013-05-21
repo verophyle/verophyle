@@ -13,7 +13,5 @@
   
   <ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
   
-  <g:PopupPanel ui:field="popup" autoHideEnabled="false" glassEnabled="true">
-    <g:Frame ui:field="frame" width="100em" height="100em"/>
-  </g:PopupPanel>
+  <g:Frame ui:field="frame" width="100em" height="100em"/>
 </ui:UiBinder> 

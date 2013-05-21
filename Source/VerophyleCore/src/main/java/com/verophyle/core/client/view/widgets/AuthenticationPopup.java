@@ -1,41 +1,36 @@
 package com.verophyle.core.client.view.widgets;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.PopupPanel;
 
-public class AuthenticationPopup extends Composite {
+public class AuthenticationPopup extends PopupPanel {
 
-  interface Binder extends UiBinder<PopupPanel, AuthenticationPopup> {}
+  interface Binder extends UiBinder<Frame, AuthenticationPopup> {}
   private static Binder binder = GWT.create(Binder.class);
 
-  private final URL initialUrl;
-
-  @UiField
-  PopupPanel popup;
+  private final String initialUrl;
 
   @UiField
   Frame frame;
 
-  public AuthenticationPopup(URL initialUrl) {
+  public AuthenticationPopup(String initialUrl) {
     this.initialUrl = initialUrl;
+    this.setAutoHideEnabled(false);
+    this.setGlassEnabled(true);
 
-    initWidget(binder.createAndBindUi(this));
-    frame.setUrl(this.initialUrl.toExternalForm());
+    this.setWidget(binder.createAndBindUi(this));
+    frame.setUrl(this.initialUrl);
   }
 
-  public URL getUrl() {
-    try {
-      return new URL(frame.getUrl());
-    } catch (final MalformedURLException e) {
-      return null;
-    }
+  public String getUrl() {
+    return frame.getUrl();
+  }
+
+  public Frame getFrame() {
+    return this.frame;
   }
 
 }
