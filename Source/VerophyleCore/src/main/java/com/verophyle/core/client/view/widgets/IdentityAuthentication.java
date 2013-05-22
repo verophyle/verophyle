@@ -4,8 +4,6 @@
 package com.verophyle.core.client.view.widgets;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
@@ -20,7 +18,7 @@ public class IdentityAuthentication extends Composite {
   interface Binder extends UiBinder<FlowPanel, IdentityAuthentication> {}
   private static Binder binder = GWT.create(Binder.class);
 
-  private String url;
+  private String url = null;
 
   @UiField
   Label identityInfo;
@@ -35,13 +33,6 @@ public class IdentityAuthentication extends Composite {
   public IdentityAuthentication() {
     initWidget(binder.createAndBindUi(this));
     identityLogin.removeStyleName("gwt-Button");
-
-    identityLogin.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-        onLoginClick();
-      }
-    });
   }
 
   public String getUrl() {
@@ -62,13 +53,6 @@ public class IdentityAuthentication extends Composite {
 
   public Image getGravatarImage() {
     return gravatarImage;
-  }
-
-  private void onLoginClick() {
-    if (url != null) {
-      final AuthenticationPopup popup = new AuthenticationPopup(url);
-      popup.show();
-    }
   }
 
 }

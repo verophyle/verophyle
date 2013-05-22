@@ -13,20 +13,20 @@ import com.verophyle.core.client.place.CorePlace;
 
 /**
  * Proxy for activities.
- * 
+ *
  * We don't actually create activities immediately they are needed.  We create these proxies,
- * which allows the activity code to be loaded as needed rather than all at once. 
- * 
+ * which allows the activity code to be loaded as needed rather than all at once.
+ *
  * @param <A> Activity class.
  * @param <P> Place class.
  */
 public class CoreActivityProxy<A extends CoreActivity, P extends CorePlace> implements Activity {
-  
-  private AsyncProvider<A> activityProvider;
+
+  private final AsyncProvider<A> activityProvider;
   private CorePlace place = null;
   private CoreActivity activity = null;
   boolean cancelled = false;
-  
+
   @Inject
   public CoreActivityProxy(AsyncProvider<A> activityProvider) {
     this.activityProvider = activityProvider;
@@ -38,15 +38,15 @@ public class CoreActivityProxy<A extends CoreActivity, P extends CorePlace> impl
    */
   public void setPlace(CorePlace place) {
     this.place = place;
-    
+
     if (activity != null)
-      activity.setPlace(place);
+      activity.setCorePlace(place);
   }
-  
+
   /**
    * Called to get a message to ask the user if the activity can be stopped.
-   * 
-   * Doesn't do anything if the actual activity has not been loaded yet. 
+   *
+   * Doesn't do anything if the actual activity has not been loaded yet.
    */
   @Override
   public String mayStop() {
@@ -84,15 +84,15 @@ public class CoreActivityProxy<A extends CoreActivity, P extends CorePlace> impl
         @Override
         public void onSuccess(A result) {
           activity = result;
-          
+
           if (!cancelled) {
-            activity.setPlace(place);
+            activity.setCorePlace(place);
             activity.start(panel, eventBus);
           } else {
             activity.onCancel();
           }
         }
-        
+
         @Override
         public void onFailure(Throwable caught) {
         }

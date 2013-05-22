@@ -8,4 +8,5 @@ import com.verophyle.core.shared.rf.identity.IdentityRequest;
 
 public interface CoreRequestFactory extends RequestFactory {
   IdentityRequest identityRequest();
+  UtilRequest utilRequest();
 }

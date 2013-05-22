@@ -24,32 +24,34 @@ import com.verophyle.core.shared.CoreMessages;
 
 /**
  * Ginjector for the core module.
- * 
+ *
  * The implementation will be provided by GIN in the GWT compile.
  */
 @GinModules({CoreGinModule.class})
 public interface CoreGinjector extends Ginjector {
   CoreGinjector INSTANCE = GWT.create(CoreGinjector.class);
-  
+
   CoreLogger getLogger();
   CoreResources getCoreResources();
   CoreMessages getCoreMessages();
-  
+
   EventBus getEventBus();
-  PlaceController getPlaceController();  
+  PlaceController getPlaceController();
 
   PlaceHistoryMapper getPlaceHistoryMapper();
   PlaceHistoryHandler getPlaceHistoryHandler();
   CorePlaceHistoryRegistry getPlaceHistoryRegistry();
-  
-  AppView getAppView();  
-  
+
+  AppView getAppView();
+
   HeaderActivityManager getHeaderActivityManager();
   SidebarActivityManager getSidebarActivityManager();
   FooterActivityManager getFooterActivityManager();
 
   CoreActivityRegistry<ContentActivity, CorePlace> getContentActivityRegistry();
   ContentActivityManager getContentActivityManager();
-  
+
   CoreMenuRegistry getMenuRegistry();
+
+  CoreUtil getCoreUtil();
 }

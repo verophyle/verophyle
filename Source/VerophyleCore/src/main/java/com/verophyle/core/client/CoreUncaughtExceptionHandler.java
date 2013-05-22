@@ -15,7 +15,8 @@ public class CoreUncaughtExceptionHandler implements UncaughtExceptionHandler {
   @Override
   public void onUncaughtException(Throwable e) {
     e = getException(e);
-    Window.alert(e.getMessage());
+    final String msg = e.getMessage();
+    Window.alert(msg);
   }
 
   private static Throwable getException(Throwable throwable) {
@@ -25,5 +26,5 @@ public class CoreUncaughtExceptionHandler implements UncaughtExceptionHandler {
     }
     return result;
   }
-  
+
 }
