@@ -57,14 +57,17 @@ public class GaeUserService implements CoreUserService {
 
   @Override
   public CoreUser getCurrentUser() {
-    final User currentUser = userService.getCurrentUser();
+    final User dataStoreUser = userService.getCurrentUser();
 
-    if (currentUser != null) {
+    if (dataStoreUser != null) {
       final Objectify ofy = objectifyService.ofy();
-      GaeUser existingUser = ofy.load().type(GaeUser.class).filter("user =", currentUser).first().now();
-
+      CoreUser existingUser = ofy.load()
+          .type(GaeUser.class)
+          .filter("userId", dataStoreUser.getUserId())
+          .first().now();
+      
       if (existingUser == null) {
-        existingUser = new GaeUser(currentUser);
+        existingUser = new GaeUser(dataStoreUser);
         ofy.save().entity(existingUser).now();
       }
 

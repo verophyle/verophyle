@@ -172,7 +172,7 @@
           <strict>true</strict>
           <style>DETAILED</style>
           <logLevel>INFO</logLevel>
-          <localWorkers>4</localWorkers>
+          <localWorkers>4</localWorkers>          
         </configuration>
 
         <executions>

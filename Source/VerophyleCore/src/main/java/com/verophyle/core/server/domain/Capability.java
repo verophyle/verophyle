@@ -47,10 +47,11 @@ public class Capability extends CoreEntity {
   public void setVersion(Integer version) {
     this.version = version;
   }
-  // entity boilerplate
 
+  // capability functions
   @Index
-  String className;  
+  String className;
+  
   @Index
   String identifier;
   

@@ -140,8 +140,11 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
             @Override
             public void onLoad(LoadEvent event) {
               final String frameUrl = frame.getUrl();
+              
+              @SuppressWarnings("unused")
+              final String str = event.toDebugString();
 
-              if (frameUrl.contains("/Authentication") && frameUrl.contains(nonce)) {
+              if (frameUrl.contains("foobar") && frameUrl.contains(nonce)) {
                 final IdentityRequest newIdentityReq = requestFactory.identityRequest();
                 newIdentityReq.getCurrentIdentity().fire(new Receiver<IdentityProxy>() {
 
@@ -185,7 +188,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 
           });
 
-          popup.show();
+          popup.center();
         }
 
         @Override
@@ -237,20 +240,10 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
             else
               setLogout();
 
-            // request the gravatar url
-            final IdentityRequest gravatarRequest = requestFactory.identityRequest();
-            gravatarRequest.getGravatarImageUrl(identity).fire(new Receiver<String>() {
-
-              @Override
-              public void onSuccess(String response) {
-                if (response != null && !response.isEmpty())
-                  auth.getGravatarImage().setUrl(response);
-              }
-
-            });
+            requestGravatarUrl(identity.getId());
           } else {
             auth.getIdentityInfo().setText("?? unauthorized ??");
-            setLogout();
+            setLogin();
           }
         } else {
           auth.getIdentityInfo().setText("?? no id found ??");
@@ -271,14 +264,34 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     });
   }
 
+  private void requestGravatarUrl(long identityId) {
+    // request the gravatar url
+    final IdentityRequest gravatarRequest = requestFactory.identityRequest();
+    gravatarRequest.getGravatarImageUrl(identityId).fire(new Receiver<String>() {
+
+      @Override
+      public void onSuccess(String response) {
+        final IdentityAuthentication auth = headerView.getIdentityAuth();
+        if (response != null && !response.isEmpty())
+          auth.getGravatarImage().setUrl(response);
+      }
+
+    });
+  }
+
   private boolean isInWhiteList(IdentityProxy identity) {
+    @SuppressWarnings("unused")
+    String nick = identity.getNickname();
+    
     final List<CoreUserProxy> users = identity.getUsers();
     if (users != null) {
-      for (final CoreUserProxy user : identity.getUsers()) {
-        if (WHITELIST.contains(user.getEmail()))
+      for (final CoreUserProxy user : users) {
+        String email = user.getEmail();
+        if (WHITELIST.contains(email))
           return true;
       }
     }
+    
     return false;
   }
 
@@ -320,6 +333,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     final UrlBuilder builder = Window.Location.createUrlBuilder();
     builder.setPath("Authentication");
     builder.setParameter("nonce", nonce);
+    builder.setParameter("gwt.codesvr", (String)null);
     return builder.buildString();
   }
 

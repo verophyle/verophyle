@@ -6,6 +6,7 @@ package com.verophyle.core.server.rf.identity;
 import org.slf4j.Logger;
 
 import com.google.inject.Inject;
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Objectify;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
@@ -33,11 +34,14 @@ public class IdentityServiceImpl implements IdentityService {
     // get current user
     CoreUser currentUser;
     if (userService.isUserLoggedIn() && (currentUser = userService.getCurrentUser()) != null) {
-      logger.info("current user is " + currentUser.getNickname());
+      logger.info("current user is " + currentUser);
 
       // search for identities with that user
-      Identity identity = ofy.load().type(Identity.class)
-        .filter("users.userId", currentUser.getUserId()).first().now();
+      Key<CoreUser> key = Key.create(CoreUser.class, currentUser.getId());
+      Identity identity = ofy.load()
+          .type(Identity.class)
+          .filter("users", key)
+          .first().now();
 
       if (identity != null) {
         logger.info("found identity " + identity.getNickname());
@@ -54,41 +58,51 @@ public class IdentityServiceImpl implements IdentityService {
       identity = new Identity();
       identity.setNickname(currentUser.getNickname());
       identity.addUser(currentUser);
-
       ofy.save().entity(identity).now();
 
       return identity;
+    } else {  
+      // get or create guest user
+      logger.info("no user logged in; searching for " + Identity.GUEST_NICKNAME);
+      Identity guest = ofy.load()
+          .type(Identity.class)
+          .filter("nickname", Identity.GUEST_NICKNAME)
+          .first().now();
+  
+      if (guest == null) {
+        logger.info("no guest identity; creating " + Identity.GUEST_NICKNAME);
+  
+        guest = new Identity();
+        guest.setNickname(Identity.GUEST_NICKNAME);
+  
+        guest.setAnonymous(true);
+        ofy.save().entity(guest).now();
+      } else {
+        logger.info("found guest " + guest.getNickname());
+      }
+  
+      return guest;
     }
-
-    // get or create guest user
-    logger.info("no user logged in; searching for " + Identity.GUEST_NICKNAME);
-    Identity guest = ofy.load().type(Identity.class)
-      .filter("nickname", Identity.GUEST_NICKNAME).first().now();
-
-    if (guest == null) {
-      logger.info("no guest identity; creating " + Identity.GUEST_NICKNAME);
-
-      guest = new Identity();
-      guest.setNickname(Identity.GUEST_NICKNAME);
-
-      guest.setAnonymous(true);
-      ofy.save().entity(guest).now();
-    }
-
-    return guest;
   }
 
   @Override
-  public String getGravatarImageUrl(Identity identity) {
-    if (identity == null)
-      return null;
-
-    for (final CoreUser coreUser : identity.getUsers()) {
-      final String email = coreUser.getEmail();
-      if (email != null && !email.isEmpty())
-        return makeGravatarImageUrl(email);
+  public String getGravatarImageUrl(long identityId) {
+    final Objectify ofy = objectifyService.ofy();
+    
+    Key<Identity> key = Key.create(Identity.class, identityId);
+    Identity identity = ofy.load()
+        .type(Identity.class)
+        .filterKey(key)
+        .first().now();
+    
+    if (identity != null) {
+      for (final CoreUser coreUser : identity.getUsers()) {
+        final String email = coreUser.getEmail();
+        if (email != null && !email.isEmpty())
+          return makeGravatarImageUrl(email);
+      }      
     }
-
+    
     return makeGravatarImageUrl("anonymous@verophyle.com");
   }
 

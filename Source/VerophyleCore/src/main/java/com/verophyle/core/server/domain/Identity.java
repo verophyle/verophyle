@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -15,6 +16,10 @@ import com.googlecode.objectify.annotation.Load;
 import com.googlecode.objectify.annotation.OnSave;
 import com.verophyle.core.server.Functional;
 
+/**
+ * An Identity is a user account on Verophyle, which may be associated
+ * with zero or more datastore users.
+ */
 @Entity
 public class Identity extends CoreEntity {
   
@@ -84,15 +89,26 @@ public class Identity extends CoreEntity {
   }
   
   public void addUser(CoreUser user) {
-    if (!getUsers().contains(user)) {
-      users.add(Ref.create(user));
+    @SuppressWarnings("unused")
+    String nick = user.getNickname();
+    
+    for (Ref<CoreUser> ref : users) {
+      long refId = ref.getKey().getId();
+      long userId = user.getId();
+      
+      if (refId == userId)
+        return;
     }
+    
+    Key<CoreUser> key = Key.create(CoreUser.class, user.getId());
+    Ref<CoreUser> ref = Ref.create(key);
+    users.add(ref);
   }
   
   public List<CoreUser> getUsers() {
     return Collections.unmodifiableList(Functional.deref(users));
   }
-    
+
   public boolean isAnonymous() {
     return anonymous;
   }

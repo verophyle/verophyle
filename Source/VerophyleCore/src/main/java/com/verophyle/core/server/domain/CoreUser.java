@@ -5,11 +5,11 @@ package com.verophyle.core.server.domain;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.OnSave;
-import com.verophyle.core.shared.NotImplementedException;
 
 @Entity
-public class CoreUser extends CoreEntity {
+public class CoreUser extends CoreEntity implements Comparable<CoreUser> {
   
   // entity boilerplate
   @Id
@@ -42,44 +42,54 @@ public class CoreUser extends CoreEntity {
   public void setVersion(Integer version) {
     this.version = version;
   }
-  // entity boilerplate
-
-  public int compareTo(CoreUser user) {
-    throw new NotImplementedException();
-  }
   
-  public boolean equals(Object object) {    
-    throw new NotImplementedException();
-  }
+  // user functions
+  @Index
+  String userId;
   
   public String getAuthDomain() {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
   
   public String getEmail() {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
   
   public String getFederatedIdentity() {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
   
   public String getNickname() {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
   
   public String getUserId() {
-    throw new NotImplementedException();
+    return userId;
+  }
+  
+  protected void setUserId(String userId) {
+    this.userId = userId;
+  }
+  
+  // object functions
+  @Override
+  public int hashCode() {
+    throw new UnsupportedOperationException();
   }
   
   @Override
-  public int hashCode() {
-    throw new NotImplementedException();
+  public int compareTo(CoreUser user) {
+    throw new UnsupportedOperationException();
+  }
+  
+  @Override
+  public boolean equals(Object object) {    
+    throw new UnsupportedOperationException();
   }
   
   @Override
   public String toString() {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
   
 }

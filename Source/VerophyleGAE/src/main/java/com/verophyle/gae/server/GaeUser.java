@@ -6,6 +6,7 @@ package com.verophyle.gae.server;
 import com.google.appengine.api.users.User;
 import com.google.inject.Inject;
 import com.googlecode.objectify.annotation.EntitySubclass;
+import com.googlecode.objectify.annotation.Index;
 import com.verophyle.core.server.domain.CoreUser;
 
 /**
@@ -16,71 +17,60 @@ import com.verophyle.core.server.domain.CoreUser;
 @EntitySubclass(index = true)
 public class GaeUser extends CoreUser {
 
-  User user;
+  @Index
+  User dataStoreUser;
   
   @Inject
   public GaeUser() {
   }
   
-  /**
-   * Constructor with an existing User object.
-   * @param user The App Engine User object.
-   */
   @Inject
-  public GaeUser(User user) {
-    assert user != null;    
-    this.user = user;
+  public GaeUser(User dataStoreUser) {
+    assert dataStoreUser != null;
+    this.dataStoreUser = dataStoreUser;
+    setUserId(this.dataStoreUser.getUserId());
   }
   
   public User getUser() {
-    return user;
+    return dataStoreUser;
   }
-  
-  public void setUser(User user) {
-    this.user = user;
+    
+  @Override
+  public String getAuthDomain() {
+    return dataStoreUser.getAuthDomain();
+  }
+
+  @Override
+  public String getEmail() {
+    return dataStoreUser.getEmail();
+  }
+
+  @Override
+  public String getFederatedIdentity() {
+    return dataStoreUser.getFederatedIdentity();
+  }
+
+  @Override
+  public String getNickname() {
+    return dataStoreUser.getNickname();
+  }
+
+  @Override
+  public int hashCode() {
+    return dataStoreUser != null ? dataStoreUser.hashCode() : 0;
   }
   
   @Override
   public int compareTo(CoreUser user) {
     if (user instanceof GaeUser) {
-      return this.user.compareTo(((GaeUser)user).user);
+      return this.dataStoreUser.compareTo(((GaeUser)user).dataStoreUser);
     }
-    throw new RuntimeException("Attempted to compare a GaeUser to a different subclass of CoreUser.");
+    throw new IllegalArgumentException("Attempted to compare a GaeUser to a different subclass of CoreUser.");
   }
 
-  @Override
-  public String getAuthDomain() {
-    return user.getAuthDomain();
-  }
-
-  @Override
-  public String getEmail() {
-    return user.getEmail();
-  }
-
-  @Override
-  public String getFederatedIdentity() {
-    return user.getFederatedIdentity();
-  }
-
-  @Override
-  public String getNickname() {
-    return user.getNickname();
-  }
-
-  @Override
-  public String getUserId() {
-    return user.getUserId();
-  }
-
-  @Override
-  public int hashCode() {
-    return user != null ? user.hashCode() : 0;
-  }
-  
   @Override
   public String toString() {
-    return "GaeUser[" + (user != null ? user.toString() : "<null") + "]";
+    return "GaeUser[" + (dataStoreUser != null ? dataStoreUser.toString() : "<null") + "]";
   }
   
 }
