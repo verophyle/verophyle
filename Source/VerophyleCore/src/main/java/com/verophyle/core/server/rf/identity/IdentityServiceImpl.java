@@ -96,7 +96,7 @@ public class IdentityServiceImpl implements IdentityService {
         .first().now();
     
     if (identity != null) {
-      for (final CoreUser coreUser : identity.getUsers()) {
+      for (final CoreUser coreUser : identity.getUserList()) {
         final String email = coreUser.getEmail();
         if (email != null && !email.isEmpty())
           return makeGravatarImageUrl(email);

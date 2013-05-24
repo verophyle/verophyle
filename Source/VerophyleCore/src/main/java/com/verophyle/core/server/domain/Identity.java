@@ -88,6 +88,10 @@ public class Identity extends CoreEntity {
     this.nickname = handle;
   }
   
+  public List<CoreUser> getUserList() {
+    return Collections.unmodifiableList(Functional.deref(users));
+  }
+
   public void addUser(CoreUser user) {
     @SuppressWarnings("unused")
     String nick = user.getNickname();
@@ -105,10 +109,6 @@ public class Identity extends CoreEntity {
     users.add(ref);
   }
   
-  public List<CoreUser> getUsers() {
-    return Collections.unmodifiableList(Functional.deref(users));
-  }
-
   public boolean isAnonymous() {
     return anonymous;
   }

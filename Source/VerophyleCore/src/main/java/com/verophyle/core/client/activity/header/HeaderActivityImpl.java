@@ -283,7 +283,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     @SuppressWarnings("unused")
     String nick = identity.getNickname();
     
-    final List<CoreUserProxy> users = identity.getUsers();
+    final List<CoreUserProxy> users = identity.getUserList();
     if (users != null) {
       for (final CoreUserProxy user : users) {
         String email = user.getEmail();
