@@ -28,8 +28,7 @@ public class Identity extends CoreEntity {
   @Index
   @Load
   List<Ref<CoreUser>> userRefs = new ArrayList<Ref<CoreUser>>();
-  transient List<CoreUser> users; // dummy field due to JsonRequestProcessor:1543
-  
+
   boolean anonymous;
   boolean administrator;
   
@@ -61,6 +60,22 @@ public class Identity extends CoreEntity {
     this.userRefs = Functional.toref(users);
   }
 
+  public boolean isAnonymous() {
+    return anonymous;
+  }
+  
+  public void setAnonymous(boolean anonymous) {
+    this.anonymous = anonymous;
+  }
+  
+  public boolean isAdministrator() {
+    return administrator;
+  }
+  
+  public void setAdministrator(boolean administrator) {
+    this.administrator = administrator;
+  }
+  
   public void addUser(CoreUser user) {
     @SuppressWarnings("unused")
     String nick = user.getNickname();
@@ -77,19 +92,4 @@ public class Identity extends CoreEntity {
     userRefs.add(ref);
   }
   
-  public boolean isAnonymous() {
-    return anonymous;
-  }
-  
-  public void setAnonymous(boolean anonymous) {
-    this.anonymous = anonymous;
-  }
-  
-  public boolean isAdministrator() {
-    return administrator;
-  }
-  
-  public void setAdministrator(boolean administrator) {
-    this.administrator = administrator;
-  }
 }
