@@ -40,7 +40,7 @@ public class IdentityServiceImpl implements IdentityService {
       Key<CoreUser> key = Key.create(CoreUser.class, currentUser.getId());
       Identity identity = ofy.load()
           .type(Identity.class)
-          .filter("users", key)
+          .filter("userRefs", key)
           .first().now();
 
       if (identity != null) {
@@ -96,7 +96,7 @@ public class IdentityServiceImpl implements IdentityService {
         .first().now();
     
     if (identity != null) {
-      for (final CoreUser coreUser : identity.getUserList()) {
+      for (final CoreUser coreUser : identity.getUsers()) {
         final String email = coreUser.getEmail();
         if (email != null && !email.isEmpty())
           return makeGravatarImageUrl(email);

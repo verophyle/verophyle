@@ -14,12 +14,12 @@ import com.verophyle.core.shared.rf.CoreUserProxy;
 @ProxyFor(value = Identity.class, locator = IdentityLocater.class)
 public interface IdentityProxy extends EntityProxy {
   Long getId();
-  Integer getVersion();
 
   String getNickname();
   void setNickname(String nickname);
   
-  List<CoreUserProxy> getUserList();
+  List<CoreUserProxy> getUsers();
+  void setUsers(List<CoreUserProxy> users);
   
   boolean isAnonymous();
   boolean isAdministrator();

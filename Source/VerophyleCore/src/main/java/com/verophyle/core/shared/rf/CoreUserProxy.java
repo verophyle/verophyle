@@ -11,7 +11,5 @@ import com.verophyle.core.server.rf.CoreUserLocator;
 @ProxyFor(value = CoreUser.class, locator = CoreUserLocator.class)
 public interface CoreUserProxy extends EntityProxy {
   Long getId();
-  Integer getVersion();
-
   public String getEmail();
 }

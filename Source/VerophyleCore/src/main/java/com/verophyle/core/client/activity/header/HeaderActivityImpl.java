@@ -244,6 +244,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
           } else {
             auth.getIdentityInfo().setText("?? unauthorized ??");
             setLogin();
+            requestGravatarUrl(identity.getId());
           }
         } else {
           auth.getIdentityInfo().setText("?? no id found ??");
@@ -283,7 +284,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     @SuppressWarnings("unused")
     String nick = identity.getNickname();
     
-    final List<CoreUserProxy> users = identity.getUserList();
+    final List<CoreUserProxy> users = identity.getUsers();
     if (users != null) {
       for (final CoreUserProxy user : users) {
         String email = user.getEmail();

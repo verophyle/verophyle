@@ -4,66 +4,31 @@
 package com.verophyle.core.server.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Load;
-import com.googlecode.objectify.annotation.OnSave;
 import com.verophyle.core.server.Functional;
 
 /**
- * An Identity is a user account on Verophyle, which may be associated
- * with zero or more datastore users.
+ * An Identity is a user account on Verophyle, which may 
+ * be associated with zero or more datastore users.
  */
 @Entity
 public class Identity extends CoreEntity {
   
   public static final String GUEST_NICKNAME = "Anonymous";
 
-  // entity boilerplate
-  @Id
-  Long id;
-  
-  Integer version = 0;
-
-  @OnSave
-  @Override
-  protected void onSave() {
-    version++;
-  }
-  
-  @Override
-  public Long getId() {
-    return id;
-  }
-  
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
-  
-  @Override
-  public Integer getVersion() {
-    return version;
-  }
-  
-  @Override
-  public void setVersion(Integer version) {
-    this.version = version;
-  }
-  // entity boilerplate
-
   @Index
   String nickname;
   
   @Index
   @Load
-  List<Ref<CoreUser>> users = new ArrayList<Ref<CoreUser>>();
+  List<Ref<CoreUser>> userRefs = new ArrayList<Ref<CoreUser>>();
+  transient List<CoreUser> users; // dummy field due to JsonRequestProcessor:1543
   
   boolean anonymous;
   boolean administrator;
@@ -75,7 +40,7 @@ public class Identity extends CoreEntity {
     if (nickname != null && !nickname.isEmpty())
       return nickname;
 
-    for (Ref<CoreUser> user : users) {
+    for (Ref<CoreUser> user : userRefs) {
       String userNick = user.get().getNickname();
       if (userNick != null && !userNick.isEmpty())
         return userNick;
@@ -88,25 +53,28 @@ public class Identity extends CoreEntity {
     this.nickname = handle;
   }
   
-  public List<CoreUser> getUserList() {
-    return Collections.unmodifiableList(Functional.deref(users));
+  public List<CoreUser> getUsers() {
+    return Functional.deref(userRefs);
+  }
+  
+  public void setUsers(List<CoreUser> users) {
+    this.userRefs = Functional.toref(users);
   }
 
   public void addUser(CoreUser user) {
     @SuppressWarnings("unused")
     String nick = user.getNickname();
     
-    for (Ref<CoreUser> ref : users) {
+    long userId = user.getId();
+    for (Ref<CoreUser> ref : userRefs) {
       long refId = ref.getKey().getId();
-      long userId = user.getId();
-      
       if (refId == userId)
         return;
     }
     
     Key<CoreUser> key = Key.create(CoreUser.class, user.getId());
     Ref<CoreUser> ref = Ref.create(key);
-    users.add(ref);
+    userRefs.add(ref);
   }
   
   public boolean isAnonymous() {

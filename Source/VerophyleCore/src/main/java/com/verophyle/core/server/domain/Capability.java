@@ -8,46 +8,12 @@ import java.util.EnumSet;
 import java.util.Set;
 
 import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
-import com.googlecode.objectify.annotation.OnSave;
 import com.verophyle.core.shared.Permission;
 
 @Entity
 public class Capability extends CoreEntity {  
   
-  // entity boilerplate
-  @Id
-  Long id;
-  
-  Integer version = 0;
-
-  @OnSave
-  @Override
-  protected void onSave() {
-    version++;
-  }
-  
-  @Override
-  public Long getId() {
-    return id;
-  }
-  
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
-  
-  @Override
-  public Integer getVersion() {
-    return version;
-  }
-  
-  @Override
-  public void setVersion(Integer version) {
-    this.version = version;
-  }
-
   // capability functions
   @Index
   String className;
