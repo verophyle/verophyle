@@ -1,3 +1,6 @@
+/**
+ * Copyright © 2013 Verophyle Informatics.  All rights reserved.
+ */
 package com.verophyle.core.client.event;
 
 import com.google.gwt.event.shared.EventHandler;

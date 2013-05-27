@@ -24,7 +24,7 @@
 
     <gae.version>1.8.0</gae.version>
     <gwt.version>2.5.1</gwt.version>
-    <objectify.version>4.0b3</objectify.version>
+    <objectify.version>4.0rc1</objectify.version>
     <guice.version>3.0</guice.version>
     <gin.version>2.0.0</gin.version>
     <junit.version>4.11</junit.version>
@@ -51,7 +51,6 @@
 
     <appengine.app.version>0</appengine.app.version>
     <appengine.target.version>${gae.version}</appengine.target.version>
-
   </properties>
 
   <modules>
