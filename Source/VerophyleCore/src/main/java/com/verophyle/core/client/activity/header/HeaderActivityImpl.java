@@ -221,7 +221,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
 
   private void initAuthInfo() {
     final IdentityRequest request = requestFactory.identityRequest();
-    final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity();
+    final Request<IdentityProxy> currentIdentity = request.getCurrentIdentity().with("users");
 
     // request the current identity, then set the name and button accordingly
     currentIdentity.fire(new Receiver<IdentityProxy>() {

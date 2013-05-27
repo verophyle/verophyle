@@ -6,7 +6,6 @@ package com.verophyle.core.server.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
@@ -28,7 +27,7 @@ public class Identity extends CoreEntity {
   @Index
   @Load
   List<Ref<CoreUser>> userRefs = new ArrayList<Ref<CoreUser>>();
-
+  
   boolean anonymous;
   boolean administrator;
   
@@ -82,13 +81,12 @@ public class Identity extends CoreEntity {
     
     long userId = user.getId();
     for (Ref<CoreUser> ref : userRefs) {
-      long refId = ref.getKey().getId();
+      long refId = ref.get().getId();
       if (refId == userId)
         return;
     }
     
-    Key<CoreUser> key = Key.create(CoreUser.class, user.getId());
-    Ref<CoreUser> ref = Ref.create(key);
+    Ref<CoreUser> ref = Ref.create(user);
     userRefs.add(ref);
   }
   
