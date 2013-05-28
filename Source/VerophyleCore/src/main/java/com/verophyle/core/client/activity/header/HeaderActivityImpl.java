@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.LoadEvent;
@@ -51,18 +52,15 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   private AuthenticationPopup popup = null;
   private String nonce = null;
 
-  private static final List<String> WHITELIST = Arrays.asList(
-      "gordon.tisher@gmail.com",
-      "gordon.tisher@verophyle.com"
-  );
+  private static final List<String>  WHITELIST = Arrays.asList("gordon.tisher@gmail.com", "gordon.tisher@verophyle.com");
 
   @Inject
   public HeaderActivityImpl(
-      com.google.web.bindery.event.shared.EventBus eventBus,
-      CoreLogger logger,
-      CoreMessages coreMessages,
+      com.google.web.bindery.event.shared.EventBus eventBus, 
+      CoreLogger logger, 
+      CoreMessages coreMessages, 
       CoreRequestFactory requestFactory,
-      PlaceController placeController,
+      PlaceController placeController, 
       HeaderView headerView) {
     super(logger, placeController, headerView);
 
@@ -124,6 +122,11 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       this.popup = new AuthenticationPopup(url);
       final Frame frame = popup.getFrame();
 
+      if (frame == null) {
+        popup.center();
+        return;
+      }
+
       // get currently logged-in identity if any
       final IdentityRequest oldIdentityReq = requestFactory.identityRequest();
       oldIdentityReq.getCurrentIdentity().fire(new Receiver<IdentityProxy>() {
@@ -139,51 +142,45 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
             // when the frame loads
             @Override
             public void onLoad(LoadEvent event) {
-              final String frameUrl = frame.getUrl();
-              
-              @SuppressWarnings("unused")
-              final String str = event.toDebugString();
+              final IdentityRequest newIdentityReq = requestFactory.identityRequest();
+              newIdentityReq.getLoggedInIdentity(nonce).fire(new Receiver<IdentityProxy>() {
 
-              if (frameUrl.contains("foobar") && frameUrl.contains(nonce)) {
-                final IdentityRequest newIdentityReq = requestFactory.identityRequest();
-                newIdentityReq.getCurrentIdentity().fire(new Receiver<IdentityProxy>() {
+                // now compare identities and fire the appropriate events
+                @Override
+                public void onSuccess(IdentityProxy response) {
+                  if (response == null)
+                    return;
+                  
+                  final long newIdentityId = response.getId();
+                  final boolean newIdentityIsAnonymous = response.isAnonymous();
 
-                  // now compare identities and fire the appropriate events
-                  @Override
-                  public void onSuccess(IdentityProxy response) {
-                    final long newIdentityId = response.getId();
-                    final boolean newIdentityIsAnonymous = response.isAnonymous();
-
-                    if (newIdentityId != oldIdentityId) {
-                      if (oldIdentityIsAnonymous) {
-                        if (newIdentityIsAnonymous) {
-                          // do nothing
-                        } else {
-                          fireLoginEvent();
-                        }
+                  if (newIdentityId != oldIdentityId) {
+                    if (oldIdentityIsAnonymous) {
+                      if (newIdentityIsAnonymous) {
+                        // do nothing
                       } else {
-                        if (newIdentityIsAnonymous) {
-                          fireLogoutEvent();
-                        } else {
-                          fireLoginEvent();
-                        }
+                        fireLoginEvent();
+                      }
+                    } else {
+                      if (newIdentityIsAnonymous) {
+                        fireLogoutEvent();
+                      } else {
+                        fireLoginEvent();
                       }
                     }
-
-                    popup.hide();
-                    popup = null;
                   }
 
-                  @Override
-                  public void onFailure(ServerFailure error) {
-                    super.onFailure(error);
-                    log(Level.SEVERE, "failed to get current user: " + error.getMessage() + "\n" + error.getStackTraceString());
-                    popup.hide();
-                    popup = null;
-                  }
+                  hidePopup();
+                }
 
-                });
-              }
+                @Override
+                public void onFailure(ServerFailure error) {
+                  super.onFailure(error);
+                  log(Level.SEVERE, "failed to get current user: " + error.getMessage() + "\n" + error.getStackTraceString());
+                  hidePopup();
+                }
+
+              });
             }
 
           });
@@ -195,14 +192,19 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
         public void onFailure(ServerFailure error) {
           super.onFailure(error);
           log(Level.SEVERE, "failed to get current user: " + error.getMessage() + "\n" + error.getStackTraceString());
-          popup.hide();
-          popup = null;
+          hidePopup();
         }
 
       });
     }
   }
 
+  private void hidePopup() {
+    nonce = null;
+    popup.hide();
+    popup = null;    
+  }
+  
   private void fireLoginEvent() {
     eventBus.fireEvent(new LoginEvent());
   }
@@ -283,7 +285,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
   private boolean isInWhiteList(IdentityProxy identity) {
     @SuppressWarnings("unused")
     String nick = identity.getNickname();
-    
+
     final List<CoreUserProxy> users = identity.getUsers();
     if (users != null) {
       for (final CoreUserProxy user : users) {
@@ -292,7 +294,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
           return true;
       }
     }
-    
+
     return false;
   }
 
@@ -306,7 +308,8 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       @Override
       public void onSuccess(String response) {
         auth.setUrl(response);
-        auth.getIdentityLogin().setTitle(response);
+        if (!GWT.isProdMode())
+          auth.getIdentityLogin().setTitle(response);
         headerView.fadeIn(auth);
       }
     });
@@ -322,7 +325,8 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
       @Override
       public void onSuccess(String response) {
         auth.setUrl(response);
-        auth.getIdentityLogin().setTitle(response);
+        if (!GWT.isProdMode())
+          auth.getIdentityLogin().setTitle(response);
         headerView.fadeIn(auth);
       }
     });
@@ -334,7 +338,7 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     final UrlBuilder builder = Window.Location.createUrlBuilder();
     builder.setPath("Authentication");
     builder.setParameter("nonce", nonce);
-    builder.setParameter("gwt.codesvr", (String)null);
+    builder.setParameter("gwt.codesvr", (String) null);
     return builder.buildString();
   }
 
