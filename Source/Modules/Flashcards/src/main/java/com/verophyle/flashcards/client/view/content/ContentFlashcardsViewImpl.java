@@ -19,7 +19,7 @@ import com.google.web.bindery.requestfactory.gwt.client.RequestFactoryEditorDriv
 import com.google.web.bindery.requestfactory.shared.Receiver;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
-import com.verophyle.core.client.view.widgets.TextBoxWithIntroText;
+import com.verophyle.core.client.widgets.TextBoxWithIntroText;
 import com.verophyle.flashcards.client.FlashcardsLogger;
 import com.verophyle.flashcards.client.resources.FlashcardsResources;
 import com.verophyle.flashcards.client.view.widgets.DeckListItem;

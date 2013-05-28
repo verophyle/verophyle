@@ -13,7 +13,7 @@ import com.verophyle.core.client.CoreMenuRegistry;
 import com.verophyle.core.client.activity.CoreActivityImpl;
 import com.verophyle.core.client.place.CorePlace;
 import com.verophyle.core.client.view.sidebar.SidebarView;
-import com.verophyle.core.client.view.widgets.CoreSidebarMenu;
+import com.verophyle.core.client.widgets.CoreSidebarMenu;
 
 public class SidebarActivityImpl extends CoreActivityImpl<CorePlace, SidebarView> implements SidebarView.Presenter, SidebarActivity {
   

@@ -10,7 +10,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.TreeItem;
 import com.verophyle.core.client.CoreMenuProvider;
 import com.verophyle.core.client.place.CorePlace;
-import com.verophyle.core.client.view.widgets.CoreSidebarMenu;
+import com.verophyle.core.client.widgets.CoreSidebarMenu;
 
 public class FlashcardsMenuProvider implements CoreMenuProvider {
   

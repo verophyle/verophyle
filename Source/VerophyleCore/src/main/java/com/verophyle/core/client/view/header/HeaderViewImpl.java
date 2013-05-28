@@ -12,7 +12,7 @@ import com.google.inject.Inject;
 import com.verophyle.core.client.CoreLogger;
 import com.verophyle.core.client.resources.CoreResources;
 import com.verophyle.core.client.view.CoreViewImpl;
-import com.verophyle.core.client.view.widgets.IdentityAuthentication;
+import com.verophyle.core.client.widgets.IdentityAuthentication;
 import com.verophyle.core.shared.CoreMessages;
 
 public class HeaderViewImpl extends CoreViewImpl implements HeaderView {

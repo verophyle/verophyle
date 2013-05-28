@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 Verophyle Informatics.  All rights reserved.
  */
-package com.verophyle.core.client.view.widgets;
+package com.verophyle.core.client.widgets;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

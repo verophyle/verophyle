@@ -5,7 +5,7 @@ package com.verophyle.core.client.view.header;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.verophyle.core.client.view.CoreView;
-import com.verophyle.core.client.view.widgets.IdentityAuthentication;
+import com.verophyle.core.client.widgets.IdentityAuthentication;
 
 public interface HeaderView extends CoreView {
 
