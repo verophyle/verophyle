@@ -7,7 +7,7 @@
 <ui:UiBinder 
   xmlns:g="urn:import:com.google.gwt.user.client.ui"
   xmlns:ui="urn:ui:com.google.gwt.uibinder"
-  xmlns:core="urn:import:com.verophyle.core.client.view.widgets"
+  xmlns:core="urn:import:com.verophyle.core.client.widgets"
   
   ui:baseMessagesInterface="com.verophyle.flashcards.shared.FlashcardsMessages"
   ui:defaultLocale="en">

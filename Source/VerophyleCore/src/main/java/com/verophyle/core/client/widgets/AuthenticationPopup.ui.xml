@@ -13,7 +13,7 @@
   
   <ui:with field="res" type="com.verophyle.core.client.resources.CoreResources"/>
   
-  <g:FlowPanel>
+  <g:FlowPanel width="30em" height="30em">
     <g:Frame ui:field="frame" width="100%" height="100%"/>
   </g:FlowPanel>
 </ui:UiBinder>

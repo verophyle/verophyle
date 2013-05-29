@@ -28,7 +28,14 @@ body {
   font-weight: FONT_LIGHT;
 }
 
+iframe {
+  border: none;
+}
+
 /* gwt widgets */
+/* @external gwt-TextBox; */
+
+/* misc */
 .coreButton {
   margin: 0;
   padding-left: 0.5em;

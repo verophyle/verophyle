@@ -12,21 +12,25 @@ import com.google.gwt.user.client.ui.PopupPanel;
 
 public class AuthenticationPopup extends PopupPanel {
 
-  interface Binder extends UiBinder<FlowPanel, AuthenticationPopup> {
-  }
-
+  interface Binder extends UiBinder<FlowPanel, AuthenticationPopup> { }
   private static Binder binder = GWT.create(Binder.class);
 
-  private final String  initialUrl;
+  private final String initialUrl;
 
   @UiField
   Frame frame;
 
   public AuthenticationPopup(String initialUrl) {
+    super();    
     this.initialUrl = initialUrl;
+    
+    this.setAutoHideEnabled(false);
+    this.setAutoHideOnHistoryEventsEnabled(true);
+    this.setModal(true);
+    this.setGlassEnabled(false);
 
     this.setWidget(binder.createAndBindUi(this));
-    this.setGlassEnabled(false);
+    
     frame.setUrl(this.initialUrl);
   }
 
