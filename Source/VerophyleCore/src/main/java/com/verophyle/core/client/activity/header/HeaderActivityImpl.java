@@ -33,9 +33,11 @@ import com.verophyle.core.client.place.Index;
 import com.verophyle.core.client.view.header.HeaderView;
 import com.verophyle.core.client.widgets.AuthenticationPopup;
 import com.verophyle.core.client.widgets.IdentityAuthentication;
+import com.verophyle.core.shared.AuthResult;
 import com.verophyle.core.shared.CoreMessages;
 import com.verophyle.core.shared.rf.CoreRequestFactory;
 import com.verophyle.core.shared.rf.CoreUserProxy;
+import com.verophyle.core.shared.rf.identity.AuthIdentityResultProxy;
 import com.verophyle.core.shared.rf.identity.IdentityProxy;
 import com.verophyle.core.shared.rf.identity.IdentityRequest;
 
@@ -127,75 +129,47 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
         return;
       }
 
-      // get currently logged-in identity if any
-      final IdentityRequest oldIdentityReq = requestFactory.identityRequest();
-      oldIdentityReq.getCurrentIdentity().fire(new Receiver<IdentityProxy>() {
+      // add load handler to frame
+      frame.addLoadHandler(new LoadHandler() {
 
-        // if we've got an identity, show the popup
         @Override
-        public void onSuccess(IdentityProxy response) {
-          final long oldIdentityId = response.getId();
-          final boolean oldIdentityIsAnonymous = response.isAnonymous();
+        public void onLoad(LoadEvent event) {
+          final IdentityRequest identityRequest = requestFactory.identityRequest();
+          identityRequest.getLoggedInIdentity(nonce).with("identity")
+            .fire(new Receiver<AuthIdentityResultProxy>() {
 
-          frame.addLoadHandler(new LoadHandler() {
-
-            // when the frame loads
             @Override
-            public void onLoad(LoadEvent event) {
-              final IdentityRequest newIdentityReq = requestFactory.identityRequest();
-              newIdentityReq.getLoggedInIdentity(nonce).fire(new Receiver<IdentityProxy>() {
-
-                // now compare identities and fire the appropriate events
-                @Override
-                public void onSuccess(IdentityProxy response) {
-                  if (response == null)
-                    return;
-                  
-                  final long newIdentityId = response.getId();
-                  final boolean newIdentityIsAnonymous = response.isAnonymous();
-
-                  if (newIdentityId != oldIdentityId) {
-                    if (oldIdentityIsAnonymous) {
-                      if (newIdentityIsAnonymous) {
-                        // do nothing
-                      } else {
-                        fireLoginEvent();
-                      }
-                    } else {
-                      if (newIdentityIsAnonymous) {
-                        fireLogoutEvent();
-                      } else {
-                        fireLoginEvent();
-                      }
-                    }
-                  }
-
-                  hidePopup();
+            public void onSuccess(AuthIdentityResultProxy response) {
+              if (response != null && response.getResult() == AuthResult.SUCCESS) {
+                switch (response.getAction()) {
+                case NONE:
+                  return; // leave the popup alone
+                case LOGIN:
+                  if (!response.getIdentity().isAnonymous())
+                    fireLoginEvent();
+                  break;
+                case LOGOUT:
+                  if (response.getIdentity().isAnonymous())
+                    fireLogoutEvent();
+                  break;
                 }
-
-                @Override
-                public void onFailure(ServerFailure error) {
-                  super.onFailure(error);
-                  log(Level.SEVERE, "failed to get current user: " + error.getMessage() + "\n" + error.getStackTraceString());
-                  hidePopup();
-                }
-
-              });
+                
+                hidePopup();
+              }
             }
 
+            @Override
+            public void onFailure(ServerFailure error) {
+              super.onFailure(error);
+              log(Level.SEVERE, "failed to get logged-in identity: " + error.getMessage() + "\n" + error.getStackTraceString());
+              hidePopup();
+            }
           });
-
-          popup.center();
         }
-
-        @Override
-        public void onFailure(ServerFailure error) {
-          super.onFailure(error);
-          log(Level.SEVERE, "failed to get current user: " + error.getMessage() + "\n" + error.getStackTraceString());
-          hidePopup();
-        }
-
+        
       });
+      
+      popup.center();
     }
   }
 
@@ -332,11 +306,12 @@ public class HeaderActivityImpl extends CoreActivityImpl<CorePlace, HeaderView> 
     });
   }
 
-  private String getDestinationUrl(String cmd) {
+  private String getDestinationUrl(String action) {
     nonce = CoreUtil.genUuid();
 
     final UrlBuilder builder = Window.Location.createUrlBuilder();
     builder.setPath("Authentication");
+    builder.setParameter("action", action);
     builder.setParameter("nonce", nonce);
     builder.setParameter("gwt.codesvr", (String) null);
     return builder.buildString();

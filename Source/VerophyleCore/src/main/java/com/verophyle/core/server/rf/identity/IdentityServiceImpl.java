@@ -13,8 +13,11 @@ import com.googlecode.objectify.Objectify;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
 import com.verophyle.core.server.domain.AuthEvent;
+import com.verophyle.core.server.domain.AuthIdentityResult;
 import com.verophyle.core.server.domain.CoreUser;
 import com.verophyle.core.server.domain.Identity;
+import com.verophyle.core.shared.AuthAction;
+import com.verophyle.core.shared.AuthResult;
 import com.verophyle.core.shared.Gravatar;
 
 public class IdentityServiceImpl implements IdentityService {
@@ -89,10 +92,10 @@ public class IdentityServiceImpl implements IdentityService {
   }
   
   @Override
-  public synchronized Identity getLoggedInIdentity(String nonce) {
+  public synchronized AuthIdentityResult getLoggedInIdentity(String nonce) {
     if (nonce == null || nonce.isEmpty())
       return null;
-    
+
     Objectify ofy = objectifyService.ofy();
 
     logger.info("looking up nonce {}", nonce);
@@ -102,16 +105,24 @@ public class IdentityServiceImpl implements IdentityService {
         .first().now();
     
     Date now = new Date();
-    Date cutoff = new Date(now.getTime() - (30 * 1000));
+    Date cutoff = new Date(now.getTime() - (60 * 1000));
+    
+    AuthResult result = AuthResult.UNKNOWN;
     if (authEvent == null) {
       logger.info("no auth event for {}", nonce);
-      return null;
+      result = AuthResult.NO_AUTH_EVENT;
     } else if (authEvent.getDate().before(cutoff)) {
       logger.info("auth event {} has expired ({} < {})", nonce, authEvent.getDate(), cutoff);
-      return null;
+      result = AuthResult.AUTH_EVENT_EXPIRED;
     } else {
-      return getCurrentIdentity();
+      logger.info("got auth event for {}", nonce);
+      result = AuthResult.SUCCESS;
     }
+    
+    return new AuthIdentityResult(
+        authEvent != null ? authEvent.getAction() : AuthAction.NONE,
+        result,
+        getCurrentIdentity());
   }
 
   @Override
