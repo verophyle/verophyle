@@ -12,7 +12,6 @@ import com.verophyle.core.server.rf.identity.IdentityService;
 @Service(value = IdentityService.class, locator = CoreServiceLocator.class)
 public interface IdentityRequest extends RequestContext {
   Request<IdentityProxy> getCurrentIdentity();
-  Request<AuthIdentityResultProxy> getLoggedInIdentity(String nonce);
   Request<String> getGravatarImageUrl(long identityId);
   
   Request<String> getLoginUrl(String currentUrl);

@@ -4,7 +4,6 @@
 package com.verophyle.core.server;
 
 import com.googlecode.objectify.Objectify;
-import com.verophyle.core.server.domain.AuthEvent;
 import com.verophyle.core.server.domain.Capability;
 import com.verophyle.core.server.domain.CoreEntity;
 import com.verophyle.core.server.domain.CoreUser;
@@ -16,7 +15,6 @@ public abstract class CoreObjectifyService  {
     register(CoreUser.class);
     register(Identity.class);
     register(Capability.class);
-    register(AuthEvent.class);
   }
   
   protected abstract void register(Class<? extends CoreEntity> clazz);

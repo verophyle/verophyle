@@ -9,7 +9,6 @@ import com.google.inject.Inject;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.ServletModule;
-import com.verophyle.core.server.AuthenticationServlet;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
 import com.verophyle.core.server.MainServlet;
@@ -29,12 +28,10 @@ public class VerophyleServletModule extends ServletModule {
   protected void configureServlets() {
     bind(RemoteLoggingServiceImpl.class).in(Singleton.class);
     bind(CoreRequestFactoryServlet.class).in(Singleton.class);
-    bind(AuthenticationServlet.class).in(Singleton.class);
     bind(MainServlet.class).in(Singleton.class);
 
     serve("/Verophyle/remote_logging").with(RemoteLoggingServiceImpl.class);
     serve("/gwtRequest").with(CoreRequestFactoryServlet.class);
-    serve("/Authentication").with(AuthenticationServlet.class);
     serveRegex("/(?!_ah).*").with(MainServlet.class);
   }
 

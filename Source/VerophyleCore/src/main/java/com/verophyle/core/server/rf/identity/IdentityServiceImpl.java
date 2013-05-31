@@ -3,8 +3,6 @@
  */
 package com.verophyle.core.server.rf.identity;
 
-import java.util.Date;
-
 import org.slf4j.Logger;
 
 import com.google.inject.Inject;
@@ -12,12 +10,8 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Objectify;
 import com.verophyle.core.server.CoreObjectifyService;
 import com.verophyle.core.server.CoreUserService;
-import com.verophyle.core.server.domain.AuthEvent;
-import com.verophyle.core.server.domain.AuthIdentityResult;
 import com.verophyle.core.server.domain.CoreUser;
 import com.verophyle.core.server.domain.Identity;
-import com.verophyle.core.shared.AuthAction;
-import com.verophyle.core.shared.AuthResult;
 import com.verophyle.core.shared.Gravatar;
 
 public class IdentityServiceImpl implements IdentityService {
@@ -91,40 +85,6 @@ public class IdentityServiceImpl implements IdentityService {
     }
   }
   
-  @Override
-  public synchronized AuthIdentityResult getLoggedInIdentity(String nonce) {
-    if (nonce == null || nonce.isEmpty())
-      return null;
-
-    Objectify ofy = objectifyService.ofy();
-
-    logger.info("looking up nonce {}", nonce);
-    AuthEvent authEvent = ofy.load()
-        .type(AuthEvent.class)
-        .filter("nonce", nonce)
-        .first().now();
-    
-    Date now = new Date();
-    Date cutoff = new Date(now.getTime() - (60 * 1000));
-    
-    AuthResult result = AuthResult.UNKNOWN;
-    if (authEvent == null) {
-      logger.info("no auth event for {}", nonce);
-      result = AuthResult.NO_AUTH_EVENT;
-    } else if (authEvent.getDate().before(cutoff)) {
-      logger.info("auth event {} has expired ({} < {})", nonce, authEvent.getDate(), cutoff);
-      result = AuthResult.AUTH_EVENT_EXPIRED;
-    } else {
-      logger.info("got auth event for {}", nonce);
-      result = AuthResult.SUCCESS;
-    }
-    
-    return new AuthIdentityResult(
-        authEvent != null ? authEvent.getAction() : AuthAction.NONE,
-        result,
-        getCurrentIdentity());
-  }
-
   @Override
   public String getGravatarImageUrl(long identityId) {
     final Objectify ofy = objectifyService.ofy();
